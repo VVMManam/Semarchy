@@ -1,0 +1,23 @@
+_name: SlaPolicy_ClusterCode
+_type: Reference
+_package: DataProject.references
+label: SLA Policy to Cluster
+physicalName: SLA_POLICY_CLUSTER
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SlaPolicy.SlaPolicy
+fromRoleLabel: SLA Policy
+fromRolePluralLabel: SLA Policies
+fromRoleName: SlaPolicies
+toEntity: DataProject.entities.Cluster.Cluster
+toRoleLabel: Cluster
+toRoleName: ClusterCode
+toRolePhysicalName: CLUSTER_CODE
+foreignAttribute:
+  _name: ClusterCode
+  _type: ForeignAttribute
+  physicalName: CLUSTER_CODE
+  label: Cluster
+  searchable: true
+  entity: DataProject.entities.SlaPolicy.SlaPolicy

@@ -1,0 +1,42 @@
+_name: RoleType
+_package: DataProject.entities.RoleType.steppers
+_type: Stepper
+entity: DataProject.entities.RoleType.RoleType
+label: Role Type
+rootStep:
+  _name: RoleType
+  _type: CollectionStep
+  label: Role Type
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.RoleType.collection_views.RoleType
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Cluster Details
+      formTab: DataProject.entities.RoleType.forms.RoleType.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

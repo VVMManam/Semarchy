@@ -1,0 +1,220 @@
+_package: DataProject.applications
+_name: GroupReferenceData
+_type: Application
+applicationTitle: GroupReferenceData
+avatarImageUrl: images://AdPorts-ImageLibrary/adports-icon.png
+coverImageUrl: images://AdPorts-ImageLibrary/adports-logo.jpg
+favIcon: images://AdPorts-ImageLibrary/adports-icon.png
+logoUrl: images://AdPorts-ImageLibrary/adports-logo.jpg
+requiredRoleName: ReferenceDataManagement
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+visibility: VISIBLE
+primaryColor: "md: teal 800"
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: ReferenceDataErd
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.ReferenceDataErd
+label: GroupReferenceData
+sortStrategy: POSITION
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: OpenDocumentation
+      label: Reference Data ERD
+      icon: images://mdi/book-open-page-variant.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: OpenDocumentationAction
+    - _name: MyTasks
+      label: My Tasks
+      icon: images://mdi/checkbox-marked-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: MyTasksAction
+      badgeVisible: false
+    - _name: BrowseCountry
+      label: Country
+      icon: images://mdi/earth.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Country.business_views.Country
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseCurrency
+      label: Currency
+      icon: images://mdi/currency-usd.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Currency.business_views.Currency
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseIssuingAuthority
+      label: Issuing Authority
+      icon: images://mdi/gavel.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.IssuingAuthority.business_views.IssuingAuthority
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseBusinessUnit
+      label: Business Unit
+      icon: images://mdi/domain.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.BusinessUnit.business_views.BusinessUnit
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseCluster
+      label: Cluster
+      icon: images://mdi/vector-polygon.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Cluster.business_views.Cluster
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseEmirate
+      label: Emirate
+      icon: images://mdi/flag-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Emirate.business_views.Emirate
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseErpProfile
+      label: ERP Profile
+      icon: images://mdi/cog-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.ErpProfile.business_views.ErpProfile
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseContactRole
+      label: Contact Role
+      icon: images://mdi/account-tie.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.ContactRole.business_views.ContactRole
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseIdentifierType
+      label: Identifier Type
+      icon: images://mdi/identifier.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.IdentifierType.business_views.IdentifierType
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+      viewType: GD
+    - _name: BrowseLicenseActivityGroupType
+      label: License Activity Group Type
+      icon: images://mdi/briefcase-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.LicenseActivityGroupType.business_views.LicenseActivityGroupType
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseLicenseActivityType
+      label: License Activity Type
+      icon: images://mdi/briefcase-check-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.LicenseActivityType.business_views.LicenseActivityType
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseLicenseType
+      label: License Type
+      icon: images://mdi/card-account-details-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.LicenseType.business_views.LicenseType
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseProfileType
+      label: Profile Type
+      icon: images://mdi/account-badge-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.ProfileType.business_views.ProfileType
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseCrossReference
+      label: Cross Reference
+      icon: images://mdi/swap-horizontal.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.CrossReference.business_views.CrossReference
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseSourceSystem
+      label: Source System
+      icon: images://mdi/server-network.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.SourceSystem.business_views.SourceSystem
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseTaxType
+      label: Tax Type
+      icon: images://mdi/receipt.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.TaxType.business_views.TaxType
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowsePaymentTerm
+      label: Payment Term
+      icon: images://mdi/calendar-clock.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.PaymentTerm.business_views.PaymentTerm
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseAddressUsage
+      label: Address Usage
+      icon: images://mdi/map-marker.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.AddressUsage.business_views.AddressUsage
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseTitle
+      label: Title
+      icon: images://mdi/account-tie.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Title.business_views.Title
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+defaultAction: DataProject.applications.GroupReferenceData.Root
+navDrawer:
+  - _name: RootFolder
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: DataProject.applications.GroupReferenceData.Root

@@ -1,0 +1,34 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+_package: DataProject.entities.TaxRegistration.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  CASE WHEN VatStatusCode = '1' THEN 1 ELSE 0 END DESC,
+  CASE WHEN EndDate IS NULL THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN RegistrationNo IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN VatStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EffectiveDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EndDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsCurrent IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TAXType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN VatExemptionConfirmed IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NoVatDeclaration IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxOrganizationType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPlaceholder IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FormatValid IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN VerifiedOn IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN VerifiedBy IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  EffectiveDate ASC,
+  UpdateDate DESC
+label: Default Rule
+publisherRankings: []
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes: []

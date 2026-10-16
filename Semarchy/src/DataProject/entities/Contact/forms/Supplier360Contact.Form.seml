@@ -1,0 +1,113 @@
+_package: DataProject.entities.Contact.forms
+_type: Form
+_name: Supplier360Contact
+entity: DataProject.entities.Contact.Contact
+default: false
+formTabs:
+- _name: ContactOverview
+  _type: FormTab
+  labelWidth: "160px"
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  label: Contact Overview
+  iconUrl: images://mdi/view-dashboard.svg
+  displayFormTabAs: ICON_LABEL
+  content:
+  - _type: FormSection
+    _name: ConHeaderSection
+    label: Contact at a glance
+    layoutDirection: ROW
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+    - _type: FormContainer
+      _name: ConHeaderC
+      layoutDirection: COLUMN
+      content:
+      - _name: ConHeader
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">'' || ''<div style="flex:0 0 52px;width:52px;height:52px;border-radius:8px;background:#0B2A4A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">CON</div>'' || ''<div style="flex:1;min-width:280px"><div style="font-size:18px;font-weight:500;line-height:1.2">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('' '', TitleCode, FirstName, MiddleName, LastName), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div><div style="font-size:13px;color:#66727F;margin-top:2px">'' || COALESCE(REPLACE(REPLACE(REPLACE(JobTitle, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || '' · '' || ''Site: '' || COALESCE(REPLACE(REPLACE(REPLACE(SupplierSite.SiteCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || '' · Supplier: '' || COALESCE(REPLACE(REPLACE(REPLACE(SupplierSite.FDN_Sgid, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div><div style="margin-top:10px">'' || ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;border:1px solid #CBD5E0;font-family:Consolas,Menlo,monospace;font-weight:400">'' || ''Contact ID '' || TO_CHAR(ContactId, ''FM999999999999990'') || ''</span>'' || CASE WHEN ContactStatusCode IS NULL THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#fff;color:#66727F;border:1px dashed #CBD5E0;font-weight:400">Not set</span>'' WHEN UPPER(ContactStatusCode) IN (''A'', ''ACTIVE'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E2F3EA;color:#1F7A4D;">Active</span>'' WHEN UPPER(ContactStatusCode) IN (''I'', ''INACTIVE'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">Inactive</span>'' WHEN UPPER(ContactStatusCode) IN (''VALID'', ''APPROVED'', ''CURRENT'', ''ENABLED'', ''REGISTERED'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E2F3EA;color:#1F7A4D;">'' || ContactStatusCode || ''</span>'' WHEN UPPER(ContactStatusCode) IN (''EXPIRED'', ''DENIED'', ''REJECTED'', ''SUSPENDED'', ''BLOCKED'', ''DISABLED'', ''CLOSED'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">'' || ContactStatusCode || ''</span>'' WHEN UPPER(ContactStatusCode) LIKE ''%PEND%'' OR UPPER(ContactStatusCode) LIKE ''%REVIEW%'' OR UPPER(ContactStatusCode) LIKE ''%PROCESS%'' OR UPPER(ContactStatusCode) LIKE ''%DRAFT%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FDF3DC;color:#8A5A00;">'' || ContactStatusCode || ''</span>'' ELSE ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;">'' || ContactStatusCode || ''</span>'' END || CASE WHEN PrimaryFocalPoint = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#0F7C8C;color:#FFFFFF;">Primary focal point</span>'' ELSE '''' END || CASE WHEN PrimaryFinancialPoint = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#0F7C8C;color:#FFFFFF;">Primary finance</span>'' ELSE '''' END || CASE WHEN PrimaryAdminContact = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;">Admin contact</span>'' ELSE '''' END || CASE WHEN HasUserAccount = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;">Has user account</span>'' ELSE '''' END || ''</div></div>'' || ''<div style="display:flex;gap:18px;flex-wrap:wrap;padding-top:4px">'' || ''<div style="text-align:right;min-width:78px"><div style="font-size:19px;font-weight:500;line-height:1;color:#0F7C8C">'' || TO_CHAR(LOOKUP count ContactPurposeId FROM ContactPurpose END, ''FM999999999999990'') || ''</div><div style="font-size:11px;color:#66727F;margin-top:3px">Purposes</div></div>'' || ''</div>'' || ''</div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Header
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '115'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL
+  - _type: FormSection
+    _name: ConProfileSection
+    label: Contact profile
+    layoutDirection: ROW
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+    - _type: FormContainer
+      _name: ConProfileC1
+      layoutDirection: COLUMN
+      content:
+      - _name: ConReach
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="font-size:13.5px;font-weight:500;color:#0B2A4A;border-bottom:1px solid #E1E7EE;padding-bottom:5px;margin:0 0 9px 0">Contact details</div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Email</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || CASE WHEN Email IS NULL THEN ''—'' ELSE ''<a href="mailto:'' || Email || ''">'' || REPLACE(REPLACE(REPLACE(Email, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;'') || ''</a>'' END || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Mobile</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('' '', MobileDialCode, MobileAreaCode, Mobile), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Business phone</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('' '', BusinessPhoneDialCode, BusinessPhone, CASE WHEN PhoneExtension IS NULL THEN NULL ELSE ''ext '' || PhoneExtension END), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Telephone</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('' '', TelephoneNumberCountryCode, AreaCode, TelephoneNumber), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Fax</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('' '', FaxCountryCode, FaxAreaCode, Fax), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Preferred language</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(PreferredLanguageCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Purposes</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(LOOKUP distinct_string_agg REPLACE(REPLACE(REPLACE(ContactRole, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;'') SEPARATED BY '', '' FROM ContactPurpose WHERE ContactRole IS NOT NULL END, ''—'') || ''</div></div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Contact details
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '255'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL
+    - _type: FormContainer
+      _name: ConProfileC2
+      layoutDirection: COLUMN
+      content:
+      - _name: ConIdentity
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="font-size:13.5px;font-weight:500;color:#0B2A4A;border-bottom:1px solid #E1E7EE;padding-bottom:5px;margin:0 0 9px 0">Identity & account</div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Arabic name</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FullNameAr, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Gender / nationality</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(GenderCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || '' / '' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_NationalityCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), REPLACE(REPLACE(REPLACE(Nationality, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Emirates ID</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(EmiratesId, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · expires '' || COALESCE(TO_CHAR(EmiratesIdExpiryDate, ''DD Mon YYYY''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Passport</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(PassportNumber, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · expires '' || COALESCE(TO_CHAR(PassportExpiryDate, ''DD Mon YYYY''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">User account</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(UserName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · '' || COALESCE(REPLACE(REPLACE(REPLACE(UserAccountStatus, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Inactive date</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(TO_CHAR(InactiveDate, ''DD Mon YYYY''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 188px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Source system</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_SourceSystemCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Identity
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '255'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL

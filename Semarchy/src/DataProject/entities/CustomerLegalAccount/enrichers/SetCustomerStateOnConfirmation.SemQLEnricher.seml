@@ -1,0 +1,14 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: SetCustomerStateOnConfirmation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Set Customer State On Confirmation
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: CustomerState
+    expression: |-
+          CASE
+              WHEN CustomerState = 'C02' THEN 'C02'
+              WHEN IsConfirmed = 'true' THEN 'C02'
+              ELSE 'C01'
+          END

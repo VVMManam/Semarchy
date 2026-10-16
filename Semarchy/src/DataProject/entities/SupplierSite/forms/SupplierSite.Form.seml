@@ -1,0 +1,993 @@
+_package: DataProject.entities.SupplierSite.forms
+_type: Form
+_name: SupplierSite
+entity: DataProject.entities.SupplierSite.SupplierSite
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "190px"
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    label: Supplier Site Details
+    iconUrl: images://mdi/office-building-marker.svg
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: Section
+        label: Supplier Site Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container
+            layoutDirection: COLUMN
+            content:
+              - _name: SiteId
+                value: SiteId
+                dataType: LONG_INTEGER
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: IdField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Supplier
+                value: FDN_Sgid
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+                label: Supplier
+              - _name: SiteCode
+                value: SiteCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: AddressName
+                value: FDN_AddressName
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+                label: Address Name
+              - _name: ProcurementBu
+                value: FDN_ProcurementBuCode
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+                label: Procurement BU
+              - _name: PurchasingSiteFlag
+                value: PurchasingSiteFlag
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PaySiteFlag
+                value: PaySiteFlag
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PrimaryPaySiteFlag
+                value: PrimaryPaySiteFlag
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: RfqOnlySiteFlag
+                value: RfqOnlySiteFlag
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PcardSiteFlag
+                value: PcardSiteFlag
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _name: Email
+                value: Email
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Phone
+                value: Phone
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PhoneCountryCode
+                value: PhoneCountryCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PhoneAreaCode
+                value: PhoneAreaCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PhoneExtension
+                value: PhoneExtension
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Fax
+                value: Fax
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FaxCountryCode
+                value: FaxCountryCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FaxAreaCode
+                value: FaxAreaCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+            content:
+              - _name: PaymentTermCode
+                value: FDN_PaymentTermCode
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+                label: Payment Term Code
+              - _name: PaymentMethodCode
+                value: PaymentMethodCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PayGroupCode
+                value: PayGroupCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: InvoiceCurrencyCode
+                value: InvoiceCurrencyCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PaymentCurrencyCode
+                value: PaymentCurrencyCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FreightTermsCode
+                value: FreightTermsCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: FobCode
+                value: FobCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: MatchOptionCode
+                value: MatchOptionCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: MatchApprovalLevel
+                value: MatchApprovalLevel
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: HoldAllPaymentsFlag
+                value: HoldAllPaymentsFlag
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: TaxReportingSiteFlag
+                value: TaxReportingSiteFlag
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: SourceSystemCode
+                value: FDN_SourceSystemCode
+                dataType: STRING
+                useCustomLabel: true
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+                label: Source System

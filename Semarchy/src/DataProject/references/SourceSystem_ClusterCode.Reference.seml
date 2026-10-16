@@ -1,0 +1,23 @@
+_name: SourceSystem_ClusterCode
+_type: Reference
+_package: DataProject.references
+label:  Source System to  Cluster
+physicalName: SOURCE_SYSTEM_CLU_81B
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SourceSystem.SourceSystem
+fromRoleLabel:  Source System
+fromRolePluralLabel:  Source System
+fromRoleName: SourceSystem
+toEntity: DataProject.entities.Cluster.Cluster
+toRoleLabel: Cluster Code
+toRoleName: ClusterCode
+toRolePhysicalName: CLUSTER_CODE
+foreignAttribute:
+  _name: ClusterCode
+  _type: ForeignAttribute
+  physicalName: CLUSTER_CODE
+  label: Cluster Code
+  searchable: true
+  entity: DataProject.entities.SourceSystem.SourceSystem

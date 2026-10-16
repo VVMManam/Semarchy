@@ -1,0 +1,16 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: DeriveCommercialGroupAndEmirate
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Flag Free Zone And Derive Emirate
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: IsFreeZone
+    expression: |-
+      CASE WHEN IssuingAuthorityCode.IsFreeZone = '1' THEN '1' ELSE '0' END
+  - attributeName: FID_RegistrationEmirateCode
+    expression: |-
+      CASE
+        WHEN FID_RegistrationEmirateCode IS NULL THEN IssuingAuthorityCode.FID_EmirateCode
+        ELSE FID_RegistrationEmirateCode
+      END

@@ -1,0 +1,33 @@
+_name: AddressLinesNormalize
+_package: DataProject.entities.Address.enrichers
+entity: DataProject.entities.Address.Address
+label: Address Lines Normalize
+_type: SemQLEnricher
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.Address.enrichers.EnrichAddress
+semQlEnricherExpressions:
+  - attributeName: AddressLine1
+    expression: |-
+      CASE
+        WHEN AddressLine1 IS NULL THEN AddressLine1
+        WHEN NOT REGEXP_LIKE(BTRIM(REGEXP_REPLACE(AddressLine1, ' +', ' ')), '^.{3,}$') THEN NULL
+        WHEN NOT REGEXP_LIKE(REGEXP_REPLACE(BTRIM(REGEXP_REPLACE(AddressLine1, ' +', ' ')), '[^A-Za-z0-9]', ''), '^.{1,}$') THEN NULL
+        ELSE UPPER(BTRIM(REGEXP_REPLACE(AddressLine1, ' +', ' ')))
+      END
+  - attributeName: AddressLine2
+    expression: |-
+      CASE
+        WHEN AddressLine2 IS NULL THEN AddressLine2
+        WHEN NOT REGEXP_LIKE(BTRIM(REGEXP_REPLACE(AddressLine2, ' +', ' ')), '^.{3,}$') THEN NULL
+        WHEN NOT REGEXP_LIKE(REGEXP_REPLACE(BTRIM(REGEXP_REPLACE(AddressLine2, ' +', ' ')), '[^A-Za-z0-9]', ''), '^.{1,}$') THEN NULL
+        ELSE UPPER(BTRIM(REGEXP_REPLACE(AddressLine2, ' +', ' ')))
+      END
+  - attributeName: AddressLine3
+    expression: |-
+      CASE
+        WHEN AddressLine3 IS NULL THEN AddressLine3
+        WHEN NOT REGEXP_LIKE(BTRIM(REGEXP_REPLACE(AddressLine3, ' +', ' ')), '^.{3,}$') THEN NULL
+        WHEN NOT REGEXP_LIKE(REGEXP_REPLACE(BTRIM(REGEXP_REPLACE(AddressLine3, ' +', ' ')), '[^A-Za-z0-9]', ''), '^.{1,}$') THEN NULL
+        ELSE UPPER(BTRIM(REGEXP_REPLACE(AddressLine3, ' +', ' ')))
+      END

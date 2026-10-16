@@ -1,0 +1,836 @@
+_name: SyncCustomer
+_type: NamedQuery
+_package: DataProject.named_queries
+active: true
+queryParameters:
+  # Keyset-paging cursor: pass the CustomerLegalAccountID of the LAST record
+  # from the previous page. First call = 0. Never repeats a record.
+  - _name: LastCustomerLegalAccountID
+    _type: QueryParameter
+    bindingName: PARAM_LAST_ID
+    dataType: NUMBER
+    mandatory: false
+    defaultValue: '0'
+  # Optional batch window. Leave empty to fetch all records.
+  - _name: FromBatchID
+    _type: QueryParameter
+    bindingName: PARAM_FROM_BATCH_ID
+    dataType: NUMBER
+    mandatory: false
+    defaultValue: 'null'
+  - _name: ToBatchID
+    _type: QueryParameter
+    bindingName: PARAM_TO_BATCH_ID
+    dataType: NUMBER
+    mandatory: false
+    defaultValue: 'null'
+filter: >-
+  CustomerLegalAccountID > Coalesce(:PARAM_LAST_ID, 0)
+    and (:PARAM_FROM_BATCH_ID is null or BatchID > :PARAM_FROM_BATCH_ID)
+    and (:PARAM_TO_BATCH_ID is null or BatchID <= :PARAM_TO_BATCH_ID)
+    and (MergeApprovalStatus is null or MergeApprovalStatus in ('NOT_REQUIRED', 'CONFIRMED'))
+sort: CustomerLegalAccountID asc
+defaultLimit: 1000
+queryObjects:
+  # ---------------------------------------------------------------------
+  # ROOT: Customer
+  # TODO verify: actual entity path for the Customer golden entity
+  # ---------------------------------------------------------------------
+  - _name: CustomerLegalAccount
+    _type: QueryObject
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    objectProperties:
+      # Cursor for paging - send the last record's value as LastCustomerLegalAccountID
+      - _name: CustomerLegalAccountID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CustomerLegalAccountID
+      - _name: OperationType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: OperationType
+      - _name: AccountId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AccountId
+      - _name: AccountCreationDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AccountCreationDate
+      - _name: CustomerGoldenId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CustomerGoldenId
+      - _name: NameAr
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NameAr
+      - _name: NameEn
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NameEN
+      - _name: CustomerCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CustomerCode
+      - _name: AccountStatus
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AccountStatus
+      - _name: AccountType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AccountType
+      - _name: PaymentTerms
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PaymentTerm
+      - _name: IsVIP
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IsVip
+      - _name: EstablishmentType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EstablishmentType
+      - _name: EstablishmentAddress
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EstablishmentAddress
+      - _name: Email
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Email
+      - _name: BusinessPhone
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: BusinessPhone
+      - _name: Mobile
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Mobile
+      - _name: Fax
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Fax
+      - _name: Website
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Website
+      - _name: BusinessPhoneCountryCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: BusinessPhoneCountryCode
+      - _name: MobilePhoneCountryCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: MobilePhoneCountryCode
+      - _name: Status
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Status
+      - _name: Exemption
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Exemption
+      - _name: NoVATDeclaration
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NoVATDeclaration
+      # --- License fields (flattened: a nested SINGLE_RECORD tag needs a reference, and License is the same record) ---
+      - _name: LicenseNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseNumber
+      - _name: LicenseIssuingEmirateId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IssuingEmirateId
+      - _name: LicenseIssuingEmirateName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: RegistrationEmirateCode.EmirateNameEn
+      - _name: LicenseIssuingAuthority
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IssuingAuthority
+      - _name: LicenseIssuingCountry
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IssuingAuthorityCode.FID_CountryCode
+      - _name: LicenseRegistrationDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseRegistrationDate
+      - _name: LicenseIssueDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseIssueDate
+      - _name: LicenseExpiryDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseExpiryDate
+      - _name: LicenseStartDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseStartDate
+      - _name: LicenseCancelDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseCancelDate
+      - _name: LicenseAmendDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseAmendDate
+      - _name: LicenseRecordStatus
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseRecordStatusCode
+      - _name: LicenseStatus
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseStatusCode
+      - _name: LicenseType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseType
+      - _name: LicenseStage
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseStage
+      # --- child collections / related records ---
+      # TODO verify: relationship role name (child role from Customer -> Identifier)
+      - _name: LicenseActivity
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: LicenseActivity
+        targetObject: DataProject.named_queries.SyncCustomer.LicenseActivity
+      # --- child collections / related records ---
+      # TODO verify: relationship role name (child role from Customer -> Identifier)
+      - _name: Identifier
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: Identifier
+        targetObject: DataProject.named_queries.SyncCustomer.Identifier
+      # --- child collections / related records ---
+      # TODO verify: relationship role name (child role from Customer -> VATInfo)
+      - _name: TaxRegistration
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: TaxRegistration
+        targetObject: DataProject.named_queries.SyncCustomer.TaxRegistration
+      # TODO verify: relationship role name (child role from Customer -> Address)
+      - _name: Address
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: Address
+        targetObject: DataProject.named_queries.SyncCustomer.Address
+      # TODO verify: relationship role name (child role from Customer -> Profile)
+      - _name: Profile
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: Profile
+        targetObject: DataProject.named_queries.SyncCustomer.Profile
+      # TODO verify: Contact is a single object in the source JSON - confirm
+      # whether this is genuinely a to-one relationship (SINGLE_RECORD) or
+      # should be MULTI_RECORDS returning only the first/primary contact
+      - _name: Contact
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: Contact
+        targetObject: DataProject.named_queries.SyncCustomer.Contact
+      # TODO verify: relationship role name (child role from Customer -> DepartmentalAccount)
+      - _name: CustomerOrgAssignment
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: CustomerOrgAssignment
+        targetObject: DataProject.named_queries.SyncCustomer.DepartmentalAccount
+  # ---------------------------------------------------------------------
+  # Identifier (child of Customer)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: Identifier
+    _type: QueryObject
+    entity: DataProject.entities.Identifier.Identifier
+    objectProperties:
+      - _name: Type
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FID_IdentifierType
+      - _name: Value
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Value
+      - _name: Status
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: StatusCode
+          
+  # -------------------------------------------------------------------
+  # VATInfo (child of Customer)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: TaxRegistration
+    _type: QueryObject
+    entity: DataProject.entities.TaxRegistration.TaxRegistration
+    objectProperties:
+      - _name: Status
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: RecordStatusCode
+      - _name: RegistrationStatus
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: VatStatusCode
+      - _name: RegistrationNo
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: RegistrationNo
+      - _name: EffectiveDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EffectiveDate
+      - _name: EndDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EndDate
+      - _name: Country
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FID_CountryCode
+      - _name: Tax
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FID_TaxTypeCode
+  # ---------------------------------------------------------------------
+  # Address (child of Customer)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: Address
+    _type: QueryObject
+    entity: DataProject.entities.Address.Address
+    objectProperties:
+      - _name: POBoxNo
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PoBox
+      - _name: AddressLine1
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AddressLine1
+      - _name: AddressLine2
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AddressLine2
+      - _name: AddressLine3
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AddressLine3
+      - _name: Sector
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Sector
+      - _name: Area
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Area
+      - _name: City
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: City
+      - _name: StateProvince
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: StateProvince
+      - _name: EmirateCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EmirateCode.EmirateCode
+      - _name: PostalCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PostalCode
+      - _name: CountryCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CountryCode.CountryCode
+      - _name: CountryName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CountryCode.NameEn
+      - _name: Type
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AddressUsageCode
+  # ---------------------------------------------------------------------
+  # Profile (child of Customer)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: Profile
+    _type: QueryObject
+    entity: DataProject.entities.Profile.Profile
+    objectProperties:
+      - _name: ClusterCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ClusterCode.ClusterCode
+      - _name: ERPBuCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: BusinessUnitCode.ErpBuCode
+      - _name: BusinessUnit
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: BusinessUnitCode.BusinessUnitCode
+      - _name: Status
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: RecordStatusCode
+      - _name: ApprovalStatus
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ProfileStatusCode
+      - _name: ProfileType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ProfileTypeCode.ProfileTypeCode
+
+  # ---------------------------------------------------------------------
+  # Contact (single related record of Customer)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: Contact
+    _type: QueryObject
+    entity: DataProject.entities.Contact.Contact
+    objectProperties:
+      # TODO verify: relationship b/w Contact & ContactRole 
+      - _name: ContactPurpose
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: ContactPurpose
+        targetObject: DataProject.named_queries.SyncCustomer.ContactPurpose
+      - _name: Title
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Title.Code
+      - _name: TitleText
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Title.Text
+      - _name: FirstName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FirstName
+      - _name: LastName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LastName
+      - _name: MiddleName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: MiddleName
+      - _name: FullNameArabic
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FullNameAr
+      - _name: Email
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Email
+      - _name: Mobile
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Mobile
+      - _name: TelephoneNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: TelephoneNumber
+      - _name: Nationality
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NationalityCode.CountryCode
+      - _name: Gender
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: GenderCode
+      - _name: JobTitle
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: JobTitle
+      - _name: PrimaryFocalPoint
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PrimaryFocalPoint
+      - _name: PrimaryFinancialPoint
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PrimaryFinancialPoint
+      - _name: MobilePhoneCountryCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: MobilePhoneCountryCode
+      - _name: TelephoneNumberCountryCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: TelephoneNumberCountryCode
+      - _name: Status
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ContactStatusCode
+      - _name: EmiratesID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EmiratesId
+      - _name: EmiratesIDExpiryDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EmiratesIdExpiryDate
+      - _name: PassportNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PassportNumber
+      - _name: PassportExpiryDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PassportExpiryDate
+      - _name: PassportIssueDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PassportIssueDate
+      - _name: NumberOfShares
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NumberOfShares
+      - _name: PreferredLanguage
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PreferredLanguageCode
+
+  # ---------------------------------------------------------------------
+  # DepartmentalAccount (child of Customer)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: DepartmentalAccount
+    _type: QueryObject
+    entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+    objectProperties:
+      - _name: OperationType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: OperationType
+      - _name: Cluster
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ClusterCode.ClusterCode
+      - _name: ERPBUCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: BusinessUnitCode.ErpBuCode
+      - _name: PaymentTerm
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PaymentTerm
+      - _name: BusinessUnit
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: BusinessUnitCode.BusinessUnitCode
+      - _name: ERPProfile
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FID_ErpProfileCode
+      - _name: DepartmentAccountid
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: DepartmentAccountGuid
+      - _name: DepartmentAccountUCID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: DeptAccountUCID
+      - _name: Status
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Status
+      - _name: SalesPerson
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: SalesPerson
+      - _name: AccountManager
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AccountManager
+      - _name: PaymentDetails
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: CustomerPaymentDetails
+        targetObject: DataProject.named_queries.SyncCustomer.PaymentDetails
+      - _name: CreditLimit
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CreditLimit
+      - _name: CreditCurrency
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CreditCurrency
+      # TODO verify: relationship role name (child role -> DepartmentalAccountProfile)
+      - _name: Profile
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: Profile
+        targetObject: DataProject.named_queries.SyncCustomer.Profile
+      # TODO verify: relationship role name (child role -> DepartmentalAccountContact)
+      - _name: Contact
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: Contact
+        targetObject: DataProject.named_queries.SyncCustomer.Contact
+
+  # ---------------------------------------------------------------------
+  # DepartmentalAccountPaymentDetails (single related record of DepartmentalAccount)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: PaymentDetails
+    _type: QueryObject
+    entity: DataProject.entities.PaymentDetails.PaymentDetails
+    objectProperties:
+      - _name: Bank
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Bank
+      - _name: Branch
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Branch
+      - _name: Country
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Country
+      - _name: Currency
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Currency
+      - _name: IBAN
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IBAN
+      - _name: AccountName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AccountName
+      - _name: AccountNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: AccountNumber
+      - _name: RecordStatusCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: RecordStatusCode
+  # ---------------------------------------------------------------------
+  # DepartmentalAccountProfile (single related record of DepartmentalAccount)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: DepartmentalAccountProfile
+    _type: QueryObject
+    entity: DataProject.entities.Profile.Profile
+    objectProperties:
+      - _name: Cluster
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ClusterCode.ClusterCode
+      - _name: ERPBuCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: BusinessUnitCode.ErpBuCode
+      - _name: BusinessUnit
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: BusinessUnitCode.BusinessUnitCode
+      - _name: Status
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ProfileStatusCode
+      - _name: ApprovalStatus
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ApprovalStatusCode
+      - _name: ProfileType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ProfileTypeCode.ProfileTypeCode
+  # ---------------------------------------------------------------------
+  # DepartmentalAccountContact (single related record of DepartmentalAccount)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: DepartmentalAccountContact
+    _type: QueryObject
+    entity: DataProject.entities.Contact.Contact
+    objectProperties:
+      - _name: ContactPurpose
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: ContactPurpose
+        targetObject: DataProject.named_queries.SyncCustomer.ContactPurpose
+      - _name: ContactUniqueId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ContactUniqueId
+      - _name: Title
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Title.Code
+      - _name: TitleText
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Title.Text
+      - _name: FirstName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FirstName
+      - _name: LastName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LastName
+      - _name: MiddleName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: MiddleName
+      - _name: FullNameArabic
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FullNameAr
+      - _name: Email
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Email
+      - _name: Mobile
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Mobile
+      - _name: TelephoneNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: TelephoneNumber
+      - _name: Nationality
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NationalityCode.CountryCode
+      - _name: Gender
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: GenderCode
+      - _name: JobTitle
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: JobTitle
+      - _name: PrimaryFocalPoint
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PrimaryFocalPoint
+      - _name: PrimaryFinancePoint
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PrimaryFinancialPoint
+      - _name: MobilePhoneCountryCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: MobilePhoneCountryCode
+      - _name: TelephoneNumberCountryCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: TelephoneNumberCountryCode
+      - _name: Status
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ContactStatusCode
+      - _name: EmiratesId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EmiratesId
+      - _name: EmiratesIdExpiryDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EmiratesIdExpiryDate
+      - _name: PassportNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PassportNumber
+      - _name: PassportExpiryDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PassportExpiryDate
+      - _name: PassportIssueDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PassportIssueDate
+      - _name: NumberOfShares
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NumberOfShares
+      - _name: PreferredLanguage
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PreferredLanguageCode
+  # ---------------------------------------------------------------------
+  # Departmental Account Contact's Contact purposes (child of Departmet Contact)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: ContactPurpose
+    _type: QueryObject
+    entity: DataProject.entities.ContactPurpose.ContactPurpose
+    objectProperties:
+      - _name: SourceSystemCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FID_ContactRoleCode
+  # ---------------------------------------------------------------------
+  # Departmental Account Contact's Contact purposes (child of Departmet Contact)
+  # TODO verify: actual entity path
+  # ---------------------------------------------------------------------
+  - _name: LicenseActivity
+    _type: QueryObject
+    entity: DataProject.entities.LicenseActivity.LicenseActivity
+    objectProperties:
+      - _name: Description
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Description
+      - _name: Name
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Name
+      - _name: ActivityGroupCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: COALESCE(FID_GroupCode, ActivityGroupCode)
+      - _name: ActivityGroupName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FDN_GroupCode
+      - _name: ActivityCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ActivityCode
+      - _name: ActivityType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FID_ActivityType
+      - _name: ActivityTypeName
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FDN_ActivityType
+      - _name: DEDCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: DEDCode
+      - _name: ActivityStartDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ActivityStartDate
+      - _name: ActivityEndDate
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ActivityEndDate
+      - _name: RecordStatusCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: RecordStatusCode
+rootQueryObject: DataProject.named_queries.SyncCustomer.CustomerLegalAccount

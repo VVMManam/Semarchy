@@ -1,0 +1,8 @@
+_name: TaskMatchesSubProcess
+_package: DataProject.entities.SlaPolicy.validations
+_type: SemQLValidation
+entity: DataProject.entities.SlaPolicy.SlaPolicy
+label: Task matches the sub process
+validationScope: PRE_CONSO
+condition: "TaskCode IS NULL OR TaskCode = 'ALL_TASKS' OR (TaskCode = 'CLUSTER_STEWARD_REVIEW' AND SubProcessCode = 'MERGE_APPROVAL') OR (TaskCode = 'GROUP_STEWARD_REVIEW' AND SubProcessCode IN ('MERGE_APPROVAL', 'GROUP_STEWARD_REVIEW'))"
+validationLabel: 'Cluster Steward Review belongs to the Merge Approval sub process; Group Steward Review to Merge Approval or Group Steward Review.'

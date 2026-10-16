@@ -1,0 +1,8 @@
+_name: SupplierContactEmailValid
+_type: SemQLValidation
+_package: DataProject.entities.Contact.validations
+entity: DataProject.entities.Contact.Contact
+label: VAL-24 Supplier Contact Email Valid
+validationScope: POST_CONSO
+validationLabel: "VAL-24 - Invalid or missing contact email."
+condition: "FID_SupplierSite IS NULL OR (Email IS NOT NULL AND REGEXP_LIKE(Email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'))"

@@ -1,0 +1,17 @@
+_name: IdentifierType
+_package: DataProject.entities.IdentifierType.display_cards
+_type: DisplayCard
+entity: DataProject.entities.IdentifierType.IdentifierType
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: PartyTypeScope
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

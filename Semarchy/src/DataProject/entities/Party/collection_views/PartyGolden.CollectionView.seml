@@ -1,0 +1,61 @@
+_name: PartyGolden
+_type: CollectionView
+_package: DataProject.entities.Party.collection_views
+entity: DataProject.entities.Party.Party
+default: true
+displayCard: DataProject.entities.Party.display_cards.Party
+tableDisplayCardColumnWidth: 40
+tableAllowed: true
+tableRowLines: 2
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Party
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: MarkdownColumn
+    _name: PartyRole
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "CASE WHEN LOOKUP count Pgid FROM ChildParty END > 0 THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#3E2A6E;color:#FFFFFF;\">' || 'Super Party' || '</span>' WHEN LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END > 0 AND LOOKUP count Sgid FROM SupplierLegalAccount END > 0 THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#0F7C8C;color:#FFFFFF;\">' || 'Customer &amp; Supplier' || '</span>' WHEN LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END > 0 THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E3F2FD;color:#0D47A1;\">' || 'Customer' || '</span>' WHEN LOOKUP count Sgid FROM SupplierLegalAccount END > 0 THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EDE7F6;color:#4527A0;\">' || 'Supplier' || '</span>' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FFF8E1;color:#8A5A00;\">' || 'Not linked' || '</span>' END"
+    label: "Role"
+    visibleByDefault: true
+  - _type: MarkdownColumn
+    _name: Identity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "CASE WHEN LicenceKey IS NULL THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;\">' || 'No licence' || '</span>' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;font-family:Consolas,Menlo,monospace;\">' || 'Licence ' || REPLACE(REPLACE(REPLACE(LicenceKey, '&', '&amp;'), '<', '&lt;'), '>', '&gt;') || '</span>' END || CASE WHEN LicenceAuthorityCode IS NULL THEN '' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;\">' || 'Authority ' || REPLACE(REPLACE(REPLACE(LicenceAuthorityCode, '&', '&amp;'), '<', '&lt;'), '>', '&gt;') || '</span>' END || CASE WHEN LicenceCountry IS NULL THEN '' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;\">' || REPLACE(REPLACE(REPLACE(LicenceCountry, '&', '&amp;'), '<', '&lt;'), '>', '&gt;') || '</span>' END"
+    label: "Licence · Authority · Country"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LinkedCustomers
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "TO_CHAR(LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END, 'FM999999990')"
+    label: "Customers"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LinkedSuppliers
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "TO_CHAR(LOOKUP count Sgid FROM SupplierLegalAccount END, 'FM999999990')"
+    label: "Suppliers"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PartyId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "TO_CHAR(Pgid, 'FM999999999999990')"
+    label: "Party ID"
+    visibleByDefault: true

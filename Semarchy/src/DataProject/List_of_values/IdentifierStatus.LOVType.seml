@@ -1,0 +1,18 @@
+_name: IdentifierStatus
+_package: DataProject.List_of_values
+_type: LOVType
+label: Identifier Status
+length: 128
+lovValues:
+  - code: ACTIVE
+    label: Active
+  - code: EXPIRED
+    label: Expired
+  - code: CANCELLED
+    label: Cancelled
+  - code: SUPERSEDED
+    label: Superseded
+  - code: UNVERIFIED
+    label: Unverified
+  - code: VERIFIED
+    label: Verified

@@ -1,0 +1,63 @@
+_name: SupplierBankAccountGolden
+_package: DataProject.entities.SupplierBankAccount.action_sets
+_type: ActionSet
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+label: Supplier Bank Account Action Set
+defaultActionSet: false
+actions:
+  - _name: CreateSupplierBankAccount
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: DataProject.entities.SupplierBankAccount.steppers.SupplierBankAccount
+  - _name: EditSupplierBankAccount
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.SupplierBankAccount.steppers.SupplierBankAccount
+  - _name: CopySupplierBankAccount
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.SupplierBankAccount.steppers.SupplierBankAccount
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportSupplierBankAccount
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: DataProject.entities.SupplierBankAccount.steppers.SupplierBankAccount
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: DataProject.entities.SupplierBankAccount.display_cards.SupplierBankAccount
+    formTab: DataProject.entities.SupplierBankAccount.forms.SupplierBankAccountGolden.General

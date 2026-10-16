@@ -1,0 +1,42 @@
+_name: LicenseActivityType
+_package: DataProject.entities.LicenseActivityType.steppers
+_type: Stepper
+entity: DataProject.entities.LicenseActivityType.LicenseActivityType
+label: License Activity Type
+rootStep:
+  _name: LicenseActivityType
+  _type: CollectionStep
+  label: License Activity Type
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.LicenseActivityType.collection_views.LicenseActivityType
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Cluster Details
+      formTab: DataProject.entities.LicenseActivityType.forms.LicenseActivityType.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

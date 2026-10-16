@@ -1,0 +1,132 @@
+_name: SlaPolicy
+_type: CollectionView
+_package: DataProject.entities.SlaPolicy.collection_views
+entity: DataProject.entities.SlaPolicy.SlaPolicy
+default: true
+displayCard: DataProject.entities.SlaPolicy.display_cards.SlaPolicy
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: false
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: "1:1"
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: SlaPolicyId
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: SlaPolicyId
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: DomainCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DomainCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ProcessCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ProcessCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SubProcessCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SubProcessCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: TaskCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: TaskCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ClusterCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Cluster
+    value: FID_ClusterCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RequiredRole
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RequiredRole
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SlaValue
+    columnAlign: LEFT
+    dataType: DECIMAL
+    useCustomLabel: false
+    value: SlaValue
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SlaUnit
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SlaUnit
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ReminderHours
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: ReminderHours
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PriorityCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PriorityCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EscalationRole
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EscalationRole
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: EffectiveFrom
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: EffectiveFrom
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: EffectiveTo
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: EffectiveTo
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Description
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Description
+    visibleByDefault: false

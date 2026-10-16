@@ -1,0 +1,8 @@
+_name: CurrencyResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSite.validations
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: Payment Currency Resolved
+validationScope: POST_CONSO
+validationLabel: "CURRENCY_UNMAPPED - payment currency has no match in MDM."
+condition: "PaymentCurrencyCode IS NULL OR FID_Currency IS NOT NULL"

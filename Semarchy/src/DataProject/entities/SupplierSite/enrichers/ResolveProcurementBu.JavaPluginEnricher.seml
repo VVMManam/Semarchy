@@ -1,0 +1,45 @@
+_name: ResolveProcurementBu
+_type: JavaPluginEnricher
+_package: DataProject.entities.SupplierSite.enrichers
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: Resolve Procurement BU (Fusion name)
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'FUS|' || upper(trim(fusion_code)) LOOKUP_COLUMN,
+                   business_unit_code OUTPUT_COLUMN1
+            from gd_business_unit
+            where fusion_code is not null
+            union
+            select 'FUS|' || upper(trim(crm_code)) LOOKUP_COLUMN,
+                   business_unit_code OUTPUT_COLUMN1
+            from gd_business_unit
+            where crm_code is not null
+            union
+            select 'FUS|' || upper(trim(business_unit_code)) LOOKUP_COLUMN,
+                   business_unit_code OUTPUT_COLUMN1
+            from gd_business_unit
+            union
+            select 'MDM|' || upper(trim(business_unit_code)) LOOKUP_COLUMN,
+                   business_unit_code OUTPUT_COLUMN1
+            from gd_business_unit
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_ProcurementBuCode IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_ProcurementBuCode)) WHEN ProcurementBuName IS NOT NULL THEN 'FUS|' || UPPER(BTRIM(ProcurementBuName)) ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_ProcurementBuCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

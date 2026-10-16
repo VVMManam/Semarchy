@@ -1,0 +1,124 @@
+_package: DataProject.entities.changerequest.collection_views
+_name: ChangeRequest
+_type: CollectionView
+entity: DataProject.entities.changerequest.changerequest
+displayCard: DataProject.entities.changerequest.display_cards.ChangeRequest
+default: true
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: false
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ChangeRequestID
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: ChangeRequestID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EntityType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EntityType
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GoldenId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: GoldenId
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: OperationType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: OperationType
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AttributeName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AttributeName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: OldValue
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: OldValue
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: NewValue
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NewValue
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: ChangeReason
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ChangeReason
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: RequestBy
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RequestBy
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RequestDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: RequestDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RequestSourceSystem
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RequestSourceSystem
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: StatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: StatusCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ApprovedBy
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ApprovedBy
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: ApprovedOn
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: ApprovedOn
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: RejectionReason
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RejectionReason
+    visibleByDefault: false

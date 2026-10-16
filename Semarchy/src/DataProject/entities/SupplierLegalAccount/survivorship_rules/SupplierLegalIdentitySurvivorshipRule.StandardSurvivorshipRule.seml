@@ -1,0 +1,63 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+_package: DataProject.entities.SupplierLegalAccount.survivorship_rules
+defaultRule: false
+_name: SupplierLegalIdentitySurvivorshipRule
+label: Legal Identity Survivorship Rule
+description: "SRV-10: name and licence block taken whole from survivor record: active > Fusion/AD Ports > issuing authority present > valid > current licence > latest expiry > oldest."
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(AccountStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  CASE WHEN UPPER(BusinessRelationshipCode) = 'SPEND_AUTHORIZED' THEN 1 ELSE 0 END DESC,
+  CASE WHEN FusionSupplierId IS NOT NULL AND UPPER(COALESCE(SupplierNumber,'')) NOT LIKE 'K%' THEN 2
+       WHEN UPPER(COALESCE(SupplierNumber,'')) NOT LIKE 'K%' THEN 1
+       ELSE 0 END DESC,
+  CASE WHEN IssuingAuthority IS NOT NULL AND IssuingAuthority <> '-1' THEN 1 ELSE 0 END DESC,
+  CASE WHEN LicenseExpiryDate >= CURRENT_DATE() THEN 1 ELSE 0 END DESC,
+  CASE WHEN LicenseExpiryDate IS NULL THEN 0 ELSE 1 END DESC,
+  LicenseExpiryDate DESC,
+  (
+    CASE WHEN NameEn IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NameAlternate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FormerName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN SupplierTypeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN OrganizationTypeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseNoNormalised IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IssuingAuthority IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IssuingEmirate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseRecordStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseStartDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseExpiryDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPrimaryLicense IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseValidityStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseIsPlaceholder IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseFormatValid IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  CASE WHEN REGEXP_LIKE(COALESCE(SupplierNumber, ''), '^[0-9]+$') THEN LPAD(SupplierNumber, 20, '0') ELSE 'Z' || COALESCE(SupplierNumber, '') END ASC,
+  CreationDate ASC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: NameEn
+  - attributeName: NameAlternate
+  - attributeName: FormerName
+  - attributeName: FormerNameMatchKey
+  - attributeName: NameMatchKey
+  - attributeName: NameTokenKey
+  - attributeName: SupplierTypeCode
+  - attributeName: OrganizationTypeCode
+  - attributeName: LicenseNumber
+  - attributeName: LicenseNoNormalised
+  - attributeName: IssuingAuthority
+  - attributeName: IssuingEmirate
+  - attributeName: LicenseStatusCode
+  - attributeName: LicenseRecordStatusCode
+  - attributeName: LicenseStartDate
+  - attributeName: LicenseExpiryDate
+  - attributeName: IsPrimaryLicense
+  - attributeName: LicenseValidityStatusCode
+  - attributeName: LicenseIsPlaceholder
+  - attributeName: LicenseFormatValid

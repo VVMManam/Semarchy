@@ -1,0 +1,30 @@
+_name: BuildRefreshPayload
+_type: JavaPluginEnricher
+_package: DataProject.entities.OutstandingRefreshRequest.enrichers
+entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+label: Build Refresh Payload
+description: 'Reads every customer UCID in Duplicate Customers (golden record with a suggested merge, state C01; all its master UCIDs) and returns them as record text for the self-call, plus the count. Semarchy wraps a STRING input in quotes without escaping, so the text has no leading and trailing quote: the MdmSelfLoad request body template completes it into valid JSON. Empty when there are no duplicates (no load is submitted).'
+enricherExecutionScope: PRE_CONSO
+condition: "RequestStatus IS NULL OR RequestStatus = 'NEW'"
+afterEnrichers:
+  - DataProject.entities.OutstandingRefreshRequest.enrichers.InitRefreshRequest
+numberOfRetry: 1
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: 'with lm as ( select distinct on (m.b_pubid, m.b_sourceid) m.b_sourceid ucid, m.customer_legal_account_id cgid from mi_custom_legal_account m order by m.b_pubid, m.b_sourceid, m.b_batchid desc ), d as ( select distinct on (lm.ucid) replace(lm.ucid, ''"'', '''') ucid, cast(lm.cgid as bigint) cgid from lm join gd_custom_legal_account g on g.customer_legal_account_id = lm.cgid where g.sugg_match_score is not null and g.customer_state = ''C01'' and lm.ucid is not null order by lm.ucid ), n as ( select d.ucid, d.cgid, row_number() over (order by d.ucid) rn, count(*) over () cnt from d ) select ''ALL'' LOOKUP_COLUMN, string_agg(case when n.rn = 1 then n.ucid else ''"},{"OutstandingKey":"'' || n.ucid end || ''","FID_Cgid":'' || n.cgid || '',"RecordType":"RESULT'', '''' order by n.rn) OUTPUT_COLUMN1, cast(count(*) as varchar) OUTPUT_COLUMN2 from n'
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+pluginInputs:
+  - expression: "'ALL'"
+    inputName: IN_LOOKUP_VALUE
+pluginOutputs:
+  - attributeName: RefreshPayload
+    outputName: OUT_RESULT1
+  - attributeName: CustomersRequested
+    outputName: OUT_RESULT2
+processingBatchSize: 1
+threadPoolSize: 1

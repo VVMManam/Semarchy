@@ -1,0 +1,23 @@
+_name: SupplierLegalAccount_SourceSystemCode
+_type: Reference
+_package: DataProject.references
+label:  Supplier Legal Account to  Source System
+physicalName: SUP_ACC_SOURCE_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+fromRoleLabel:  Supplier Legal Account
+fromRolePluralLabel:  Supplier Legal Account
+fromRoleName: SupplierLegalAccount
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Source System Code
+toRoleName: SourceSystemCode
+toRolePhysicalName: SOURCE_SYSTEM_CODE
+foreignAttribute:
+  _name: SourceSystemCode
+  _type: ForeignAttribute
+  physicalName: SOURCE_SYSTEM_CODE
+  label: Source System Code
+  searchable: true
+  entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount

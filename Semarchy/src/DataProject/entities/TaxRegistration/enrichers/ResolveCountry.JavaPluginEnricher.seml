@@ -1,0 +1,41 @@
+_name: ResolveCountry
+_type: JavaPluginEnricher
+_package: DataProject.entities.TaxRegistration.enrichers
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: Resolve Country
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'SRC|' || upper(trim(country_code)) LOOKUP_COLUMN,
+                   country_code OUTPUT_COLUMN1
+            from gd_country_reference
+            where country_code is not null
+            union
+            select 'SRC|' || upper(trim(name_en)) LOOKUP_COLUMN,
+                   country_code OUTPUT_COLUMN1
+            from gd_country_reference
+            where name_en is not null
+            union
+            select 'MDM|' || upper(trim(country_code)) LOOKUP_COLUMN,
+                   country_code OUTPUT_COLUMN1
+            from gd_country_reference
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_CountryCode IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_CountryCode)) WHEN TaxCountryCode IS NOT NULL THEN 'SRC|' || UPPER(BTRIM(TaxCountryCode)) ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_CountryCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

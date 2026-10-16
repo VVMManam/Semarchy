@@ -1,0 +1,10 @@
+_name: SupplierContactEmailDomain
+_type: SemQLEnricher
+_package: DataProject.entities.Contact.enrichers
+entity: DataProject.entities.Contact.Contact
+label: Supplier Contact Email Domain
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: EmailDomain
+    expression: |-
+      CASE WHEN (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL) AND Email IS NOT NULL AND REGEXP_LIKE(Email,'@') THEN LOWER(BTRIM(REGEXP_REPLACE(Email,'^.*@',''))) ELSE EmailDomain END

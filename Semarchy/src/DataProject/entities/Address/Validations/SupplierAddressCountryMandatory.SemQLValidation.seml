@@ -1,0 +1,8 @@
+_name: SupplierAddressCountryMandatory
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: VAL-13 Supplier Address Country Mandatory
+validationScope: POST_CONSO
+validationLabel: "VAL-13 - Valid country required."
+condition: "FID_SupplierSite IS NULL OR (FID_CountryCode IS NOT NULL)"

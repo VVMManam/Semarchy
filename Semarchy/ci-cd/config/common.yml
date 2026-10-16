@@ -1,0 +1,30 @@
+# =============================================================================
+#  Semarchy SDP CI/CD - settings shared by every stage
+#  Included by ci-cd/azure-pipelines.yml
+# =============================================================================
+variables:
+  # Node.js version used to run the Semarchy Design CLI
+  - name: NODE_VERSION
+    value: '20.x'
+
+  # Data product folder: holds the Semarchy project (.seml files), relative to
+  # the repo root. Passed to 'sem-design data-product build/deploy --data-product-folder'.
+  - name: ROOT_FOLDER
+    value: 'src'
+
+  # Semarchy Design CLI package committed to the repo (see ci-cd/tools/README.md).
+  # A .tgz, or a .zip that contains the .tgz (unzipped at run time).
+  # The agreed version is 2.0.1. The install step stops the run if the
+  # installed CLI reports any other version.
+  - name: SEM_DESIGN_PACKAGE
+    value: 'ci-cd/tools/semarchy-sem-design-2.0.1.tgz.zip'
+  - name: SEM_DESIGN_VERSION
+    value: '2.0.1'
+
+  # Model completeness check (scripts/Test-ModelInventory.ps1).
+  # 'false': warnings (disabled *.seml.disabled files, file names that don't
+  #          match their element type, fuzzy entities without match or ID
+  #          survivorship rules) are reported and the run continues.
+  # 'true' : any warning stops the pipeline before anything is deployed.
+  - name: MODEL_CHECK_STRICT
+    value: 'false'

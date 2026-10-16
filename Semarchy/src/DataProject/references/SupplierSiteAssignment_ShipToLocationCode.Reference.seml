@@ -1,0 +1,23 @@
+_name: SupplierSiteAssignment_ShipToLocationCode
+_type: Reference
+_package: DataProject.references
+label: Supplier Site Assignment to Ship-To Location
+physicalName: SUP_SITE_ASGN_SHIP_TO
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+fromRoleLabel: Supplier Site Assignment (Ship-To Location)
+fromRolePluralLabel: Supplier Site Assignments (Ship-To Location)
+fromRoleName: SupplierSiteAssignmentShipTo
+toEntity: DataProject.entities.Location.Location
+toRoleLabel: Ship-To Location Code
+toRoleName: ShipToLocationCode
+toRolePhysicalName: SHIP_TO_LOCATION_CODE
+foreignAttribute:
+  _name: ShipToLocationCode
+  _type: ForeignAttribute
+  physicalName: SHIP_TO_LOCATION_CODE
+  label: Ship-To Location Code
+  searchable: true
+  entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment

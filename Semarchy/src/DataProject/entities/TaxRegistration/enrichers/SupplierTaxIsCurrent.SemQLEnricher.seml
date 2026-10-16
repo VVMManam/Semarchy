@@ -1,0 +1,10 @@
+_name: SupplierTaxIsCurrent
+_type: SemQLEnricher
+_package: DataProject.entities.TaxRegistration.enrichers
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: Supplier Tax Is Current
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: IsCurrent
+    expression: |-
+      CASE WHEN EndDate IS NULL OR EndDate >= CURRENT_DATE() THEN '1' ELSE '0' END

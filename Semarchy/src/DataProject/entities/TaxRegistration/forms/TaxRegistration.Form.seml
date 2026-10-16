@@ -1,0 +1,309 @@
+_package: DataProject.entities.TaxRegistration.forms
+_type: Form
+_name: TaxRegistration
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "200px"
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Tax Registration Details
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: MainSection
+        label: Tax Registration Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container1
+            layoutDirection: COLUMN
+            content:
+              - _name: RegistrationNo
+                value: RegistrationNo
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: VatStatusCode
+                value: VatStatusCode
+                dataType: BOOLEAN
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: RecordStatusCode
+                value: RecordStatusCode
+                dataType: BOOLEAN
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: TaxTypeCode
+                value: FDN_TaxTypeCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.TaxType.TaxType
+                useCustomLabel: true
+                label: Tax Type
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "0"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: EffectiveDate
+                value: EffectiveDate
+                dataType: BOOLEAN
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: EndDate
+                value: EndDate
+                dataType: BOOLEAN
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsCurrent
+                value: IsCurrent
+                dataType: BOOLEAN
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: VatExemptionConfirmed
+                value: VatExemptionConfirmed
+                dataType: BOOLEAN
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _name: NoVatDeclaration
+                value: NoVatDeclaration
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL

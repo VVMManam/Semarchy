@@ -1,0 +1,16 @@
+_name: NormalisePartyIdentity
+_type: SemQLEnricher
+_package: DataProject.entities.Party.enrichers
+entity: DataProject.entities.Party.Party
+label: Normalise Party Identity
+description: "Normalises the licence number used by the Party match rules and derives the name match key. Issuing authority and licence country are set by ResolvePartyAuthority from the IssuingAuthority reference data."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: LicenceKey
+    expression: >
+      CASE WHEN LicenceKey IS NULL OR REGEXP_REPLACE(UPPER(LicenceKey), '[^A-Z0-9]', '', 'g') = '' THEN NULL
+      ELSE REGEXP_REPLACE(UPPER(LicenceKey), '[^A-Z0-9]', '', 'g') END
+  - attributeName: NameMatchKey
+    expression: >
+      CASE WHEN PartyNameEn IS NULL THEN NULL
+      ELSE REGEXP_REPLACE(UPPER(PartyNameEn), '[^A-Z0-9]', '', 'g') END

@@ -1,0 +1,8 @@
+_name: RequireRejectedLogDC
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Rejected Log - Digital Cluster
+validationScope: NONE
+condition: ANY MergeApprovalLog HAVE (UPPER(Decision) = 'REJECTED' AND FinalMergeApproved IS NULL AND (UPPER(ClusterCode) IN ('DC', 'DIGITAL', 'DIGITAL CLUSTER') OR UPPER(ClusterName) IN ('DC', 'DIGITAL', 'DIGITAL CLUSTER')))
+validationLabel: "Add a Merge Approval Decision row for Digital Cluster with Decision = REJECTED before using Reject Merge."

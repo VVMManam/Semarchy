@@ -1,0 +1,24 @@
+_name: SupplierSitePaymentDefaults
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierSite.enrichers
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: Site Payment Defaults From Supplier
+description: "ENR-18: where the site has no payment term, payment method or currency, default it from the owning supplier account."
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.SupplierSite.enrichers.ResolvePaymentTerm
+  - DataProject.entities.SupplierSite.enrichers.ResolveCurrency
+  - DataProject.entities.SupplierSite.enrichers.ResolveInvoiceCurrency
+semQlEnricherExpressions:
+  - attributeName: FID_PaymentTermCode
+    expression: |-
+      COALESCE(FID_PaymentTermCode, Sgid.FID_PaymentTermCode)
+  - attributeName: PaymentMethodCode
+    expression: |-
+      COALESCE(PaymentMethodCode, Sgid.DefaultPaymentMethodCode)
+  - attributeName: FID_Currency
+    expression: |-
+      COALESCE(FID_Currency, Sgid.FID_Currency)
+  - attributeName: FID_InvoiceCurrency
+    expression: |-
+      COALESCE(FID_InvoiceCurrency, Sgid.FID_Currency)

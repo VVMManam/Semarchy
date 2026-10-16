@@ -1,0 +1,244 @@
+_package: DataProject.entities.LicenseActivityType.forms
+_type: Form
+_name: LicenseActivityType
+entity: DataProject.entities.LicenseActivityType.LicenseActivityType
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "180px"
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: License Activity Group Type Details
+    iconUrl: images://AdPorts-ImageLibrary/tab-customer-details.svg
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: Section
+        label: License Activity Group Type Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container
+            layoutDirection: COLUMN
+            content:
+              - _name: ActivitySchemeCode
+                value: ActivitySchemeCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: ActivityCode
+                value: ActivityCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: NameEn
+                value: NameEn
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: NameAr
+                value: NameAr
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: DescriptionEn
+                value: DescriptionEn
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: DescriptionAr
+                value: DescriptionAr
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: DedCode
+                value: DedCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: GroupCode
+                value: GroupCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsActive
+                value: IsActive
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL

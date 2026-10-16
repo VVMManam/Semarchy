@@ -1,0 +1,8 @@
+_name: TaxTypeResolved
+_type: SemQLValidation
+_package: DataProject.entities.TaxRegistration.validations
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: Tax Type Resolved
+validationScope: POST_CONSO
+validationLabel: "TAX_TYPE_UNMAPPED - source value has no match in MDM."
+condition: "FID_Cgid IS NULL OR TAXType IS NULL OR FID_TaxTypeCode IS NOT NULL"

@@ -1,0 +1,23 @@
+_name: BusinessUnit_SourceSystemCode
+_type: Reference
+_package: DataProject.references
+label:  Business Unit to  Source System
+physicalName: BU_SOURCE_SYSTEM_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.BusinessUnit.BusinessUnit
+fromRoleLabel:  Business Unit
+fromRolePluralLabel:  Business Unit
+fromRoleName: BusinessUnit
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Source System Code
+toRoleName: SourceSystemCode
+toRolePhysicalName: SOURCE_SYSTEM_CODE
+foreignAttribute:
+  _name: SourceSystemCode
+  _type: ForeignAttribute
+  physicalName: SOURCE_SYSTEM_CODE
+  label: Source System Code
+  searchable: true
+  entity: DataProject.entities.BusinessUnit.BusinessUnit

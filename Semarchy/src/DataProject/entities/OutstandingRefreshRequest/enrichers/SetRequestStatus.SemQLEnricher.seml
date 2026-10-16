@@ -1,0 +1,14 @@
+_type: SemQLEnricher
+_package: DataProject.entities.OutstandingRefreshRequest.enrichers
+_name: SetRequestStatus
+entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+label: Set Request Status
+description: 'SUBMITTED when the self-call returned a load ID, FAILED otherwise; clears the payload.'
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.OutstandingRefreshRequest.enrichers.SubmitRefreshLoad
+semQlEnricherExpressions:
+  - attributeName: RequestStatus
+    expression: "CASE WHEN RefreshLoadId IS NOT NULL THEN 'SUBMITTED' WHEN RequestStatus IS NULL OR RequestStatus = 'NEW' THEN 'FAILED' ELSE RequestStatus END"
+  - attributeName: RefreshPayload
+    expression: "NULL"

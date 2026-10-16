@@ -1,0 +1,33 @@
+_name: OutstandingRefresh
+_package: DataProject.entities.OutstandingRefreshRequest.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+rootLabel: Outstanding Refresh
+rootPluralLabel: Outstanding Refresh
+useHierarchyOnOpen: false
+label: Outstanding Refresh
+rootBusinessViewEntity:
+  _name: Request
+  _type: BusinessViewEntity
+  collection: DataProject.entities.OutstandingRefreshRequest.collection_views.OutstandingRefresh
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+  form: DataProject.entities.OutstandingRefreshRequest.forms.OutstandingRefresh
+  gridAllowed: false
+  listAllowed: false
+  outlineVisible: false
+  overrideDefaultSort: true
+  sortExpression: RequestedAt DESC
+  tableAllowed: true
+  actionSet: DataProject.entities.OutstandingRefreshRequest.action_sets.OutstandingRefresh
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+  referenceAttributeNavigationConfigs: []
+  transitions: []

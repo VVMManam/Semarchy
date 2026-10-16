@@ -1,0 +1,12 @@
+_name: SlaDomain
+_type: LOVType
+_package: DataProject.List_of_values
+label: SLA Domain
+length: 20
+lovValues:
+  - code: "PARTY"
+    label: Party
+  - code: "CUSTOMER"
+    label: Customer
+  - code: "SUPPLIER"
+    label: Supplier

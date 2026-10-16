@@ -1,0 +1,28 @@
+_name: StandardizeNameMatchKey
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Build Name Match Key
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.SupplierLegalAccount.enrichers.StandardizeNameEn
+semQlEnricherExpressions:
+  - attributeName: NameMatchKey
+    expression: >
+      BTRIM(
+        REGEXP_REPLACE(
+          REGEXP_REPLACE(
+            REGEXP_REPLACE(
+              REGEXP_REPLACE(
+                UPPER(TRANSLATE(NameEn,
+                  'ÁÀÂÄÃÅáàâäãåÉÈÊËéèêëÍÌÎÏíìîïÓÒÔÖÕóòôöõÚÙÛÜúùûüÇçÑñ',
+                  'AAAAAAaaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUUuuuuCcNn')),
+                '[^A-Z0-9 ]', ' ', 'g'
+              ),
+              '\yL L C\y', 'LLC', 'g'
+            ),
+            '\s+', ' ', 'g'
+          ),
+          '\s(FZ LLC|LLC|LTD|LIMITED|FZE|FZCO)\s*$', '', 'g'
+        )
+      )

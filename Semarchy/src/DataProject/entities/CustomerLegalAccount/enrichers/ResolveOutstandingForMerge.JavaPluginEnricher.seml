@@ -1,0 +1,25 @@
+_name: ResolveOutstandingForMerge
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Resolve Outstanding for Merge
+description: 'OutstandingCheckResult for the golden record from the Customer Outstanding RESULT rows of ALL its master UCIDs (independent of the reference, so it also works right after a merge): YES = any UCID has outstanding, REFRESH = any UCID never refreshed or check failed, NO = all clear. Used by EvaluateMergeDecision for new steward merges only.'
+enricherExecutionScope: POST_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: "with lm as ( select distinct on (m.b_pubid, m.b_sourceid) m.b_sourceid ucid, m.customer_legal_account_id cgid from mi_custom_legal_account m order by m.b_pubid, m.b_sourceid, m.b_batchid desc ), o as ( select outstanding_key, outstanding_status from gd_customer_outstanding where record_type = 'RESULT' ) select cast(lm.cgid as varchar) LOOKUP_COLUMN, case when bool_or(o.outstanding_status = 'YES') then 'YES' when bool_or(o.outstanding_status is null or o.outstanding_status = 'ERROR') then 'REFRESH' else 'NO' end OUTPUT_COLUMN1 from lm left join o on o.outstanding_key = lm.ucid where lm.cgid is not null group by lm.cgid"
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+pluginInputs:
+  - expression: "'' || CustomerLegalAccountID"
+    inputName: IN_LOOKUP_VALUE
+pluginOutputs:
+  - attributeName: OutstandingCheckResult
+    outputName: OUT_RESULT1
+processingBatchSize: 100
+threadPoolSize: 1

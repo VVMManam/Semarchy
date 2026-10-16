@@ -1,0 +1,51 @@
+_name: ResolveContactRole
+_type: JavaPluginEnricher
+_package: DataProject.entities.ContactPurpose.enrichers
+entity: DataProject.entities.ContactPurpose.ContactPurpose
+label: Resolve Contact Role
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'SRC|' || upper(trim(contact_role_code)) LOOKUP_COLUMN,
+                   contact_role_code OUTPUT_COLUMN1
+            from gd_contact_role
+            where contact_role_code is not null
+            union
+            select 'SRC|' || upper(trim(fusion_code)) LOOKUP_COLUMN,
+                   contact_role_code OUTPUT_COLUMN1
+            from gd_contact_role
+            where fusion_code is not null
+            union
+            select 'SRC|' || upper(trim(crm_code)) LOOKUP_COLUMN,
+                   contact_role_code OUTPUT_COLUMN1
+            from gd_contact_role
+            where crm_code is not null
+            union
+            select 'SRC|' || upper(trim(name_en)) LOOKUP_COLUMN,
+                   contact_role_code OUTPUT_COLUMN1
+            from gd_contact_role
+            where name_en is not null
+            union
+            select 'MDM|' || upper(trim(contact_role_code)) LOOKUP_COLUMN,
+                   contact_role_code OUTPUT_COLUMN1
+            from gd_contact_role
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_ContactRoleCode IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_ContactRoleCode)) WHEN ContactRole IS NOT NULL THEN 'SRC|' || UPPER(BTRIM(ContactRole)) ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_ContactRoleCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

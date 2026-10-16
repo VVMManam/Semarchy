@@ -1,0 +1,8 @@
+_name: ContactRoleResolved
+_type: SemQLValidation
+_package: DataProject.entities.ContactPurpose.validations
+entity: DataProject.entities.ContactPurpose.ContactPurpose
+label: Contact Role Resolved
+validationScope: POST_CONSO
+validationLabel: "CONTACT_ROLE_UNMAPPED - source value has no match in MDM."
+condition: "ContactRole IS NULL OR FID_ContactRoleCode IS NOT NULL"

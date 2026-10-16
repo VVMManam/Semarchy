@@ -1,0 +1,48 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+_package: DataProject.entities.SupplierSiteAssignment.survivorship_rules
+defaultRule: false
+_name: SupplierSiteAssignmentSurvivorshipRule
+label: Supplier Site Assignment Survivorship Rule
+description: "SRV-14: active (no inactive date) > complete > oldest."
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  CASE WHEN InactiveDate IS NULL THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN AllowWithholdingTax IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN WithholdingTaxGroupCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN InactiveDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RecordStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LiabilityDistributionAccount IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PrepaymentAccount IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FutureDatedPaymentAccount IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DistributionSet IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AllowWithholdingTaxFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AllowWithholdingTaxGroup IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ClientBuName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BillToBuName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BillToLocationName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ShipToLocationName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentTermName IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  CreationDate ASC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: AllowWithholdingTax
+  - attributeName: WithholdingTaxGroupCode
+  - attributeName: InactiveDate
+  - attributeName: RecordStatusCode
+  - attributeName: LiabilityDistributionAccount
+  - attributeName: PrepaymentAccount
+  - attributeName: FutureDatedPaymentAccount
+  - attributeName: DistributionSet
+  - attributeName: AllowWithholdingTaxFlag
+  - attributeName: AllowWithholdingTaxGroup
+  - attributeName: ClientBuName
+  - attributeName: BillToBuName
+  - attributeName: BillToLocationName
+  - attributeName: ShipToLocationName
+  - attributeName: PaymentTermName

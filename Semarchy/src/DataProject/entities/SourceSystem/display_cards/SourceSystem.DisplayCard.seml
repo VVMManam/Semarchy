@@ -1,0 +1,17 @@
+_name: SourceSystem
+_package: DataProject.entities.SourceSystem.display_cards
+_type: DisplayCard
+entity: DataProject.entities.SourceSystem.SourceSystem
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: OwnerFunction
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

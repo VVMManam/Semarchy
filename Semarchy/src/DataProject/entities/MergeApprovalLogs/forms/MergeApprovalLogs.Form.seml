@@ -1,0 +1,353 @@
+_package: DataProject.entities.MergeApprovalLogs.forms
+_type: Form
+_name: MergeApprovalLogs
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "170px"
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Review Details
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: ReviewDetailsSection
+        label: Review Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container
+            layoutDirection: COLUMN
+            content:
+              - _name: ClusterCode
+                value: ClusterCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: ClusterName
+                value: ClusterName
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Decision
+                value: Decision
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: DecisionTimestamp
+                value: DecisionTimestamp
+                dataType: TIMESTAMP
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  useTimePicker: "1"
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container1
+            layoutDirection: COLUMN
+            content:
+              - _name: ReviewerRole
+                value: ReviewerRole
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: ReviewerUsername
+                value: ReviewerUsername
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: ReviewerFullName
+                value: ReviewerFullName
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: WorkflowInstanceId
+                value: WorkflowInstanceId
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: CommentsSection
+        label: Comments
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _name: Comments
+            value: Comments
+            dataType: STRING
+            useCustomLabel: false
+            documentationInterpreter: LITERAL
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isMultiline: "1"
+              isMultilineValueInterpreter: LITERAL
+              multilineMaxLines: "6"
+              multilineMaxLinesValueInterpreter: LITERAL
+              multilineMinLines: "3"
+              multilineMinLinesValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: left
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: body-1
+              typographyValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL
+          - _name: RejectionReason
+            value: RejectionReason
+            dataType: STRING
+            useCustomLabel: false
+            documentationInterpreter: LITERAL
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textAlign: left
+              textAlignValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+              isMultiline: "1"
+              isMultilineValueInterpreter: LITERAL
+              multilineMaxLines: "6"
+              multilineMaxLinesValueInterpreter: LITERAL
+              multilineMinLines: "3"
+              multilineMinLinesValueInterpreter: LITERAL
+              isCharCounterVisible: "0"
+              isCharCounterVisibleValueInterpreter: LITERAL
+            labelProperties:
+              position: left
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: body-1
+              typographyValueInterpreter: LITERAL
+              isVisible: "1"
+              isVisibleValueInterpreter: LITERAL

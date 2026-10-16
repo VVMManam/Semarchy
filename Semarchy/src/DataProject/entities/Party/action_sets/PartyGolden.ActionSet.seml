@@ -1,0 +1,63 @@
+_name: PartyGolden
+_package: DataProject.entities.Party.action_sets
+_type: ActionSet
+entity: DataProject.entities.Party.Party
+label: Party Action Set
+defaultActionSet: true
+actions:
+  - _name: LinkToSuperParty
+    label: "Link selected parties to a super party"
+    iconUrl: images://mdi/family-tree.svg
+    useCustomLabel: true
+    waitDialogEnabled: true
+    _type: MassUpdateAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    stepper: DataProject.entities.Party.steppers.PartyParentLink
+  - _name: CreateParty
+    label: Create Party
+    iconUrl: images://mdi/plus-circle-outline.svg
+    useCustomLabel: true
+    waitDialogEnabled: true
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: DataProject.entities.Party.steppers.PartyGolden
+  - _name: EditParty
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: true
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: false
+    stepper: DataProject.entities.Party.steppers.PartyGolden
+  - _name: DeleteParty
+    label: Delete (only parties with no linked customers or suppliers)
+    iconUrl: images://mdi/delete-outline.svg
+    useCustomLabel: true
+    waitDialogEnabled: true
+    _type: DeleteAction
+    deleteType: SOFT_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+    condition: |-
+      LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END = 0
+      AND LOOKUP count Sgid FROM SupplierLegalAccount END = 0
+      AND LOOKUP count Sgid FROM ChildSupplierLegalAccount END = 0 AND LOOKUP count Pgid FROM ChildParty END = 0
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: DataProject.entities.Party.display_cards.Party
+    formTab: DataProject.entities.Party.forms.PartyDuplicate.Main

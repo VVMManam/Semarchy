@@ -1,0 +1,1532 @@
+_name: CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount
+_type: Entity
+primaryKey: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerLegalAccountID
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+label: CustomerLegalAccount
+enableDelete: true
+entityType: FUZZY_MATCHED
+iconUrl: images://mdi/book.svg
+pluralLabel: CustomerLegalAccount
+historizeGolden: true
+historizeMaster: true
+physicalTableName: CUSTOM_LEGAL_ACCOUNT
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CustomerLegalAccountID
+    physicalName: CUSTOMER_LEGAL_ACCOUNT_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Customer Legal Account ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: AccountCreationDate
+    physicalName: ACCOUNT_CREATION_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Account Creation Date
+    mandatory: false
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CommercialGroupCode
+    physicalName: COMMERCIAL_GROUP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Commercial Group Code
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GoldenIdStatus
+    physicalName: GOLDEN_ID_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Golden Id Status
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CustomerGoldenId
+    physicalName: CUSTOMER_GOLDEN_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Customer Golden Id
+    mandatory: true
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountStatus
+    physicalName: ACCOUNT_STATUS
+    dataType: DataProject.List_of_values.AccountStatus
+    goldenAttribute: true
+    i18ned: false
+    label: Account Status
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameEN
+    physicalName: NAME_EN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name EN
+    mandatory: true
+    length: 200
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameAr
+    physicalName: NAME_AR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Name AR
+    mandatory: false
+    length: 200
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EstablishmentAddress
+    physicalName: ESTABLISHMENT_ADDRESS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Establishment Address
+    mandatory: false
+    length: 400
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Fax
+    physicalName: FAX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Fax
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CustomerType
+    physicalName: CUSTOMER_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Customer Type
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountType
+    physicalName: ACCOUNT_TYPE
+    dataType: DataProject.List_of_values.AccountType
+    goldenAttribute: true
+    i18ned: false
+    label: Account Type
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ExcludeFromMatching
+    label: Exclude From Matching
+    physicalName: EXCLUDE_FROM_MATCHING
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Website
+    physicalName: WEBSITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Website
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsGovernmentEntity
+    physicalName: IS_GOVERNMENT_ENTITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Is Government Entity
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EstablishmentType
+    physicalName: ESTABLISHMENT_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Establishment Type
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaymentTerm
+    physicalName: PAYMENT_TERM
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Term
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsVip
+    physicalName: IS_VIP
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Is Vip
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CustomerCode
+    physicalName: CUSTOMER_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Customer Code
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ParentUCID
+    physicalName: PARENT_UCID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Parent UCID
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Email
+    physicalName: EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Email
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BusinessPhone
+    physicalName: BUSINESS_PHONE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Business Phone
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Status
+    physicalName: STATUS
+    dataType: DataProject.List_of_values.CustomerStatus
+    lovValidationScope: PRE_CONSO
+    goldenAttribute: true
+    i18ned: false
+    label: Status
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountId
+    physicalName: ACCOUNT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Account Id
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Mobile
+    physicalName: MOBILE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Mobile
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CustomerSite
+    physicalName: CUSTOMER_SITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Customer Site
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CustomerState
+    physicalName: CUSTOMER_STATE
+    dataType: DataProject.List_of_values.CustomerState
+    goldenAttribute: true
+    i18ned: false
+    label: Customer State
+    mandatory: false
+    length: 30
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ApprovalCheck
+    physicalName: APPROVAL_CHECK
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Approval Check
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: OperationType
+    physicalName: OPERATION_TYPE
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Operation Type
+    length: 50
+    searchable: true
+  - _type: EntityAttribute
+    _name: MobilePhoneCountryCode
+    physicalName: MOBILE_PHONE_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Mobile Phone Country Code
+    length: 5
+    searchable: true
+  - _type: EntityAttribute
+    _name: BusinessPhoneCountryCode
+    physicalName: BUSINESS_PHONE_COUNTRY
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Business Phone Country Code
+    length: 5
+    searchable: true
+  - _type: EntityAttribute
+    _name: Exemption
+    physicalName: EXEMPTION
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Exemption
+    length: 5
+    searchable: true
+  - _type: EntityAttribute
+    _name: NoVATDeclaration
+    physicalName: NO_VAT_DECLARATION
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: No VAT Declaration
+    length: 255
+    searchable: true
+  - _type: EntityAttribute
+    _name: CustomerTypeCode
+    physicalName: CUSTOMER_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Customer Type Code
+    length: 20
+    searchable: true
+  - _type: EntityAttribute
+    _name: Cluster
+    physicalName: CLUSTER
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Cluster
+    length: 300
+    searchable: true
+  - _type: EntityAttribute
+    _name: GrpActiveBuCntMT
+    physicalName: GRP_BU_CNT_TXT_MT
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Group Active BU Count - Maritime
+    length: 10
+    searchable: false
+  - _type: EntityAttribute
+    _name: GrpActiveBuCntIZ
+    physicalName: GRP_BU_CNT_TXT_IZ
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Group Active BU Count - Industrial Zone
+    length: 10
+    searchable: false
+  - _type: EntityAttribute
+    _name: GrpActiveBuCntLG
+    physicalName: GRP_BU_CNT_TXT_LG
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Group Active BU Count - Logistics
+    length: 10
+    searchable: false
+  - _type: EntityAttribute
+    _name: GrpActiveBuCntCO
+    physicalName: GRP_BU_CNT_TXT_CO
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Group Active BU Count - Corp
+    length: 10
+    searchable: false
+  - _type: EntityAttribute
+    _name: GrpActiveBuCntPT
+    physicalName: GRP_BU_CNT_TXT_PT
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Group Active BU Count - Ports
+    length: 10
+    searchable: false
+  - _type: EntityAttribute
+    _name: GrpActiveBuCntDC
+    physicalName: GRP_BU_CNT_TXT_DC
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Group Active BU Count - Digital Cluster
+    length: 10
+    searchable: false
+  - _type: EntityAttribute
+    _name: SelReviewMT
+    physicalName: SEL_REVIEW_MT
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Review by Maritime
+    length: 1
+    searchable: false
+  - _type: EntityAttribute
+    _name: SelReviewIZ
+    physicalName: SEL_REVIEW_IZ
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Review by Industrial Zone
+    length: 1
+    searchable: false
+  - _type: EntityAttribute
+    _name: SelReviewLG
+    physicalName: SEL_REVIEW_LG
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Review by Logistics
+    length: 1
+    searchable: false
+  - _type: EntityAttribute
+    _name: SelReviewCO
+    physicalName: SEL_REVIEW_CO
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Review by Corp
+    length: 1
+    searchable: false
+  - _type: EntityAttribute
+    _name: SelReviewPT
+    physicalName: SEL_REVIEW_PT
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Review by Ports
+    length: 1
+    searchable: false
+  - _type: EntityAttribute
+    _name: SelReviewDC
+    physicalName: SEL_REVIEW_DC
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Review by Digital Cluster
+    length: 1
+    searchable: false
+  - _type: EntityAttribute
+    _name: MergeDecisionDate
+    physicalName: MERGE_DECISION_DATE
+    dataType: Timestamp
+    precision: 3
+    goldenAttribute: true
+    mandatory: false
+    label: Merge Decision Date
+    searchable: true
+  - _type: EntityAttribute
+    _name: MergeApprovalStatus
+    physicalName: MERGE_APPROVAL_STATUS
+    dataType: DataProject.List_of_values.MergeWorkflowStatus
+    goldenAttribute: true
+    mandatory: false
+    label: Merge Approval Status
+    length: 20
+    lovValidationScope: POST_CONSO
+    searchable: true
+    description: 'NOT_REQUIRED (not merged or single cluster), PENDING (cluster approval open), CONFIRMED. Set by EvaluateMergeDecision. SyncCustomer and CustomerMerge do not publish PENDING records.'
+  - _type: EntityAttribute
+    _name: ApprovalMastersCount
+    physicalName: APPROVAL_MASTERS_COUNT
+    dataType: Integer
+    goldenAttribute: true
+    mandatory: false
+    label: Approval Masters Count
+    precision: 10
+    searchable: true
+    description: 'Number of masters (merged customers) of the composition requested / approved. A merge that changes it requests a new approval.'
+  - _type: EntityAttribute
+    _name: ApprovalRequestedBatchID
+    physicalName: APPROVAL_REQ_BATCH_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    mandatory: false
+    label: Approval Requested Batch ID
+    precision: 38
+    searchable: true
+    description: 'Batch in which the merge approval was requested. ClusterMergeApproval starts only for records whose request is in the batch just completed.'
+  - _type: EntityAttribute
+    _name: LkpMastersCount
+    physicalName: LKP_MASTERS_COUNT
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Masters Count (lookup)
+    length: 10
+    searchable: false
+    description: 'Number of master records consolidated into this golden record (enricher ResolveMastersCount). Used to detect a merge.'
+  - _type: EntityAttribute
+    _name: PrevApprovalStatus
+    physicalName: PREV_APPR_STATUS
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Previous Merge Approval Status (lookup)
+    length: 20
+    searchable: false
+    description: 'Merge approval status published before this batch (enricher ResolveMastersCount, read from the golden table). Used by EvaluateMergeDecision so that an approval already requested or confirmed is kept.'
+  - _type: EntityAttribute
+    _name: PrevApprovalMastersCount
+    physicalName: PREV_APPR_MASTERS_CNT
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Previous Approval Masters Count (lookup)
+    length: 10
+    searchable: false
+    description: 'Approval masters count published before this batch (enricher ResolveMastersCount).'
+  - _type: EntityAttribute
+    _name: PrevApprovalReqBatchID
+    physicalName: PREV_APPR_REQ_BATCH_ID
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Previous Approval Request Batch (lookup)
+    length: 20
+    searchable: false
+    description: 'Approval request batch published before this batch (enricher ResolveMastersCount).'
+  - _type: EntityAttribute
+    _name: PrevApprovalReqBy
+    physicalName: PREV_APPR_REQ_BY
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Previous Approval Requested By (lookup)
+    length: 128
+    searchable: false
+    description: 'Approval requester published before this batch (enricher ResolveMastersCount).'
+  - _type: EntityAttribute
+    _name: ApprovalRequestedOn
+    physicalName: APPROVAL_REQ_ON
+    dataType: Timestamp
+    precision: 3
+    goldenAttribute: true
+    mandatory: false
+    label: Merge Done On
+    searchable: false
+    description: 'When the merge that requested the cluster approval was done (EvaluateMergeDecision). Shown as Task Assigned On for the cluster review tasks.'
+  - _type: EntityAttribute
+    _name: ApprovalRequestedByInfo
+    physicalName: APPROVAL_REQ_BY_INFO
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Merged By
+    length: 200
+    searchable: false
+    description: 'Full name and steward cluster(s) of the user who did the merge (EvaluateMergeDecision), shown to the reviewers.'
+  - _type: EntityAttribute
+    _name: PrevApprovalReqOn
+    physicalName: PREV_APPR_REQ_ON
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Previous Merge Done On (lookup)
+    length: 30
+    searchable: false
+    description: 'Published ApprovalRequestedOn before this batch (ResolveMastersCount), text YYYY-MM-DD HH24:MI:SS.'
+  - _type: EntityAttribute
+    _name: PrevApprovalReqByInfo
+    physicalName: PREV_APPR_REQ_BY_INFO
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Previous Merged By (lookup)
+    length: 200
+    searchable: false
+    description: 'Published ApprovalRequestedByInfo before this batch (ResolveMastersCount).'
+  - _type: EntityAttribute
+    _name: LkpCycleStatus
+    physicalName: LKP_CYCLE_STATUS
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Cycle Outcome (lookup)
+    length: 20
+    searchable: false
+    description: 'Outcome of the decisions of the running approval round, including the Merge Approval Log rows submitted in the same batch (ResolveCycleDecision): GROUP_REVIEW (Group Steward Reject / Remerge) or CONFIRMED. Empty = no decision in this batch.'
+  - _type: EntityAttribute
+    _name: LkpCycleDecisionOn
+    physicalName: LKP_CYCLE_DEC_ON
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Cycle Last Decision On (lookup)
+    length: 30
+    searchable: false
+    description: 'Latest decision time of the running approval round, YYYY-MM-DD HH24:MI:SS (ResolveCycleDecision).'
+  - _type: EntityAttribute
+    _name: LkpCycleDecision
+    physicalName: LKP_CYCLE_DECISION
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Cycle Final Decision (lookup)
+    length: 20
+    searchable: false
+    description: 'Final decision of the running approval round: the Group Steward decision, otherwise the latest cluster decision (ResolveCycleDecision).'
+  - _type: EntityAttribute
+    _name: ReviewWorkflowLoadId
+    physicalName: REVIEW_WF_LOAD_ID
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Workflow Load
+    length: 40
+    searchable: false
+    description: 'Load (data set) of the merge approval workflow the review task belongs to; set when a reviewer opens the task (CaptureReviewContext enrichers).'
+  - _type: EntityAttribute
+    _name: ReviewTaskCode
+    physicalName: REVIEW_TASK_CODE
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Task
+    length: 10
+    searchable: false
+    description: 'Code of the review task being opened (MT, IZ, LG, CO, PT, DC or GS); set by the CaptureReviewContext enricher of the task stepper and used by the Merge Overview form.'
+  - _type: EntityAttribute
+    _name: ReviewStatusMT
+    physicalName: REVIEW_STATUS_MT
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Status MT
+    length: 1
+    searchable: false
+    description: 'Saved decision of the MT review in the current cycle, read from all parallel tasks (LookupReviewStatuses): C confirm, R reject, M remerge, empty = pending.'
+  - _type: EntityAttribute
+    _name: ReviewStatusIZ
+    physicalName: REVIEW_STATUS_IZ
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Status IZ
+    length: 1
+    searchable: false
+    description: 'Saved decision of the IZ review in the current cycle, read from all parallel tasks (LookupReviewStatuses): C confirm, R reject, M remerge, empty = pending.'
+  - _type: EntityAttribute
+    _name: ReviewStatusLG
+    physicalName: REVIEW_STATUS_LG
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Status LG
+    length: 1
+    searchable: false
+    description: 'Saved decision of the LG review in the current cycle, read from all parallel tasks (LookupReviewStatuses): C confirm, R reject, M remerge, empty = pending.'
+  - _type: EntityAttribute
+    _name: ReviewStatusCO
+    physicalName: REVIEW_STATUS_CO
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Status CO
+    length: 1
+    searchable: false
+    description: 'Saved decision of the CO review in the current cycle, read from all parallel tasks (LookupReviewStatuses): C confirm, R reject, M remerge, empty = pending.'
+  - _type: EntityAttribute
+    _name: ReviewStatusPT
+    physicalName: REVIEW_STATUS_PT
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Status PT
+    length: 1
+    searchable: false
+    description: 'Saved decision of the PT review in the current cycle, read from all parallel tasks (LookupReviewStatuses): C confirm, R reject, M remerge, empty = pending.'
+  - _type: EntityAttribute
+    _name: ReviewStatusDC
+    physicalName: REVIEW_STATUS_DC
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Status DC
+    length: 1
+    searchable: false
+    description: 'Saved decision of the DC review in the current cycle, read from all parallel tasks (LookupReviewStatuses): C confirm, R reject, M remerge, empty = pending.'
+  - _type: EntityAttribute
+    _name: ReviewStatusGS
+    physicalName: REVIEW_STATUS_GS
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Review Status GS
+    length: 1
+    searchable: false
+    description: 'Saved decision of the GS review in the current cycle, read from all parallel tasks (LookupReviewStatuses): C confirm, R reject, M remerge, empty = pending.'
+  - _type: EntityAttribute
+    _name: ReviewTaskAssignedOn
+    physicalName: REVIEW_TASK_ASSIGNED_ON
+    dataType: Timestamp
+    precision: 3
+    goldenAttribute: true
+    mandatory: false
+    label: Review Task Assigned On
+    searchable: false
+    description: 'When the opened review task was assigned: merge time for cluster reviews, last cluster decision for the Group Steward review (CaptureReviewContext enrichers).'
+  - _type: EntityAttribute
+    _name: ApprovalRequestedBy
+    physicalName: APPROVAL_REQ_BY
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Approval Requested By
+    length: 128
+    searchable: true
+    description: 'Username of the user who did the merge that requested the approval (V_USERNAME of the merge batch). Used as initiator of ClusterMergeApproval.'
+  - _type: EntityAttribute
+    _name: AccountTypeCode
+    physicalName: ACCOUNT_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Account Type Code
+    length: 20
+    searchable: true
+  - _type: EntityAttribute
+    _name: CustomerStatusCode
+    physicalName: CUSTOMER_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Customer Status Code
+    length: 30
+    searchable: true
+  - _type: EntityAttribute
+    _name: CustomerChangeStatusCode
+    physicalName: CUSTOMER_CHANGE_STATUS_C
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Customer Change Status Code
+    length: 30
+    searchable: true
+  - _type: EntityAttribute
+    _name: AccountStatusCode
+    physicalName: ACCOUNT_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Account Status Code
+    length: 20
+    searchable: true
+  - _type: EntityAttribute
+    _name: EmailDomain
+    physicalName: EMAIL_DOMAIN
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Email Domain
+    length: 100
+    searchable: true
+  - _type: EntityAttribute
+    _name: IsGenericEmailDomain
+    physicalName: IS_GENERIC_EMAIL_DOMAIN
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Is Generic Email Domain
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: IsFreeZone
+    physicalName: IS_FREE_ZONE
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Is Free Zone
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: IsBranch
+    physicalName: IS_BRANCH
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Is Branch
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: SuggestedMatchScore
+    physicalName: SUGG_MATCH_SCORE
+    dataType: Integer
+    goldenAttribute: true
+    mandatory: false
+    label: Match Score
+    precision: 3
+    searchable: false
+  - _type: EntityAttribute
+    _name: BranchQualifier
+    physicalName: BRANCH_QUALIFIER
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Branch Qualifier
+    length: 100
+    searchable: true
+  - _type: EntityAttribute
+    _name: DuplicateCheck
+    physicalName: DUPLICATE_CHECK
+    dataType: Boolean
+    goldenAttribute: true
+    mandatory: false
+    label: Duplicate Check
+    length: 1
+    searchable: true
+  - _type: EntityAttribute
+    _name: LicenseNumber
+    label: License Number
+    physicalName: LICENSE_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    mandatoryValidationScope: POST_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseStage
+    label: License Stage
+    physicalName: LICENSE_STAGE
+    dataType: DataProject.List_of_values.LicenseStage
+    lovValidationScope: PRE_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseStatusCode
+    label: License Status Code
+    physicalName: LICENSE_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseRecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: DataProject.List_of_values.AccountStatus
+    lovValidationScope: PRE_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Issuing
+    label: Issuing Authority
+    physicalName: ISSUING_AUTHORITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IssuingEmirateId
+    label: Issuing Emirate Id
+    physicalName: ISSUING_EMIRATE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseType
+    label: License Type
+    physicalName: LICENSE_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseRegistrationDate
+    label: License Registration Date
+    physicalName: REGISTRATION_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseIssueDate
+    label: License Issue Date
+    physicalName: ISSUE_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseStartDate
+    label: License Start Date
+    physicalName: START_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseExpiryDate
+    label: License Expiry Date
+    physicalName: EXPIRY_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseAmendDate
+    label: License Amend Date
+    physicalName: AMEND_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseCancelDate
+    label: License Cancel Date
+    physicalName: CANCEL_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrimaryLicense
+    label: Is Primary License
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseIssuingEmirateCodeRaw
+    label: License Issuing Emirate Code Raw
+    physicalName: ISSUING_EMIRATE_CODE_RAW
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TaxRegistrationNumber
+    label: Tax Registration Number
+    physicalName: TAX_REGISTRATION_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseValidityStatusCode
+    label: License Validity Status Code
+    physicalName: LICENSE_VALID_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseIsPlaceholder
+    label: License Is Placeholder
+    physicalName: IS_PLACEHOLDER
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseFormatValid
+    label: License Format Valid
+    physicalName: FORMAT_VALID
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseValidatedBy
+    label: License Validated By
+    physicalName: VALIDATED_BY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseValidatedOn
+    label: License Validated On
+    physicalName: VALIDATED_ON
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameMatchKey
+    label: Name Match Key
+    physicalName: NAME_MATCH_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IssuingAuthority
+    label: Issuing Authority
+    physicalName: ISSUING_AUTH
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OutstandingCheckResult
+    physicalName: OUTSTANDING_CHECK_RES
+    dataType: String
+    goldenAttribute: true
+    mandatory: false
+    label: Outstanding Check Result
+    length: 20
+    searchable: false
+    description: 'Result of the outstanding-balance API call made when a steward merges this customer (CheckOutstandingOnMerge): true = outstanding found (merge blocked), false = clear. Overwritten on every merge attempt; not a balance.'
+matcher:
+         
+  _name: SemlQLMatcherCustomer
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 100
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 100
+  mergeThresholdMergingConfirmedWithNewMasters: 100
+  mergeThresholdMergingConfirmedWithUnconfirmed: 100
+  mergeThresholdMergingUnconfirmed: 100
+  mergeThresholdMergingUnconfirmedWithNewMasters: 100
+  mergeThresholdNewGroup: 100
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+ 
+    - _type: SemQLMatchRule
+      _name: MR01_Same_name_licence_authority_and_country
+      condition: |-
+        (
+          Record1.NameMatchKey IS NOT NULL
+          AND Record2.NameMatchKey IS NOT NULL
+          AND Record1.LicenseNumber IS NOT NULL
+          AND Record2.LicenseNumber IS NOT NULL
+          AND Record1.FID_IssuingAuthorityCode IS NOT NULL
+          AND Record2.FID_IssuingAuthorityCode IS NOT NULL
+          AND Record1.FID_RegistrationCountry IS NOT NULL
+          AND Record2.FID_RegistrationCountry IS NOT NULL
+          AND UPPER(BTRIM(Record1.NameMatchKey)) = UPPER(BTRIM(Record2.NameMatchKey))
+          AND UPPER(BTRIM(Record1.LicenseNumber)) = UPPER(BTRIM(Record2.LicenseNumber))
+          AND UPPER(BTRIM(Record1.FID_IssuingAuthorityCode)) = UPPER(BTRIM(Record2.FID_IssuingAuthorityCode))
+          AND UPPER(BTRIM(Record1.FID_RegistrationCountry)) = UPPER(BTRIM(Record2.FID_RegistrationCountry))
+          AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+          AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        )
+        AND (Record1.Status IS NULL OR Record1.Status <> 'Inactive')
+        AND (Record2.Status IS NULL OR Record2.Status <> 'Inactive')
+        AND (Record1.IsBranch = '0' OR Record2.IsBranch = '0')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.IsFreeZone, '0') = COALESCE(Record2.IsFreeZone, '0')
+      label: "MR-01 Exact licence match"
+      description: "The two records have the same English name, the same trade licence number, the same issuing authority and the same country of registration. Placeholder licence numbers are ignored. This is the strongest evidence that both records are the same legal entity."
+      documentation: "The two records have the same English name, the same trade licence number, the same issuing authority and the same country of registration. Placeholder licence numbers are ignored. This is the strongest evidence that both records are the same legal entity."
+      matchScore: 98
+      usingMatchOn: false
+ 
+ 
+    - _type: SemQLMatchRule
+      _name: MR02_Same_licence_authority_country_and_similar_name
+      condition: |-
+        (
+          Record1.LicenseNumber IS NOT NULL
+          AND Record2.LicenseNumber IS NOT NULL
+          AND UPPER(BTRIM(Record1.LicenseNumber)) = UPPER(BTRIM(Record2.LicenseNumber))
+          AND Record1.FID_IssuingAuthorityCode IS NOT NULL
+          AND Record2.FID_IssuingAuthorityCode IS NOT NULL
+          AND UPPER(BTRIM(Record1.FID_IssuingAuthorityCode)) = UPPER(BTRIM(Record2.FID_IssuingAuthorityCode))
+          AND Record1.FID_RegistrationCountry IS NOT NULL
+          AND Record2.FID_RegistrationCountry IS NOT NULL
+          AND UPPER(BTRIM(Record1.FID_RegistrationCountry)) = UPPER(BTRIM(Record2.FID_RegistrationCountry))
+          AND Record1.NameMatchKey IS NOT NULL
+          AND Record2.NameMatchKey IS NOT NULL
+          AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.NameMatchKey), UPPER(Record2.NameMatchKey)) >= 85
+          AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+          AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        )
+        AND (Record1.Status IS NULL OR Record1.Status <> 'Inactive')
+        AND (Record2.Status IS NULL OR Record2.Status <> 'Inactive')
+        AND (Record1.IsBranch = '0' OR Record2.IsBranch = '0')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.IsFreeZone, '0') = COALESCE(Record2.IsFreeZone, '0')
+      label: "MR-02 Licence, similar name"
+      description: "Both records have the same trade licence number, the same issuing authority and the same country of registration, and the names are at least 85% alike. Placeholder licence numbers are ignored. A data steward reviews before merging."
+      documentation: "Both records have the same trade licence number, the same issuing authority and the same country of registration, and the names are at least 85% alike. Placeholder licence numbers are ignored. A data steward reviews before merging."
+      matchScore: 95
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MR03_Same_Fusion_or_ERP_customer_ID
+      condition: |-
+        (
+          (
+             Record1.FID_IdentifierType IS NOT NULL
+             AND Record2.FID_IdentifierType IS NOT NULL
+             AND Record1.FID_IdentifierType = 'FUSION_AR_CUSTOMER_ID'
+             AND Record2.FID_IdentifierType = 'FUSION_AR_CUSTOMER_ID'
+            AND Record1.Value IS NOT NULL
+            AND Record2.Value IS NOT NULL
+            AND Record1.Value = Record2.Value
+          )
+          OR
+          (
+            Record1.FID_IdentifierType IS NOT NULL
+             AND Record2.FID_IdentifierType IS NOT NULL
+             AND Record1.FID_IdentifierType = 'ERP_CUSTOMER_ID'
+             AND Record2.FID_IdentifierType = 'ERP_CUSTOMER_ID'
+            AND Record1.Value IS NOT NULL
+            AND Record2.Value IS NOT NULL
+            AND Record1.Value = Record2.Value
+          )
+        )
+        AND (Record1.CustomerID.Status IS NULL OR Record1.CustomerID.Status <> 'Inactive')
+        AND (Record2.CustomerID.Status IS NULL OR Record2.CustomerID.Status <> 'Inactive')
+        AND COALESCE(Record1.CustomerID.IsFreeZone, '0') = COALESCE(Record2.CustomerID.IsFreeZone, '0')
+      label: "MR-03 Same ERP/Fusion ID"
+      description: "Both records carry the same Oracle Fusion AR customer ID, or the same ERP customer ID. The source system already treats them as one customer, so they are the same legal entity."
+      documentation: "Both records carry the same Oracle Fusion AR customer ID, or the same ERP customer ID. The source system already treats them as one customer, so they are the same legal entity."
+      matchScore: 98
+      usingMatchOn: true
+      matchOnExpression: Identifier
+ 
+    - _type: SemQLMatchRule
+      _name: MR04_Same_TRN_and_very_similar_name
+      condition: |-
+        (
+          Record1.FID_TaxTypeCode IS NOT NULL
+          AND Record2.FID_TaxTypeCode IS NOT NULL
+          AND Record1.FID_TaxTypeCode = 'AE_VAT'
+          AND Record2.FID_TaxTypeCode = 'AE_VAT'
+          AND Record1.Cgid.TaxRegistrationNumber IS NOT NULL
+          AND Record2.Cgid.TaxRegistrationNumber IS NOT NULL
+          AND Record1.Cgid.TaxRegistrationNumber = Record2.Cgid.TaxRegistrationNumber
+          AND (Record1.Cgid.IsBranch = '0' OR Record2.Cgid.IsBranch = '0')
+          AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.Cgid.NameEN), UPPER(Record2.Cgid.NameEN)) >= 90
+        )
+        AND (Record1.Cgid.Status IS NULL OR Record1.Cgid.Status <> 'Inactive')
+        AND (Record2.Cgid.Status IS NULL OR Record2.Cgid.Status <> 'Inactive')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.Cgid.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.Cgid.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.Cgid.IsFreeZone, '0') = COALESCE(Record2.Cgid.IsFreeZone, '0')
+      label: "MR-04 Same TRN"
+      description: "Both records have the same UAE VAT registration number and their English names are at least 90% alike. At least one of the two must be a head office (not a branch), so branches sharing a group TRN are not merged with each other."
+      documentation: "Both records have the same UAE VAT registration number and their English names are at least 90% alike. At least one of the two must be a head office (not a branch), so branches sharing a group TRN are not merged with each other."
+      matchScore: 95
+      usingMatchOn: true
+      matchOnExpression: TaxRegistration
+ 
+    - _type: SemQLMatchRule
+      _name: MR05_Same_licence_and_country_different_authority_very_similar_name
+      condition: |-
+        (
+          Record1.LicenseNumber IS NOT NULL
+          AND Record2.LicenseNumber IS NOT NULL
+          AND Record1.LicenseNumber = Record2.LicenseNumber
+          AND Record1.FID_RegistrationCountry IS NOT NULL
+          AND Record2.FID_RegistrationCountry IS NOT NULL
+          AND Record1.FID_RegistrationCountry = Record2.FID_RegistrationCountry
+          AND Record1.FID_IssuingAuthorityCode IS NOT NULL
+          AND Record2.FID_IssuingAuthorityCode IS NOT NULL
+          AND Record1.FID_IssuingAuthorityCode <> Record2.FID_IssuingAuthorityCode
+          AND Record1.NameMatchKey IS NOT NULL
+          AND Record2.NameMatchKey IS NOT NULL
+          AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.NameMatchKey), UPPER(Record2.NameMatchKey)) >= 95
+        )
+        AND (Record1.Status IS NULL OR Record1.Status <> 'Inactive')
+        AND (Record2.Status IS NULL OR Record2.Status <> 'Inactive')
+        AND (Record1.IsBranch = '0' OR Record2.IsBranch = '0')
+        AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+        AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.IsFreeZone, '0') = COALESCE(Record2.IsFreeZone, '0')
+      label: "MR-05 Licence, diff authority"
+      description: "Both records have the same trade licence number and country, but the issuing authority is recorded differently. The names are at least 95% alike. Usually the authority was captured wrongly in one source. A data steward reviews before merging."
+      documentation: "Both records have the same trade licence number and country, but the issuing authority is recorded differently. The names are at least 95% alike. Usually the authority was captured wrongly in one source. A data steward reviews before merging."
+      matchScore: 95
+      usingMatchOn: false
+ 
+    - _type: SemQLMatchRule
+      _name: MR06_Same_licence_and_country_different_authority_loosely_similar_name
+      condition: |-
+        (
+          Record1.LicenseNumber IS NOT NULL
+          AND Record2.LicenseNumber IS NOT NULL
+          AND Record1.LicenseNumber = Record2.LicenseNumber
+          AND Record1.FID_RegistrationCountry IS NOT NULL
+          AND Record2.FID_RegistrationCountry IS NOT NULL
+          AND Record1.FID_RegistrationCountry = Record2.FID_RegistrationCountry
+          AND Record1.FID_IssuingAuthorityCode IS NOT NULL
+          AND Record2.FID_IssuingAuthorityCode IS NOT NULL
+          AND Record1.FID_IssuingAuthorityCode <> Record2.FID_IssuingAuthorityCode
+          AND Record1.NameMatchKey IS NOT NULL
+          AND Record2.NameMatchKey IS NOT NULL
+          AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.NameMatchKey), UPPER(Record2.NameMatchKey)) >= 75
+          AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.NameMatchKey), UPPER(Record2.NameMatchKey)) < 90
+        )
+        AND (Record1.Status IS NULL OR Record1.Status <> 'Inactive')
+        AND (Record2.Status IS NULL OR Record2.Status <> 'Inactive')
+        AND (Record1.IsBranch = '0' OR Record2.IsBranch = '0')
+        AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+        AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.IsFreeZone, '0') = COALESCE(Record2.IsFreeZone, '0')
+      label: "MR-06 Licence, loose name"
+      description: "Both records have the same trade licence number and country, the issuing authority differs, and the names are only 75% to 89% alike. This may be the same company or two companies with a coincidental licence number. A data steward must review."
+      documentation: "Both records have the same trade licence number and country, the issuing authority differs, and the names are only 75% to 89% alike. This may be the same company or two companies with a coincidental licence number. A data steward must review."
+      matchScore: 85
+      usingMatchOn: false
+ 
+    - _type: SemQLMatchRule
+      _name: MR07_Same_name_and_same_MOL_number
+      condition: |-
+        (
+          Record1.FID_IdentifierType IS NOT NULL
+          AND Record2.FID_IdentifierType IS NOT NULL
+          AND Record1.FID_IdentifierType = 'MOL'
+          AND Record2.FID_IdentifierType = 'MOL'
+          AND Record1.CustomerID.NameMatchKey IS NOT NULL
+          AND Record2.CustomerID.NameMatchKey IS NOT NULL
+          AND Record1.Value IS NOT NULL
+          AND Record2.Value IS NOT NULL
+          AND UPPER(BTRIM(Record1.CustomerID.NameMatchKey)) = UPPER(BTRIM(Record2.CustomerID.NameMatchKey))
+          AND UPPER(BTRIM(Record1.Value)) = UPPER(BTRIM(Record2.Value))
+        )
+        AND (Record1.CustomerID.Status IS NULL OR Record1.CustomerID.Status <> 'Inactive')
+        AND (Record2.CustomerID.Status IS NULL OR Record2.CustomerID.Status <> 'Inactive')
+        AND (Record1.CustomerID.IsBranch = '0' OR Record2.CustomerID.IsBranch = '0')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.CustomerID.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.CustomerID.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.CustomerID.IsFreeZone, '0') = COALESCE(Record2.CustomerID.IsFreeZone, '0')
+      label: "MR-07 Name + MOL number"
+      description: "Both records have the same standardised name and the same Ministry of Labour (MOL) establishment number, whatever their licence details say. A data steward reviews before merging."
+      documentation: "Both records have the same standardised name and the same Ministry of Labour (MOL) establishment number, whatever their licence details say. A data steward reviews before merging."
+      matchScore: 88
+      usingMatchOn: true
+      matchOnExpression: Identifier
+
+
+ 
+ 
+    - _type: SemQLMatchRule
+      _name: MR08_Same_MOL_number_only
+      condition: |-
+        (
+          Record1.FID_IdentifierType IS NOT NULL
+          AND Record2.FID_IdentifierType IS NOT NULL
+          AND Record1.FID_IdentifierType = 'MOL'
+          AND Record2.FID_IdentifierType = 'MOL'
+          AND Record1.Value IS NOT NULL
+          AND Record2.Value IS NOT NULL
+          AND UPPER(BTRIM(Record1.Value)) = UPPER(BTRIM(Record2.Value))
+        )
+        AND (Record1.CustomerID.Status IS NULL OR Record1.CustomerID.Status <> 'Inactive')
+        AND (Record2.CustomerID.Status IS NULL OR Record2.CustomerID.Status <> 'Inactive')
+        AND COALESCE(Record1.CustomerID.IsFreeZone, '0') = COALESCE(Record2.CustomerID.IsFreeZone, '0')
+      label: "MR-08 MOL number only"
+      description: "Both records have the same Ministry of Labour (MOL) establishment number, but the name is not compared. This is a backup rule for records with poor name or licence data. A data steward must review."
+      documentation: "Both records have the same Ministry of Labour (MOL) establishment number, but the name is not compared. This is a backup rule for records with poor name or licence data. A data steward must review."
+      matchScore: 80
+      usingMatchOn: true
+      matchOnExpression: Identifier
+    
+    - _type: SemQLMatchRule
+      _name: MR09_Same_email_and_same_name
+      condition: |-
+        (
+          Record1.Email IS NOT NULL
+          AND Record2.Email IS NOT NULL
+          AND Record1.NameEN IS NOT NULL
+          AND Record2.NameEN IS NOT NULL
+          AND LOWER(BTRIM(Record1.Email)) = LOWER(BTRIM(Record2.Email))
+          AND (Record1.IsBranch = '0' OR Record2.IsBranch = '0')
+          AND UPPER(BTRIM(Record1.NameEN)) = UPPER(BTRIM(Record2.NameEN))
+        )
+        AND (Record1.Status IS NULL OR Record1.Status <> 'Inactive')
+        AND (Record2.Status IS NULL OR Record2.Status <> 'Inactive')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.IsFreeZone, '0') = COALESCE(Record2.IsFreeZone, '0')
+      label: "MR-09 E-mail + name"
+      description: "Both records have the same e-mail address and the same English name, and at least one of them is a head office (not a branch). There is no licence or tax evidence, so a data steward reviews before merging."
+      documentation: "Both records have the same e-mail address and the same English name, and at least one of them is a head office (not a branch). There is no licence or tax evidence, so a data steward reviews before merging."
+      matchScore: 75
+      usingMatchOn: false
+      
+    - _type: SemQLMatchRule
+      _name: MR10_Nearly_identical_licence_and_very_similar_name
+      condition: |-
+        (
+          Record1.LicenseNumber IS NOT NULL
+          AND Record2.LicenseNumber IS NOT NULL
+          AND Record1.NameMatchKey IS NOT NULL
+          AND Record2.NameMatchKey IS NOT NULL
+          AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.LicenseNumber)), UPPER(BTRIM(Record2.LicenseNumber))) > 90
+          AND (Record1.IsBranch = '0' OR Record2.IsBranch = '0')
+          AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.NameMatchKey), UPPER(Record2.NameMatchKey)) > 90
+        )
+        AND (Record1.Status IS NULL OR Record1.Status <> 'Inactive')
+        AND (Record2.Status IS NULL OR Record2.Status <> 'Inactive')
+        AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+        AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.IsFreeZone, '0') = COALESCE(Record2.IsFreeZone, '0')
+      label: "MR-10 Near licence + name"
+      description: "The licence numbers are more than 90% alike (for example a typing error or a missing prefix) and the names are more than 90% alike. At least one record must be a head office. A data steward reviews before merging."
+      documentation: "The licence numbers are more than 90% alike (for example a typing error or a missing prefix) and the names are more than 90% alike. At least one record must be a head office. A data steward reviews before merging."
+      matchScore: 80
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MR11_Very_similar_name_same_country_and_one_supporting_detail
+      condition: |-
+        (
+          Record1.NameEN IS NOT NULL
+          AND Record2.NameEN IS NOT NULL
+          AND Record1.NameMatchKey IS NOT NULL
+          AND Record2.NameMatchKey IS NOT NULL
+          AND SEM_NGRAMS_SIMILARITY(UPPER(Record1.NameMatchKey), UPPER(Record2.NameMatchKey)) >= 93
+          AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameEN)), UPPER(BTRIM(Record2.NameEN))) >= 85
+          AND Record1.FID_RegistrationCountry IS NOT NULL
+          AND Record2.FID_RegistrationCountry IS NOT NULL
+          AND Record1.FID_RegistrationCountry = Record2.FID_RegistrationCountry
+          AND (
+            (Record1.FID_RegistrationEmirateCode IS NOT NULL
+             AND Record1.FID_RegistrationEmirateCode = Record2.FID_RegistrationEmirateCode)
+            OR (Record1.EmailDomain IS NOT NULL
+             AND LOWER(BTRIM(Record1.EmailDomain)) = LOWER(BTRIM(Record2.EmailDomain))
+             AND (Record1.IsGenericEmailDomain IS NULL OR Record1.IsGenericEmailDomain = '0'))
+            OR (Record1.BusinessPhone IS NOT NULL
+             AND REGEXP_REPLACE(Record1.BusinessPhone, '[^0-9]', '', 'g') = REGEXP_REPLACE(Record2.BusinessPhone, '[^0-9]', '', 'g'))
+            OR (Record1.Mobile IS NOT NULL
+             AND REGEXP_REPLACE(Record1.Mobile, '[^0-9]', '', 'g') = REGEXP_REPLACE(Record2.Mobile, '[^0-9]', '', 'g'))
+            OR (Record1.EstablishmentAddress IS NOT NULL
+             AND UPPER(BTRIM(Record1.EstablishmentAddress)) = UPPER(BTRIM(Record2.EstablishmentAddress)))
+          )
+        )
+        AND (Record1.Status IS NULL OR Record1.Status <> 'Inactive')
+        AND (Record2.Status IS NULL OR Record2.Status <> 'Inactive')
+        AND (Record1.IsBranch = '0' OR Record2.IsBranch = '0')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record1.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND NOT REGEXP_LIKE(UPPER(BTRIM(Record2.NameEN)), '^([^A-Z\u0600-\u06FF]*|.{0,2}|TEST|MIS CUSTOMER|DUMMY|NA)$')
+        AND COALESCE(Record1.IsFreeZone, '0') = COALESCE(Record2.IsFreeZone, '0')
+      label: "MR-11 Name + other detail"
+      description: "The names are very similar and both records are registered in the same country. In addition, at least one other detail agrees: the same emirate, the same company e-mail domain (not a public domain such as Gmail), the same business phone, the same mobile, or the same establishment address. A data steward must review."
+      documentation: "The names are very similar and both records are registered in the same country. In addition, at least one other detail agrees: the same emirate, the same company e-mail domain (not a public domain such as Gmail), the same business phone, the same mobile, or the same establishment address. A data steward must review."
+      matchScore: 82
+      usingMatchOn: false
+

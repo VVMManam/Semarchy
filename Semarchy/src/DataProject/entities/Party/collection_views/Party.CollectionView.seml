@@ -1,0 +1,146 @@
+_name: Party
+_type: CollectionView
+_package: DataProject.entities.Party.collection_views
+entity: DataProject.entities.Party.Party
+default: true
+displayCard: DataProject.entities.Party.display_cards.Party
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Party
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: Pgid
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: Pgid
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PartyNameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PartyNameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PartyNameAr
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PartyNameAr
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PartyTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PartyTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LegalFormCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LegalFormCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenceKey
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenceKey
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenceAuthorityCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenceAuthorityCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenceCountry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenceCountry
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RegistrationCountry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RegistrationCountry
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RegistrationEmirateCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RegistrationEmirateCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsBranch
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsBranch
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BranchQualifier
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BranchQualifier
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsInternalEntity
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsInternalEntity
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PartyStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PartyStatusCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DpsStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DpsStatusCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DpsReference
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DpsReference
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: DpsCheckedOn
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: DpsCheckedOn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: QualityScore
+    columnAlign: LEFT
+    dataType: DECIMAL
+    useCustomLabel: false
+    value: QualityScore
+    visibleByDefault: true

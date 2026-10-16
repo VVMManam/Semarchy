@@ -1,0 +1,18 @@
+_type: SemQLEnricher
+_package: DataProject.entities.Identifier.enrichers
+_name: DetectIdentifierPlaceholder
+entity: DataProject.entities.Identifier.Identifier
+label: Detect Identifier Placeholder
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: IsPlaceholder
+    expression: |-
+      CASE
+        WHEN NOT (FID_CustomerID IS NOT NULL OR SourceID_CustomerID IS NOT NULL) THEN CASE WHEN IsPlaceholder = '1' THEN '1' WHEN IsPlaceholder = '0' THEN '0' END
+        WHEN Value IS NULL THEN '0'
+        WHEN UPPER(BTRIM(Value)) IN ('NA', 'N/A', 'NIL', 'NONE', 'NULL', 'TBD', 'TEST', 'XXX') THEN '1'
+        WHEN LENGTH(REGEXP_REPLACE(Value, '[^A-Za-z0-9]', '', 'g')) < 4 THEN '1'
+        WHEN REPLACE(BTRIM(Value), LEFT(BTRIM(Value), 1), '') = '' THEN '1'
+        WHEN BTRIM(Value) = LEFT('123456789012345678901234567890', LENGTH(BTRIM(Value))) THEN '1'
+        ELSE '0'
+      END

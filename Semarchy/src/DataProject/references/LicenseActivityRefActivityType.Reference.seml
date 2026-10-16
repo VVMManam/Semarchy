@@ -1,0 +1,23 @@
+_name: LicenseActivityRefActivityType
+_type: Reference
+_package: DataProject.references
+label: License Activity Ref Activity Type
+physicalName: ACTIVITY_ACTIVITY_TYPE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.LicenseActivity.LicenseActivity
+fromRoleLabel: License Activity
+fromRolePluralLabel: License Activities
+fromRoleName: LicenseActivity
+toEntity: DataProject.entities.LicenseActivityType.LicenseActivityType
+toRoleLabel: Activity Type
+toRoleName: ActivityType
+toRolePhysicalName: ACTIVITY_TYPE
+foreignAttribute:
+  _name: ActivityType
+  _type: ForeignAttribute
+  physicalName: ACTIVITY_TYPE
+  label: Activity Type
+  searchable: true
+  entity: DataProject.entities.LicenseActivity.LicenseActivity

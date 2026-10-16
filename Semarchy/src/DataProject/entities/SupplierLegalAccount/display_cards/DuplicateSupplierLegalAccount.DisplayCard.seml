@@ -1,0 +1,17 @@
+_name: DuplicateSupplierLegalAccount
+_package: DataProject.entities.SupplierLegalAccount.display_cards
+_type: DisplayCard
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+default: false
+primaryTextExpression: CASE WHEN NameEn IS NOT NULL THEN NameEn WHEN NameAlternate IS NOT NULL THEN NameAlternate ELSE 'Supplier ' || SupplierAccountId END
+secondaryTextExpression: CASE WHEN Sgid IS NOT NULL THEN SEM_TO_CHAR2(Sgid) || ' · ' || SupplierAccountId ELSE SupplierAccountId END
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

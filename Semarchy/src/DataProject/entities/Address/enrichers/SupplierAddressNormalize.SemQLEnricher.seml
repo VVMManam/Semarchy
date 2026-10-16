@@ -1,0 +1,27 @@
+_name: SupplierAddressNormalize
+_type: SemQLEnricher
+_package: DataProject.entities.Address.enrichers
+entity: DataProject.entities.Address.Address
+label: Supplier Address Normalize
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: RecordStatusCode
+    expression: |-
+      CASE WHEN (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL) THEN CASE
+        WHEN RecordStatusCode IS NULL THEN NULL
+        WHEN UPPER(BTRIM(RecordStatusCode)) IN ('A', 'ACTIVE', 'Y', 'YES', 'TRUE', '1') THEN 'ACTIVE'
+        WHEN UPPER(BTRIM(RecordStatusCode)) IN ('I', 'INACTIVE', 'N', 'NO', 'FALSE', '0') THEN 'INACTIVE'
+        ELSE UPPER(BTRIM(RecordStatusCode))
+      END ELSE RecordStatusCode END
+  - attributeName: PoBox
+    expression: |-
+      CASE
+        WHEN NOT (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL) OR PoBox IS NOT NULL THEN PoBox
+        WHEN REGEXP_LIKE(UPPER(AddressLine1), 'P\.?\s*O\.?\s*BOX\s*[0-9]+')
+          THEN REGEXP_REPLACE(UPPER(AddressLine1), '^.*P\.?\s*O\.?\s*BOX\s*([0-9]+).*$', '\1')
+        WHEN REGEXP_LIKE(UPPER(AddressLine2), 'P\.?\s*O\.?\s*BOX\s*[0-9]+')
+          THEN REGEXP_REPLACE(UPPER(AddressLine2), '^.*P\.?\s*O\.?\s*BOX\s*([0-9]+).*$', '\1')
+        WHEN REGEXP_LIKE(UPPER(AddressLine3), 'P\.?\s*O\.?\s*BOX\s*[0-9]+')
+          THEN REGEXP_REPLACE(UPPER(AddressLine3), '^.*P\.?\s*O\.?\s*BOX\s*([0-9]+).*$', '\1')
+        ELSE PoBox
+      END

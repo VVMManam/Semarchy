@@ -1,0 +1,147 @@
+_name: Contact
+_type: CollectionView
+_package: DataProject.entities.Contact.collection_views
+entity: DataProject.entities.Contact.Contact
+default: true
+displayCard: DataProject.entities.Contact.display_cards.Contact
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Contact Name
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: TitleCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN TitleCode = '1' THEN 'Mr' WHEN TitleCode = '100000001' THEN 'Mrs' WHEN TitleCode = '3' THEN 'Ms' WHEN TitleCode = '803750000' THEN 'Dr' WHEN TitleCode = '803750001' THEN 'Eng' WHEN TitleCode = '803750002' THEN 'Miss' WHEN TitleCode = '803750003' THEN 'Sir' ELSE TitleCode END
+    label: Title
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FirstName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FirstName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LastName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LastName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ContactPurpose
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "LOOKUP distinct_string_agg FDN_ContactRoleCode SEPARATED BY ', ' FROM ContactPurpose END"
+    label: "Contact Purpose"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PrimaryFocalPoint
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "CASE WHEN PrimaryFocalPoint = '1' THEN 'Yes' ELSE 'No' END"
+    label: "Primary Focal Point"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PrimaryFinancialPoint
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "CASE WHEN PrimaryFinancialPoint = '1' THEN 'Yes' ELSE 'No' END"
+    label: "Primary Finance Point"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Email
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Email
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Mobile
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Mobile
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: Nationality
+    columnAlign: LEFT
+    dataType: STRING
+    referencedEntity: DataProject.entities.Country.CountryReference
+    useCustomLabel: true
+    value: "FDN_NationalityCode"
+    label: "Nationality"
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: EmiratesId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "EmiratesId"
+    label: "Emirates ID"
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: EmiratesIdExpiryDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: true
+    value: EmiratesIdExpiryDate
+    label: "EID Expiry"
+    visibleByDefault: true
+    componentProperties:
+      textColor: "CASE WHEN EmiratesIdExpiryDate IS NULL THEN 'md: grey 600' WHEN EmiratesIdExpiryDate < NOW() THEN 'md: red 700' ELSE 'md: green 700' END"
+      textColorValueInterpreter: SEMQL
+  - _type: TextColumn
+    _name: PassportNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "PassportNumber"
+    label: "Passport"
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: PassportExpiryDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: true
+    value: PassportExpiryDate
+    label: "Passport Expiry"
+    visibleByDefault: true
+    componentProperties:
+      textColor: "CASE WHEN PassportExpiryDate IS NULL THEN 'md: grey 600' WHEN PassportExpiryDate < NOW() THEN 'md: red 700' ELSE 'md: green 700' END"
+      textColorValueInterpreter: SEMQL
+  - _type: TextColumn
+    _name: JobTitle
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: JobTitle
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ContactStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN ContactStatusCode = 'I' THEN 'Inactive' WHEN ContactStatusCode = 'A' THEN 'Active' ELSE ContactStatusCode END
+    label: Contact Status
+    visibleByDefault: true

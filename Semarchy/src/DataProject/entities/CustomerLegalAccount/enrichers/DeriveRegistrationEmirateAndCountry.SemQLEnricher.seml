@@ -1,0 +1,63 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: DeriveRegistrationEmirateAndCountry
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Derive Registration Emirate, Country And Free Zone
+description: 'Fills only values that arrived empty, never overwrites a received value. Emirate: when empty (and the country is empty or UAE), taken from the issuing authority - its code (AUTH-AE-AUH/DXB/SHJ/AJM/UAQ/RAK/FUJ-...) or else its name (Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, Fujairah). Country: when empty and an emirate was received or derived, set to UAE (AE). Free zone: set from the issuing authority (Abu Dhabi Free Zone, CRM code 399590000 / AbuDhabiFreeZone) so the match rules only match free zone customers with free zone customers. Runs before matching.'
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.CustomerLegalAccount.enrichers.ResolveIssuingAuthority
+  - DataProject.entities.CustomerLegalAccount.enrichers.ResolveRegistrationEmirate
+semQlEnricherExpressions:
+  - attributeName: FID_RegistrationEmirateCode
+    expression: |-
+      CASE
+        WHEN FID_RegistrationEmirateCode IS NOT NULL THEN FID_RegistrationEmirateCode
+        WHEN FID_RegistrationCountry IS NOT NULL AND FID_RegistrationCountry <> 'AE' THEN NULL
+        ELSE CASE
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-AUH-%' THEN 'AE-AZ'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-DXB-%' THEN 'AE-DU'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-SHJ-%' THEN 'AE-SH'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-AJM-%' THEN 'AE-AJ'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-UAQ-%' THEN 'AE-UQ'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-RAK-%' THEN 'AE-RK'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-FUJ-%' THEN 'AE-FU'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%ABU DHABI%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%AL AIN%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%KIZAD%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%MASDAR%' THEN 'AE-AZ'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%DUBAI%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%JEBEL ALI%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%JAFZA%' THEN 'AE-DU'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%SHARJAH%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%HAMRIYAH%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%SAIF%' THEN 'AE-SH'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%AJMAN%' THEN 'AE-AJ'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%UMM AL%' THEN 'AE-UQ'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%RAS AL KHAIMAH%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%RAK %' THEN 'AE-RK'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%FUJAIRAH%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%DIBBA%' THEN 'AE-FU'
+              END
+      END
+  - attributeName: FID_RegistrationCountry
+    expression: |-
+      CASE
+        WHEN FID_RegistrationCountry IS NOT NULL THEN FID_RegistrationCountry
+        WHEN FID_RegistrationEmirateCode IS NOT NULL THEN 'AE'
+        WHEN (CASE
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-AUH-%' THEN 'AE-AZ'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-DXB-%' THEN 'AE-DU'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-SHJ-%' THEN 'AE-SH'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-AJM-%' THEN 'AE-AJ'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-UAQ-%' THEN 'AE-UQ'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-RAK-%' THEN 'AE-RK'
+                WHEN UPPER(COALESCE(FID_IssuingAuthorityCode, '')) LIKE 'AUTH-AE-FUJ-%' THEN 'AE-FU'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%ABU DHABI%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%AL AIN%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%KIZAD%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%MASDAR%' THEN 'AE-AZ'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%DUBAI%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%JEBEL ALI%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%JAFZA%' THEN 'AE-DU'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%SHARJAH%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%HAMRIYAH%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%SAIF%' THEN 'AE-SH'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%AJMAN%' THEN 'AE-AJ'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%UMM AL%' THEN 'AE-UQ'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%RAS AL KHAIMAH%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%RAK %' THEN 'AE-RK'
+                WHEN UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%FUJAIRAH%' OR UPPER(COALESCE(IssuingAuthorityCode.NameEn, '')) LIKE '%DIBBA%' THEN 'AE-FU'
+              END) IS NOT NULL THEN 'AE'
+        ELSE NULL
+      END
+  - attributeName: IsFreeZone
+    expression: |-
+      CASE
+        WHEN IssuingAuthorityCode.IsFreeZone = '1' THEN '1'
+        WHEN UPPER(BTRIM(COALESCE(IssuingAuthority, ''))) IN ('399590000', 'ABUDHABIFREEZONE') THEN '1'
+        ELSE '0'
+      END

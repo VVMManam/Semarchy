@@ -1,0 +1,34 @@
+_name: FindAndMergeDuplicates
+_type: ActionSet
+_package: DataProject.entities.SupplierSiteAssignment.ActionSets
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Find & Merge Duplicates
+actions:
+  - _name: FindAndMergeDuplicates
+    useCustomLabel: true
+    _type: MergeOrSplit
+    label: Find & Merge Duplicates
+    iconUrl: images://mdi/account-multiple-check.svg
+    dupsManager: DataProject.entities.SupplierSiteAssignment.DuplicateManager.SupplierSiteAssignmentDupsManager
+
+  - _name: MergeDuplicates
+    _type: ReviewAndConfirm
+    label: Merge
+    useCustomLabel: true
+    iconUrl: images://mdi/call-merge.svg
+    dupsManager: DataProject.entities.SupplierSiteAssignment.DuplicateManager.SupplierSiteAssignmentDupsManager
+
+  - _name: ReviewSuggestions
+    _type: ReviewSuggestions
+    label: Review Suggestions
+    iconUrl: images://mdi/call-split.svg
+    useCustomLabel: true
+    dupsManager: DataProject.entities.SupplierSiteAssignment.DuplicateManager.SupplierSiteAssignmentDupsManager
+  
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: DataProject.entities.SupplierSiteAssignment.display_cards.SupplierSiteAssignment
+    formTab: DataProject.entities.SupplierSiteAssignment.forms.SupplierSiteAssignment.Main

@@ -1,0 +1,56 @@
+# For the OSB outstanding scheduler (07:00 and 15:00): customers currently on the merge screen
+# (Review Duplicates: suggested merge, state C01) with every master UCID. OSB calls ERP per UCID
+# and loads the results into CustomerOutstanding (job LoadCustomerOutstanding).
+_name: GetOutstandingCustomers
+_type: NamedQuery
+_package: DataProject.named_queries
+active: true
+queryParameters:
+  # Keyset paging: pass the CustomerLegalAccountID of the LAST record of the previous page. First call = 0.
+  - _name: LastCustomerLegalAccountID
+    _type: QueryParameter
+    bindingName: PARAM_LAST_ID
+    dataType: NUMBER
+    mandatory: false
+    defaultValue: '0'
+filter: >-
+  HasSuggestedMerge = '1'
+    and CustomerState = 'C01'
+    and CustomerLegalAccountID > Coalesce(:PARAM_LAST_ID, 0)
+sort: CustomerLegalAccountID asc
+defaultLimit: 1000
+queryObjects:
+  - _name: Customer
+    _type: QueryObject
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    objectProperties:
+      - _name: CustomerLegalAccountID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CustomerLegalAccountID
+      - _name: CustomerGoldenId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CustomerGoldenId
+      - _name: NameEN
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NameEN
+      - _name: Masters
+        _type: ObjectProperty
+        type: MULTI_RECORDS
+        semQlExpression: MasterRecords
+        targetObject: DataProject.named_queries.GetOutstandingCustomers.Master
+  - _name: Master
+    _type: QueryObject
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    objectProperties:
+      - _name: UCID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: SourceID
+      - _name: PublisherID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PublisherID
+rootQueryObject: DataProject.named_queries.GetOutstandingCustomers.Customer

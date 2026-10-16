@@ -1,0 +1,149 @@
+# =============================================================================
+#  Semarchy SDP - CI/CD pipeline (Azure DevOps)
+#
+#  MANUAL ONLY. Nothing runs or deploys when code is pushed.
+#
+#  Run it from Pipelines > ADPorts-MDM-Build > Run pipeline and tick the
+#  environments to deploy to (Dev, Test, Prod - any combination):
+#
+#                 +--> Deploy to Dev   (if ticked; no approval)
+#    Build -------+--> Deploy to Test  (if ticked; no approval)
+#                 +--> Deploy to Prod  (if ticked; approval on MDM-SDP-Prod)
+#
+#  - The ticked environments deploy independently of each other (not
+#    Dev -> Test -> Prod), each one only after the Build stage succeeds.
+#  - Approvals are NOT set in this file. Azure DevOps applies the checks
+#    configured on each environment: MDM-SDP-Prod has an Approval check;
+#    MDM-SDP-Dev and MDM-SDP-Test must have none.
+#  - Prod can only be deployed from the main branch.
+#  - With no environment ticked (and for pull-request validation via a branch
+#    policy) only the Build stage runs.
+#
+#  Based on Semarchy's guide:
+#  https://support.semarchy.com/support/solutions/articles/43000794896
+# =============================================================================
+
+name: ADPorts-MDM-Build-$(Date:yyyyMMdd)$(Rev:.r)
+
+# No automatic runs on push. Start the pipeline manually.
+trigger: none
+
+# Azure Repos ignores the YAML `pr` key; PR validation is set up with a
+# branch policy on `main` instead (see README).
+pr: none
+
+parameters:
+  - name: deployDev
+    displayName: Deploy to Dev
+    type: boolean
+    default: false
+
+  - name: deployTest
+    displayName: Deploy to Test
+    type: boolean
+    default: false
+
+  - name: deployProd
+    displayName: Deploy to Prod (needs approval, main branch only)
+    type: boolean
+    default: false
+
+  # Agent pool used by every job. Default: Microsoft-hosted Ubuntu.
+  # For a self-hosted pool, set this to
+  #   name: Default
+  # when you run the pipeline (or change the default below).
+  - name: agentPool
+    displayName: Agent pool
+    type: object
+    default:
+      vmImage: ubuntu-latest
+
+variables:
+  # Shared settings. Per-environment settings are in config/dev.yml,
+  # config/test.yml and config/prod.yml (loaded by each deploy stage).
+  - template: config/common.yml
+
+stages:
+  # ---------------------------------------------------------------------------
+  # Build: validate and build the model once, before any deployment.
+  # ---------------------------------------------------------------------------
+  - stage: Build
+    displayName: 'Build & validate model'
+    jobs:
+      - job: Build
+        displayName: 'Build Semarchy model'
+        pool: ${{ parameters.agentPool }}
+        timeoutInMinutes: 30
+        steps:
+          - checkout: self
+            clean: true
+            fetchDepth: 1
+
+          - template: templates/steps-install-sem-design.yml
+
+          - powershell: >
+              & "$(Build.SourcesDirectory)/ci-cd/scripts/Test-ModelInventory.ps1"
+              -RootFolder "$(ROOT_FOLDER)"
+              -Strict:([System.Convert]::ToBoolean('$(MODEL_CHECK_STRICT)'))
+              -SummaryTitle 'Semarchy model inventory'
+            displayName: 'Check model completeness (all elements)'
+            workingDirectory: '$(Build.SourcesDirectory)'
+
+          - powershell: >
+              & "$(Build.SourcesDirectory)/ci-cd/scripts/Invoke-SemDesign.ps1"
+              -Action Build
+              -RootFolder "$(ROOT_FOLDER)"
+            displayName: 'Build Semarchy model'
+            workingDirectory: '$(Build.SourcesDirectory)'
+            errorActionPreference: continue
+
+          - powershell: |
+              $out = Join-Path "$(Build.SourcesDirectory)" 'out'
+              if (Test-Path $out) {
+                Copy-Item -Path $out -Destination "$(Build.ArtifactStagingDirectory)" -Recurse -Force
+                Write-Host "Copied build output from $out"
+              } else {
+                Write-Host "No 'out' folder produced by the build; publishing an empty artifact."
+              }
+            displayName: 'Collect build output'
+            condition: succeededOrFailed()
+
+          - task: PublishPipelineArtifact@1
+            displayName: 'Publish build output'
+            condition: succeededOrFailed()
+            inputs:
+              targetPath: '$(Build.ArtifactStagingDirectory)'
+              artifact: 'semarchy-model-build'
+
+  # ---------------------------------------------------------------------------
+  # Deploy stages. Each is added to the run only when its box is ticked, and
+  # each depends only on Build, so they do not wait for one another.
+  # ---------------------------------------------------------------------------
+
+  # Dev: no approval. Any branch. Settings: config/dev.yml
+  - ${{ if eq(parameters.deployDev, true) }}:
+    - template: templates/stage-deploy.yml
+      parameters:
+        agentPool: ${{ parameters.agentPool }}
+        environment: Dev
+        dependsOn: Build
+        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
+  # Test: no approval. Any branch. Settings: config/test.yml
+  - ${{ if eq(parameters.deployTest, true) }}:
+    - template: templates/stage-deploy.yml
+      parameters:
+        agentPool: ${{ parameters.agentPool }}
+        environment: Test
+        dependsOn: Build
+        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
+  # Prod: approval check on the MDM-SDP-Prod environment; main branch only.
+  # Settings: config/prod.yml
+  - ${{ if eq(parameters.deployProd, true) }}:
+    - template: templates/stage-deploy.yml
+      parameters:
+        agentPool: ${{ parameters.agentPool }}
+        environment: Prod
+        dependsOn: Build
+        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/main'))

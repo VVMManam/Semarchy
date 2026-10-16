@@ -1,0 +1,40 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.Contact.Contact
+_package: DataProject.entities.Contact.survivorship_rules
+defaultRule: false
+_name: KeyFieldContactUniqueIdRule
+label: Key Field - ContactUniqueId
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(ContactStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN ContactUniqueId IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CrmContactGuid IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FirstName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN MiddleName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LastName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FullNameAr IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TitleCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN GenderCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PreferredLanguageCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Email IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Mobile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN MobilePhoneCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TelephoneNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TelephoneNumberCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PrimaryFocalPoint IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PrimaryFinancialPoint IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN JobTitle IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EmiratesId IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EmiratesIdExpiryDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PassportNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PassportIssueDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PassportExpiryDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NumberOfShares IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: ContactUniqueId

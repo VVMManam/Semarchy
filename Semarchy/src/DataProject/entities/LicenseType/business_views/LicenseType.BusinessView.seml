@@ -1,0 +1,46 @@
+_name: LicenseType
+_package: DataProject.entities.LicenseType.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.LicenseType.LicenseType
+rootLabel: LicenseType
+rootPluralLabel: LicenseType
+useHierarchyOnOpen: false
+label: License Type
+rootBusinessViewEntity:
+  _name: LicenseType
+  _type: BusinessViewEntity
+  collection: DataProject.entities.LicenseType.collection_views.LicenseType
+  displayCard: DataProject.entities.LicenseType.display_cards.LicenseType
+  actionSet: DataProject.entities.LicenseType.action_sets.LicenseType
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.LicenseType.LicenseType
+  form: DataProject.entities.LicenseType.forms.LicenseType
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

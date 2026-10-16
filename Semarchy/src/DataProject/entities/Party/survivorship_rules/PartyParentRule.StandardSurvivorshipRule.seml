@@ -1,0 +1,14 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.Party.Party
+_package: DataProject.entities.Party.survivorship_rules
+defaultRule: false
+_name: PartyParentRule
+label: Parent Party
+description: "ParentPartyID: latest non-null value of any master record. A parent set by a data steward is an override kept until the next user change."
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: ParentPartyID

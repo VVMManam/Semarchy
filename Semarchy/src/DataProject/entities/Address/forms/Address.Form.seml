@@ -1,0 +1,482 @@
+_package: DataProject.entities.Address.forms
+_type: Form
+_name: Address
+entity: DataProject.entities.Address.Address
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "170px"
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Address Details
+    iconUrl: images://AdPorts-ImageLibrary/tab-customer-details.svg
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: Section
+        label: Incoming Address
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container
+            layoutDirection: COLUMN
+            content:
+              - _name: AddressUsageCode
+                value: AddressUsageCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsPrimary
+                value: IsPrimary
+                dataType: BOOLEAN
+                useCustomLabel: true
+                label: Is Primary
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: CheckboxField
+                authoringMode: "CASE WHEN SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') > 0 OR SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'SEMARCHYADMIN') > 0 THEN 'auto' ELSE 'force-browsing' END"
+                authoringModeValueInterpreter: SEMQL
+                componentProperties:
+                  useSwitch: "0"
+                  useSwitchValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: AddressLine1
+                value: AddressLine1
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: AddressLine2
+                value: AddressLine2
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: City
+                value: City
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _name: PoBox
+                value: PoBox
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: MapLink
+                value: "CASE WHEN Latitude IS NOT NULL AND Longitude IS NOT NULL THEN 'https://www.google.com/maps/search/?api=1&query=' || SEM_NUMBER_TO_CHAR(Latitude) || ',' || SEM_NUMBER_TO_CHAR(Longitude) WHEN AddressLine1 IS NOT NULL THEN 'https://www.google.com/maps/search/?api=1&query=' || REGEXP_REPLACE(AddressLine1 || CASE WHEN Area IS NULL THEN '' ELSE ' ' || Area END || CASE WHEN City IS NULL THEN '' ELSE ' ' || City END || CASE WHEN StateProvince IS NULL THEN '' ELSE ' ' || StateProvince END, '[&#?+, ]+', '+') ELSE NULL END"
+                dataType: STRING
+                useCustomLabel: true
+                label: Map
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: HyperlinkField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  linkSourceType: url
+                  linkSourceTypeValueInterpreter: LITERAL
+                  linkDisplayText: View on map
+                  linkDisplayTextValueInterpreter: LITERAL
+                  linkTarget: new-window
+                  linkTargetValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: RecordStatusCode
+                value: RecordStatusCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CountryCode
+                value: FDN_CountryCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.Country.CountryReference
+                useCustomLabel: true
+                label: Country
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "1"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: EnrichedSection
+        label: Enriched Address
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: EnContainer1
+            layoutDirection: COLUMN
+            content:
+              - _name: EnFullAddress
+                value: "REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(UPPER(COALESCE(AddressLine1, '') || CASE WHEN AddressLine2 IS NULL OR UPPER(AddressLine1) LIKE '%' || UPPER(AddressLine2) || '%' THEN '' ELSE ', ' || AddressLine2 END || CASE WHEN AddressLine3 IS NULL OR UPPER(AddressLine1) LIKE '%' || UPPER(AddressLine3) || '%' THEN '' ELSE ', ' || AddressLine3 END), 'P\\.? *O\\.? *BOX *:? *[0-9]+', '', 'g'), ' +', ' ', 'g'), '( *, *)+', ', ', 'g'), '^[, ]+|[, ]+$', '', 'g') || CASE WHEN CASE WHEN PoBox IS NOT NULL AND REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') <> '' THEN REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') WHEN REGEXP_LIKE(UPPER(AddressLine1), 'P\\.? *O\\.? *BOX *:? *[0-9]+') THEN REGEXP_REPLACE(UPPER(AddressLine1), '^.*P\\.? *O\\.? *BOX *:? *([0-9]+).*$', '\\1') ELSE NULL END IS NULL THEN '' ELSE ', P.O. BOX ' || CASE WHEN PoBox IS NOT NULL AND REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') <> '' THEN REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') WHEN REGEXP_LIKE(UPPER(AddressLine1), 'P\\.? *O\\.? *BOX *:? *[0-9]+') THEN REGEXP_REPLACE(UPPER(AddressLine1), '^.*P\\.? *O\\.? *BOX *:? *([0-9]+).*$', '\\1') ELSE NULL END END || CASE WHEN City IS NULL OR UPPER(AddressLine1) LIKE '%' || UPPER(City) || '%' THEN '' ELSE ', ' || UPPER(City) END || CASE WHEN FDN_EmirateCode IS NULL OR UPPER(FDN_EmirateCode) = UPPER(City) THEN '' ELSE ', ' || UPPER(FDN_EmirateCode) END || CASE WHEN FDN_CountryCode IS NULL THEN '' ELSE ', ' || UPPER(FDN_CountryCode) END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Full Address"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "4"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: EnStreet
+                value: "REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(UPPER(COALESCE(AddressLine1, '') || CASE WHEN AddressLine2 IS NULL OR UPPER(AddressLine1) LIKE '%' || UPPER(AddressLine2) || '%' THEN '' ELSE ', ' || AddressLine2 END || CASE WHEN AddressLine3 IS NULL OR UPPER(AddressLine1) LIKE '%' || UPPER(AddressLine3) || '%' THEN '' ELSE ', ' || AddressLine3 END), 'P\\.? *O\\.? *BOX *:? *[0-9]+', '', 'g'), ' +', ' ', 'g'), '( *, *)+', ', ', 'g'), '^[, ]+|[, ]+$', '', 'g')"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Street / Building"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "4"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: EnPoBox
+                value: "CASE WHEN PoBox IS NOT NULL AND REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') <> '' THEN REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') WHEN REGEXP_LIKE(UPPER(AddressLine1), 'P\\.? *O\\.? *BOX *:? *[0-9]+') THEN REGEXP_REPLACE(UPPER(AddressLine1), '^.*P\\.? *O\\.? *BOX *:? *([0-9]+).*$', '\\1') ELSE NULL END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "PO Box"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "4"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: EnContainer2
+            layoutDirection: COLUMN
+            content:
+              - _name: EnCity
+                value: "UPPER(City)"
+                dataType: STRING
+                useCustomLabel: true
+                label: "City"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "4"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: EnEmirate
+                value: "FDN_EmirateCode"
+                dataType: STRING
+                referencedEntity: DataProject.entities.Emirate.Emirate
+                useCustomLabel: true
+                label: "Emirate"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "0"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: EnCountry
+                value: "FDN_CountryCode"
+                dataType: STRING
+                referencedEntity: DataProject.entities.Country.CountryReference
+                useCustomLabel: true
+                label: "Country"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "1"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL

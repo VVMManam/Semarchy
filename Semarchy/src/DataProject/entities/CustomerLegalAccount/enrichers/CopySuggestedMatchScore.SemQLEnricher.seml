@@ -1,0 +1,9 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: CopySuggestedMatchScore
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Copy Suggested Match Score
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: SuggestedMatchScore
+    expression: SuggestedMergeConfidenceScore

@@ -1,0 +1,8 @@
+_name: OutstandingRefreshRequired
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Outstanding Refresh Required
+validationScope: POST_CONSO
+validationLabel: "Kindly refresh outstanding for these customers before merging (Outstanding Refresh), then merge again."
+_type: SemQLValidation
+condition: "MergeApprovalStatus IS NULL OR MergeApprovalStatus <> 'OUTSTANDING_REFRESH'"

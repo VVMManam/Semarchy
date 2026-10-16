@@ -1,0 +1,11 @@
+_name: SetSupplierLegalAccountId
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Set Supplier Legal Account Id
+description: "SupplierAccountId (shown as SupplierGoldenId) carries the supplier number. A value already loaded is kept; otherwise it is filled from SupplierNumber, so alphanumeric numbers (K...) are shown too."
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: SupplierAccountId
+    expression: |-
+      COALESCE(SupplierAccountId, SupplierNumber)

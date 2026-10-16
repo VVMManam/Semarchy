@@ -1,0 +1,14 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+defaultRule: false
+_name: KeyFieldAccountCreationDateRule
+label: Key Field - Account Creation Date
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: |-
+  AccountCreationDate ASC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: AccountCreationDate

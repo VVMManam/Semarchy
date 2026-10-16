@@ -1,0 +1,12 @@
+_name: FOB
+_package: DataProject.List_of_values
+_type: LOVType
+label: FOB
+length: 128
+lovValues:
+  - code: "DESTINATION"
+    label: Destination
+  - code: "ORIGIN"
+    label: Origin
+  - code: "SHIPPING"
+    label: Shipping Point

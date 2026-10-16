@@ -1,0 +1,12 @@
+_name: CustomerState
+_type: LOVType
+_package: DataProject.List_of_values
+label: Customer State
+length: 50
+lovValues:
+  - code: C01
+    label: Under Review
+  - code: C02
+    label: Approved
+  - code: C03
+    label: Denied

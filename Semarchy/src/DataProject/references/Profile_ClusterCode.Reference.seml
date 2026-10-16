@@ -1,0 +1,23 @@
+_name: Profile_ClusterCode
+_type: Reference
+_package: DataProject.references
+label:  Profile to  Cluster
+physicalName: PROFILE_CLUSTER_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Profile.Profile
+fromRoleLabel:  Profile
+fromRolePluralLabel:  Profile
+fromRoleName: Profile
+toEntity: DataProject.entities.Cluster.Cluster
+toRoleLabel: Cluster Code
+toRoleName: ClusterCode
+toRolePhysicalName: CLUSTER_CODE
+foreignAttribute:
+  _name: ClusterCode
+  _type: ForeignAttribute
+  physicalName: CLUSTER_CODE
+  label: Cluster Code
+  searchable: true
+  entity: DataProject.entities.Profile.Profile

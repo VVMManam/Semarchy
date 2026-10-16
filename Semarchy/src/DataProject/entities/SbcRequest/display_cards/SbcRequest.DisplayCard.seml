@@ -1,0 +1,17 @@
+_name: SbcRequest
+_package: DataProject.entities.SbcRequest.display_cards
+_type: DisplayCard
+entity: DataProject.entities.SbcRequest.SbcRequest
+default: true
+primaryTextExpression: EntityType
+supportingTextExpression: OperationType
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

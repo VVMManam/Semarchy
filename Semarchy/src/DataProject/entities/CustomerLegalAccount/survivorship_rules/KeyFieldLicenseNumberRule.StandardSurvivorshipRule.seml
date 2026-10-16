@@ -1,0 +1,45 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+defaultRule: false
+_name: KeyFieldLicenseNumberRule
+label: Key Field - License (licence details and names)
+description: "The licence with the latest expiry date survives, and all its licence details (number, authority, type, emirate, country, dates and status) and the customer names (NameEN, NameAr) come from that same record."
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: false
+consolidationOrderByExpression: |-
+  CASE WHEN LicenseExpiryDate IS NULL THEN 0 ELSE 1 END DESC,
+  LicenseExpiryDate DESC,
+  CASE WHEN NameEN IS NOT NULL THEN 1 ELSE 0 END DESC,
+  CASE WHEN REGEXP_LIKE(NameAr, '[\u0600-\u06FF]') THEN 1 ELSE 0 END DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: LicenseNumber
+  - attributeName: NameEN
+  - attributeName: NameAr
+  - attributeName: IssuingAuthorityCode
+  - attributeName: IssuingAuthority
+  - attributeName: Issuing
+  - attributeName: LicenseTypeCode
+  - attributeName: LicenseType
+  - attributeName: RegistrationEmirateCode
+  - attributeName: IssuingEmirateId
+  - attributeName: LicenseIssuingEmirateCodeRaw
+  - attributeName: RegistrationCountry
+  - attributeName: LicenseStage
+  - attributeName: LicenseStatusCode
+  - attributeName: LicenseRecordStatusCode
+  - attributeName: LicenseRegistrationDate
+  - attributeName: LicenseIssueDate
+  - attributeName: LicenseStartDate
+  - attributeName: LicenseExpiryDate
+  - attributeName: LicenseAmendDate
+  - attributeName: LicenseCancelDate
+  - attributeName: IsPrimaryLicense
+  - attributeName: LicenseValidityStatusCode
+  - attributeName: LicenseIsPlaceholder
+  - attributeName: LicenseFormatValid
+  - attributeName: LicenseValidatedBy
+  - attributeName: LicenseValidatedOn

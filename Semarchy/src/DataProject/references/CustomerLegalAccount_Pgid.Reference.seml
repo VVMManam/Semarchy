@@ -1,0 +1,23 @@
+_name: CustomerLegalAccount_Pgid
+_type: Reference
+_package: DataProject.references
+label:  Customer Legal Account to  Party
+physicalName: CUST_LEGAL_ACCOUN_442
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+fromRoleLabel:  Customer Legal Account
+fromRolePluralLabel:  Customer Legal Account
+fromRoleName: CustomerLegalAccount
+toEntity: DataProject.entities.Party.Party
+toRoleLabel: Pgid
+toRoleName: Pgid
+toRolePhysicalName: PGID
+foreignAttribute:
+  _name: Pgid
+  _type: ForeignAttribute
+  physicalName: PGID
+  label: Pgid
+  searchable: true
+  entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount

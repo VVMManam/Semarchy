@@ -1,0 +1,37 @@
+_name: ResolveRegistrationCountry
+_type: JavaPluginEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Resolve Registration Country
+description: 'Resolves TaxCountryCode (code or English name) to the MDM country. Falls back to AE when the supplier has a UAE emirate or a UAE TRN (15 digits starting 100). A country already set on the record is kept. Feeds MAT-01, MAT-02B, MAT-06, MAT-07, MAT-08.'
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'SRC|' || upper(trim(country_code)) LOOKUP_COLUMN,
+                   country_code OUTPUT_COLUMN1
+            from gd_country_reference
+            where country_code is not null
+            union
+            select 'SRC|' || upper(trim(name_en)) LOOKUP_COLUMN,
+                   country_code OUTPUT_COLUMN1
+            from gd_country_reference
+            where name_en is not null
+            union
+            select 'MDM|' || upper(trim(country_code)) LOOKUP_COLUMN,
+                   country_code OUTPUT_COLUMN1
+            from gd_country_reference
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+pluginInputs:
+  - expression: "CASE WHEN FID_RegistrationCountry IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_RegistrationCountry)) WHEN TaxCountryCode IS NOT NULL THEN 'SRC|' || UPPER(BTRIM(TaxCountryCode)) WHEN IssuingEmirate IS NOT NULL THEN 'MDM|AE' WHEN REGEXP_LIKE(REGEXP_REPLACE(COALESCE(VATRegistrationNumber, ''), '[^0-9]', '', 'g'), '^100[0-9]{12}$') THEN 'MDM|AE' ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+pluginOutputs:
+  - attributeName: FID_RegistrationCountry
+    outputName: OUT_RESULT1
+processingBatchSize: 100
+threadPoolSize: 1

@@ -1,0 +1,183 @@
+_package: DataProject.entities.Profile
+_type: Entity
+_name: Profile
+label: Profile
+pluralLabel: Profile
+physicalTableName: PROFILE
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProfileId
+    label: Profile Id
+    physicalName: PROFILE_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SourceProfileTypeCode
+    label: Source Profile Type Code
+    physicalName: SOURCE_PROFILE_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ERPBUCode
+    label: ERP BU Code
+    physicalName: ERP_BU_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProfileType
+    label: Profile Type 
+    physicalName: PROFILE_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Cluster
+    label: Cluster 
+    physicalName: CLUSTER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ERPProfile
+    label: ERP Profile
+    physicalName: ERP_PROFILE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ApprovalStatusCode
+    label: Approval Status Code
+    physicalName: APPROVAL_STATUS_CODE
+    dataType: DataProject.List_of_values.ProfileApprovalStatus
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProfileStatusCode
+    label: Profile Status Code
+    physicalName: PROFILE_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.Profile.Profile.ProfileId
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherProfile
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 98
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameAndTypeUnderSameCustomer
+      condition: |-
+        Record1.FID_Cgid IS NOT NULL
+        AND Record2.FID_Cgid IS NOT NULL
+        AND Record1.FID_Cgid = Record2.FID_Cgid
+        AND Record1.ClusterCode.ClusterCode IS NOT NULL
+        AND Record2.ClusterCode.ClusterCode IS NOT NULL
+        AND Record1.ClusterCode.ClusterCode = Record2.ClusterCode.ClusterCode
+        AND Record1.BusinessUnitCode.BusinessUnitCode IS NOT NULL
+        AND Record2.BusinessUnitCode.BusinessUnitCode IS NOT NULL
+        AND Record1.BusinessUnitCode.BusinessUnitCode = Record2.BusinessUnitCode.BusinessUnitCode
+        AND Record1.ProfileTypeCode.ProfileTypeCode IS NOT NULL
+        AND Record2.ProfileTypeCode.ProfileTypeCode IS NOT NULL
+        AND Record1.ProfileTypeCode.ProfileTypeCode = Record2.ProfileTypeCode.ProfileTypeCode
+      label: "Same customer + same profile type + same cluster + same business unit + same profile type code (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameTypeUnderSameAssignment
+      condition: |-
+        Record1.FID_AssignmentId IS NOT NULL
+        AND Record2.FID_AssignmentId IS NOT NULL
+        AND Record1.FID_AssignmentId = Record2.FID_AssignmentId
+        AND Record1.ClusterCode.ClusterCode IS NOT NULL
+        AND Record2.ClusterCode.ClusterCode IS NOT NULL
+        AND Record1.ClusterCode.ClusterCode = Record2.ClusterCode.ClusterCode
+        AND Record1.BusinessUnitCode.BusinessUnitCode IS NOT NULL
+        AND Record2.BusinessUnitCode.BusinessUnitCode IS NOT NULL
+        AND Record1.BusinessUnitCode.BusinessUnitCode = Record2.BusinessUnitCode.BusinessUnitCode
+        AND Record1.ProfileTypeCode.ProfileTypeCode IS NOT NULL
+        AND Record2.ProfileTypeCode.ProfileTypeCode IS NOT NULL
+        AND Record1.ProfileTypeCode.ProfileTypeCode = Record2.ProfileTypeCode.ProfileTypeCode
+      label: "Same assignment + same profile type + same cluster + same business unit + same profile type code (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false
+

@@ -1,0 +1,17 @@
+_name: ChangeRequest
+_package: DataProject.entities.changerequest.display_cards
+_type: DisplayCard
+entity: DataProject.entities.changerequest.changerequest
+default: true
+primaryTextExpression: ChangeRequestID
+primaryImageValue: URL
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

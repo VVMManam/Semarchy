@@ -1,0 +1,113 @@
+_package: DataProject.entities.SupplierSiteAssignment.forms
+_type: Form
+_name: Supplier360Assignment
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+default: false
+formTabs:
+- _name: AssignmentOverview
+  _type: FormTab
+  labelWidth: "170px"
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  label: Assignment Overview
+  iconUrl: images://mdi/view-dashboard.svg
+  displayFormTabAs: ICON_LABEL
+  content:
+  - _type: FormSection
+    _name: AsgHeaderSection
+    label: Assignment at a glance
+    layoutDirection: ROW
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+    - _type: FormContainer
+      _name: AsgHeaderC
+      layoutDirection: COLUMN
+      content:
+      - _name: AsgHeader
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">'' || ''<div style="flex:0 0 52px;width:52px;height:52px;border-radius:8px;background:#0B2A4A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">ASG</div>'' || ''<div style="flex:1;min-width:280px"><div style="font-size:18px;font-weight:500;line-height:1.2">'' || COALESCE(REPLACE(REPLACE(REPLACE(ClientBuName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), REPLACE(REPLACE(REPLACE(FDN_ClientBuCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div><div style="font-size:13px;color:#66727F;margin-top:2px">'' || ''Site: '' || COALESCE(REPLACE(REPLACE(REPLACE(SupplierSite.SiteCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || '' · Supplier: '' || COALESCE(REPLACE(REPLACE(REPLACE(SupplierSite.FDN_Sgid, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div><div style="margin-top:10px">'' || ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;border:1px solid #CBD5E0;font-family:Consolas,Menlo,monospace;font-weight:400">'' || ''Assignment ID '' || TO_CHAR(AssignmentId, ''FM999999999999990'') || ''</span>'' || CASE WHEN RecordStatusCode IS NULL THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#fff;color:#66727F;border:1px dashed #CBD5E0;font-weight:400">Not set</span>'' WHEN UPPER(RecordStatusCode) IN (''A'', ''ACTIVE'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E2F3EA;color:#1F7A4D;">Active</span>'' WHEN UPPER(RecordStatusCode) IN (''I'', ''INACTIVE'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">Inactive</span>'' WHEN UPPER(RecordStatusCode) IN (''VALID'', ''APPROVED'', ''CURRENT'', ''ENABLED'', ''REGISTERED'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E2F3EA;color:#1F7A4D;">'' || RecordStatusCode || ''</span>'' WHEN UPPER(RecordStatusCode) IN (''EXPIRED'', ''DENIED'', ''REJECTED'', ''SUSPENDED'', ''BLOCKED'', ''DISABLED'', ''CLOSED'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">'' || RecordStatusCode || ''</span>'' WHEN UPPER(RecordStatusCode) LIKE ''%PEND%'' OR UPPER(RecordStatusCode) LIKE ''%REVIEW%'' OR UPPER(RecordStatusCode) LIKE ''%PROCESS%'' OR UPPER(RecordStatusCode) LIKE ''%DRAFT%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FDF3DC;color:#8A5A00;">'' || RecordStatusCode || ''</span>'' ELSE ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;">'' || RecordStatusCode || ''</span>'' END || CASE WHEN FDN_ClientBuCode IS NULL THEN '''' ELSE CASE WHEN UPPER(ClientBuCode.FID_ClusterCode) LIKE ''CO%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#009FE3;color:#FFFFFF;">'' WHEN UPPER(ClientBuCode.FID_ClusterCode) LIKE ''DC%'' OR UPPER(ClientBuCode.FID_ClusterCode) LIKE ''DIG%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#A286BF;color:#FFFFFF;">'' WHEN UPPER(ClientBuCode.FID_ClusterCode) LIKE ''IZ%'' OR UPPER(ClientBuCode.FID_ClusterCode) LIKE ''IND%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#F9423A;color:#FFFFFF;">'' WHEN UPPER(ClientBuCode.FID_ClusterCode) LIKE ''LG%'' OR UPPER(ClientBuCode.FID_ClusterCode) LIKE ''LOG%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#70D547;color:#12330A;">'' WHEN UPPER(ClientBuCode.FID_ClusterCode) LIKE ''MT%'' OR UPPER(ClientBuCode.FID_ClusterCode) LIKE ''MAR%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#14C5BD;color:#FFFFFF;">'' WHEN UPPER(ClientBuCode.FID_ClusterCode) LIKE ''PT%'' OR UPPER(ClientBuCode.FID_ClusterCode) LIKE ''POR%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#B0D6E3;color:#0D3B4C;">'' ELSE ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E0E0E0;color:#212121;">'' END || FDN_ClientBuCode || ''</span>'' END || CASE WHEN AllowWithholdingTax = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;">Withholding tax</span>'' ELSE '''' END || CASE WHEN InactiveDate IS NOT NULL THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">Inactive date set</span>'' ELSE '''' END || ''</div></div>'' || ''</div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Header
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '115'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL
+  - _type: FormSection
+    _name: AsgProfileSection
+    label: Assignment profile
+    layoutDirection: ROW
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+    - _type: FormContainer
+      _name: AsgProfileC1
+      layoutDirection: COLUMN
+      content:
+      - _name: AsgUnits
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="font-size:13.5px;font-weight:500;color:#0B2A4A;border-bottom:1px solid #E1E7EE;padding-bottom:5px;margin:0 0 9px 0">Business units & locations</div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Client BU</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_ClientBuCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · '' || COALESCE(REPLACE(REPLACE(REPLACE(ClientBuName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Bill-to BU</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_BillToBuCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · '' || COALESCE(REPLACE(REPLACE(REPLACE(BillToBuName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Bill-to location</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_BillToLocationCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · '' || COALESCE(REPLACE(REPLACE(REPLACE(BillToLocationName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Ship-to location</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_ShipToLocationCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · '' || COALESCE(REPLACE(REPLACE(REPLACE(ShipToLocationName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Payment term</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_PaymentTermCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · '' || COALESCE(REPLACE(REPLACE(REPLACE(PaymentTermName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Source system</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_SourceSystemCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Business units
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '230'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL
+    - _type: FormContainer
+      _name: AsgProfileC2
+      layoutDirection: COLUMN
+      content:
+      - _name: AsgAccounting
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="font-size:13.5px;font-weight:500;color:#0B2A4A;border-bottom:1px solid #E1E7EE;padding-bottom:5px;margin:0 0 9px 0">Tax & accounting</div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Withholding tax</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || CASE WHEN AllowWithholdingTax = ''1'' THEN ''Yes'' WHEN AllowWithholdingTax = ''0'' THEN ''No'' ELSE ''—'' END || ''<span style="color:#66727F;font-size:11.5px">'' || '' · group '' || COALESCE(REPLACE(REPLACE(REPLACE(WithholdingTaxGroupCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Liability account</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(LiabilityDistributionAccount, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Prepayment account</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(PrepaymentAccount, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Future dated pay acct</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FutureDatedPaymentAccount, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Distribution set</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(DistributionSet, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Inactive date</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(TO_CHAR(InactiveDate, ''DD Mon YYYY''), ''—'') || ''</div></div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Accounting
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '230'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL

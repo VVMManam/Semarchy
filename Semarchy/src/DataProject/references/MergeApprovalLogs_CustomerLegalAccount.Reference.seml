@@ -1,0 +1,23 @@
+_name: MergeApprovalLogs_CustomerLegalAccount
+_type: Reference
+_package: DataProject.references
+label: Merge Approval Logs to Customer Legal Account
+physicalName: MERGE_APPROVAL_LOGS_CGID
+oneToMany: true
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+fromRoleLabel: Merge Approval Log
+fromRolePluralLabel: Merge Approval Logs
+fromRoleName: MergeApprovalLog
+toEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+toRoleLabel: Customer Legal Account
+toRoleName: CustomerLegalAccount
+toRolePhysicalName: CUSTOMER_LEGAL_ACCOUNT_ID
+foreignAttribute:
+  _name: CustomerLegalAccount
+  _type: ForeignAttribute
+  physicalName: CUSTOMER_LEGAL_ACCOUNT_ID
+  label: Customer Legal Account ID
+  searchable: true
+  entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs

@@ -1,0 +1,22 @@
+_name: OrganizationType
+_package: DataProject.List_of_values
+_type: LOVType
+label: Organization Type
+length: 128
+lovValues:
+  - code: "CORPORATION"
+    label: Corporation
+  - code: "FOREIGN_CORPORATION"
+    label: Foreign Corporation
+  - code: "FOREIGN_GOVERNMENT_AGENCY"
+    label: Foreign Government Agency
+  - code: "FOREIGN_INDIVIDUAL"
+    label: Foreign Individual
+  - code: "FOREIGN_PARTNERSHIP"
+    label: Foreign Partnership
+  - code: "GOVERNMENT_AGENCY"
+    label: Government Agency
+  - code: "INDIVIDUAL"
+    label: Individual
+  - code: "PARTNERSHIP"
+    label: Partnership

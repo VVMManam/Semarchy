@@ -1,0 +1,9 @@
+_name: CityNoDigitsCheck
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: City No Digits Check
+validationScope: POST_CONSO
+validationLabel: "City must not contain numbers."
+condition: |-
+  FID_Cgid IS NULL OR City IS NULL OR NOT REGEXP_LIKE(City, '[0-9]')

@@ -1,0 +1,74 @@
+_name: AddressUsage
+_package: DataProject.entities.AddressUsage
+_type: Entity
+primaryKey: DataProject.entities.AddressUsage.AddressUsage.AddressUsageCode
+sourceIdGeneration:
+  mode: MANUAL
+label: Address Usage
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/map-marker-multiple.svg
+pluralLabel: Address Usages
+historizeGolden: false
+historizeMaster: false
+physicalTableName: ADDRESS_USAGE
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AddressUsageCode
+    physicalName: ADDRESS_USAGE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Address Usage Code
+    mandatory: true
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Label
+    physicalName: LABEL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Label
+    mandatory: true
+    length: 50
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CrmSourceValue
+    physicalName: CRM_SOURCE_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Crm Source Value
+    mandatory: false
+    length: 100
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FusionCode
+    physicalName: FUSION_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Fusion Code
+    mandatory: false
+    length: 30
+    multiValued: false
+    precision: 0
+    scale: 0
+    searchable: true
+    valueSeparator: ","

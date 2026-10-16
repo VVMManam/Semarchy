@@ -1,0 +1,46 @@
+_name: ContactRole
+_package: DataProject.entities.ContactRole.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.ContactRole.ContactRole
+rootLabel: ContactRole
+rootPluralLabel: Profile
+useHierarchyOnOpen: false
+label: Contact Role
+rootBusinessViewEntity:
+  _name: ContactRole
+  _type: BusinessViewEntity
+  collection: DataProject.entities.ContactRole.collection_views.ContactRole
+  displayCard: DataProject.entities.ContactRole.display_cards.ContactRole
+  actionSet: DataProject.entities.ContactRole.action_sets.ContactRole
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.ContactRole.ContactRole
+  form: DataProject.entities.ContactRole.forms.ContactRole
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

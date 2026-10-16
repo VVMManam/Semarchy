@@ -1,0 +1,23 @@
+_name: SupplierSiteAssignment_PaymentTermCode
+_type: Reference
+_package: DataProject.references
+label: SupplierSiteAssignment Payment Term
+physicalName: ASSIGNMENT_PAYMENT_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+fromRoleLabel: Supplier Site Assignment
+fromRolePluralLabel: Supplier Site Assignments
+fromRoleName: SupplierSiteAssignment
+toEntity: DataProject.entities.PaymentTerm.PaymentTerm
+toRoleLabel: Payment Term
+toRoleName: PaymentTermCode
+toRolePhysicalName: PAYMENT_TERM_CODE
+foreignAttribute:
+  _name: PaymentTermCode
+  _type: ForeignAttribute
+  physicalName: PAYMENT_TERM_CODE
+  label: Payment Term Code
+  searchable: true
+  entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment

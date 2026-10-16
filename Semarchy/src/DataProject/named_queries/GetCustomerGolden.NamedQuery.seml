@@ -1,0 +1,79 @@
+_name: GetCustomerGolden
+_type: NamedQuery
+_package: DataProject.named_queries
+active: true
+queryParameters:
+  - _name: Name
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_NAME
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+  - _name: IssuingAuthority
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_ISSUING_AUTHOR
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+  - _name: ExactMatch
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_EXACT_MATCH
+    dataType: BOOLEAN
+    mandatory: true
+    defaultValue: "0"
+  - _name: LicenceNumber
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_LICENCE_NUMBER
+    dataType: NUMBER
+    mandatory: false
+    defaultValue: "0"
+  - _name: IssuingCountry
+    _type: QueryParameter
+    bindingName: QUERY_PARAM_ISSUING_COUNTR
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+filter:
+  (
+    (LicenseNumber = :QUERY_PARAM_LICENCE_NUMBER
+     and UPPER(FID_IssuingAuthorityCode) = UPPER(:QUERY_PARAM_ISSUING_AUTHOR)
+     and (:QUERY_PARAM_ISSUING_COUNTR is null
+          or UPPER(IssuingAuthorityCode.FID_CountryCode) = UPPER(:QUERY_PARAM_ISSUING_COUNTR)))
+    or
+    (:QUERY_PARAM_NAME is not null
+     and SEM_EDIT_DISTANCE_SIMILARITY (UPPER(NameEN), UPPER(:QUERY_PARAM_NAME))
+     >= (case when :QUERY_PARAM_EXACT_MATCH = '1' then 100 else 70 end))
+  )
+sort: SEM_EDIT_DISTANCE_SIMILARITY(UPPER(NameEN), UPPER(:QUERY_PARAM_NAME)) desc
+defaultLimit: 100
+queryObjects:
+  - _name: CUSTOMER
+    _type: QueryObject
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    objectProperties:
+      - _name: CustomerGoldenId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CustomerGoldenId
+        targetObject: DataProject.named_queries.GetCustomerGolden.CUSTOMER
+      - _name: NameEn
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NameEN
+        targetObject: DataProject.named_queries.GetCustomerGolden.CUSTOMER
+      - _name: IssuingAuthority
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: FID_IssuingAuthorityCode
+        targetObject: DataProject.named_queries.GetCustomerGolden.CUSTOMER
+      - _name: IssuingCountry
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IssuingAuthorityCode.FID_CountryCode
+        targetObject: DataProject.named_queries.GetCustomerGolden.CUSTOMER
+      - _name: LicenseNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseNumber
+        targetObject: DataProject.named_queries.GetCustomerGolden.CUSTOMER
+rootQueryObject: DataProject.named_queries.GetCustomerGolden.CUSTOMER

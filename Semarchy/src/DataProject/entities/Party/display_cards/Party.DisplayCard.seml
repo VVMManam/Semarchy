@@ -1,0 +1,17 @@
+_name: Party
+_package: DataProject.entities.Party.display_cards
+_type: DisplayCard
+entity: DataProject.entities.Party.Party
+default: true
+primaryTextExpression: PartyNameEn
+supportingTextExpression: "CONCAT_WS(' · ', LicenceKey, LicenceAuthorityCode, LicenceCountry, 'Party ' || TO_CHAR(Pgid, 'FM999999999999990'))"
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

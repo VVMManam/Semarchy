@@ -1,0 +1,26 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.LicenseActivity.LicenseActivity
+_package: DataProject.entities.LicenseActivity.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN ActivitySchemeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ActivityCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ActivityGroupCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Name IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DEDCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Description IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ActivityStartDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ActivityEndDate IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+label: Default Rule
+publisherRankings: []
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes: []

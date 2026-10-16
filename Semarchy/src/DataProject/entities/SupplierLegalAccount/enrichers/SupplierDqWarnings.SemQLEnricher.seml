@@ -1,0 +1,13 @@
+_name: SupplierDqWarnings
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Supplier Data Quality Warnings
+description: "Warnings from the Rules Workbook (Semarchy validations have no warning level, a failing validation rejects the record). VAL-36 tax country missing. (VAL-57 primary admin contact check removed: its supplier-site-contact LOOKUP failed in the load job.)"
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: DqWarnings
+    expression: |-
+      NULLIF(BTRIM(
+        CASE WHEN TaxCountryCode IS NULL THEN 'VAL-36 Tax country missing; ' ELSE '' END
+      , '; '), '')

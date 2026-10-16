@@ -1,0 +1,33 @@
+_name: SupplierContactWorkbookRules
+_type: SemQLEnricher
+_package: DataProject.entities.Contact.enrichers
+entity: DataProject.entities.Contact.Contact
+label: Supplier Contact Title, Inactive Date and Status
+description: "Supplier contacts only. (ENR-15 primary admin contact removed: its child-record LOOKUP failed in the load job.) NRM-22: a job title that is only a salutation moves to the title (prefix) when the prefix is blank. NRM-26: Fusion open date 4712-12-31 -> no inactive date. ENR-25: status INACTIVE (I) when the inactive date has passed, else ACTIVE (A)."
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.Contact.enrichers.JobTitleNormalize
+semQlEnricherExpressions:
+  - attributeName: TitleCode
+    expression: |-
+      CASE
+        WHEN (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL) AND TitleCode IS NULL AND REGEXP_LIKE(UPPER(BTRIM(COALESCE(JobTitle, ''))), '^(MR|MRS|MS|MISS|DR|ENG)\.?$')
+          THEN REGEXP_REPLACE(UPPER(BTRIM(JobTitle)), '\.?$', '.')
+        ELSE TitleCode
+      END
+  - attributeName: JobTitle
+    expression: |-
+      CASE
+        WHEN (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL) AND REGEXP_LIKE(UPPER(BTRIM(COALESCE(JobTitle, ''))), '^(MR|MRS|MS|MISS|DR|ENG)\.?$') THEN NULL
+        ELSE JobTitle
+      END
+  - attributeName: InactiveDate
+    expression: |-
+      CASE WHEN (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL) AND InactiveDate >= MAKE_DATE(4712, 1, 1) THEN NULL ELSE InactiveDate END
+  - attributeName: ContactStatusCode
+    expression: |-
+      CASE
+        WHEN NOT (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL) THEN ContactStatusCode
+        WHEN InactiveDate IS NOT NULL AND InactiveDate < MAKE_DATE(4712, 1, 1) AND InactiveDate <= NOW() THEN 'I'
+        ELSE 'A'
+      END

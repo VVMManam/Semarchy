@@ -1,0 +1,58 @@
+_name: LookupReviewStatuses
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Lookup Review Statuses (all parallel review tasks)
+description: 'Merge Overview step of every review task: reads the decisions already saved by all review tasks of the current cycle (source authoring rows of Merge Approval Logs newer than the published MergeDecisionDate) so each task shows the live status of the other clusters.'
+enricherExecutionScope: NONE
+numberOfRetry: 1
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: with d as (
+                select l.f_customer_legal_account_id cid,
+                       upper(l.cluster_code) cc,
+                       case upper(l.decision) when 'CONFIRMED' then 'C' when 'REJECTED' then 'R' else 'M' end st,
+                       row_number() over (partition by l.f_customer_legal_account_id, upper(l.cluster_code) order by l.decision_timestamp desc) rn
+                from sa_merge_approval_logs l
+                join gd_custom_legal_account g on g.customer_legal_account_id = l.f_customer_legal_account_id
+                where upper(coalesce(l.decision, '')) in ('CONFIRMED', 'REJECTED', 'REMERGE')
+                  and (g.merge_decision_date is null or l.decision_timestamp > g.merge_decision_date)
+            )
+            select cast(cid as varchar) LOOKUP_COLUMN,
+                   max(case when cc = 'MT' then st end) OUTPUT_COLUMN1,
+                   max(case when cc = 'IZ' then st end) OUTPUT_COLUMN2,
+                   max(case when cc in ('LG', 'LGSTS') then st end) OUTPUT_COLUMN3,
+                   max(case when cc in ('CO', 'CORP') then st end) OUTPUT_COLUMN4,
+                   max(case when cc in ('PT', 'PORTS') then st end) OUTPUT_COLUMN5,
+                   max(case when cc = 'DC' then st end) OUTPUT_COLUMN6,
+                   max(case when cc = 'GROUP' then st end) OUTPUT_COLUMN7
+            from d where rn = 1
+            group by cid
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+pluginInputs:
+  - expression: "'' || CustomerLegalAccountID"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: ReviewStatusMT
+    outputName: OUT_RESULT1
+  - attributeName: ReviewStatusIZ
+    outputName: OUT_RESULT2
+  - attributeName: ReviewStatusLG
+    outputName: OUT_RESULT3
+  - attributeName: ReviewStatusCO
+    outputName: OUT_RESULT4
+  - attributeName: ReviewStatusPT
+    outputName: OUT_RESULT5
+  - attributeName: ReviewStatusDC
+    outputName: OUT_RESULT6
+  - attributeName: ReviewStatusGS
+    outputName: OUT_RESULT7
+
+processingBatchSize: 1
+threadPoolSize: 1

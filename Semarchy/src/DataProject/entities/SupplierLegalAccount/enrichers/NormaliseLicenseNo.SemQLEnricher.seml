@@ -1,0 +1,10 @@
+_name: NormaliseLicenseNo
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Normalise License No
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: LicenseNoNormalised
+    expression: >
+      UPPER(REGEXP_REPLACE(LicenseNumber, '[^A-Za-z0-9]', '', 'g'))

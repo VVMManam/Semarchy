@@ -1,0 +1,255 @@
+_name: SupplierAddress
+_type: CollectionView
+_package: DataProject.entities.Address.collection_views
+entity: DataProject.entities.Address.Address
+default: false
+displayCard: DataProject.entities.Address.display_cards.Address
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Address
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: AddressUsageCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressUsageCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsPrimary
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsPrimary
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PartySiteName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PartySiteName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AddressLine1
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressLine1
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AddressLine2
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressLine2
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AddressLine3
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressLine3
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AddressLine4
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressLine4
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Area
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Area
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: City
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: City
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EmirateCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_EmirateCode
+    label: Emirate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: StateProvince
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: StateProvince
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Province
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Province
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Country
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Country
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_CountryCode
+    label: Country Code
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PostalCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PostalCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PoBox
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PoBox
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Sector
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Sector
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Phone
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Phone
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PhoneCountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PhoneCountryCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PhoneAreaCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PhoneAreaCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PhoneExtension
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PhoneExtension
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Fax
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Fax
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FaxCountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FaxCountryCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FaxAreaCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FaxAreaCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Email
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Email
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Latitude
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Latitude
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Longitude
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Longitude
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RecordStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: RecordStatusCode
+    label: Record Status
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceSystemCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_SourceSystemCode
+    label: Source System
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: OrderingPurpose
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: OrderingPurpose
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RemittoPurpose
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RemittoPurpose
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RFQBiddingPurpose
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RFQBiddingPurpose
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: InactiveDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InactiveDate
+    visibleByDefault: true

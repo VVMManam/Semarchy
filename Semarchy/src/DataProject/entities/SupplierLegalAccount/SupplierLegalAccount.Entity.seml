@@ -1,0 +1,1103 @@
+_package: DataProject.entities.SupplierLegalAccount
+_type: Entity
+_name: SupplierLegalAccount
+label:  Supplier Legal Account
+pluralLabel:  Supplier Legal Account
+physicalTableName: SUPP_LEGAL_ACCOUNT
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: Sgid
+    label: Sgid
+    physicalName: SGID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierAccountId
+    label: Supplier Account Id
+    physicalName: SUPPLIER_ACCOUNT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 200
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierNumber
+    label: Supplier Number
+    physicalName: SUPPLIER_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 30
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FusionSupplierId
+    label: Fusion Supplier Id
+    physicalName: FUSION_SUPPLIER_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierTypeCode
+    label: Supplier Type Code
+    physicalName: SUPPLIER_TYPE_CODE
+    dataType: DataProject.List_of_values.SupplierType
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BusinessRelationshipCode
+    label: Business Relationship Code
+    physicalName: BUSINESS_RELATIONSHIP_COD
+    dataType: DataProject.List_of_values.BusinessRelationship
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OrganizationTypeCode
+    label: Organization Type Code
+    physicalName: ORGANIZATION_TYPE_CODE
+    dataType: DataProject.List_of_values.OrganizationType
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountStatusCode
+    label: Account Status Code
+    physicalName: ACCOUNT_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsOneTimeSupplier
+    label: Is One Time Supplier
+    physicalName: IS_ONE_TIME_SUPPLIER
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsGovernmentEntity
+    label: IsGovernmentEntity
+    physicalName: IS_GOVERNMENT_ENTITY
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameEn
+    label: Name En
+    physicalName: NAME_EN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    length: 360
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameAlternate
+    label: Name Alternate
+    physicalName: NAME_ALT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 360
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IndustryClassCode
+    label: Industry Class Code
+    physicalName: INDUSTRY_CLASS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Website
+    label: Website
+    physicalName: WEBSITE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: YearEstablished
+    label: Year Established
+    physicalName: YEAR_ESTABLISHED
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    precision: 38
+  - _type: EntityAttribute
+    _name: AllowWithholdingTax
+    label: Allow Withholding Tax
+    physicalName: ALLOW_WITHHOLDING_TAX
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: WithholdingTaxGroupCode
+    label: Withholding Tax Group Code
+    physicalName: WITHHOLDING_TAX_GROUP_COD
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DefaultPaymentMethodCode
+    label: Default Payment Method Code
+    physicalName: DEFAULT_PAYMENT_CODE
+    dataType: DataProject.List_of_values.PaymentMethod
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ExclusivePayment
+    label: Exclusive Payment
+    physicalName: EXCLUSIVE_PAYMENT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RemitAdviceDeliveryCode
+    label: Remit Advice Delivery Code
+    physicalName: REMIT_ADVICE_DELIVERY_COD
+    dataType: DataProject.List_of_values.RemitAdviceDelivery
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BcNotApplicable
+    label: Bc Not Applicable
+    physicalName: BC_NOT_APPLICABLE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StartDateActive
+    label: Start Date Active
+    physicalName: START_DATE_ACTIVE_DT
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsHolding
+    label: Is Holding
+    physicalName: IS_HOLDING
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GoldenIdStatus
+    label: Golden Id Status
+    physicalName: GOLDEN_ID_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierCode
+    label: Supplier Code
+    physicalName: SUPPLIER_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierState
+    label: Supplier State
+    physicalName: SUPPLIER_STATE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseNumber
+    label: License Number
+    physicalName: LICENSE_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IssuingAuthority
+    label: Issuing Authority (Fusion code)
+    physicalName: ISSUING_AUTH
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IssuingEmirate
+    label: Issuing Emirate (source code)
+    physicalName: ISSUING_EMIRATE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseNoNormalised
+    label: License No Normalised
+    physicalName: LICENSE_NO_NORMALISED
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseStatusCode
+    label: License Status Code
+    physicalName: LICENSE_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseRecordStatusCode
+    label: License Record Status Code
+    physicalName: LICENSE_RECORD_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseStartDate
+    label: License Start Date
+    physicalName: LICENSE_START_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseExpiryDate
+    label: License Expiry Date
+    physicalName: LICENSE_EXPIRY_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrimaryLicense
+    label: Is Primary License
+    physicalName: IS_PRIMARY_LICENSE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseValidityStatusCode
+    label: License Validity Status Code
+    physicalName: LICENSE_VALIDITY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseIsPlaceholder
+    label: License Is Placeholder
+    physicalName: LICENSE_IS_PLACEHOLDER
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenseFormatValid
+    label: License Format Valid
+    physicalName: LICENSE_FORMAT_VALID
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: VATRegistrationNumber
+    label: VAT Registration Number
+    physicalName: VAT_REG_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameMatchKey
+    label: Name Match Key
+    physicalName: NAME_MATCH_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RemitAdviceEmail
+    label: Remit Advice Email
+    physicalName: REMIT_ADVICE_EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EndDateActive
+    label: End Date Active
+    physicalName: END_DATE_ACTIVE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ChiefExecutiveName
+    label: Chief Executive Name
+    physicalName: CHIEF_EXECUTIVE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ChiefExecutiveTitle
+    label: Chief Executive Title
+    physicalName: CHIEF_EXECUTIVE_TITLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MinorityGroupCode
+    label: Minority Group Code
+    physicalName: MINORITY_GRP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NonTradeFlag
+    label: Non Trade Flag
+    physicalName: NON_TRADE_FLAG
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SupplierCategory
+    label: Supplier Category
+    physicalName: SUPPLIER_CATEGORY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FormerName
+    label: Former Name
+    physicalName: FORMER_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FormerNameMatchKey
+    label: Former Name Match Key
+    physicalName: FORMER_NAME_MATCH_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: WebsiteDomain
+    label: Website Domain
+    physicalName: WEBSITE_DOMAIN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TaxCountryCode
+    label: Tax Country Code
+    physicalName: TAX_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TrnMatchKey
+    label: TRN Match Key
+    physicalName: TRN_MATCH_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 64
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameTokenKey
+    label: Name Token Key
+    physicalName: NAME_TOKEN_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CurrencySource
+    label: Currency (source code)
+    physicalName: CURRENCY_SOURCE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaymentTerm
+    label: Payment Term (source value)
+    physicalName: PAYMENT_TERM
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BankAccountKeys
+    label: Bank Account Keys
+    physicalName: BANK_ACCOUNT_KEYS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 4000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryIbanKey
+    label: Primary IBAN Key
+    physicalName: PRIMARY_IBAN_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryAccountKey
+    label: Primary Account Key
+    physicalName: PRIMARY_ACCOUNT_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 120
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryAddressLine1
+    label: Primary Address Line 1
+    physicalName: PRIMARY_ADDRESS_LINE1
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 500
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryAddressCity
+    label: Primary Address City
+    physicalName: PRIMARY_ADDRESS_CITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ContactEmailDomains
+    label: Contact Email Domains
+    physicalName: CONTACT_EMAIL_DOMAINS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 4000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryEmailDomain
+    label: Primary Email Domain
+    physicalName: PRIMARY_EMAIL_DOMAIN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DqWarnings
+    label: Data Quality Warnings
+    physicalName: DQ_WARNINGS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 2000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount.Sgid
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherSupplierLegalAccount
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 100
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 100
+  mergeThresholdMergingConfirmedWithNewMasters: 100
+  mergeThresholdMergingConfirmedWithUnconfirmed: 100
+  mergeThresholdMergingUnconfirmed: 100
+  mergeThresholdMergingUnconfirmedWithNewMasters: 100
+  mergeThresholdNewGroup: 100
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: MAT02_TradeLicenceExact
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.LicenseNoNormalised IS NOT NULL
+        AND Record2.LicenseNoNormalised IS NOT NULL
+        AND UPPER(BTRIM(Record1.NameMatchKey)) = UPPER(BTRIM(Record2.NameMatchKey))
+        AND UPPER(BTRIM(Record1.LicenseNoNormalised)) = UPPER(BTRIM(Record2.LicenseNoNormalised))
+        AND (NULLIF(UPPER(BTRIM(Record1.FID_IssuingAuthorityCode)), '-1') IS NULL
+             OR NULLIF(UPPER(BTRIM(Record2.FID_IssuingAuthorityCode)), '-1') IS NULL
+             OR NULLIF(UPPER(BTRIM(Record1.FID_IssuingAuthorityCode)), '-1') = NULLIF(UPPER(BTRIM(Record2.FID_IssuingAuthorityCode)), '-1'))
+        AND Record1.FID_RegistrationCountry IS NOT NULL
+        AND Record2.FID_RegistrationCountry IS NOT NULL
+        AND UPPER(BTRIM(Record1.FID_RegistrationCountry)) = UPPER(BTRIM(Record2.FID_RegistrationCountry))
+        AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+        AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+      label: "MAT-02 : Name Match Key + Normalised Licence + Country + Authority (or null / Other) - Exact Match"
+      matchScore: 98
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT06_ExactNameCountry
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.FID_RegistrationCountry IS NOT NULL
+        AND Record2.FID_RegistrationCountry IS NOT NULL
+        AND UPPER(BTRIM(Record1.NameMatchKey)) = UPPER(BTRIM(Record2.NameMatchKey))
+        AND UPPER(BTRIM(Record1.FID_RegistrationCountry)) = UPPER(BTRIM(Record2.FID_RegistrationCountry))
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+      label: "MAT-06 : NameMatchKey + Country - Exact Match (steward review: name + country alone is not enough to auto-merge, legal-form suffixes are stripped from the key)"
+      matchScore: 90
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT07_FuzzyNameCountry
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.FID_RegistrationCountry IS NOT NULL
+        AND Record2.FID_RegistrationCountry IS NOT NULL
+        AND UPPER(BTRIM(Record1.FID_RegistrationCountry)) = UPPER(BTRIM(Record2.FID_RegistrationCountry))
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameMatchKey)), UPPER(BTRIM(Record2.NameMatchKey))) >= 92
+        AND SEM_EDIT_DISTANCE_SIMILARITY(REGEXP_REPLACE(UPPER(BTRIM(Record1.NameMatchKey)), ' .*$', ''), REGEXP_REPLACE(UPPER(BTRIM(Record2.NameMatchKey)), ' .*$', '')) >= 80
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+      label: "MAT-07 : Fuzzy Name (JW >= 92) + Country"
+      matchScore: 80
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT10_FuzzyNameLicencePrefix
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.LicenseNoNormalised IS NOT NULL
+        AND Record2.LicenseNoNormalised IS NOT NULL
+        AND NULLIF(UPPER(BTRIM(Record1.FID_IssuingAuthorityCode)), '-1') IS NOT NULL
+        AND NULLIF(UPPER(BTRIM(Record1.FID_IssuingAuthorityCode)), '-1') = NULLIF(UPPER(BTRIM(Record2.FID_IssuingAuthorityCode)), '-1')
+        AND UPPER(BTRIM(Record1.LicenseNoNormalised)) = UPPER(BTRIM(Record2.LicenseNoNormalised))
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameMatchKey)), UPPER(BTRIM(Record2.NameMatchKey))) >= 90
+        AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+        AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+      label: "MAT-10 : Fuzzy Name (JW >= 90) + Licence Prefix + Authority"
+      matchScore: 95
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT01_NameTrnCountry
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.TrnMatchKey IS NOT NULL
+        AND Record2.TrnMatchKey IS NOT NULL
+        AND UPPER(BTRIM(Record1.NameMatchKey)) = UPPER(BTRIM(Record2.NameMatchKey))
+        AND Record1.TrnMatchKey = Record2.TrnMatchKey
+        AND Record1.FID_RegistrationCountry IS NOT NULL
+        AND Record2.FID_RegistrationCountry IS NOT NULL
+        AND UPPER(BTRIM(Record1.FID_RegistrationCountry)) = UPPER(BTRIM(Record2.FID_RegistrationCountry))
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+      label: "MAT-01 : NameMatchKey + TRN (match key) + Country - Exact Match"
+      matchScore: 98
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT02B_NameLicenceAuthorityDiffers
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.LicenseNoNormalised IS NOT NULL
+        AND Record2.LicenseNoNormalised IS NOT NULL
+        AND UPPER(BTRIM(Record1.NameMatchKey)) = UPPER(BTRIM(Record2.NameMatchKey))
+        AND UPPER(BTRIM(Record1.LicenseNoNormalised)) = UPPER(BTRIM(Record2.LicenseNoNormalised))
+        AND Record1.FID_RegistrationCountry IS NOT NULL
+        AND Record2.FID_RegistrationCountry IS NOT NULL
+        AND UPPER(BTRIM(Record1.FID_RegistrationCountry)) = UPPER(BTRIM(Record2.FID_RegistrationCountry))
+        AND NULLIF(UPPER(BTRIM(Record1.FID_IssuingAuthorityCode)), '-1') IS NOT NULL
+        AND NULLIF(UPPER(BTRIM(Record2.FID_IssuingAuthorityCode)), '-1') IS NOT NULL
+        AND NULLIF(UPPER(BTRIM(Record1.FID_IssuingAuthorityCode)), '-1') <> NULLIF(UPPER(BTRIM(Record2.FID_IssuingAuthorityCode)), '-1')
+        AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+        AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+      label: "MAT-02 (2nd row) : Name Match Key + Normalised Licence + Country, Issuing Authority differs"
+      matchScore: 80
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT08_ReorderedNameCountry
+      condition: |-
+        Record1.NameTokenKey IS NOT NULL
+        AND Record2.NameTokenKey IS NOT NULL
+        AND Record1.FID_RegistrationCountry IS NOT NULL
+        AND Record2.FID_RegistrationCountry IS NOT NULL
+        AND UPPER(BTRIM(Record1.FID_RegistrationCountry)) = UPPER(BTRIM(Record2.FID_RegistrationCountry))
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameTokenKey)), UPPER(BTRIM(Record2.NameTokenKey))) >= 90
+        AND Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND ' ' || UPPER(BTRIM(Record2.NameTokenKey)) || ' ' LIKE '% ' || REGEXP_REPLACE(UPPER(BTRIM(Record1.NameMatchKey)), ' .*$', '') || ' %'
+        AND ' ' || UPPER(BTRIM(Record1.NameTokenKey)) || ' ' LIKE '% ' || REGEXP_REPLACE(UPPER(BTRIM(Record2.NameMatchKey)), ' .*$', '') || ' %'
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+      label: "MAT-08 : Word-order-insensitive name (>= 90) + Country"
+      matchScore: 70
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT09_FuzzyNameTrnPrefix
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.TrnMatchKey IS NOT NULL
+        AND Record2.TrnMatchKey IS NOT NULL
+        AND LENGTH(Record1.TrnMatchKey) >= 8
+        AND LENGTH(Record2.TrnMatchKey) >= 8
+        AND SUBSTR(Record1.TrnMatchKey, 1, 8) = SUBSTR(Record2.TrnMatchKey, 1, 8)
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameMatchKey)), UPPER(BTRIM(Record2.NameMatchKey))) >= 90
+        AND SEM_EDIT_DISTANCE_SIMILARITY(REGEXP_REPLACE(UPPER(BTRIM(Record1.NameMatchKey)), ' .*$', ''), REGEXP_REPLACE(UPPER(BTRIM(Record2.NameMatchKey)), ' .*$', '')) >= 80
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+      label: "MAT-09 : Fuzzy Name (>= 90) + first 8 TRN digits"
+      matchScore: 80
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT14_WebsiteDomainName
+      condition: |-
+        Record1.WebsiteDomain IS NOT NULL
+        AND Record2.WebsiteDomain IS NOT NULL
+        AND Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.WebsiteDomain = Record2.WebsiteDomain
+        AND UPPER(Record1.WebsiteDomain) NOT IN ('FACEBOOK.COM','LINKEDIN.COM','INSTAGRAM.COM','TWITTER.COM','X.COM','GOOGLE.COM','GMAIL.COM','YAHOO.COM','HOTMAIL.COM','OUTLOOK.COM','WORDPRESS.COM','WIX.COM','BLOGSPOT.COM','YOUTUBE.COM')
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameMatchKey)), UPPER(BTRIM(Record2.NameMatchKey))) >= 85
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+      label: "MAT-14 : Website domain (non-generic) + Name (>= 85)"
+      matchScore: 70
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MAT04_NameAccountBankCountry
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND UPPER(BTRIM(Record1.NameMatchKey)) = UPPER(BTRIM(Record2.NameMatchKey))
+        AND (
+          (Record1.PrimaryAccountKey IS NOT NULL AND Record2.BankAccountKeys IS NOT NULL AND STRPOS(Record2.BankAccountKeys, '|' || Record1.PrimaryAccountKey || '|') > 0)
+          OR (Record2.PrimaryAccountKey IS NOT NULL AND Record1.BankAccountKeys IS NOT NULL AND STRPOS(Record1.BankAccountKeys, '|' || Record2.PrimaryAccountKey || '|') > 0)
+        )
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+      label: "MAT-04 : Name Match Key + bank account number + bank country"
+      matchScore: 96
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MAT05_NameIban
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND UPPER(BTRIM(Record1.NameMatchKey)) = UPPER(BTRIM(Record2.NameMatchKey))
+        AND (
+          (Record1.PrimaryIbanKey IS NOT NULL AND Record2.BankAccountKeys IS NOT NULL AND STRPOS(Record2.BankAccountKeys, '|' || Record1.PrimaryIbanKey || '|') > 0)
+          OR (Record2.PrimaryIbanKey IS NOT NULL AND Record1.BankAccountKeys IS NOT NULL AND STRPOS(Record1.BankAccountKeys, '|' || Record2.PrimaryIbanKey || '|') > 0)
+        )
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+      label: "MAT-05 : Name Match Key + IBAN (also for non-trade payees, MAT-17)"
+      matchScore: 97
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MAT11_NameAddress
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameMatchKey)), UPPER(BTRIM(Record2.NameMatchKey))) >= 88
+        AND Record1.PrimaryAddressLine1 IS NOT NULL
+        AND Record2.PrimaryAddressLine1 IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(Record1.PrimaryAddressLine1, Record2.PrimaryAddressLine1) >= 85
+        AND Record1.PrimaryAddressCity IS NOT NULL
+        AND Record1.PrimaryAddressCity = Record2.PrimaryAddressCity
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+      label: "MAT-11 : Name (>= 88) + address line 1 (>= 85) + city"
+      matchScore: 80
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MAT12_NameEmailDomain
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameMatchKey)), UPPER(BTRIM(Record2.NameMatchKey))) >= 90
+        AND (
+          (Record1.PrimaryEmailDomain IS NOT NULL AND Record2.ContactEmailDomains IS NOT NULL AND STRPOS(Record2.ContactEmailDomains, '|' || Record1.PrimaryEmailDomain || '|') > 0)
+          OR (Record2.PrimaryEmailDomain IS NOT NULL AND Record1.ContactEmailDomains IS NOT NULL AND STRPOS(Record1.ContactEmailDomains, '|' || Record2.PrimaryEmailDomain || '|') > 0)
+        )
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+      label: "MAT-12 : Name (>= 90) + contact corporate e-mail domain"
+      matchScore: 80
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MAT13_NameSharedBank
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL
+        AND Record2.NameMatchKey IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.NameMatchKey)), UPPER(BTRIM(Record2.NameMatchKey))) >= 85
+        AND (
+          (Record1.PrimaryIbanKey IS NOT NULL AND Record2.BankAccountKeys IS NOT NULL AND STRPOS(Record2.BankAccountKeys, '|' || Record1.PrimaryIbanKey || '|') > 0)
+          OR (Record2.PrimaryIbanKey IS NOT NULL AND Record1.BankAccountKeys IS NOT NULL AND STRPOS(Record1.BankAccountKeys, '|' || Record2.PrimaryIbanKey || '|') > 0)
+          OR (Record1.PrimaryAccountKey IS NOT NULL AND Record2.BankAccountKeys IS NOT NULL AND STRPOS(Record2.BankAccountKeys, '|' || Record1.PrimaryAccountKey || '|') > 0)
+          OR (Record2.PrimaryAccountKey IS NOT NULL AND Record1.BankAccountKeys IS NOT NULL AND STRPOS(Record1.BankAccountKeys, '|' || Record2.PrimaryAccountKey || '|') > 0)
+        )
+        AND UPPER(COALESCE(Record1.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND UPPER(COALESCE(Record2.AccountStatusCode, '')) NOT IN ('INACTIVE', 'I')
+        AND NOT (Record1.TrnMatchKey IS NOT NULL AND Record2.TrnMatchKey IS NOT NULL AND Record1.TrnMatchKey <> Record2.TrnMatchKey)
+        AND COALESCE(Record1.NonTradeFlag,'N') <> 'Y'
+        AND COALESCE(Record2.NonTradeFlag,'N') <> 'Y'
+        AND (Record1.IsHolding IS NULL OR Record1.IsHolding = '0')
+        AND (Record2.IsHolding IS NULL OR Record2.IsHolding = '0')
+      label: "MAT-13 : Name (>= 85) + shared IBAN or bank account"
+      matchScore: 85
+      usingMatchOn: false

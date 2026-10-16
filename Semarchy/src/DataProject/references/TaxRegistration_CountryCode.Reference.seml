@@ -1,0 +1,23 @@
+_name: TaxRegistration_CountryCode
+_type: Reference
+_package: DataProject.references
+label:  Tax Registration to  Country
+physicalName: TAX_REG_COUNTRY_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.TaxRegistration.TaxRegistration
+fromRoleLabel:  Tax Registration
+fromRolePluralLabel:  Tax Registration
+fromRoleName: TaxRegistration
+toEntity: DataProject.entities.Country.CountryReference
+toRoleLabel: Country Code
+toRoleName: CountryCode
+toRolePhysicalName: COUNTRY_CODE
+foreignAttribute:
+  _name: CountryCode
+  _type: ForeignAttribute
+  physicalName: COUNTRY_CODE
+  label: Country Code
+  searchable: true
+  entity: DataProject.entities.TaxRegistration.TaxRegistration

@@ -1,0 +1,10 @@
+_name: IssuingAuthorityCodeResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Issuing Authority Code Resolved
+validationScope: POST_CONSO
+validationLabel: "ISSUING_AUTHORITY_UNMAPPED - Fusion issuing authority code has no matching Issuing Authority in MDM."
+condition: |-
+  IssuingAuthority IS NULL
+  OR FID_IssuingAuthorityCode IS NOT NULL

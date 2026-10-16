@@ -1,0 +1,23 @@
+_name: ContactPurpose_ContactId
+_type: Reference
+_package: DataProject.references
+label:  Contact Purpose to  Contact
+physicalName: CONTACT_PURPOSE_C_4A4
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.ContactPurpose.ContactPurpose
+fromRoleLabel:  Contact Purpose
+fromRolePluralLabel:  Contact Purpose
+fromRoleName: ContactPurpose
+toEntity: DataProject.entities.Contact.Contact
+toRoleLabel: Contact Id
+toRoleName: ContactId
+toRolePhysicalName: CONTACT_ID
+foreignAttribute:
+  _name: ContactId
+  _type: ForeignAttribute
+  physicalName: CONTACT_ID
+  label: Contact Id
+  searchable: true
+  entity: DataProject.entities.ContactPurpose.ContactPurpose

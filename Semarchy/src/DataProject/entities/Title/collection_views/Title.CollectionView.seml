@@ -1,0 +1,54 @@
+_name: Title
+_type: CollectionView
+_package: DataProject.entities.Title.collection_views
+entity: DataProject.entities.Title.Title
+default: true
+displayCard: DataProject.entities.Title.display_cards.Title
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: TitleID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: TitleID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Code
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Code
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Text
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Text
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CRMCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CRMCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ERPCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ERPCode
+    visibleByDefault: true

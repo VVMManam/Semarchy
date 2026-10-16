@@ -1,0 +1,23 @@
+_name: CustomerOrgAssignment_ErpProfileCode
+_type: Reference
+_package: DataProject.references
+label:  Customer Org Assignment to  Erp Profile
+physicalName: CUST_ORG_ASGN_ERP_BB6
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+fromRoleLabel:  Customer Org Assignment
+fromRolePluralLabel:  Customer Org Assignment
+fromRoleName: CustomerOrgAssignment
+toEntity: DataProject.entities.ErpProfile.ErpProfile
+toRoleLabel: Erp Profile Code
+toRoleName: ErpProfileCode
+toRolePhysicalName: ERP_PROFILE_CODE
+foreignAttribute:
+  _name: ErpProfileCode
+  _type: ForeignAttribute
+  physicalName: ERP_PROFILE_CODE
+  label: Erp Profile Code
+  searchable: true
+  entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment

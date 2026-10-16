@@ -1,0 +1,8 @@
+_name: CountryResolved
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: Country Resolved
+validationScope: POST_CONSO
+validationLabel: "COUNTRY_UNMAPPED - source value has no match in MDM."
+condition: "NULLIF(BTRIM(Country), '') IS NULL OR FID_CountryCode IS NOT NULL"

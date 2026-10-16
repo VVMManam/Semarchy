@@ -1,0 +1,45 @@
+_name: IssuingAuthority
+_package: DataProject.entities.IssuingAuthority.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.IssuingAuthority.IssuingAuthority
+rootLabel: Issuing Authority
+rootPluralLabel: Issuing Authorities
+useHierarchyOnOpen: false
+label: Issuing Authority
+rootBusinessViewEntity:
+  _name: IssuingAuthority
+  _type: BusinessViewEntity
+  collection: DataProject.entities.IssuingAuthority.collection_views.IssuingAuthorityView
+  actionSet: DataProject.entities.IssuingAuthority.action_sets.IssuingAuthority
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.IssuingAuthority.IssuingAuthority
+  form: DataProject.entities.IssuingAuthority.forms.IssuingAuthorityForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

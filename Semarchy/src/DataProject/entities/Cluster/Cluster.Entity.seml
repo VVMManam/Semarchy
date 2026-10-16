@@ -1,0 +1,80 @@
+_package: DataProject.entities.Cluster
+_type: Entity
+_name: Cluster
+label: Cluster
+pluralLabel: Cluster
+physicalTableName: CLUSTER
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ClusterCode
+    label: Cluster Code
+    physicalName: CLUSTER_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameEn
+    label: Name En
+    physicalName: NAME_EN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 100
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CRMCode
+    label: CRM Code
+    physicalName: CRM_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FusionCode
+    label: Fusion Code
+    physicalName: FUSION_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: DataProject.entities.Cluster.Cluster.ClusterCode
+entityType: BASIC

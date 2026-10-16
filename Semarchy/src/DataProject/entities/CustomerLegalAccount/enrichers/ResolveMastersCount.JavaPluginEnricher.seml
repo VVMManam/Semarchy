@@ -1,0 +1,65 @@
+_name: ResolveMastersCount
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Resolve Masters Count and Previous Approval State
+description: 'LkpMastersCount = number of master records whose latest version (master integration table) points to this golden record; used by EvaluateMergeDecision to detect a merge. Prev* = merge approval values published before this batch (golden table), so the approval state is kept even when the batch comes from a source that does not carry these attributes.'
+enricherExecutionScope: POST_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: with lm as (
+                select distinct on (m.b_pubid, m.b_sourceid) m.customer_legal_account_id cgid
+                from mi_custom_legal_account m
+                order by m.b_pubid, m.b_sourceid, m.b_batchid desc
+            ),
+            cnt as (
+                select cgid, count(*) n from lm where cgid is not null group by cgid
+            ),
+            k as (
+                select cgid from cnt
+                union
+                select customer_legal_account_id from gd_custom_legal_account
+            )
+            select cast(k.cgid as varchar) LOOKUP_COLUMN,
+                   cast(c.n as varchar) OUTPUT_COLUMN1,
+                   cast(g.merge_approval_status as varchar) OUTPUT_COLUMN2,
+                   cast(g.approval_masters_count as varchar) OUTPUT_COLUMN3,
+                   cast(g.approval_req_batch_id as varchar) OUTPUT_COLUMN4,
+                   cast(g.approval_req_by as varchar) OUTPUT_COLUMN5,
+                   to_char(g.approval_req_on, 'YYYY-MM-DD HH24:MI:SS') OUTPUT_COLUMN6,
+                   cast(g.approval_req_by_info as varchar) OUTPUT_COLUMN7
+            from k
+            left join cnt c on c.cgid = k.cgid
+            left join gd_custom_legal_account g on g.customer_legal_account_id = k.cgid
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "'' || CustomerLegalAccountID"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: LkpMastersCount
+    outputName: OUT_RESULT1
+  - attributeName: PrevApprovalStatus
+    outputName: OUT_RESULT2
+  - attributeName: PrevApprovalMastersCount
+    outputName: OUT_RESULT3
+  - attributeName: PrevApprovalReqBatchID
+    outputName: OUT_RESULT4
+  - attributeName: PrevApprovalReqBy
+    outputName: OUT_RESULT5
+  - attributeName: PrevApprovalReqOn
+    outputName: OUT_RESULT6
+  - attributeName: PrevApprovalReqByInfo
+    outputName: OUT_RESULT7
+
+processingBatchSize: 100
+threadPoolSize: 1

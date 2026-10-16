@@ -1,0 +1,16 @@
+_name: LoadCustomerAccount
+_package: DataProject.ModelJobs
+_type: CertificationJob
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: CustomerLegalAccount
+    _type: ModelJobTask
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

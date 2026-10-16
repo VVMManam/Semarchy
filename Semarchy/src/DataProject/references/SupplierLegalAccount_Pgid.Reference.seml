@@ -1,0 +1,23 @@
+_name: SupplierLegalAccount_Pgid
+_type: Reference
+_package: DataProject.references
+label: Supplier Legal Account to Party
+physicalName: SUPP_LEGAL_ACC_PGID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+fromRoleLabel: Supplier Legal Account
+fromRolePluralLabel: Supplier Legal Accounts
+fromRoleName: SupplierLegalAccount
+toEntity: DataProject.entities.Party.Party
+toRoleLabel: Pgid
+toRoleName: Pgid
+toRolePhysicalName: PGID
+foreignAttribute:
+  _name: Pgid
+  _type: ForeignAttribute
+  physicalName: PGID
+  label: Pgid
+  searchable: true
+  entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount

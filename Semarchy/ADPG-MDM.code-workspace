@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"semarchy.sdp.instanceUrl": "https://adpg--dev.eu.semarchy.net/",
+		"semarchy.sdp.datasource": "datasource1",
+		"semarchy.sdp.dataLocation": "adpg_model1",
+		"seml.trace.server": "messages",
+		"editor.suggest.showStatusBar": true
+	}
+}

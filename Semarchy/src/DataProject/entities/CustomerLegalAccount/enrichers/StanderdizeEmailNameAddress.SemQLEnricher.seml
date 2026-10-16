@@ -1,0 +1,26 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: StanderdizeEmailNameAddress
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Standardize Email, Name and Address
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: Email
+    expression: |-
+      CASE
+          WHEN Email IS NULL
+          THEN NULL
+          ELSE LOWER(REGEXP_REPLACE(Email, ' ', ''))
+      END
+  - attributeName: EstablishmentAddress
+    expression: |-
+      CASE
+          WHEN EstablishmentAddress IS NULL THEN NULL
+          ELSE UPPER(REGEXP_REPLACE(BTRIM(EstablishmentAddress), '\s+', ' ', 'g'))
+      END
+  - attributeName: NameEN
+    expression: |-
+      CASE
+          WHEN NameEN IS NULL THEN NULL
+          ELSE UPPER(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(NameEN, '[\u2013\u2014]', '-', 'g'), '[\u2018\u2019]', '''', 'g'), '[\u201C\u201D]', '"', 'g'), '[\s\u00A0]+', ' ', 'g')))
+      END

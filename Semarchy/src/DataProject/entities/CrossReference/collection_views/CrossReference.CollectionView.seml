@@ -1,0 +1,54 @@
+_name: CrossReference
+_type: CollectionView
+_package: DataProject.entities.CrossReference.collection_views
+entity: DataProject.entities.CrossReference.CrossReference
+default: true
+displayCard: DataProject.entities.CrossReference.display_cards.CrossReference
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: CrossReferenceID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CrossReferenceID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AttributeName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AttributeName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceSystemCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceSystemCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceValue
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SourceValue
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MdmValue
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MdmValue
+    visibleByDefault: true

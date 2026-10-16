@@ -1,0 +1,29 @@
+_name: ResolveRegistrationEmirate
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Resolve Registration Emirate
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: "select replace(upper(trim(v)),' ','') LOOKUP_COLUMN, min(c) OUTPUT_COLUMN1 from (select emirate_code c, unnest(array[emirate_code, crm_code, fusion_code, emirate_name_en]) v from gd_emirate) a where v is not null group by 1"
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "REPLACE(UPPER(BTRIM(COALESCE(FID_RegistrationEmirateCode, IssuingEmirateId))), ' ', '')"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_RegistrationEmirateCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

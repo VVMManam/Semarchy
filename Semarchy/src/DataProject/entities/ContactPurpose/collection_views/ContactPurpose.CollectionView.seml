@@ -1,0 +1,50 @@
+_name: ContactPurpose
+_type: CollectionView
+_package: DataProject.entities.ContactPurpose.collection_views
+entity: DataProject.entities.ContactPurpose.ContactPurpose
+default: true
+displayCard: DataProject.entities.ContactPurpose.display_cards.ContactPurpose
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Contact Role
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: ContactRoleCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FDN_ContactRoleCode
+    label: Contact Role
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsPrimaryFocalPoint
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsPrimaryFocalPoint
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsPrimaryFinanceFocal
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsPrimaryFinanceFocal
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RecordStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN RecordStatusCode = 'A' THEN 'Active' WHEN RecordStatusCode = 'I' THEN 'Inactive' ELSE RecordStatusCode END
+    label: Record Status
+    visibleByDefault: true

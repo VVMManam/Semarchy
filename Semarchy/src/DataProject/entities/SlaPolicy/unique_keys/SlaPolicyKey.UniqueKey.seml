@@ -1,0 +1,14 @@
+_name: SlaPolicyKey
+_package: DataProject.entities.SlaPolicy.unique_keys
+_type: UniqueKey
+entity: DataProject.entities.SlaPolicy.SlaPolicy
+label: One SLA per scope and start date
+validationLabel: 'An SLA policy already exists for this domain, process, sub process, task, cluster and Effective From date.'
+validationScope: PRE_CONSO
+keyAttributes:
+  - attribute: DataProject.entities.SlaPolicy.SlaPolicy.DomainCode
+  - attribute: DataProject.entities.SlaPolicy.SlaPolicy.ProcessCode
+  - attribute: DataProject.entities.SlaPolicy.SlaPolicy.SubProcessCode
+  - attribute: DataProject.entities.SlaPolicy.SlaPolicy.TaskCode
+  - attribute: DataProject.references.SlaPolicy_ClusterCode.ClusterCode
+  - attribute: DataProject.entities.SlaPolicy.SlaPolicy.EffectiveFrom

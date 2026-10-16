@@ -1,0 +1,23 @@
+_name: SupplierSite_AddressName
+_type: Reference
+_package: DataProject.references
+label: SupplierSite Address
+physicalName: SUPPLIERSITE_ADDRESSNAME
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSite.SupplierSite
+fromRoleLabel: Supplier Site
+fromRolePluralLabel: Supplier Sites
+fromRoleName: SupplierSitesUsingAddress
+toEntity: DataProject.entities.Address.Address
+toRoleLabel: Address
+toRoleName: AddressName
+toRolePhysicalName: PARTY_SITE_NAME
+foreignAttribute:
+  _name: AddressName
+  _type: ForeignAttribute
+  physicalName: ADDRESS_NAME
+  label: Address Name
+  searchable: true
+  entity: DataProject.entities.SupplierSite.SupplierSite

@@ -1,0 +1,17 @@
+_name: LicenseActivityType
+_package: DataProject.entities.LicenseActivityType.display_cards
+_type: DisplayCard
+entity: DataProject.entities.LicenseActivityType.LicenseActivityType
+default: true
+primaryTextExpression: CASE WHEN NameEn IS NOT NULL THEN NameEn ELSE ActivityCode END
+supportingTextExpression: ActivityCode
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

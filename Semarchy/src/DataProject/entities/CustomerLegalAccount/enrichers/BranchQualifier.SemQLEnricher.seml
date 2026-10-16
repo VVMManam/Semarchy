@@ -1,0 +1,20 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: BranchQualifier
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Flag Branch Accounts
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: IsBranch
+    expression: |-
+      CASE
+          WHEN NameEN IS NULL THEN '0'
+          WHEN REGEXP_LIKE(UPPER(NameEN), 'BRANCH|\yBR\y') OR (EstablishmentType IS NOT NULL AND UPPER(EstablishmentType) LIKE '%BRANCH%') THEN '1'
+          ELSE '0'
+      END
+  - attributeName: BranchQualifier
+    expression: |-
+      CASE
+        WHEN NameEN IS NOT NULL AND REGEXP_LIKE(UPPER(NameEN), 'BRANCH')
+        THEN SUBSTR(BTRIM(REGEXP_REPLACE(UPPER(NameEN), '^.*?(BRANCH[^)]*)\)?\s*$', '\1')), 1, 100)
+      END

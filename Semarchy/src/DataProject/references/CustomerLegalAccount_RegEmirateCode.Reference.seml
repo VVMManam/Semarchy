@@ -1,0 +1,23 @@
+_name: CustomerLegalAccount_RegEmirateCode
+_type: Reference
+_package: DataProject.references
+label: CustomerLegalAccount Registration Emirate
+physicalName: CUSTOMERLEGALAC_REGEMR
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+fromRoleLabel: CustomerLegalAccount
+fromRolePluralLabel: Customer Legal Accounts
+fromRoleName: CustomerLegalAccount
+toEntity: DataProject.entities.Emirate.Emirate
+toRoleLabel: Registration Emirate
+toRoleName: RegistrationEmirateCode
+toRolePhysicalName: REG_EMIRATE_CODE
+foreignAttribute:
+  _name: RegistrationEmirateCode
+  _type: ForeignAttribute
+  physicalName: REG_EMIRATE_CODE
+  label: Registration Emirate
+  searchable: true
+  entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount

@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_name: CaptureReviewContextCO
+label: Capture Review Context (Corp Review)
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+enricherExecutionScope: NONE
+description: 'Merge Overview step of the Corp Review task: sets only the task code (a short text) used by the Merge Overview form; no date/time is written to the customer.'
+semQlEnricherExpressions:
+  - attributeName: ReviewTaskCode
+    expression: '''CO'''

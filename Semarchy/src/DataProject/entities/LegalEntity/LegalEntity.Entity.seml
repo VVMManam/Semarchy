@@ -1,0 +1,127 @@
+_package: DataProject.entities.LegalEntity
+_type: Entity
+_name: LegalEntity
+label: Legal Entity
+pluralLabel: Legal Entity
+physicalTableName: LEGAL_ENTITY
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: LegalEntityId
+    label: Legal Entity Id
+    physicalName: LEGAL_ENTITY_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameEn
+    label: Name En
+    physicalName: NAME_EN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 200
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameAr
+    label: Name Ar
+    physicalName: NAME_AR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ErpLegalEntityCode
+    label: Erp Legal Entity Code
+    physicalName: ERP_LEGAL_ENTITY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPhase3
+    label: Is Phase3
+    physicalName: IS_PHASE3
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsNoatum
+    label: Is Noatum
+    physicalName: IS_NOATUM
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RegionCode
+    label: Region Code
+    physicalName: REGION_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SubRegionCode
+    label: Sub Region Code
+    physicalName: SUB_REGION_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: DataProject.entities.LegalEntity.LegalEntity.LegalEntityId
+entityType: BASIC

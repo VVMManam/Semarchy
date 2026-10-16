@@ -1,0 +1,42 @@
+_name: Cluster
+_package: DataProject.entities.Cluster.steppers
+_type: Stepper
+entity: DataProject.entities.Cluster.Cluster
+label: Cluster
+rootStep:
+  _name: Cluster
+  _type: CollectionStep
+  label: Cluster
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.Cluster.collection_views.Cluster
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Cluster Details
+      formTab: DataProject.entities.Cluster.forms.Cluster.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

@@ -1,0 +1,23 @@
+_name: PartyRole_RoleScopeCode
+_type: Reference
+_package: DataProject.references
+label:  Party Role to  Business Unit
+physicalName: PARTY_ROLE_ROLE_S_293
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.PartyRole.PartyRole
+fromRoleLabel:  Party Role
+fromRolePluralLabel:  Party Role
+fromRoleName: PartyRole
+toEntity: DataProject.entities.BusinessUnit.BusinessUnit
+toRoleLabel: Role Scope Code
+toRoleName: RoleScopeCode
+toRolePhysicalName: ROLE_SCOPE_CODE
+foreignAttribute:
+  _name: RoleScopeCode
+  _type: ForeignAttribute
+  physicalName: ROLE_SCOPE_CODE
+  label: Role Scope Code
+  searchable: true
+  entity: DataProject.entities.PartyRole.PartyRole

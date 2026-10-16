@@ -1,0 +1,30 @@
+_name: EnrichAddress
+_type: SemQLEnricher
+_package: DataProject.entities.Address.enrichers
+entity: DataProject.entities.Address.Address
+label: Enrich Address
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  # Incoming address exactly as received: lines, area, city and PO Box joined with commas
+  - attributeName: SourceAddress
+    expression: |-
+      REGEXP_REPLACE(
+        REGEXP_REPLACE(
+          COALESCE(AddressLine1, '') || ', ' || COALESCE(AddressLine2, '') || ', ' || COALESCE(AddressLine3, '') || ', ' || COALESCE(AddressLine4, '') || ', ' || COALESCE(Area, '') || ', ' || COALESCE(City, '') || CASE WHEN PoBox IS NULL THEN '' ELSE ', PO Box ' || PoBox END,
+          '( *, *)+', ', ', 'g'),
+        '^[, ]+|[, ]+$', '', 'g')
+  # Corrected address: upper case, special characters removed, repeated spaces and empty parts removed,
+  # PO Box written the same way every time, country code added at the end
+  - attributeName: EnrichedAddress
+    expression: |-
+      REGEXP_REPLACE(
+        REGEXP_REPLACE(
+          REGEXP_REPLACE(
+            REGEXP_REPLACE(
+              UPPER(COALESCE(AddressLine1, '') || ', ' || COALESCE(AddressLine2, '') || ', ' || COALESCE(AddressLine3, '') || ', ' || COALESCE(AddressLine4, '') || ', ' || COALESCE(Area, '') || ', ' || COALESCE(City, ''))
+              || CASE WHEN PoBox IS NULL OR REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') = '' THEN '' ELSE ', P.O. BOX ' || REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') END
+              || CASE WHEN FID_CountryCode IS NULL THEN '' ELSE ', ' || UPPER(FID_CountryCode) END,
+              '[^A-Z0-9,./ -]', ' ', 'g'),
+            ' +', ' ', 'g'),
+          '( *, *)+', ', ', 'g'),
+        '^[, ]+|[, ]+$', '', 'g')

@@ -1,0 +1,56 @@
+_name: Address
+_package: DataProject.entities.Address.action_sets
+_type: ActionSet
+entity: DataProject.entities.Address.Address
+label: Address Action Set
+defaultActionSet: false
+actions:
+  - _name: CreateAddress
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: DataProject.entities.Address.Steppers.Address
+  - _name: EditAddress
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.Address.Steppers.Address
+  - _name: CopyAddress
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.Address.Steppers.Address
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportAddress
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: DataProject.entities.Address.Steppers.Address

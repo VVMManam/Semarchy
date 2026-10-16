@@ -1,0 +1,10 @@
+_name: EmailMultipleCheck
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Email Multiple Check
+validationScope: POST_CONSO
+validationLabel: EMAIL_MULTIPLE - source value contained more than one address (comma/semicolon/slash separated). Only the first was kept for Wave 1; remaining addresses were dropped.
+_type: SemQLValidation
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (Email IS NULL OR NOT REGEXP_LIKE(Email, '[,;/]'))

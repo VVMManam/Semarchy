@@ -1,0 +1,12 @@
+_name: VatStatus
+_type: LOVType
+_package: DataProject.List_of_values
+label: Vat Status
+length: 50
+lovValues:
+  - code: "1"
+    label: Registered
+  - code: "2"
+    label: Not Applicable
+  - code: "3"
+    label: IN_PROGRESS

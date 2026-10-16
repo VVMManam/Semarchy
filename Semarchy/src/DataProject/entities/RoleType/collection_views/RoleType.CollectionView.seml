@@ -1,0 +1,61 @@
+_name: RoleType
+_type: CollectionView
+_package: DataProject.entities.RoleType.collection_views
+entity: DataProject.entities.RoleType.RoleType
+default: true
+displayCard: DataProject.entities.RoleType.display_cards.RoleType
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: RoleTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RoleTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DefaultScopeTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DefaultScopeTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RoleDetailEntity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RoleDetailEntity
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Wave
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Wave
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true

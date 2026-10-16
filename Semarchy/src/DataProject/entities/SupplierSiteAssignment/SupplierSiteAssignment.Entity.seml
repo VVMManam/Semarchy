@@ -1,0 +1,251 @@
+_package: DataProject.entities.SupplierSiteAssignment
+_type: Entity
+_name: SupplierSiteAssignment
+label:  Supplier Site Assignment
+pluralLabel:  Supplier Site Assignments
+physicalTableName: SUPPLIER_SITE_ASSIGNMENT
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AssignmentId
+    label: AssignmentId
+    physicalName: ASSIGNMENT_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AllowWithholdingTax
+    label: Allow Withholding Tax
+    physicalName: ALLOW_WITHHOLDING_TAX
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: WithholdingTaxGroupCode
+    label: Withholding Tax Group Code
+    physicalName: WITHHOLDING_TAX_GROUP_COD
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InactiveDate
+    label: Inactive Date
+    physicalName: INACTIVE_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LiabilityDistributionAccount
+    label: Liability Distribution Account
+    physicalName: DISTRIBUTION_ACCOUNT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrepaymentAccount
+    label: Prepayment Account
+    physicalName: PREPAY_CONCAT_SEGMENTS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FutureDatedPaymentAccount
+    label: Future Dated Payment Account
+    physicalName: FUTURE_PAYMENT_ACCOUNT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DistributionSet
+    label: Distribution Set
+    physicalName: DISTRIBUTION_SET_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AllowWithholdingTaxFlag
+    label: Allow Withholding Tax Flag
+    physicalName: ALLOW_AWT_FLAG 
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AllowWithholdingTaxGroup
+    label: Allow Withholding Tax Group
+    physicalName: AWT_GROUP_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ClientBuName
+    label: Client BU (Fusion name)
+    physicalName: CLIENT_BU_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BillToBuName
+    label: Bill-to BU (Fusion name)
+    physicalName: BILL_TO_BU_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BillToLocationName
+    label: Bill-to Location (source code)
+    physicalName: BILL_TO_LOCATION_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ShipToLocationName
+    label: Ship-to Location (source code)
+    physicalName: SHIP_TO_LOCATION_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaymentTermName
+    label: Payment Term (source value)
+    physicalName: PAYMENT_TERM_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DqWarnings
+    label: Data Quality Warnings
+    physicalName: DQ_WARNINGS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment.AssignmentId
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherSupplierSiteAssignment
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 99
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 98
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: true
+  useTransitiveMatchScore: true
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameSiteSameClientBu
+      label: "VAL-55 Same site + same client BU"
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.FID_ClientBuCode IS NOT NULL AND Record2.FID_ClientBuCode IS NOT NULL
+        AND Record1.FID_ClientBuCode = Record2.FID_ClientBuCode
+      matchScore: 100
+      usingMatchOn: false

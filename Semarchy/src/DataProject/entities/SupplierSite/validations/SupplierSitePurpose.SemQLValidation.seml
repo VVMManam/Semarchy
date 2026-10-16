@@ -1,0 +1,9 @@
+_name: SupplierSitePurpose
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSite.validations
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: VAL-52 Site Purpose
+validationScope: POST_CONSO
+validationLabel: "VAL-52 - Site must be a purchasing or pay site."
+condition: |-
+  (PurchasingSiteFlag IS NOT NULL AND PurchasingSiteFlag = '1') OR (PaySiteFlag IS NOT NULL AND PaySiteFlag = '1')

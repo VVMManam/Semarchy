@@ -1,0 +1,17 @@
+_name: SupplierLegalAccount
+_package: DataProject.entities.SupplierLegalAccount.display_cards
+_type: DisplayCard
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: SEM_TO_CHAR2(Sgid) || ' · ' || SupplierAccountId
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

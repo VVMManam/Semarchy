@@ -1,0 +1,46 @@
+_name: ResolveRegistrationEmirate
+_type: JavaPluginEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Resolve Registration Emirate (source code)
+description: 'Resolves the emirate value received in IssuingEmirate to the MDM emirate, matching on Emirate.FusionCode, Emirate.CRMCode or the emirate code itself. An emirate already set on the record is kept.'
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'SRC|' || upper(trim(fusion_code)) LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+            where fusion_code is not null
+            union
+            select 'SRC|' || upper(trim(crm_code)) LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+            where crm_code is not null
+            union
+            select 'SRC|' || upper(trim(emirate_code)) LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+            union
+            select 'MDM|' || upper(trim(emirate_code)) LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_RegistrationEmirateCode IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_RegistrationEmirateCode)) WHEN IssuingEmirate IS NOT NULL THEN 'SRC|' || UPPER(BTRIM(IssuingEmirate)) ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_RegistrationEmirateCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

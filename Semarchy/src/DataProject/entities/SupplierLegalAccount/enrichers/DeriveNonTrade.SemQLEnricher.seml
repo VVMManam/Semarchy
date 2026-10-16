@@ -1,0 +1,24 @@
+_name: DeriveNonTrade
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Derive Non-Trade Payee
+description: "ENR-19: NON_TRADE when the alternate name is House Loan, Car Loan, Not Supplier*, Court Order*, Intercompany or Maritime Academy Student, or the name contains Petty Cash / Cash In Hand / End of Service / Employee / Loan Supplier. Used by MAT-17 to keep non-trade payees out of the name rules."
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.SupplierLegalAccount.enrichers.StandardizeNameEn
+semQlEnricherExpressions:
+  - attributeName: NonTradeFlag
+    expression: |-
+      CASE
+        WHEN REGEXP_LIKE(LOWER(BTRIM(COALESCE(NameAlternate, ''))), '^(house loan|car loan|not supplier.*|court order.*|intercompany|maritime academy student.*)$') THEN 'Y'
+        WHEN REGEXP_LIKE(LOWER(COALESCE(NameEn, '')), 'petty cash|cash in hand|end of service|employee|loan supplier') THEN 'Y'
+        ELSE COALESCE(NonTradeFlag, 'N')
+      END
+  - attributeName: SupplierCategory
+    expression: |-
+      CASE
+        WHEN REGEXP_LIKE(LOWER(BTRIM(COALESCE(NameAlternate, ''))), '^(house loan|car loan|not supplier.*|court order.*|intercompany|maritime academy student.*)$') THEN 'NON_TRADE'
+        WHEN REGEXP_LIKE(LOWER(COALESCE(NameEn, '')), 'petty cash|cash in hand|end of service|employee|loan supplier') THEN 'NON_TRADE'
+        ELSE SupplierCategory
+      END

@@ -1,0 +1,47 @@
+_name: PaymentTerm
+_type: CollectionView
+_package: DataProject.entities.PaymentTerm.collection_views
+entity: DataProject.entities.PaymentTerm.PaymentTerm
+default: true
+displayCard: DataProject.entities.PaymentTerm.display_cards.PaymentTerm
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: PaymentTermCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PaymentTermCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DueDays
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DueDays
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true

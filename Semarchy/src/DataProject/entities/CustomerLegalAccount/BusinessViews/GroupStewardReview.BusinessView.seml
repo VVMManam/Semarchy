@@ -1,0 +1,583 @@
+_name: GroupStewardReview
+_package: DataProject.entities.CustomerLegalAccount.BusinessViews
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+rootLabel: Merge Review Pending
+rootPluralLabel: Merge Review Pending
+useHierarchyOnOpen: false
+label: Group Steward Review
+rootFilter: MergeApprovalStatus = 'GROUP_REVIEW'
+rootBusinessViewEntity:
+  _name: Customer
+  _type: BusinessViewEntity
+  collection: DataProject.entities.CustomerLegalAccount.Collections.CustomerGoldenView
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+  form: DataProject.entities.CustomerLegalAccount.Forms.CustomerGoldenOverview
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: DataProject.entities.CustomerLegalAccount.ActionSets.GroupStewardReview
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: CustomerSearchConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: DataProject.entities.CustomerLegalAccount.search_forms.CustomerSearch
+      enabled: true
+    - _name: CustomerFuzzySearchConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: CUSTOM_FORM
+      customForm: DataProject.entities.CustomerLegalAccount.search_forms.CustomerFuzzySearch
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations:
+    - formCollection: DataProject.entities.CustomerLegalAccount.Forms.CustomerGoldenOverview.Main.LicenseActivitySection.LicenseActivities
+      browsingTarget: MODAL_FORM
+      form: DataProject.entities.LicenseActivity.forms.LicenseActivity
+  referenceAttributeNavigationConfigs: []
+  transitions: 
+    - _name: CustomerOrgAssignment
+      _type: BusinessViewTransition
+      transitionPath: CustomerOrgAssignment
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/office-building.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: CustomerOrgAssignment
+        _type: BusinessViewEntity
+        collection: DataProject.entities.CustomerOrgAssignment.collections.CustomerOrgAssignment
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+        form: DataProject.entities.CustomerOrgAssignment.forms.CustomerOrgAssignmentForm
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: 
+          - _name: Profiles
+            _type: BusinessViewTransition
+            transitionPath: Profile
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            iconUrl: images://mdi/account-circle.svg
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: "0"
+            enableHierarchyInterpreter: LITERAL
+            expandHierarchyByDefault: false
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _name: ORGProfile
+              _type: BusinessViewEntity
+              collection: DataProject.entities.Profile.collection_views.ProfileView
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: DataProject.entities.Profile.Profile
+              form: DataProject.entities.Profile.forms.ProfileForm
+              gridAllowed: false
+              listAllowed: false
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              businessEntityBuiltInFilters: []
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                  enabled: true
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                  enabled: true
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                  enabled: true
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+                  enabled: true
+              embeddedCollectionNavigations: []
+              referenceAttributeNavigationConfigs: []
+          - _name: Contact
+            _type: BusinessViewTransition
+            transitionPath: Contact
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            iconUrl: images://mdi/card-account-phone.svg
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: "0"
+            enableHierarchyInterpreter: LITERAL
+            expandHierarchyByDefault: false
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _name: ORGContact
+              _type: BusinessViewEntity
+              collection: DataProject.entities.Contact.collection_views.Contact
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: DataProject.entities.Contact.Contact
+              form: DataProject.entities.Contact.forms.Contact
+              gridAllowed: false
+              listAllowed: false
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              businessEntityBuiltInFilters: []
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                  enabled: true
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                  enabled: true
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                  enabled: true
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+                  enabled: true
+              embeddedCollectionNavigations: []
+              referenceAttributeNavigationConfigs: []
+              transitions:
+                - _name: ORGContactPurposes
+                  _type: BusinessViewTransition
+                  transitionPath: ContactPurpose
+                  transitionType: FULLY_QUALIFIED
+                  useCustomLabel: false
+                  iconUrl: images://mdi/account-tie.svg
+                  displayFormTabAs: ICON_LABEL
+                  displayTransitionNodeAs: ICON_LABEL
+                  enableHierarchy: "0"
+                  enableHierarchyInterpreter: LITERAL
+                  expandHierarchyByDefault: false
+                  transitionVisible: "1"
+                  transitionVisibleInterpreter: LITERAL
+                  businessViewEntity:
+                    _name: ORGContactPurpose
+                    _type: BusinessViewEntity
+                    collection: DataProject.entities.ContactPurpose.collection_views.ContactPurpose
+                    displayRecordCount: ALWAYS
+                    enableUserDefinedSort: true
+                    entity: DataProject.entities.ContactPurpose.ContactPurpose
+                    form: DataProject.entities.ContactPurpose.forms.ContactPurposeForm
+                    gridAllowed: false
+                    listAllowed: false
+                    outlineVisible: false
+                    overrideDefaultSort: false
+                    tableAllowed: true
+                    businessEntityBuiltInFilters: []
+                    businessEntitySearchConfigs:
+                      - _name: TextConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: TEXT
+                        enabled: true
+                      - _name: FormConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: BY_FORM
+                        enabled: true
+                      - _name: AdvancedConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: ADVANCED
+                        enabled: true
+                      - _name: SemqlConfig
+                        _type: BusinessEntitySearchTypeConfig
+                        searchType: SEMQL
+                        enabled: true
+                    embeddedCollectionNavigations: []
+                    referenceAttributeNavigationConfigs: []
+                    transitions: []
+              displayCard: DataProject.entities.Contact.display_cards.Contact
+    - _name: Addresses
+      _type: BusinessViewTransition
+      transitionPath: Address
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/map-marker.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Address
+        _type: BusinessViewEntity
+        collection: DataProject.entities.Address.collection_views.Address
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.Address.Address
+        form: DataProject.entities.Address.forms.Address
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: Contacts
+      _type: BusinessViewTransition
+      transitionPath: Contact
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/card-account-phone.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Contact
+        _type: BusinessViewEntity
+        collection: DataProject.entities.Contact.collection_views.Contact
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.Contact.Contact
+        form: DataProject.entities.Contact.forms.Contact
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions:
+          - _name: ContactPurposes
+            _type: BusinessViewTransition
+            transitionPath: ContactPurpose
+            transitionType: FULLY_QUALIFIED
+            useCustomLabel: false
+            iconUrl: images://mdi/account-tie.svg
+            displayFormTabAs: ICON_LABEL
+            displayTransitionNodeAs: ICON_LABEL
+            enableHierarchy: "0"
+            enableHierarchyInterpreter: LITERAL
+            expandHierarchyByDefault: false
+            transitionVisible: "1"
+            transitionVisibleInterpreter: LITERAL
+            businessViewEntity:
+              _name: ContactPurpose
+              _type: BusinessViewEntity
+              collection: DataProject.entities.ContactPurpose.collection_views.ContactPurpose
+              displayRecordCount: ALWAYS
+              enableUserDefinedSort: true
+              entity: DataProject.entities.ContactPurpose.ContactPurpose
+              form: DataProject.entities.ContactPurpose.forms.ContactPurposeForm
+              gridAllowed: false
+              listAllowed: false
+              outlineVisible: false
+              overrideDefaultSort: false
+              tableAllowed: true
+              businessEntityBuiltInFilters: []
+              businessEntitySearchConfigs:
+                - _name: TextConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: TEXT
+                  enabled: true
+                - _name: FormConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: BY_FORM
+                  enabled: true
+                - _name: AdvancedConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: ADVANCED
+                  enabled: true
+                - _name: SemqlConfig
+                  _type: BusinessEntitySearchTypeConfig
+                  searchType: SEMQL
+                  enabled: true
+              embeddedCollectionNavigations: []
+              referenceAttributeNavigationConfigs: []
+              transitions: []
+    - _name: TaxRegistration
+      _type: BusinessViewTransition
+      transitionPath: TaxRegistration
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/clipboard-text.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: TaxRegistration
+        _type: BusinessViewEntity
+        collection: DataProject.entities.TaxRegistration.collection_views.TaxRegistration
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.TaxRegistration.TaxRegistration
+        form: DataProject.entities.TaxRegistration.forms.TaxRegistration
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: Profile
+      _type: BusinessViewTransition
+      transitionPath: Profile
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/account-circle.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Profile
+        _type: BusinessViewEntity
+        collection: DataProject.entities.Profile.collection_views.ProfileView
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.Profile.Profile
+        form: DataProject.entities.Profile.forms.ProfileForm
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: Identifier
+      _type: BusinessViewTransition
+      transitionPath: Identifier
+      filter: FID_IdentifierType IS NULL OR FID_IdentifierType <> 'CRM_ACCOUNT_ID'
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/identifier.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Identifier
+        _type: BusinessViewEntity
+        collection: DataProject.entities.Identifier.collections.Identifier
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.Identifier.Identifier
+        form: DataProject.entities.Identifier.forms.Identifier
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: MasterRecords
+      _type: BusinessViewTransition
+      transitionPath: MasterRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/source-branch-check.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: DataProject.entities.CustomerLegalAccount.BusinessViews.GroupStewardReview.Customer
+    - _name: GoldenHistory
+      _type: BusinessViewTransition
+      transitionPath: GoldenHistoryRecords
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      label: Golden History
+      pluralLabel: Golden History
+      iconUrl: images://mdi/history.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: DataProject.entities.CustomerLegalAccount.BusinessViews.GroupStewardReview.Customer
+
+    - _name: GoldenErrors
+      _type: BusinessViewTransition
+      transitionPath: Errors
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      label: Golden Errors
+      pluralLabel: Golden Errors
+      iconUrl: images://mdi/alert-circle.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: DataProject.entities.CustomerLegalAccount.BusinessViews.GroupStewardReview.Customer

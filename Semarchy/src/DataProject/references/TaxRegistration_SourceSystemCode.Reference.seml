@@ -1,0 +1,23 @@
+_name: TaxRegistration_SourceSystemCode
+_type: Reference
+_package: DataProject.references
+label:  Tax Registration to  Source System
+physicalName: TAX_REG_SOURCE_SY_EC8
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.TaxRegistration.TaxRegistration
+fromRoleLabel:  Tax Registration
+fromRolePluralLabel:  Tax Registration
+fromRoleName: TaxRegistration
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Source System Code
+toRoleName: SourceSystemCode
+toRolePhysicalName: SOURCE_SYSTEM_CODE
+foreignAttribute:
+  _name: SourceSystemCode
+  _type: ForeignAttribute
+  physicalName: SOURCE_SYSTEM_CODE
+  label: Source System Code
+  searchable: true
+  entity: DataProject.entities.TaxRegistration.TaxRegistration

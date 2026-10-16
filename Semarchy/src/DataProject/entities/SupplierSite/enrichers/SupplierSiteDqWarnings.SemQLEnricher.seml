@@ -1,0 +1,13 @@
+_name: SupplierSiteDqWarnings
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierSite.enrichers
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: Supplier Site Data Quality Warnings
+description: "VAL-54 active site not assigned to any client BU (warning, the record is not rejected)."
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: DqWarnings
+    expression: |-
+      NULLIF(BTRIM(
+        CASE WHEN UPPER(COALESCE(RecordStatusCode, 'ACTIVE')) IN ('ACTIVE', 'A') AND LOOKUP count AssignmentId FROM SupplierSiteAssignment WHERE UPPER(COALESCE(RecordStatusCode, 'ACTIVE')) IN ('ACTIVE', 'A') END = 0 THEN 'VAL-54 Site is not assigned to any client BU; ' ELSE '' END
+      , '; '), '')

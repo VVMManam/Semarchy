@@ -1,0 +1,10 @@
+_name: ValidatingIssuingAuthority
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Validating Issuing Authority
+validationScope: POST_CONSO
+validationLabel: "VAL-11 - Issuing authority missing."
+condition: |-
+  LicenseNumber IS NULL
+  OR FID_IssuingAuthorityCode IS NOT NULL

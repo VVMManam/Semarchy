@@ -1,0 +1,14 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+defaultRule: false
+_name: KeyFieldPgidRule
+label: Key Field - Party (Pgid)
+description: "Party reference (Pgid): latest non-null value of any master record, so the link survives whichever master wins the other attributes. A Party link written by CreateParty (golden-ID update) or by a data steward is an override kept until the next user change. Design ADPG-MDM-INT-PTY-001 v1.1, section 8."
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: Pgid

@@ -1,0 +1,23 @@
+_name: CustomerLegalAccount_IssuingAuthorityCode
+_type: Reference
+_package: DataProject.references
+label:  Customer Legal Account to  Issuing Authority
+physicalName: LIC_ISSUING_AUTH_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+fromRoleLabel:  Customer Legal Account
+fromRolePluralLabel:  Customer Legal Account
+fromRoleName: CustomerLegalAccount
+toEntity: DataProject.entities.IssuingAuthority.IssuingAuthority
+toRoleLabel: Issuing Authority Code
+toRoleName: IssuingAuthorityCode
+toRolePhysicalName: ISSUING_AUTHORITY_CODE
+foreignAttribute:
+  _name: IssuingAuthorityCode
+  _type: ForeignAttribute
+  physicalName: ISSUING_AUTHORITY_CODE
+  label: Issuing Authority Code
+  searchable: true
+  entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount

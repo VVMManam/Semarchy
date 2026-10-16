@@ -1,0 +1,64 @@
+_name: GetSBCResponse
+_type: NamedQuery
+_package: DataProject.named_queries
+active: true
+queryParameters:
+  - _name: RequestID
+    _type: QueryParameter
+    bindingName: PARAM_REQUEST_ID
+    dataType: NUMBER
+    mandatory: true
+    defaultValue: "null"
+sort: SBCMatchScore desc
+defaultLimit: 100
+queryObjects:
+  - _name: SBCAudit
+    _type: QueryObject
+    entity: DataProject.entities.SBCAudit.SBCAudit
+    objectProperties:
+      - _name: CustomerGoldenId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CustomerGoldenId
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+      - _name: NameEn
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NameEN
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+      - _name: IssuingAuthority
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IssuingAuthority
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+      - _name: IssuingCountry
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IssuingCountry
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+      - _name: EmailID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: EmailID
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+      - _name: MOLNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: MOLNumber
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+      - _name: LicenseNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseNumber
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+      - _name: MatchScore
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: SBCMatchScore
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+      - _name: ExactMatch
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: ExactMatch
+        targetObject: DataProject.named_queries.GetSBCResponse.SBCAudit
+rootQueryObject: DataProject.named_queries.GetSBCResponse.SBCAudit

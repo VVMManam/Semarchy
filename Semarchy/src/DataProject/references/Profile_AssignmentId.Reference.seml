@@ -1,0 +1,23 @@
+_name: Profile_AssignmentId
+_type: Reference
+_package: DataProject.references
+label:  Profile to  Customer Org Assignment
+physicalName: PROFILE_ASSIGNMENT_ID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Profile.Profile
+fromRoleLabel: Profile
+fromRolePluralLabel: Profile
+fromRoleName: Profile
+toEntity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+toRoleLabel: Assignment Id
+toRoleName: AssignmentId
+toRolePhysicalName: ASSIGNMENT_ID
+foreignAttribute:
+  _name: AssignmentId
+  _type: ForeignAttribute
+  physicalName: ASSIGNMENT_ID
+  label: Assignment Id
+  searchable: true
+  entity: DataProject.entities.Profile.Profile

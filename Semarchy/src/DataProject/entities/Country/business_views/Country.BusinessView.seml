@@ -1,0 +1,45 @@
+_name: Country
+_package: DataProject.entities.Country.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.Country.CountryReference
+rootLabel: Country
+rootPluralLabel: Country
+useHierarchyOnOpen: false
+label: Country
+rootBusinessViewEntity:
+  _name: Country
+  _type: BusinessViewEntity
+  collection: DataProject.entities.Country.collection_views.Country
+  actionSet: DataProject.entities.Country.action_sets.Country
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.Country.CountryReference
+  form: DataProject.entities.Country.forms.Country
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

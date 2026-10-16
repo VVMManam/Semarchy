@@ -1,0 +1,25 @@
+_name: NameFieldsNormalize
+_package: DataProject.entities.Contact.enrichers
+entity: DataProject.entities.Contact.Contact
+label: Name Fields Normalize
+_type: SemQLEnricher
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FirstName
+    expression: |-
+      CASE
+        WHEN FirstName IS NULL THEN FirstName
+        ELSE UPPER(LTRIM(REGEXP_REPLACE(REGEXP_REPLACE(FirstName, '[^A-Za-z'' -]', ''), ' +', ' ')))
+      END
+  - attributeName: LastName
+    expression: |-
+      CASE
+        WHEN LastName IS NULL THEN LastName
+        ELSE UPPER(LTRIM(REGEXP_REPLACE(REGEXP_REPLACE(LastName, '[^A-Za-z'' -]', ''), ' +', ' ')))
+      END
+  - attributeName: MiddleName
+    expression: |-
+      CASE
+        WHEN MiddleName IS NULL THEN MiddleName
+        ELSE UPPER(LTRIM(REGEXP_REPLACE(REGEXP_REPLACE(MiddleName, '[^A-Za-z'' -]', ''), ' +', ' ')))
+      END

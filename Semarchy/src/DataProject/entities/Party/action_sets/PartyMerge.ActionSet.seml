@@ -1,0 +1,25 @@
+_name: PartyMerge
+_type: ActionSet
+_package: DataProject.entities.Party.action_sets
+entity: DataProject.entities.Party.Party
+label: Merge Parties
+actions:
+  - _name: MergeParties
+    useCustomLabel: true
+    _type: MergeOrSplit
+    label: Merge / Split Parties
+    iconUrl: images://mdi/call-merge.svg
+    dupsManager: DataProject.entities.Party.DuplicateManager.PartyDupsManager
+  - _name: ReviewSuggestions
+    _type: ReviewSuggestions
+    label: Review Suggestions
+    iconUrl: images://mdi/call-split.svg
+    useCustomLabel: true
+    dupsManager: DataProject.entities.Party.DuplicateManager.PartyDupsManager
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: DataProject.entities.Party.display_cards.Party
+    formTab: DataProject.entities.Party.forms.PartyDuplicate.Main

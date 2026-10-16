@@ -1,0 +1,73 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.SupplierSite.SupplierSite
+_package: DataProject.entities.SupplierSite.survivorship_rules
+defaultRule: false
+_name: SupplierSiteSurvivorshipRule
+label: Supplier Site Survivorship Rule
+description: "SRV-14: survivor site = active > primary pay site > pay site > complete > oldest."
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  CASE WHEN PrimaryPaySiteFlag = '1' THEN 1 ELSE 0 END DESC,
+  CASE WHEN PaySiteFlag = '1' THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN SiteCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PurchasingSiteFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaySiteFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PrimaryPaySiteFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RfqOnlySiteFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Email IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Phone IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PhoneCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PhoneAreaCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PhoneExtension IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Fax IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FaxCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FaxAreaCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PcardSiteFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentMethodCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PayGroupCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN InvoiceCurrencyCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentCurrencyCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FreightTermsCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FobCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN MatchOptionCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN MatchApprovalLevel IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN HoldAllPaymentsFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxReportingSiteFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RecordStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ProcurementBuName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentTermName IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  CreationDate ASC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: SiteCode
+  - attributeName: PurchasingSiteFlag
+  - attributeName: PaySiteFlag
+  - attributeName: PrimaryPaySiteFlag
+  - attributeName: RfqOnlySiteFlag
+  - attributeName: Email
+  - attributeName: Phone
+  - attributeName: PhoneCountryCode
+  - attributeName: PhoneAreaCode
+  - attributeName: PhoneExtension
+  - attributeName: Fax
+  - attributeName: FaxCountryCode
+  - attributeName: FaxAreaCode
+  - attributeName: PcardSiteFlag
+  - attributeName: PaymentMethodCode
+  - attributeName: PayGroupCode
+  - attributeName: InvoiceCurrencyCode
+  - attributeName: PaymentCurrencyCode
+  - attributeName: FreightTermsCode
+  - attributeName: FobCode
+  - attributeName: MatchOptionCode
+  - attributeName: MatchApprovalLevel
+  - attributeName: HoldAllPaymentsFlag
+  - attributeName: TaxReportingSiteFlag
+  - attributeName: RecordStatusCode
+  - attributeName: ProcurementBuName
+  - attributeName: PaymentTermName

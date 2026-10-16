@@ -1,0 +1,8 @@
+_name: SupplierAddressCityMandatory
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: VAL-14 Supplier Address City Mandatory
+validationScope: POST_CONSO
+validationLabel: "VAL-14 - City is required."
+condition: "FID_SupplierSite IS NULL OR ((City IS NOT NULL AND BTRIM(City) <> ''))"

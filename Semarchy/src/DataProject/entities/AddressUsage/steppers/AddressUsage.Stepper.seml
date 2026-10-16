@@ -1,0 +1,42 @@
+_name: AddressUsage
+_package: DataProject.entities.AddressUsage.steppers
+_type: Stepper
+entity: DataProject.entities.AddressUsage.AddressUsage
+label: Address Usage
+rootStep:
+  _name: AddressUsage
+  _type: CollectionStep
+  label: Address Usage
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.AddressUsage.collection_views.AddressUsage
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Currency Details
+      formTab: DataProject.entities.AddressUsage.forms.AddressUsage.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

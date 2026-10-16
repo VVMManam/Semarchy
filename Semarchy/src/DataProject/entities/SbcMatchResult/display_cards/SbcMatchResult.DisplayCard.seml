@@ -1,0 +1,17 @@
+_name: SbcMatchResult
+_package: DataProject.entities.SbcMatchResult.display_cards
+_type: DisplayCard
+entity: DataProject.entities.SbcMatchResult.SbcMatchResult
+default: true
+primaryTextExpression: CandidateGoldenId
+supportingTextExpression: RuleId
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

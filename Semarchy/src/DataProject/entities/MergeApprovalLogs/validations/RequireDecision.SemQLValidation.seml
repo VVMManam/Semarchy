@@ -1,0 +1,8 @@
+_name: RequireDecision
+_package: DataProject.entities.MergeApprovalLogs.validations
+_type: SemQLValidation
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+label: Require Decision
+validationScope: NONE
+condition: UPPER(COALESCE(Decision, '')) IN ('CONFIRMED', 'REJECTED', 'REMERGE')
+validationLabel: 'Select your decision: Confirm, Reject or Remerge.'

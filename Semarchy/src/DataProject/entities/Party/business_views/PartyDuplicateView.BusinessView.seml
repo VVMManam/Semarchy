@@ -1,0 +1,143 @@
+_name: PartyDuplicateView
+_package: DataProject.entities.Party.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.Party.Party
+rootLabel: "Duplicate Party"
+rootPluralLabel: "Duplicate Parties"
+useHierarchyOnOpen: false
+label: "Duplicate Parties"
+rootBusinessViewEntity:
+  _name: Party
+  _type: BusinessViewEntity
+  collection: DataProject.entities.Party.collection_views.PartyDuplicate
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.Party.Party
+  form: DataProject.entities.Party.forms.PartyGolden
+  gridAllowed: false
+  listAllowed: false
+  outlineVisible: false
+  overrideDefaultSort: true
+  sortExpression: PartyNameEn ASC
+  tableAllowed: true
+  actionSet: DataProject.entities.Party.action_sets.PartyMerge
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: Customers
+      _type: BusinessViewTransition
+      transitionPath: CustomerLegalAccount
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/account-group.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: LinkedCustomer
+        _type: BusinessViewEntity
+        collection: DataProject.entities.CustomerLegalAccount.Collections.PartyLinkedCustomers
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+        form: DataProject.entities.CustomerLegalAccount.Forms.CustomerGoldenOverview
+        actionSet: DataProject.entities.CustomerLegalAccount.ActionSets.CustomerPartyLink
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+        - _name: TextConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: TEXT
+          enabled: true
+        - _name: FormConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: BY_FORM
+          enabled: true
+        - _name: AdvancedConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: ADVANCED
+          enabled: true
+        - _name: SemqlConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: SEMQL
+          enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: Suppliers
+      _type: BusinessViewTransition
+      transitionPath: SupplierLegalAccount
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/truck-delivery.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: LinkedSupplier
+        _type: BusinessViewEntity
+        collection: DataProject.entities.SupplierLegalAccount.collection_views.PartyLinkedSuppliers
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+        form: DataProject.entities.SupplierLegalAccount.forms.SupplierGoldenOverview
+        actionSet: DataProject.entities.SupplierLegalAccount.ActionSets.SupplierPartyLink
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+        - _name: TextConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: TEXT
+          enabled: true
+        - _name: FormConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: BY_FORM
+          enabled: true
+        - _name: AdvancedConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: ADVANCED
+          enabled: true
+        - _name: SemqlConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: SEMQL
+          enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+rootFilter: "HasSuggestedMerge = '1'"

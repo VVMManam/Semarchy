@@ -1,0 +1,404 @@
+_package: DataProject.entities.SupplierSite
+_type: Entity
+_name: SupplierSite
+label:  Supplier Site
+pluralLabel:  Supplier Site
+physicalTableName: SUPPLIER_SITE
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SiteId
+    label: Site Id
+    physicalName: SITE_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SiteCode
+    label: Site Code
+    physicalName: SITE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PurchasingSiteFlag
+    label: Purchasing Site Flag
+    physicalName: PURCHASING_SITE_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaySiteFlag
+    label: Pay Site Flag
+    physicalName: PAY_SITE_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryPaySiteFlag
+    label: Primary Pay Site Flag
+    physicalName: PRIMARY_PAY_SITE_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RfqOnlySiteFlag
+    label: Rfq Only Site Flag
+    physicalName: RFQ_ONLY_SITE_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Email
+    label: Email
+    physicalName: EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 2000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Phone
+    label: Phone
+    physicalName: PHONE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneCountryCode
+    label:  Phone Country Code
+    physicalName: PHONE_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneAreaCode
+    label:  Phone Area Code
+    physicalName: PHONE_AREA_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneExtension
+    label:  Phone Extension
+    physicalName: PHONE_EXTENSION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Fax
+    label:  Fax
+    physicalName: FAX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FaxCountryCode
+    label:  Fax Country Code
+    physicalName: FAX_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FaxAreaCode
+    label:  Fax Area Code
+    physicalName: FAX_AREA_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PcardSiteFlag
+    label: Pcard Site Flag
+    physicalName: PCARD_SITE_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaymentMethodCode
+    label: Payment Method Code
+    physicalName: PAYMENT_METHOD_CODE
+    dataType: DataProject.List_of_values.PaymentMethod
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PayGroupCode
+    label: Pay Group Code
+    physicalName: PAY_GROUP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 25
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InvoiceCurrencyCode
+    label: Invoice Currency Code
+    physicalName: INVOICE_CURRENCY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 3
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaymentCurrencyCode
+    label: Payment Currency Code
+    physicalName: PAYMENT_CURRENCY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 3
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FreightTermsCode
+    label: Freight Terms Code
+    physicalName: FREIGHT_TERMS_CODE
+    dataType: DataProject.List_of_values.FreightTerms
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FobCode
+    label: Fob Code
+    physicalName: FOB_CODE
+    dataType: DataProject.List_of_values.FOB
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 25
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MatchOptionCode
+    label: Match Option Code
+    physicalName: MATCH_OPTION_CODE
+    dataType: DataProject.List_of_values.MatchOption
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 25
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MatchApprovalLevel
+    label: Match Approval Level
+    physicalName: MATCH_APPROVAL_LEVEL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HoldAllPaymentsFlag
+    label: Hold All Payments Flag
+    physicalName: HOLD_ALL_PAYMENTS_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 3
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TaxReportingSiteFlag
+    label: Tax Reporting Site Flag
+    physicalName: TAX_REPORTING_SITE_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 3
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ProcurementBuName
+    label: Procurement BU (Fusion name)
+    physicalName: PROCUREMENT_BU_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaymentTermName
+    label: Payment Term (source value)
+    physicalName: PAYMENT_TERM_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DqWarnings
+    label: Data Quality Warnings
+    physicalName: DQ_WARNINGS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.SupplierSite.SupplierSite.SiteId
+entityType: FUZZY_MATCHED
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+matcher:
+  _name: SemQLMatcherSupplierSite
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 100
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 100
+  mergeThresholdMergingConfirmedWithNewMasters: 100
+  mergeThresholdMergingConfirmedWithUnconfirmed: 100
+  mergeThresholdMergingUnconfirmed: 100
+  mergeThresholdMergingUnconfirmedWithNewMasters: 100
+  mergeThresholdNewGroup: 100
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: S01_SameSupplierSameSiteCode
+      label: "MAT-SIT-01 Same supplier + procurement BU + normalised site code"
+      condition: |-
+        Record1.FID_Sgid IS NOT NULL
+        AND Record2.FID_Sgid IS NOT NULL
+        AND Record1.FID_Sgid = Record2.FID_Sgid
+        AND Record1.FID_ProcurementBuCode IS NOT NULL
+        AND Record2.FID_ProcurementBuCode IS NOT NULL
+        AND Record1.FID_ProcurementBuCode = Record2.FID_ProcurementBuCode
+        AND Record1.SiteCode IS NOT NULL
+        AND Record2.SiteCode IS NOT NULL
+        AND REGEXP_REPLACE(UPPER(Record1.SiteCode), '[^A-Z0-9]', '', 'g') = REGEXP_REPLACE(UPPER(Record2.SiteCode), '[^A-Z0-9]', '', 'g')
+      matchScore: 100
+      usingMatchOn: false

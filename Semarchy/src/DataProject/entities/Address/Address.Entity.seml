@@ -1,0 +1,553 @@
+_package: DataProject.entities.Address
+_type: Entity
+_name: Address
+label: Address
+pluralLabel: Address
+physicalTableName: ADDRESS
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AddressId
+    label: Address Id
+    physicalName: ADDRESS_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AddressUsageCode
+    label: Address Usage Code
+    physicalName: ADDRESS_USAGE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IssuingEmirateId
+    label: Issuing Emirate Id
+    physicalName: ISSUING_EMIRATE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimarySetAt
+    label: Primary Set At
+    physicalName: PRIMARY_SET_AT
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    precision: 3
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'When a steward ticked Is Primary on this address (empty = Primary chosen automatically). Per customer and address type, the most recently ticked address is Primary; the others become Secondary.'
+  - _type: EntityAttribute
+    _name: SourceCustomerId
+    label: Source Customer ID
+    physicalName: SOURCE_CUSTOMER_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PartySiteName
+    label: Party Site Name
+    physicalName: PARTY_SITE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 240
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AddressLine1
+    label: Address Line1
+    physicalName: ADDRESS_LINE1
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: POST_CONSO
+    length: 500
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AddressLine2
+    label: Address Line2
+    physicalName: ADDRESS_LINE2
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 500
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AddressLine3
+    label: Address Line3
+    physicalName: ADDRESS_LINE3
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 500
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AddressLine4
+    label: Address Line4
+    physicalName: ADDRESS_LINE4
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 500
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Area
+    label: Area
+    physicalName: AREA
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: City
+    label: City
+    physicalName: CITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: POST_CONSO
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CityNormalised
+    label: City Normalised
+    physicalName: CITY_NORMALISED
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StateProvince
+    label: State Province
+    physicalName: STATE_PROVINCE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PostalCode
+    label: Postal Code
+    physicalName: POSTAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 60
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PoBox
+    label: Po Box
+    physicalName: PO_BOX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Sector
+    label: Sector
+    physicalName: SECTOR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Latitude
+    label: Latitude
+    physicalName: LATITUDE
+    dataType: Decimal
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    precision: 9
+    scale: 6
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Longitude
+    label: Longitude
+    physicalName: LONGITUDE
+    dataType: Decimal
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    precision: 9
+    scale: 6
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Province
+    label: Province
+    physicalName: PROVINCE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 60
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Country
+    label: Country
+    physicalName: COUNTRY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 60
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Addressee
+    label: Addressee
+    physicalName: ADDRESSEE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 360
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Phone
+    label: Phone
+    physicalName: PHONE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneCountryCode
+    label: Phone Country Code
+    physicalName: PHONE_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneAreaCode
+    label: Phone Area Code
+    physicalName: PHONE_AREA_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneExtension
+    label: Phone Extension
+    physicalName: PHONE_EXTENSION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Fax
+    label: Fax
+    physicalName: FAX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FaxCountryCode
+    label: Fax Country Code
+    physicalName: FAX_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FaxAreaCode
+    label: Fax Area Code
+    physicalName: FAX_AREA_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OrderingPurpose
+    label: Ordering Purpose
+    physicalName: ORDERING_PURPOSE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 120
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RemittoPurpose
+    label: Remitto Purpose
+    physicalName: REMITTO_PURPOSE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 120
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RFQBiddingPurpose
+    label: RFQ Bidding Purpose
+    physicalName: RFQ_BIDDING_PURPOSE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 120
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Email
+    label: Email
+    physicalName: EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 320
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InactiveDate
+    label: InactiveDate
+    physicalName: INACTIVE_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 120
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SourceAddress
+    label: Incoming Address
+    physicalName: SOURCE_ADDRESS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 2000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EnrichedAddress
+    label: Enriched Address
+    physicalName: ENRICHED_ADDRESS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 2000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.Address.Address.AddressId
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherAddress
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 98
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameUsageAndAddressUnderSameCustomer
+      condition: |-
+        Record1.FID_Cgid IS NOT NULL
+        AND Record2.FID_Cgid IS NOT NULL
+        AND Record1.FID_Cgid = Record2.FID_Cgid
+        AND Record1.EnrichedAddress IS NOT NULL
+        AND Record2.EnrichedAddress IS NOT NULL
+        AND UPPER(BTRIM(Record1.EnrichedAddress)) = UPPER(BTRIM(Record2.EnrichedAddress))
+        AND (Record1.AddressUsageCode IS NULL OR Record2.AddressUsageCode IS NULL OR Record1.AddressUsageCode = Record2.AddressUsageCode)
+      label: "Same customer + same enriched address (and same usage type when both have one) - merges duplicate addresses left behind after a customer-level merge (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MATADR01_SameSupplierAddress
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL
+        AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.FID_CountryCode IS NOT NULL AND Record1.FID_CountryCode = Record2.FID_CountryCode
+        AND Record1.AddressLine1 IS NOT NULL AND UPPER(BTRIM(Record1.AddressLine1)) = UPPER(BTRIM(Record2.AddressLine1))
+        AND UPPER(BTRIM(COALESCE(Record1.AddressLine2, ''))) = UPPER(BTRIM(COALESCE(Record2.AddressLine2, '')))
+        AND Record1.CityNormalised IS NOT NULL AND Record1.CityNormalised = Record2.CityNormalised
+      label: "MAT-ADR-01 Same supplier site + country + address line 1-2 + city (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MATADR02_SamePoBoxCity
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL
+        AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.PoBox IS NOT NULL AND Record1.PoBox = Record2.PoBox
+        AND Record1.CityNormalised IS NOT NULL AND Record1.CityNormalised = Record2.CityNormalised
+      label: "MAT-ADR-02 Same supplier site + PO Box + city (steward)"
+      matchScore: 85
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MATADR03_FuzzyAddress
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL
+        AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.FID_CountryCode IS NOT NULL AND Record1.FID_CountryCode = Record2.FID_CountryCode
+        AND Record1.AddressLine1 IS NOT NULL AND Record2.AddressLine1 IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.AddressLine1 || ' ' || COALESCE(Record1.AddressLine2, '') || ' ' || COALESCE(Record1.AddressLine3, ''))), UPPER(BTRIM(Record2.AddressLine1 || ' ' || COALESCE(Record2.AddressLine2, '') || ' ' || COALESCE(Record2.AddressLine3, '')))) >= 85
+        AND Record1.CityNormalised IS NOT NULL AND Record2.CityNormalised IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(Record1.CityNormalised, Record2.CityNormalised) >= 90
+      label: "MAT-ADR-03 Same supplier site + fuzzy address lines (>= 85) + city (>= 90) (steward)"
+      matchScore: 80
+      usingMatchOn: false

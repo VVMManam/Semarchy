@@ -1,0 +1,17 @@
+_name: Address
+_package: DataProject.entities.Address.display_cards
+_type: DisplayCard
+entity: DataProject.entities.Address.Address
+default: true
+primaryTextExpression: CASE WHEN AddressUsage.Label IS NOT NULL THEN AddressUsage.Label ELSE AddressUsageCode END
+supportingTextExpression: CASE WHEN AddressLine1 IS NULL THEN '' ELSE AddressLine1 END || CASE WHEN City IS NULL THEN '' ELSE ', ' || City END
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

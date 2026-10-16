@@ -1,0 +1,23 @@
+_name: LicenseActivity_Cgid
+_type: Reference
+_package: DataProject.references
+label:  License Activity to  Customer Legal Account
+physicalName: LICENSE_ACTIVITY_CGID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.LicenseActivity.LicenseActivity
+fromRoleLabel:  License Activity
+fromRolePluralLabel:  License Activity
+fromRoleName: LicenseActivity
+toEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+toRoleLabel: Cgid
+toRoleName: Cgid
+toRolePhysicalName: CGID
+foreignAttribute:
+  _name: Cgid
+  _type: ForeignAttribute
+  physicalName: CGID
+  label: Cgid
+  searchable: true
+  entity: DataProject.entities.LicenseActivity.LicenseActivity

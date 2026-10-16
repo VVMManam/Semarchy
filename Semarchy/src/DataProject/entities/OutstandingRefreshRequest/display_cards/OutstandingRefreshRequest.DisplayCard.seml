@@ -1,0 +1,17 @@
+_name: OutstandingRefreshRequest
+_package: DataProject.entities.OutstandingRefreshRequest.display_cards
+_type: DisplayCard
+entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+default: true
+primaryTextExpression: "'Refresh by ' || COALESCE(RequestedBy, '')"
+secondaryTextExpression: "COALESCE(RequestStatus, '') || ' - ' || COALESCE(CustomersRequested, '0') || ' customers'"
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

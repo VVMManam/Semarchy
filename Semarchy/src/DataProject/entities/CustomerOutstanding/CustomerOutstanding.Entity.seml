@@ -1,0 +1,119 @@
+_name: CustomerOutstanding
+_package: DataProject.entities.CustomerOutstanding
+_type: Entity
+primaryKey: DataProject.entities.CustomerOutstanding.CustomerOutstanding.OutstandingKey
+sourceIdGeneration:
+  mode: MANUAL
+label: Customer Outstanding
+pluralLabel: Customer Outstanding
+description: 'ERP outstanding per customer UCID (one RESULT row per UCID, overwritten on every refresh). Loaded only by LoadCustomerOutstanding (submitted by Outstanding Refresh Request); customer data is never touched.'
+enableDelete: false
+entityType: BASIC
+iconUrl: images://mdi/cash-clock.svg
+historizeGolden: true
+historizeMaster: false
+physicalTableName: CUSTOMER_OUTSTANDING
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: OutstandingKey
+    physicalName: OUTSTANDING_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Key
+    mandatory: true
+    length: 60
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+    description: 'Customer UCID.'
+  - _type: EntityAttribute
+    _name: RecordType
+    physicalName: RECORD_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Record Type
+    mandatory: false
+    length: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Always RESULT (outstanding of one customer UCID).'
+  - _type: EntityAttribute
+    _name: OutstandingStatus
+    physicalName: OUTSTANDING_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Outstanding
+    mandatory: false
+    length: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'YES = open transactions in ERP, NO = none, ERROR = the outstanding service failed.'
+  - _type: EntityAttribute
+    _name: OpenTransactions
+    physicalName: OPEN_TRANSACTIONS
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Open Transactions
+    mandatory: false
+    length: 0
+    precision: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CheckedAt
+    physicalName: CHECKED_AT
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Checked At
+    mandatory: false
+    length: 0
+    precision: 3
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CheckMessage
+    physicalName: CHECK_MESSAGE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Message
+    mandatory: false
+    length: 500
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ApiStatus
+    physicalName: API_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: API Status
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ApiOpenCount
+    physicalName: API_OPEN_COUNT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: API Open Count
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

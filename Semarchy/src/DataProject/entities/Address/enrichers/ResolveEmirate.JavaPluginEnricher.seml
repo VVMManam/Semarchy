@@ -1,0 +1,51 @@
+_name: ResolveEmirate
+_type: JavaPluginEnricher
+_package: DataProject.entities.Address.enrichers
+entity: DataProject.entities.Address.Address
+label: Resolve Emirate
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'SRC|' || replace(upper(trim(emirate_code)), ' ', '') LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+            where emirate_code is not null
+            union
+            select 'SRC|' || replace(upper(trim(fusion_code)), ' ', '') LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+            where fusion_code is not null
+            union
+            select 'SRC|' || replace(upper(trim(crm_code)), ' ', '') LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+            where crm_code is not null
+            union
+            select 'SRC|' || replace(upper(trim(emirate_name_en)), ' ', '') LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+            where emirate_name_en is not null
+            union
+            select 'MDM|' || upper(trim(emirate_code)) LOOKUP_COLUMN,
+                   emirate_code OUTPUT_COLUMN1
+            from gd_emirate
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_EmirateCode IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_EmirateCode)) WHEN COALESCE(IssuingEmirateId, StateProvince) IS NOT NULL THEN 'SRC|' || REPLACE(UPPER(BTRIM(COALESCE(IssuingEmirateId, StateProvince))), ' ', '') ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_EmirateCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

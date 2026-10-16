@@ -1,0 +1,46 @@
+_type: SemQLEnricher
+_name: DeriveApprovalClusters
+label: Derive Clusters That Must Approve The Merge
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+enricherExecutionScope: POST_CONSO
+afterEnrichers:
+  - DataProject.entities.CustomerLegalAccount.enrichers.GroupClusterBuCounts
+description: 'Replaces the manual cluster ticks. SelReview<code> = true when the consolidated group (GrpActiveBuCnt*: this customer and its suggested merge) spans more than one cluster and the cluster is involved. Read by the ClusterMergeApproval branches.'
+semQlEnricherExpressions:
+  - attributeName: SelReviewMT
+    expression: |-
+      CASE
+          WHEN (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) > 1 AND GrpActiveBuCntMT IS NOT NULL THEN '1'
+          ELSE '0'
+      END
+  - attributeName: SelReviewIZ
+    expression: |-
+      CASE
+          WHEN (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) > 1 AND GrpActiveBuCntIZ IS NOT NULL THEN '1'
+          ELSE '0'
+      END
+  - attributeName: SelReviewLG
+    expression: |-
+      CASE
+          WHEN (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) > 1 AND GrpActiveBuCntLG IS NOT NULL THEN '1'
+          ELSE '0'
+      END
+  - attributeName: SelReviewCO
+    expression: |-
+      CASE
+          WHEN (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) > 1 AND GrpActiveBuCntCO IS NOT NULL THEN '1'
+          ELSE '0'
+      END
+  - attributeName: SelReviewPT
+    expression: |-
+      CASE
+          WHEN (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) > 1 AND GrpActiveBuCntPT IS NOT NULL THEN '1'
+          ELSE '0'
+      END
+  - attributeName: SelReviewDC
+    expression: |-
+      CASE
+          WHEN (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) > 1 AND GrpActiveBuCntDC IS NOT NULL THEN '1'
+          ELSE '0'
+      END

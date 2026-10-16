@@ -1,0 +1,9 @@
+_name: SupplierAddressPhoneCountryWithoutNumber
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: VAL-50 Phone Country Without Number
+validationScope: POST_CONSO
+validationLabel: "VAL-50 WARNING - Phone country code given without number."
+condition: |-
+  PhoneCountryCode IS NULL OR BTRIM(PhoneCountryCode) = '' OR NULLIF(BTRIM(Phone), '') IS NOT NULL

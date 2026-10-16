@@ -1,0 +1,101 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: SupplierContactERDiagram
+label: Supplier Contact ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: CountryReference
+    _type: EntityShape
+    entity: DataProject.entities.Country.CountryReference
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 290
+  - _name: Title
+    _type: EntityShape
+    entity: DataProject.entities.Title.Title
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 520
+  - _name: Contact
+    _type: EntityShape
+    entity: DataProject.entities.Contact.Contact
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 60
+  - _name: SupplierLegalAccount
+    _type: EntityShape
+    entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 880
+      y: 60
+  - _name: ContactPurpose
+    _type: EntityShape
+    entity: DataProject.entities.ContactPurpose.ContactPurpose
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1300
+      y: 60
+  - _name: SupplierSite
+    _type: EntityShape
+    entity: DataProject.entities.SupplierSite.SupplierSite
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 880
+      y: 520
+referenceLinks:
+  - reference: DataProject.references.ContactPurpose_ContactId
+    bendPoints: []
+  - reference: DataProject.references.Contact_NationalityCode
+    bendPoints: []
+  - reference: DataProject.references.Contact_SupplierSite
+    bendPoints: []
+  - reference: DataProject.references.Contact_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_RegistrationCountry
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.Title_Contact
+    bendPoints: []

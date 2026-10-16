@@ -1,0 +1,17 @@
+_name: PartyRole
+_package: DataProject.entities.PartyRole.display_cards
+_type: DisplayCard
+entity: DataProject.entities.PartyRole.PartyRole
+default: true
+primaryTextExpression: RoleScopeTypeCode
+supportingTextExpression: BlockingStatusCode
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

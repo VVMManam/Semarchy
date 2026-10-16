@@ -1,0 +1,36 @@
+_name: ResolveIssuingAuthority
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Resolve Issuing Authority (CRM code)
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'CRM|' || upper(trim(crm_code)) LOOKUP_COLUMN,
+                   issuing_authority_code OUTPUT_COLUMN1
+            from gd_issuing_authority
+            where crm_code is not null
+            union all
+            select 'MDM|' || upper(trim(issuing_authority_code)) LOOKUP_COLUMN,
+                   issuing_authority_code OUTPUT_COLUMN1
+            from gd_issuing_authority
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_IssuingAuthorityCode IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_IssuingAuthorityCode)) WHEN IssuingAuthority IS NOT NULL THEN 'CRM|' || UPPER(BTRIM(IssuingAuthority)) ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_IssuingAuthorityCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

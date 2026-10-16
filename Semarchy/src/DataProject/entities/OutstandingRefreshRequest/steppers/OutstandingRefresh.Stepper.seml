@@ -1,0 +1,46 @@
+_name: OutstandingRefresh
+_package: DataProject.entities.OutstandingRefreshRequest.steppers
+_type: Stepper
+entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+label: Refresh Outstanding
+modelJob: DataProject.ModelJobs.LoadOutstandingRefreshRequest
+rootStep:
+  _name: Requests
+  _type: CollectionStep
+  label: Refresh Outstanding
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.OutstandingRefreshRequest.collection_views.OutstandingRefresh
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Refresh Outstanding
+      formTab: DataProject.entities.OutstandingRefreshRequest.forms.OutstandingRefresh.Main
+      formStepEnrichers:
+        - enricher: DataProject.entities.OutstandingRefreshRequest.enrichers.InitRefreshRequest
+          executedOnDataChange: false
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

@@ -1,0 +1,14 @@
+_name: PaymentMethod
+_package: DataProject.List_of_values
+_type: LOVType
+label: Payment Method
+length: 128
+lovValues:
+  - code: "CHECK"
+    label: Check
+  - code: "EFT"
+    label: Electronic
+  - code: "WIRE"
+    label: Wire
+  - code: "CLEARING"
+    label: Clearing

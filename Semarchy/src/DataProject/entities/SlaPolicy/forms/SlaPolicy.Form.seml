@@ -1,0 +1,182 @@
+_package: DataProject.entities.SlaPolicy.forms
+_type: Form
+_name: SlaPolicy
+entity: DataProject.entities.SlaPolicy.SlaPolicy
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "190px"
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: SLA Policy
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: Scope
+        label: Scope
+        layoutDirection: COLUMN
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+              - _name: SlaPolicyId
+                value: SlaPolicyId
+                dataType: LONG_INTEGER
+                useCustomLabel: true
+                label: SLA Policy ID
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+              - _name: DomainCode
+                value: DomainCode
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: ProcessCode
+                value: ProcessCode
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: SubProcessCode
+                value: SubProcessCode
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: TaskCode
+                value: TaskCode
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: ClusterCode
+                value: FDN_ClusterCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.Cluster.Cluster
+                useCustomLabel: true
+                label: Cluster (empty = all clusters)
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: RequiredRole
+                value: RequiredRole
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: ServiceLevel
+        label: Service Level
+        layoutDirection: COLUMN
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+              - _name: SlaValue
+                value: SlaValue
+                dataType: DECIMAL
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: SlaUnit
+                value: SlaUnit
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: ReminderHours
+                value: ReminderHours
+                dataType: INTEGER
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: PriorityCode
+                value: PriorityCode
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: EscalationRole
+                value: EscalationRole
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Validity
+        label: Validity
+        layoutDirection: COLUMN
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+              - _name: EffectiveFrom
+                value: EffectiveFrom
+                dataType: DATE
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: EffectiveTo
+                value: EffectiveTo
+                dataType: DATE
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: IsActive
+                value: IsActive
+                dataType: BOOLEAN
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: CheckboxField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+              - _name: Description
+                value: Description
+                dataType: STRING
+                useCustomLabel: false
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL

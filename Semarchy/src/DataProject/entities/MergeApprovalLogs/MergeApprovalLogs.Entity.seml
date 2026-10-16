@@ -1,0 +1,282 @@
+_name: MergeApprovalLogs
+_package: DataProject.entities.MergeApprovalLogs
+_type: Entity
+primaryKey: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs.LogId
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+label: Merge Approval Logs
+enableDelete: false
+entityType: BASIC
+iconUrl: images://mdi/file-document-check.svg
+pluralLabel: Merge Approval Logs
+historizeGolden: false
+historizeMaster: false
+physicalTableName: MERGE_APPROVAL_LOGS
+dataEntryAllowed: true
+attributes:
+  # Primary Key
+  - _type: EntityAttribute
+    _name: LogId
+    physicalName: LOG_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Log ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+
+  # Link to Customer
+  # Link to Customer (managed by reference)
+  - _type: EntityAttribute
+    _name: CustomerGoldenId
+    physicalName: CUSTOMER_GOLDEN_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Customer Golden ID
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Denormalized golden ID for reporting - FK managed by reference'
+
+  # Workflow tracking
+  - _type: EntityAttribute
+    _name: WorkflowInstanceId
+    physicalName: WORKFLOW_INSTANCE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Workflow Instance ID
+    mandatory: true
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+    description: 'Semarchy workflow instance identifier for traceability'
+
+  # Cluster information
+  - _type: EntityAttribute
+    _name: ClusterCode
+    physicalName: CLUSTER_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Cluster Code
+    mandatory: true
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+    description: 'Cluster code: MT, IZ, LGSTS, CORP, PORTS, DC'
+
+  - _type: EntityAttribute
+    _name: ClusterName
+    physicalName: CLUSTER_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Cluster Name
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Cluster display name: Maritime, Industrial Zone, etc.'
+
+  # Steward details
+  - _type: EntityAttribute
+    _name: ReviewerRole
+    physicalName: REVIEWER_ROLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Reviewer Role
+    mandatory: true
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+    description: 'MDM role: MDM_Maritime_Steward, MDM_IndustrialZone_Steward, etc.'
+
+  - _type: EntityAttribute
+    _name: ReviewerUsername
+    physicalName: REVIEWER_USERNAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Reviewer Username
+    mandatory: true
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+    description: 'Semarchy username of steward who reviewed'
+
+  - _type: EntityAttribute
+    _name: ReviewerFullName
+    physicalName: REVIEWER_FULL_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Reviewer Full Name
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+
+  # Decision
+  - _type: EntityAttribute
+    _name: Decision
+    physicalName: DECISION
+    dataType: DataProject.List_of_values.MergeApprovalStatus
+    goldenAttribute: true
+    i18ned: false
+    label: Decision
+    mandatory: true
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    lovValidationScope: PRE_CONSO
+    mandatoryValidationScope: PRE_CONSO
+    description: 'CONFIRMED or REJECTED'
+
+  - _type: EntityAttribute
+    _name: DecisionTimestamp
+    physicalName: DECISION_TIMESTAMP
+    dataType: Timestamp
+    precision: 3
+    goldenAttribute: true
+    i18ned: false
+    label: Decision Taken On
+    mandatory: true
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+
+  # Comments and rationale
+  - _type: EntityAttribute
+    _name: Comments
+    physicalName: COMMENTS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Comments
+    mandatory: false
+    length: 4000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Steward comments from workflow transition'
+
+  - _type: EntityAttribute
+    _name: RejectionReason
+    physicalName: REJECTION_REASON
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Rejection Reason
+    mandatory: false
+    length: 2000
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Detailed reason if rejected (required when Decision = REJECTED)'
+
+  # Task metadata
+  - _type: EntityAttribute
+    _name: TaskStartTime
+    physicalName: TASK_START_TIME
+    dataType: Timestamp
+    precision: 3
+    goldenAttribute: true
+    i18ned: false
+    label: Task Assigned On
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+
+  - _type: EntityAttribute
+    _name: TaskDurationMinutes
+    physicalName: TASK_DURATION_MINUTES
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    label: Task Duration (Minutes)
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    precision: 10
+
+  # Workflow outcome tracking
+  - _type: EntityAttribute
+    _name: EscalatedToGroupSteward
+    physicalName: ESCALATED_TO_GRP_STEWARD
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Escalated to Group Steward
+    mandatory: false
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Flag if rejection triggered Group Steward escalation'
+
+  - _type: EntityAttribute
+    _name: FinalMergeApproved
+    physicalName: FINAL_MERGE_APPROVED
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Final Merge Approved
+    mandatory: false
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Workflow final outcome for this customer (set after workflow completes)'
+
+  # Audit fields
+  - _type: EntityAttribute
+    _name: CreatedBy
+    physicalName: CREATED_BY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Created By
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+
+  - _type: EntityAttribute
+    _name: CreatedDate
+    physicalName: CREATED_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Created Date
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","

@@ -1,0 +1,8 @@
+_name: SupplierContactStatusVsUser
+_type: SemQLValidation
+_package: DataProject.entities.Contact.validations
+entity: DataProject.entities.Contact.Contact
+label: VAL-58 Contact vs User Account Status
+validationScope: POST_CONSO
+validationLabel: "VAL-58 WARNING - Contact status and user account status disagree."
+condition: "FID_SupplierSite IS NULL OR (NOT ( (UPPER(COALESCE(UserAccountStatus,'')) = 'SUSPENDED' AND (InactiveDate IS NULL OR InactiveDate > NOW())) OR (UPPER(COALESCE(UserAccountStatus,'')) = 'ACTIVE' AND InactiveDate IS NOT NULL AND InactiveDate <= NOW()) ))"

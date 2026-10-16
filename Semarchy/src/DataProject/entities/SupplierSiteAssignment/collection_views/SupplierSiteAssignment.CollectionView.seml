@@ -1,0 +1,115 @@
+_name: SupplierSiteAssignment
+_type: CollectionView
+_package: DataProject.entities.SupplierSiteAssignment.collection_views
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+default: false
+displayCard: DataProject.entities.SupplierSiteAssignment.display_cards.SupplierSiteAssignment
+tableDisplayCardColumnLabel: Client BU Code
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: BillToBuCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_BillToBuCode
+    label: Bill-To BU Code
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ShipToLocationCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_ShipToLocationCode
+    label: Ship-To Location Code
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BillToLocationCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_BillToLocationCode
+    label: Bill-To Location Code
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PaymentTermCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_PaymentTermCode
+    label: Payment Term
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AllowWithholdingTax
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AllowWithholdingTax
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: WithholdingTaxGroupCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: WithholdingTaxGroupCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: InactiveDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InactiveDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LiabilityDistributionAccount
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LiabilityDistributionAccount
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PrepaymentAccount
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PrepaymentAccount
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FutureDatedPaymentAccount
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FutureDatedPaymentAccount
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DistributionSet
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DistributionSet
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AllowWithholdingTaxFlag
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AllowWithholdingTaxFlag
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AllowWithholdingTaxGroup
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AllowWithholdingTaxGroup
+    visibleByDefault: true

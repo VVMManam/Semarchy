@@ -1,0 +1,42 @@
+_name: ResolvePartyByLicense
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Resolve Party by licence (licence + issuing authority + country)
+description: "Assigns the existing golden Party with the same licence number, issuing authority and authority country. Runs only when the load did not link the customer to a Party record itself (SourceID_Pgid empty). An explicit golden link (FID_Pgid) is kept. No match = no Party assigned (the Party record sent in the same load, or a steward, links it)."
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'ID|' || pgid LOOKUP_COLUMN,
+                   pgid OUTPUT_COLUMN1
+            from gd_party
+            union all
+            select 'LIC|' || p.licence_key || '|' || p.licence_authority_code LOOKUP_COLUMN,
+                   min(p.pgid) OUTPUT_COLUMN1
+            from gd_party p
+            join gd_issuing_authority ia
+              on ia.issuing_authority_code = p.licence_authority_code
+             and ia.f_country_code = p.licence_country
+            where p.licence_key is not null
+              and p.licence_key !~ '^(0+|NA|NIL|NONE|NULL|TBA|TBC|X+|1+)$'
+            group by p.licence_key, p.licence_authority_code
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN SourceID_Pgid IS NOT NULL THEN NULL WHEN FID_Pgid IS NOT NULL THEN 'ID|' || FID_Pgid WHEN LicenseNumber IS NULL OR FID_IssuingAuthorityCode IS NULL THEN NULL ELSE 'LIC|' || REGEXP_REPLACE(UPPER(LicenseNumber), '[^A-Z0-9]', '', 'g') || '|' || UPPER(BTRIM(FID_IssuingAuthorityCode)) END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_Pgid
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

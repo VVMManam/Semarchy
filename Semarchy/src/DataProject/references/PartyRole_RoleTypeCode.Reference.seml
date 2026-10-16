@@ -1,0 +1,23 @@
+_name: PartyRole_RoleTypeCode
+_type: Reference
+_package: DataProject.references
+label:  Party Role to  Role Type
+physicalName: PARTY_ROLE_ROLE_T_3E9
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.PartyRole.PartyRole
+fromRoleLabel:  Party Role
+fromRolePluralLabel:  Party Role
+fromRoleName: PartyRole
+toEntity: DataProject.entities.RoleType.RoleType
+toRoleLabel: Role Type Code
+toRoleName: RoleTypeCode
+toRolePhysicalName: ROLE_TYPE_CODE
+foreignAttribute:
+  _name: RoleTypeCode
+  _type: ForeignAttribute
+  physicalName: ROLE_TYPE_CODE
+  label: Role Type Code
+  searchable: true
+  entity: DataProject.entities.PartyRole.PartyRole

@@ -1,0 +1,22 @@
+_name: SupplierContactNormalize
+_type: SemQLEnricher
+_package: DataProject.entities.Contact.enrichers
+entity: DataProject.entities.Contact.Contact
+label: Contact Normalize
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FirstName
+    expression: |-
+      CASE
+        WHEN FirstName IS NULL THEN FirstName
+        WHEN UPPER(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(FirstName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g'))) IN ('', '.', '-', '--', 'TBCF', 'TBCL', 'NA', 'N/A', 'X', 'XX') THEN NULL
+        ELSE INITCAP(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(FirstName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')))
+      END
+  - attributeName: LastName
+    expression: |-
+      CASE
+        WHEN LastName IS NULL THEN LastName
+        WHEN UPPER(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(LastName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g'))) IN ('', '.', '-', '--', 'TBCF', 'TBCL', 'NA', 'N/A', 'X', 'XX') THEN NULL
+        ELSE INITCAP(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(LastName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')))
+      END
+ 

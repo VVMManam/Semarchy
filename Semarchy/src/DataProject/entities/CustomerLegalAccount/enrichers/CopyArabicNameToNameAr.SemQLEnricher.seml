@@ -1,0 +1,15 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: CopyArabicNameToNameAr
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Copy Arabic Name To Name Ar
+enricherExecutionScope: NONE
+semQlEnricherExpressions:
+  - attributeName: NameAr
+    expression: |-
+      CASE
+          WHEN NameAr IS NULL
+               AND REGEXP_LIKE(NameEN, '[\x{0600}-\x{06FF}]')
+          THEN NameEN
+          ELSE NameAr
+      END

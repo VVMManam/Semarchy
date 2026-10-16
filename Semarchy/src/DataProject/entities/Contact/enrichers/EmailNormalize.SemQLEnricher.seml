@@ -1,0 +1,10 @@
+_name: EmailNormalize
+_package: DataProject.entities.Contact.enrichers
+entity: DataProject.entities.Contact.Contact
+label: Email Normalize
+_type: SemQLEnricher
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: Email
+    expression: |-
+      LOWER(BTRIM(REGEXP_REPLACE(Email, '[\x01-\x1F\x7F]', '', 'g')))

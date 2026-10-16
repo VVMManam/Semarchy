@@ -1,0 +1,8 @@
+_name: CreditCurrencyResolved
+_type: SemQLValidation
+_package: DataProject.entities.CustomerOrgAssignment.validations
+entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+label: Credit Currency Resolved
+validationScope: POST_CONSO
+validationLabel: "CURRENCY_UNMAPPED - source value has no match in MDM."
+condition: "CreditCurrency IS NULL OR FID_CreditCurrencyCode IS NOT NULL"

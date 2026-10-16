@@ -1,0 +1,23 @@
+_name: Country_PatternRules
+_type: Reference
+_package: DataProject.references
+label:  Country to Pattern Rules
+physicalName: MOBILE_PATTERN
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Country.CountryReference
+fromRoleLabel: Country
+fromRolePluralLabel: Countries
+fromRoleName: Country
+toEntity: DataProject.entities.PatternRules.PatternRules
+toRoleLabel: PatternRules
+toRoleName: PatternRules
+toRolePhysicalName: PATTERN_RULES_ID
+foreignAttribute:
+  _name: PatternRules
+  _type: ForeignAttribute
+  physicalName: PATTERN_RULES_ID
+  label: Pattern Rules
+  searchable: true
+  entity: DataProject.entities.Country.CountryReference

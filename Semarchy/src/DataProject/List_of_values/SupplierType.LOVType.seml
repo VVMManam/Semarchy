@@ -1,0 +1,52 @@
+_name: SupplierType
+_package: DataProject.List_of_values
+_type: LOVType
+label: Supplier Type
+length: 128
+lovValues:
+  - code: "LIMITED"
+    label: Limited Liability Company
+  - code: "BRANCH_OFFICE"
+    label: Principal
+  - code: "PARTNERSHIP"
+    label: Intercompany Partner
+  - code: "RELATED_PARTY"
+    label: Related Party
+  - code: "FOREIGN_COMPANY"
+    label: Foreign Company
+  - code: "GLOBAL_AGENCY_PARTNER"
+    label: Global Agency Partner
+  - code: "SOLE"
+    label: Sole Proprietorship
+  - code: "OTHERS"
+    label: Others
+  - code: "SUPPLIER"
+    label: Supplier
+  - code: "TAX_AUTHORITY"
+    label: Tax Authority
+  - code: "SUB_CONTRACTOR"
+    label: Subcontractor
+  - code: "PUBLIC_SECTOR_COMPANIES"
+    label: Public Sector
+  - code: "GOVERNMENT"
+    label: Government
+  - code: "INSURANCE"
+    label: Insurance Company
+  - code: "FEDERAL"
+    label: Federal
+  - code: "CONTRACTOR"
+    label: Contractor
+  - code: "TRANSPORTADOR"
+    label: Carrier
+  - code: "ATTORNEY"
+    label: Attorney
+  - code: "UTILITY"
+    label: Utility
+  - code: "TRUST"
+    label: Trust
+  - code: "SERVICES"
+    label: Services
+  - code: "MANUFACTURING"
+    label: Manufacturing
+  - code: "CRM_AGENT"
+    label: CRM Agent

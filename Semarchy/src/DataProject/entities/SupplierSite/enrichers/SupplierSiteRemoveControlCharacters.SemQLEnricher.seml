@@ -1,0 +1,35 @@
+_name: SupplierSiteRemoveControlCharacters
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierSite.enrichers
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: Remove Control Characters
+description: "NRM-20: strip tabs, CR/LF and non-printable characters from site text fields."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: Phone
+    expression: |-
+      CASE WHEN Phone IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(Phone, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: PhoneCountryCode
+    expression: |-
+      CASE WHEN PhoneCountryCode IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(PhoneCountryCode, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: PhoneAreaCode
+    expression: |-
+      CASE WHEN PhoneAreaCode IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(PhoneAreaCode, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: PhoneExtension
+    expression: |-
+      CASE WHEN PhoneExtension IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(PhoneExtension, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: Fax
+    expression: |-
+      CASE WHEN Fax IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(Fax, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: FaxCountryCode
+    expression: |-
+      CASE WHEN FaxCountryCode IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(FaxCountryCode, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: FaxAreaCode
+    expression: |-
+      CASE WHEN FaxAreaCode IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(FaxAreaCode, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: ProcurementBuName
+    expression: |-
+      CASE WHEN ProcurementBuName IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(ProcurementBuName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: PaymentTermName
+    expression: |-
+      CASE WHEN PaymentTermName IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(PaymentTermName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END

@@ -1,0 +1,42 @@
+_name: SupplierBankAccount
+_package: DataProject.entities.SupplierBankAccount.steppers
+_type: Stepper
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+label: Supplier Bank Account
+rootStep:
+  _name: SupplierBankAccount
+  _type: CollectionStep
+  label: Supplier Bank Account
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.SupplierBankAccount.collection_views.SupplierBankAccount
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Supplier Bank Account Details
+      formTab: DataProject.entities.SupplierBankAccount.forms.SupplierBankAccountGolden.General
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

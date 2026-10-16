@@ -1,0 +1,491 @@
+_name: CustomerGolden
+_package: DataProject.entities.CustomerLegalAccount.steppers
+_type: Stepper
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Author Customer Legal Accounts
+triggers: []
+modelJob: DataProject.ModelJobs.LoadCustomer360
+rootStep:
+  _name: Customers
+  _type: CollectionStep
+  label: Customer Legal Accounts
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.CustomerLegalAccount.Collections.CustomerGoldenView
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTriggers: []
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.NameEN
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerGoldenId
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.SemlQLMatcherCustomer
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountStatus
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountType
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerState
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: DataProject.entities.CustomerLegalAccount.Validations.NameJunkCheck
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: DataProject.entities.CustomerLegalAccount.Validations.WebsiteInvalidCheck
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: DataProject.entities.CustomerLegalAccount.Validations.EmailInvalidCheck
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: DataProject.entities.CustomerLegalAccount.Validations.EmailMultipleCheck
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: DataProject.entities.CustomerLegalAccount.Validations.MobileFormatCheck
+    - onStepExit: SKIP
+      validationType: FOREIGN
+      attribute: DataProject.references.CustomerLegalAccount_Pgid.Pgid
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      label: Customer Details
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      formTab: DataProject.entities.CustomerLegalAccount.Forms.CustomerGoldenView.Main
+      referenceFormFieldConfigs: []
+      stepTriggers: []
+      formStepEnrichers:
+        - enricher: DataProject.entities.CustomerLegalAccount.enrichers.StanderdizeEmailNameAddress
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.NameEN
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerGoldenId
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountStatus
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountType
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerState
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: DataProject.entities.CustomerLegalAccount.Validations.NameJunkCheck
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: DataProject.entities.CustomerLegalAccount.Validations.WebsiteInvalidCheck
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: DataProject.entities.CustomerLegalAccount.Validations.EmailInvalidCheck
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: DataProject.entities.CustomerLegalAccount.Validations.EmailMultipleCheck
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: DataProject.entities.CustomerLegalAccount.Validations.MobileFormatCheck
+        - validationType: FOREIGN
+          attribute: DataProject.references.CustomerLegalAccount_Pgid.Pgid
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.NameEN
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerGoldenId
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountStatus
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountType
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerState
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.CustomerLegalAccount.Validations.NameJunkCheck
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.CustomerLegalAccount.Validations.WebsiteInvalidCheck
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.CustomerLegalAccount.Validations.EmailInvalidCheck
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.CustomerLegalAccount.Validations.EmailMultipleCheck
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.CustomerLegalAccount.Validations.MobileFormatCheck
+        - onStepExit: WARN
+          validationType: FOREIGN
+          attribute: DataProject.references.CustomerLegalAccount_Pgid.Pgid
+        - onStepExit: WARN
+          validationType: DETECT_DUPS
+          matcher: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.SemlQLMatcherCustomer
+    - _name: Addresses
+      _type: CollectionStep
+      label: Addresses
+      oneToManyReference: DataProject.references.Address_Cgid
+      collectionView: DataProject.entities.Address.collection_views.Address
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations: []
+      stepTriggers: []
+      childSteps:
+        - _name: AddressDetails
+          _type: FormStep
+          label: Address Details
+          formTab: DataProject.entities.Address.forms.Address.Main
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          formStepEnrichers: []
+          referenceFormFieldConfigs: []
+          formStepValidations: []
+          stepTransitionValidations: []
+          stepTriggers: []
+    - _name: Contacts
+      _type: CollectionStep
+      label: Contacts
+      oneToManyReference: DataProject.references.Contact_Cgid
+      collectionView: DataProject.entities.Contact.collection_views.Contact
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations: []
+      stepTriggers: []
+      childSteps:
+        - _name: ContactDetails
+          _type: FormStep
+          label: Contact Details
+          formTab: DataProject.entities.Contact.forms.Contact.Main
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          formStepEnrichers: []
+          referenceFormFieldConfigs: []
+          formStepValidations: []
+          stepTransitionValidations: []
+          stepTriggers: []
+    - _name: Identifier
+      _type: CollectionStep
+      label: Identifier
+      oneToManyReference: DataProject.references.IdentifierToCustID
+      collectionView: DataProject.entities.Identifier.collections.Identifier
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations: []
+      stepTriggers: []
+      childSteps:
+        - _name: IdentifierDetails
+          _type: FormStep
+          label: Identifier Details
+          formTab: DataProject.entities.Identifier.forms.Identifier.Main
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          formStepEnrichers: []
+          referenceFormFieldConfigs: []
+          formStepValidations: []
+          stepTransitionValidations: []
+          stepTriggers: []
+    - _name: Profiles
+      _type: CollectionStep
+      label: Profiles
+      oneToManyReference: DataProject.references.Profile_Cgid
+      collectionView: DataProject.entities.Profile.collection_views.ProfileView
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations: []
+      stepTriggers: []
+      childSteps:
+        - _name: ProfileDetails
+          _type: FormStep
+          label: Profile Details
+          formTab: DataProject.entities.Profile.forms.ProfileForm.Main
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          formStepEnrichers: []
+          referenceFormFieldConfigs: []
+          formStepValidations: []
+          stepTransitionValidations: []
+          stepTriggers: []
+    - _name: Registration
+      _type: CollectionStep
+      label: Registration
+      oneToManyReference: DataProject.references.TaxRegistration_Cgid
+      collectionView: DataProject.entities.TaxRegistration.collection_views.TaxRegistration
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations: []
+      stepTriggers: []
+      childSteps:
+        - _name: RegistrationDetails
+          _type: FormStep
+          label: Registration Details
+          formTab: DataProject.entities.TaxRegistration.forms.TaxRegistration.Main
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          formStepEnrichers: []
+          referenceFormFieldConfigs: []
+          formStepValidations: []
+          stepTransitionValidations: []
+          stepTriggers: []
+    - _name: CustomerOrgAssignment
+      _type: CollectionStep
+      label: Department
+      oneToManyReference: DataProject.references.CustomerOrgAssignment_Cgid
+      collectionView: DataProject.entities.CustomerOrgAssignment.collections.CustomerOrgAssignment
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: true
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: true
+      enableChildEditOnParentCreate: true
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: true
+      enableChildRemoveOnParentEdit: true
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations: []
+      stepTriggers: []
+      childSteps:
+        - _name: CustomerOrgAssignmentDetails
+          _type: FormStep
+          label: Customer Org Assignment Details
+          formTab: DataProject.entities.CustomerOrgAssignment.forms.CustomerOrgAssignmentForm.Main
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          formStepEnrichers: []
+          referenceFormFieldConfigs: []
+          formStepValidations: []
+          stepTransitionValidations: []
+          stepTriggers: []
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.NameEN
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerGoldenId
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountStatus
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountType
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerState
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: DataProject.entities.CustomerLegalAccount.Validations.NameJunkCheck
+  - onStepperFinish: SKIP
+    validationType: CHECK
+    validator: DataProject.entities.CustomerLegalAccount.Validations.WebsiteInvalidCheck
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: DataProject.entities.CustomerLegalAccount.Validations.EmailInvalidCheck
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: DataProject.entities.CustomerLegalAccount.Validations.EmailMultipleCheck
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: DataProject.entities.CustomerLegalAccount.Validations.MobileFormatCheck
+  - onStepperFinish: WARN
+    validationType: FOREIGN
+    attribute: DataProject.references.CustomerLegalAccount_Pgid.Pgid
+  - onStepperFinish: WARN
+    validationType: DETECT_DUPS

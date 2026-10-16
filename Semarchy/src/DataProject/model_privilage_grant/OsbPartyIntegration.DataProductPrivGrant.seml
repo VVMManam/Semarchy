@@ -1,0 +1,96 @@
+_name: OsbPartyIntegration
+_package: DataProject.model_privilage_grant
+_type: DataProductPrivGrant
+description: "OSB technical role for the Party Creation Callback (ADPG-MDM-INT-PTY-001 v1.1, 11.2): REST API access; read Customer / Supplier for SyncPartyFromCustomer / SyncPartyFromSupplier; write Party (CreateParty); write only the Party reference (Pgid) of Customer / Supplier (golden-ID update in the CreateParty load). Map the OSB API client's platform role to MDM_OSB_Party_Integration."
+allowApiPublishingAsUser: false
+allowDataQualityDocumentation: false
+allowEnrichmentDocumentation: false
+dataAdminRole: false
+integrationWsRole: true
+label: OSB Party Integration
+roleName: MDM_OSB_Party_Integration
+entityPrivGrants:
+  - _name: Party
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Party.Party
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: false
+    removeAllowed: false
+  - _name: CustomerLegalAccount
+    _type: EntityPrivGrant
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    attributePrivGrants:
+      - attribute: DataProject.references.CustomerLegalAccount_Pgid.Pgid
+        accessType: READ_WRITE
+    defaultAccessType: READ
+    checkoutAllowed: true
+    createAllowed: false
+    deleteAllowed: false
+    exportAllowed: false
+    removeAllowed: false
+  - _name: SupplierLegalAccount
+    _type: EntityPrivGrant
+    entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+    attributePrivGrants:
+      - attribute: DataProject.references.SupplierLegalAccount_Pgid.Pgid
+        accessType: READ_WRITE
+    defaultAccessType: READ
+    checkoutAllowed: true
+    createAllowed: false
+    deleteAllowed: false
+    exportAllowed: false
+    removeAllowed: false
+  - _name: IssuingAuthority
+    _type: EntityPrivGrant
+    entity: DataProject.entities.IssuingAuthority.IssuingAuthority
+    attributePrivGrants: []
+    defaultAccessType: READ
+    checkoutAllowed: false
+    createAllowed: false
+    deleteAllowed: false
+    exportAllowed: false
+    removeAllowed: false
+  - _name: Country
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Country.CountryReference
+    attributePrivGrants: []
+    defaultAccessType: READ
+    checkoutAllowed: false
+    createAllowed: false
+    deleteAllowed: false
+    exportAllowed: false
+    removeAllowed: false
+  - _name: Emirate
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Emirate.Emirate
+    attributePrivGrants: []
+    defaultAccessType: READ
+    checkoutAllowed: false
+    createAllowed: false
+    deleteAllowed: false
+    exportAllowed: false
+    removeAllowed: false
+  - _name: SourceSystem
+    _type: EntityPrivGrant
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    attributePrivGrants: []
+    defaultAccessType: READ
+    checkoutAllowed: false
+    createAllowed: false
+    deleteAllowed: false
+    exportAllowed: false
+    removeAllowed: false
+  - _name: LegalForm
+    _type: EntityPrivGrant
+    entity: DataProject.entities.LegalForm.LegalForm
+    attributePrivGrants: []
+    defaultAccessType: READ
+    checkoutAllowed: false
+    createAllowed: false
+    deleteAllowed: false
+    exportAllowed: false
+    removeAllowed: false

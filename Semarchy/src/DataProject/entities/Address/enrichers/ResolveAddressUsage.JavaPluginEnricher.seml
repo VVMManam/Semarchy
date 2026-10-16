@@ -1,0 +1,29 @@
+_name: ResolveAddressUsage
+_type: JavaPluginEnricher
+_package: DataProject.entities.Address.enrichers
+entity: DataProject.entities.Address.Address
+label: Resolve Address Usage
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: "select upper(trim(v)) LOOKUP_COLUMN, min(c) OUTPUT_COLUMN1 from (select address_usage_code c, unnest(array[address_usage_code, crm_source_value, fusion_code, label]) v from gd_address_usage) a where v is not null group by 1"
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "UPPER(BTRIM(COALESCE(FID_AddressUsage, AddressUsageCode)))"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_AddressUsage
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

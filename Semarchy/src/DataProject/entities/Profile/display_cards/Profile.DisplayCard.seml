@@ -1,0 +1,17 @@
+_name: Profile
+_package: DataProject.entities.Profile.display_cards
+_type: DisplayCard
+entity: DataProject.entities.Profile.Profile
+default: true
+primaryTextExpression: CASE WHEN ProfileTypeCode.NameEn IS NOT NULL THEN ProfileTypeCode.NameEn ELSE SourceProfileTypeCode END
+supportingTextExpression: CASE WHEN BusinessUnitCode.NameEn IS NULL THEN '' ELSE BusinessUnitCode.NameEn END || CASE WHEN Cluster IS NULL THEN '' ELSE ' · ' || Cluster END
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

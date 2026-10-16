@@ -1,0 +1,22 @@
+_type: SemQLEnricher
+_name: CompleteLogOnSubmit
+label: Complete Log On Submit
+_package: DataProject.entities.MergeApprovalLogs.enrichers
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+enricherExecutionScope: PRE_CONSO
+description: 'At submit: links the row to the workflow load (V_LOADID) and fills any mandatory value still empty, so a row with only a Decision is never rejected by the mandatory checks.'
+semQlEnricherExpressions:
+  - attributeName: WorkflowInstanceId
+    expression: COALESCE(WorkflowInstanceId, 'LOAD-' || :V_LOADID)
+  - attributeName: DecisionTimestamp
+    expression: COALESCE(DecisionTimestamp, DATE_TRUNC('second', NOW()))
+  - attributeName: ReviewerUsername
+    expression: COALESCE(ReviewerUsername, :V_USERNAME)
+  - attributeName: ReviewerRole
+    expression: COALESCE(ReviewerRole, 'UNKNOWN')
+  - attributeName: ClusterCode
+    expression: COALESCE(ClusterCode, 'UNKNOWN')
+  - attributeName: CustomerGoldenId
+    expression: COALESCE(CustomerGoldenId, CustomerLegalAccount.CustomerGoldenId)
+  - attributeName: Decision
+    expression: UPPER(BTRIM(Decision))

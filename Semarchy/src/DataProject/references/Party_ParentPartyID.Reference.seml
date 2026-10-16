@@ -1,0 +1,24 @@
+_name: Party_ParentPartyID
+_type: Reference
+_package: DataProject.references
+label: Party to Parent Party
+description: "Party hierarchy. A Party whose PGID is the ParentPartyID of other Parties is a super party. Multi-level: a super party can have its own parent."
+physicalName: PARTY_PARENT_PARTY
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Party.Party
+fromRoleLabel: Member Party
+fromRolePluralLabel: Member Parties
+fromRoleName: ChildParty
+toEntity: DataProject.entities.Party.Party
+toRoleLabel: Parent Party
+toRoleName: ParentPartyID
+toRolePhysicalName: PARENT_PARTY_ID
+foreignAttribute:
+  _name: ParentPartyID
+  _type: ForeignAttribute
+  physicalName: PARENT_PARTY_ID
+  label: Parent Party ID
+  searchable: true
+  entity: DataProject.entities.Party.Party

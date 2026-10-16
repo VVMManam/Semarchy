@@ -1,0 +1,22 @@
+_name: SupplierPartyLink
+_package: DataProject.entities.SupplierLegalAccount.ActionSets
+_type: ActionSet
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: "Link suppliers to Party"
+defaultActionSet: true
+actions:
+  - _name: LinkToParty
+    label: "Link selected suppliers to a Party"
+    iconUrl: images://mdi/link-variant.svg
+    useCustomLabel: true
+    waitDialogEnabled: true
+    _type: MassUpdateAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    stepper: DataProject.entities.SupplierLegalAccount.steppers.SupplierPartyLink
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

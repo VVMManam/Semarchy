@@ -1,0 +1,17 @@
+_name: BusinessUnit
+_package: DataProject.entities.BusinessUnit.display_cards
+_type: DisplayCard
+entity: DataProject.entities.BusinessUnit.BusinessUnit
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: ErpBuCode
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

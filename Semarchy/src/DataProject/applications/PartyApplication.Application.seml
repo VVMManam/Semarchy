@@ -1,0 +1,91 @@
+_name: PartyApplication
+_package: DataProject.applications
+_type: Application
+applicationTitle: Party Application
+avatarImageUrl: images://AdPorts-ImageLibrary/roundLogo.png
+coverImageUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+favIcon: images://AdPorts-ImageLibrary/roundLogo.png
+logoUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+visibility: VISIBLE
+primaryColor: "md: teal 800"
+documentationConfig:
+  documentationConfigDiagrams: []
+label: Party Application
+requiredRoleName: MDM_Party_Steward
+sortStrategy: POSITION
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: BrowsePartyGolden
+      label: Party Golden Records
+      icon: images://mdi/domain.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Party.business_views.PartyGoldenView
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowsePartyMerge
+      label: Party Merge
+      icon: images://mdi/call-merge.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Party.business_views.PartyMerge
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowsePartyDuplicates
+      label: Review Duplicates
+      icon: images://mdi/account-multiple-check-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Party.business_views.PartyDuplicateView
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: true
+    - _name: BrowsePartyWithoutRole
+      label: Parties without Customers or Suppliers
+      icon: images://mdi/link-variant-off.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Party.business_views.PartyWithoutRoleView
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: true
+    - _name: BrowsePartyHierarchyConflicts
+      label: Super parties with customers or suppliers
+      icon: images://mdi/alert-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Party.business_views.PartyHierarchyConflictView
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: true
+    - _name: MyTasks
+      label: My Tasks
+      icon: images://mdi/checkbox-marked-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: MyTasksAction
+      badgeVisible: true
+    - _name: BrowseEntities
+      label: Entities
+      icon: images://mdi/database.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseEntitiesFolderAction
+      lineageEnabled: true
+defaultAction: DataProject.applications.PartyApplication.Root.BrowsePartyGolden
+navDrawer:
+  - _name: RootFolder
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: DataProject.applications.PartyApplication.Root

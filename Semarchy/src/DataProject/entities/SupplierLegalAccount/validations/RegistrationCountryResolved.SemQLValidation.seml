@@ -1,0 +1,10 @@
+_name: RegistrationCountryResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Registration Country Resolved
+validationScope: POST_CONSO
+validationLabel: "COUNTRY_UNMAPPED - source registration country value has no matching reference in MDM."
+condition: |-
+  TaxCountryCode IS NULL
+  OR FID_RegistrationCountry IS NOT NULL

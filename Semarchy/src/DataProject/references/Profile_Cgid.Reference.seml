@@ -1,0 +1,23 @@
+_name: Profile_Cgid
+_type: Reference
+_package: DataProject.references
+label:  Profile to  Customer Legal Account
+physicalName: PROFILE_CGID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Profile.Profile
+fromRoleLabel: Profile
+fromRolePluralLabel: Profile
+fromRoleName: Profile
+toEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+toRoleLabel: Cgid
+toRoleName: Cgid
+toRolePhysicalName: CGID
+foreignAttribute:
+  _name: Cgid
+  _type: ForeignAttribute
+  physicalName: CGID
+  label: Cgid
+  searchable: true
+  entity: DataProject.entities.Profile.Profile

@@ -1,0 +1,42 @@
+_name: SupplierLegalAccount
+_package: DataProject.entities.SupplierLegalAccount.steppers
+_type: Stepper
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Supplier Legal Account
+rootStep:
+  _name: SupplierLegalAccount
+  _type: CollectionStep
+  label: Supplier Legal Account
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.SupplierLegalAccount.collection_views.SupplierLegalAccount
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Supplier Legal Account Details
+      formTab: DataProject.entities.SupplierLegalAccount.forms.SupplierGolden.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

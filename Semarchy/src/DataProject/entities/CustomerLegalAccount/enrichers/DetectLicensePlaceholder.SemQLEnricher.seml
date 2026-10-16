@@ -1,0 +1,17 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: DetectLicensePlaceholder
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Detect License Placeholder
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: LicenseIsPlaceholder
+    expression: |-
+      CASE
+          WHEN LicenseNumber IS NULL THEN '0'
+          WHEN UPPER(BTRIM(LicenseNumber)) IN ('NA', 'N/A', 'NIL', 'NONE', 'NULL', 'TBD', 'TEST', 'XXX') THEN '1'
+          WHEN LENGTH(REGEXP_REPLACE(LicenseNumber, '[^A-Za-z0-9]', '', 'g')) < 4 THEN '1'
+          WHEN LENGTH(BTRIM(LicenseNumber)) > 0 AND REPLACE(BTRIM(LicenseNumber), LEFT(BTRIM(LicenseNumber), 1), '') = '' THEN '1'
+          WHEN BTRIM(LicenseNumber) = LEFT('123456789012345678901234567890123456789012345678901234567890', LENGTH(BTRIM(LicenseNumber))) THEN '1'
+          ELSE '0'
+      END

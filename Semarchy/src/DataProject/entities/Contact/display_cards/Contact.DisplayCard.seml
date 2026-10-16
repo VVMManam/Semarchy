@@ -1,0 +1,17 @@
+_name: Contact
+_package: DataProject.entities.Contact.display_cards
+_type: DisplayCard
+entity: DataProject.entities.Contact.Contact
+default: true
+primaryTextExpression: CASE WHEN FirstName IS NULL AND LastName IS NULL THEN FullNameAr ELSE CASE WHEN FirstName IS NULL THEN '' ELSE FirstName END || ' ' || CASE WHEN LastName IS NULL THEN '' ELSE LastName END END
+supportingTextExpression: CASE WHEN JobTitle IS NOT NULL THEN JobTitle ELSE Email END
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

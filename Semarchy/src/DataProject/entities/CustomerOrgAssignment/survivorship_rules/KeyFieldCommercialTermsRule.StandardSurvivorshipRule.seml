@@ -1,0 +1,40 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+_package: DataProject.entities.CustomerOrgAssignment.survivorship_rules
+defaultRule: false
+_name: KeyFieldCommercialTermsRule
+label: Key Field - Payment Term, ERP Profile, Credit Limit
+description: "SV-DEP-02 (Fusion step not applied in Wave 1): most complete record, then most recently modified. The three fields are taken together from one record; records that have these values filled rank first."
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: false
+consolidationOrderByExpression: |-
+  (CASE WHEN PaymentTerm IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ERPProfile IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN CreditLimit IS NOT NULL THEN 1 ELSE 0 END) DESC,
+  (
+    CASE WHEN DeptAccountUCID IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CreditCurrency IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN OperationType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DepartmentAccountid IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DepartmentAccountUCID IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN MobilePhoneCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TelephoneNumberCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ApprovalStatus IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentTerm IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ERPBUCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ERPProfile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Cluster IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentDetails IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DeptCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN SalesPerson IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CreditLimit IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DepartmentAccountGuid IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountManager IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  CASE WHEN ModifyDate IS NULL THEN 0 ELSE 1 END DESC,
+  ModifyDate DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: PaymentTerm
+  - attributeName: ERPProfile
+  - attributeName: CreditLimit

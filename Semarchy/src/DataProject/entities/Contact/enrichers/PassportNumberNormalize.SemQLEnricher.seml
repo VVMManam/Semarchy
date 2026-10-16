@@ -1,0 +1,13 @@
+_name: PassportNumberNormalize
+_package: DataProject.entities.Contact.enrichers
+entity: DataProject.entities.Contact.Contact
+label: Passport Number Normalize
+_type: SemQLEnricher
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: PassportNumber
+    expression: |-
+      CASE
+        WHEN PassportNumber IS NULL THEN PassportNumber
+        ELSE UPPER(REGEXP_REPLACE(PassportNumber, '[^A-Za-z0-9]', ''))
+      END

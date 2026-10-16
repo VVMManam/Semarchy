@@ -1,0 +1,23 @@
+_name: Contact_NationalityCode
+_type: Reference
+_package: DataProject.references
+label:  Contact to  Country
+physicalName: CONTACT__NATIONALITY_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Contact.Contact
+fromRoleLabel:  Contact
+fromRolePluralLabel:  Contact
+fromRoleName: Contact
+toEntity: DataProject.entities.Country.CountryReference
+toRoleLabel: Nationality Code
+toRoleName: NationalityCode
+toRolePhysicalName: NATIONALITY_CODE
+foreignAttribute:
+  _name: NationalityCode
+  _type: ForeignAttribute
+  physicalName: NATIONALITY_CODE
+  label: Nationality Code
+  searchable: true
+  entity: DataProject.entities.Contact.Contact

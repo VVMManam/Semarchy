@@ -1,0 +1,10 @@
+_name: BillToBuResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSiteAssignment.validations
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Bill-to BU Resolved
+validationScope: POST_CONSO
+validationLabel: "BUSINESS_UNIT_UNMAPPED - Fusion Bill-to BU name has no matching Business Unit in MDM."
+condition: |-
+  BillToBuName IS NULL
+  OR FID_BillToBuCode IS NOT NULL

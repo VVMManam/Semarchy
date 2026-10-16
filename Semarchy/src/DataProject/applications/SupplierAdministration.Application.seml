@@ -1,0 +1,83 @@
+_name: SupplierAdministration
+_package: DataProject.applications
+_type: Application
+applicationTitle: Supplier Administration
+label: Supplier Administration
+avatarImageUrl: images://AdPorts-ImageLibrary/roundLogo.png
+coverImageUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+favIcon: images://AdPorts-ImageLibrary/roundLogo.png
+logoUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+visibility: VISIBLE
+requiredRoleName: semarchyAdmin
+primaryColor: "md: blue 1000"
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: ErdDiagramERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.ErdDiagram
+    - _name: SupplierERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierERDiagram
+    - _name: SupplierSiteERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierSiteERDiagram
+    - _name: SupplierSiteAssignmentERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierSiteAssignmentERDiagram
+    - _name: SupplierBankAccountERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierBankAccountERDiagram
+    - _name: SupplierAddressERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierAddressERDiagram
+    - _name: SupplierContactERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierContactERDiagram
+    - _name: GeographyReferenceERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.GeographyReferenceERDiagram
+    - _name: SupplierIdentifierERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierIdentifierERDiagram
+    - _name: SupplierLicenseActivityERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierLicenseActivityERDiagram
+    - _name: OrganizationReferenceERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.OrganizationERDiagram
+    - _name: SupplierTaxRegistrationERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierTaxRegistrationERDiagram
+sortStrategy: POSITION
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: OpenDocumentation
+      label: ER Diagram
+      icon: images://mdi/book-open-page-variant.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: OpenDocumentationAction
+      requiredRole: semarchyAdmin
+    - _name: BrowseEntities
+      label: Entities
+      icon: images://mdi/database.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseEntitiesFolderAction
+      lineageEnabled: true
+      requiredRole: semarchyAdmin
+defaultAction: DataProject.applications.SupplierAdministration.Root.OpenDocumentation
+navDrawer:
+  - _name: RootFolder
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: DataProject.applications.SupplierAdministration.Root

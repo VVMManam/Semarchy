@@ -1,0 +1,11 @@
+_name: PartySuperPartyNoAccounts
+_type: SemQLValidation
+_package: DataProject.entities.Party.validations
+entity: DataProject.entities.Party.Party
+label: "A super party cannot have customers or suppliers"
+validationScope: NONE
+validationLabel: "This party has member parties (super party). Unlink its customers and suppliers, or move its member parties to another party."
+condition: |-
+  LOOKUP count Pgid FROM ChildParty END = 0
+  OR (LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END = 0
+      AND LOOKUP count Sgid FROM SupplierLegalAccount END = 0)

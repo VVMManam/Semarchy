@@ -1,0 +1,63 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: SbcMatchingERDiagram
+label: SBC Matching ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: SbcRequest
+    _type: EntityShape
+    entity: DataProject.entities.SbcRequest.SbcRequest
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 700
+      y: 60
+  - _name: SbcMatchResult
+    _type: EntityShape
+    entity: DataProject.entities.SbcMatchResult.SbcMatchResult
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1080
+      y: 60
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: CustomerLegalAccount
+    _type: EntityShape
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 250
+referenceLinks:
+  - reference: DataProject.references.SbcMatchResult_CandidateCgid
+    bendPoints: []
+  - reference: DataProject.references.SbcMatchResult_SbcRequestId
+    bendPoints: []
+  - reference: DataProject.references.SbcRequest_ChannelSystemCode
+    bendPoints: []

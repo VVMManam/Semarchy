@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../.."
+		}
+	],
+	"settings": {
+		"semarchy.sdp.instanceUrl": "https://adpg-mdm-test.eu.semarchy.net",
+		"semarchy.sdp.dataLocation": "adpg_model1",
+		"semarchy.sdp.datasource": "datasource1",
+		"semarchy.sdp.overwriteDeploymentUrl": "https://adpg-mdm-test.eu.semarchy.net/dpc",
+		"semarchy.validation.autoClearOutput": true
+	}
+}

@@ -1,0 +1,59 @@
+_package: DataProject.entities.CrossReference
+_type: Entity
+_name: CrossReference
+label: Cross Reference
+pluralLabel: Cross Reference
+physicalTableName: CROSS_REFERENCE
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CrossReferenceID
+    label: Cross Reference ID
+    physicalName: CROSS_REFERENCE_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: AttributeName
+    label: Attribute Name
+    physicalName: ATTRIBUTE_NAME
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: SourceSystemCode
+    label: Source System Code
+    physicalName: SOURCE_SYSTEM_CODE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: SourceValue
+    label: Source Value
+    physicalName: SOURCE_VALUE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: MdmValue
+    label: Mdm Value
+    physicalName: MDM_VALUE
+    dataType: String
+    length: 30
+    mandatory: false
+    searchable: true
+  
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.CrossReference.CrossReference.CrossReferenceID
+entityType: BASIC

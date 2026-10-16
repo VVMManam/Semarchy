@@ -1,0 +1,69 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: NormalizeMobileTelephone
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Normalize Mobile Telephone
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.CustomerLegalAccount.enrichers.DefaultPhoneCountryCode
+semQlEnricherExpressions:
+  - attributeName: Mobile
+    expression: |-
+      CASE
+        WHEN Mobile IS NULL OR NOT REGEXP_LIKE(Mobile, '[1-9]') THEN Mobile
+        WHEN REGEXP_LIKE(MobilePhoneCountryCode, '^\s*\+?[0-9]{1,4}\s*$') THEN
+          REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(
+            CASE
+              WHEN REGEXP_REPLACE(REGEXP_REPLACE(Mobile, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g') LIKE '+%' THEN REGEXP_REPLACE(REGEXP_REPLACE(Mobile, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g')
+              WHEN REGEXP_REPLACE(REGEXP_REPLACE(Mobile, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g') LIKE '00%' THEN '+' || SUBSTR(REGEXP_REPLACE(REGEXP_REPLACE(Mobile, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), 3)
+              ELSE '+' || REGEXP_REPLACE(MobilePhoneCountryCode, '[^0-9]', '', 'g') || REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(Mobile, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), '^0+', '')
+            END
+          , '^\+' || REGEXP_REPLACE(MobilePhoneCountryCode, '[^0-9]', '', 'g') || REGEXP_REPLACE(MobilePhoneCountryCode, '[^0-9]', '', 'g') || '([0-9]{9,})$', '+' || REGEXP_REPLACE(MobilePhoneCountryCode, '[^0-9]', '', 'g') || '\1')
+          , '^\+971971([0-9]{8})$', '+971\1')
+          , '^\+' || REGEXP_REPLACE(MobilePhoneCountryCode, '[^0-9]', '', 'g') || '0+', CASE WHEN REGEXP_REPLACE(MobilePhoneCountryCode, '[^0-9]', '', 'g') = '39' THEN '+390' ELSE '+' || REGEXP_REPLACE(MobilePhoneCountryCode, '[^0-9]', '', 'g') END)
+        ELSE
+          REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(Mobile, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), '^00', '+')
+          , '^\+(\d{2,3})\1(\d{9,})$', '+\1\2')
+          , '^\+([17])\1(\d{10,})$', '+\1\2')
+          , '^\+971971(\d{8,})$', '+971\1')
+      END
+  - attributeName: BusinessPhone
+    expression: |-
+      CASE
+        WHEN BusinessPhone IS NULL OR NOT REGEXP_LIKE(BusinessPhone, '[1-9]') THEN BusinessPhone
+        WHEN REGEXP_LIKE(BusinessPhoneCountryCode, '^\s*\+?[0-9]{1,4}\s*$') THEN
+          REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(
+            CASE
+              WHEN REGEXP_REPLACE(REGEXP_REPLACE(BusinessPhone, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g') LIKE '+%' THEN REGEXP_REPLACE(REGEXP_REPLACE(BusinessPhone, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g')
+              WHEN REGEXP_REPLACE(REGEXP_REPLACE(BusinessPhone, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g') LIKE '00%' THEN '+' || SUBSTR(REGEXP_REPLACE(REGEXP_REPLACE(BusinessPhone, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), 3)
+              ELSE '+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(BusinessPhone, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), '^0+', '')
+            END
+          , '^\+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || '([0-9]{9,})$', '+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || '\1')
+          , '^\+971971([0-9]{8})$', '+971\1')
+          , '^\+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || '0+', CASE WHEN REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') = '39' THEN '+390' ELSE '+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') END)
+        ELSE
+          REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(BusinessPhone, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), '^00', '+')
+          , '^\+(\d{2,3})\1(\d{9,})$', '+\1\2')
+          , '^\+([17])\1(\d{10,})$', '+\1\2')
+          , '^\+971971(\d{8,})$', '+971\1')
+      END
+  - attributeName: Fax
+    expression: |-
+      CASE
+        WHEN Fax IS NULL OR NOT REGEXP_LIKE(Fax, '[1-9]') THEN Fax
+        WHEN REGEXP_LIKE(BusinessPhoneCountryCode, '^\s*\+?[0-9]{1,4}\s*$') THEN
+          REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(
+            CASE
+              WHEN REGEXP_REPLACE(REGEXP_REPLACE(Fax, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g') LIKE '+%' THEN REGEXP_REPLACE(REGEXP_REPLACE(Fax, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g')
+              WHEN REGEXP_REPLACE(REGEXP_REPLACE(Fax, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g') LIKE '00%' THEN '+' || SUBSTR(REGEXP_REPLACE(REGEXP_REPLACE(Fax, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), 3)
+              ELSE '+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(Fax, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), '^0+', '')
+            END
+          , '^\+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || '([0-9]{9,})$', '+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || '\1')
+          , '^\+971971([0-9]{8})$', '+971\1')
+          , '^\+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') || '0+', CASE WHEN REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') = '39' THEN '+390' ELSE '+' || REGEXP_REPLACE(BusinessPhoneCountryCode, '[^0-9]', '', 'g') END)
+        ELSE
+          REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(Fax, '^(([^0-9/]*[0-9]){7,}[^0-9/]*)[/\n,;].*$', '\1'), '[^0-9+A-Za-z]', '', 'g'), '^00', '+')
+          , '^\+(\d{2,3})\1(\d{9,})$', '+\1\2')
+          , '^\+([17])\1(\d{10,})$', '+\1\2')
+          , '^\+971971(\d{8,})$', '+971\1')
+      END

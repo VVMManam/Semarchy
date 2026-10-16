@@ -1,0 +1,23 @@
+_name: PartyRole_Pgid
+_type: Reference
+_package: DataProject.references
+label:  Party Role to  Party
+physicalName: PARTY_ROLE_PGID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.PartyRole.PartyRole
+fromRoleLabel:  Party Role
+fromRolePluralLabel:  Party Role
+fromRoleName: PartyRole
+toEntity: DataProject.entities.Party.Party
+toRoleLabel: Pgid
+toRoleName: Pgid
+toRolePhysicalName: PGID
+foreignAttribute:
+  _name: Pgid
+  _type: ForeignAttribute
+  physicalName: PGID
+  label: Pgid
+  searchable: true
+  entity: DataProject.entities.PartyRole.PartyRole

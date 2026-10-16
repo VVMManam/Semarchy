@@ -1,0 +1,9 @@
+_name: PassportNumberFormatCheck
+_package: DataProject.entities.Contact.validations
+entity: DataProject.entities.Contact.Contact
+label: Passport Number Format Check
+validationScope: POST_CONSO
+validationLabel: "PASSPORT_NUMBER_INVALID - must be 6 to 9 alphanumeric characters."
+_type: SemQLValidation
+condition: >-
+  PassportNumber IS NULL OR (LENGTH(PassportNumber) >= 6 AND LENGTH(PassportNumber) <= 9)

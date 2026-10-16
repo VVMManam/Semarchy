@@ -1,0 +1,17 @@
+_name: RelationshipType
+_package: DataProject.entities.RelationshipType.display_cards
+_type: DisplayCard
+entity: DataProject.entities.RelationshipType.RelationshipType
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: ProposedByRule
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

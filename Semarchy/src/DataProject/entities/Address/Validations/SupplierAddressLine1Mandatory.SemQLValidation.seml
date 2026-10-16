@@ -1,0 +1,8 @@
+_name: SupplierAddressLine1Mandatory
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: VAL-12 Supplier Address Line 1 Mandatory
+validationScope: POST_CONSO
+validationLabel: "VAL-12 - Primary address line required."
+condition: "FID_SupplierSite IS NULL OR ((AddressLine1 IS NOT NULL AND BTRIM(AddressLine1) <> ''))"

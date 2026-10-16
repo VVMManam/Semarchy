@@ -1,0 +1,23 @@
+_name: IssuingAuthority_EmirateCode
+_type: Reference
+_package: DataProject.references
+label:  Issuing Authority to  Emirate
+physicalName: ISSUING_AUTH_EMR_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.IssuingAuthority.IssuingAuthority
+fromRoleLabel:  Issuing Authority
+fromRolePluralLabel:  Issuing Authority
+fromRoleName: IssuingAuthority
+toEntity: DataProject.entities.Emirate.Emirate
+toRoleLabel: Emirate Code
+toRoleName: EmirateCode
+toRolePhysicalName: EMIRATE_CODE
+foreignAttribute:
+  _name: EmirateCode
+  _type: ForeignAttribute
+  physicalName: EMIRATE_CODE
+  label: Emirate Code
+  searchable: true
+  entity: DataProject.entities.IssuingAuthority.IssuingAuthority

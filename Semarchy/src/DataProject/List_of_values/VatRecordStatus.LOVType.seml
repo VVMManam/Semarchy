@@ -1,0 +1,10 @@
+_name: VatRecordStatus
+_package: DataProject.List_of_values
+_type: LOVType
+label: Vat Record Status
+length: 128
+lovValues:
+  - code: "1"
+    label: Inactive
+  - code: "0"
+    label: Active

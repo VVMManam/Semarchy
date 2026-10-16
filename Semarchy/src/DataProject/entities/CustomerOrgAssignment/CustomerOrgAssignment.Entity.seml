@@ -1,0 +1,319 @@
+_package: DataProject.entities.CustomerOrgAssignment
+_type: Entity
+_name: CustomerOrgAssignment
+label: Customer Org Assignment
+pluralLabel: Customer Org Assignment
+physicalTableName: CUST_ORG_ASSIGNMENT
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: CustomerOrgAssignmentID
+    physicalName: CUSTOMER_ORG_ASSIGNMENT_I
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Customer Org Assignment ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DeptAccountUCID
+    physicalName: DEPT_ACCOUNT_UCID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Dept Account UCID
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CreditCurrency
+    physicalName: CREDIT_CURRENCY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Credit Currency
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OperationType
+    physicalName: OPERATION_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Operation Type
+    mandatory: false
+    length: 25
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DepartmentAccountid
+    physicalName: DEPARTMENT_ACCOUNT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Department Account ID
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DepartmentAccountUCID
+    physicalName: DEPARTMENT_ACCOUNT_UCID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Department Account UCID
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Status
+    physicalName: STATUS
+    dataType: DataProject.List_of_values.DepartmentStatus
+    goldenAttribute: true
+    i18ned: false
+    label: Status
+    mandatory: false
+    length: 128
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MobilePhoneCountryCode
+    physicalName: MOBILE_PHONE_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Mobile Phone Country Code
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TelephoneNumberCountryCode
+    physicalName: TELEPH_NO_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Telephone Number Country Code
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ApprovalStatus
+    physicalName: APPROVAL_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Approval Status
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaymentTerm
+    physicalName: PAYMENT_TERM
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Term
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ERPBUCode
+    physicalName: ERP_BU_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: ERP BU Code
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ERPProfile
+    physicalName: ERP_PROFILE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: ERP Profile
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Cluster
+    physicalName: CLUSTER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Cluster
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PaymentDetails
+    physicalName: PAYMENT_DETAILS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Payment Details
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DeptCode
+    physicalName: DEPT_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Dept Code
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SalesPerson
+    physicalName: SALES_PERSON
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Sales Person
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CreditLimit
+    physicalName: CREDIT_LIMIT
+    dataType: Decimal
+    goldenAttribute: true
+    i18ned: false
+    label: Credit Limit
+    mandatory: false
+    length: 0
+    multiValued: false
+    precision: 10
+    scale: 2
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DepartmentAccountGuid
+    physicalName: DEPARTMENT_ACCOUNT_GUID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Department Account Guid
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountManager
+    physicalName: ACCOUNT_MANAGER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Account Manager
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountCreationDate
+    physicalName: ACCOUNT_CREATION_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Creation Date
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ModifyDate
+    physicalName: MODIFY_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    label: Modify Date
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment.CustomerOrgAssignmentID
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherCustomerOrgAssignment
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 98
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: D02_BuAndDeptCodeUnderSameCustomer
+      label: "D-02 BU + DeptCode equal, same customer (Cgid) (auto merge)"
+      condition: |-
+        Record1.FID_BusinessUnitCode IS NOT NULL
+        AND Record2.FID_BusinessUnitCode IS NOT NULL
+        AND Record1.FID_BusinessUnitCode = Record2.FID_BusinessUnitCode
+        AND Record1.FID_ClusterCode IS NOT NULL
+        AND Record2.FID_ClusterCode IS NOT NULL
+        AND Record1.FID_ClusterCode = Record2.FID_ClusterCode
+        AND Record1.FID_CustomerLegalAccount IS NOT NULL
+        AND Record2.FID_CustomerLegalAccount IS NOT NULL
+        AND Record1.FID_CustomerLegalAccount = Record2.FID_CustomerLegalAccount
+      matchScore: 100
+      usingMatchOn: false

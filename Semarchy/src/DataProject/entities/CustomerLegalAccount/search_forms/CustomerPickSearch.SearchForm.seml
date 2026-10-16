@@ -1,0 +1,79 @@
+_name: CustomerPickSearch
+_type: SearchForm
+_package: DataProject.entities.CustomerLegalAccount.search_forms
+label: Customer Search (pick from list)
+description: Search customers by picking values from suggestion lists that appear while typing
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+searchTip: Start typing in a field and pick from the suggestions. Leave a field empty to ignore it.
+searchParameters:
+  - _name: Customer
+    _type: SearchParameter
+    label: Customer (name or Golden Id)
+    bindVariableName: PickCustomer
+    length: 128
+    dataType: String
+    displayType: VALUE_PICKER
+    lookupEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    boundSelectExpression: CustomerGoldenId
+    primaryTextExpression: NameEN
+    secondaryTextExpression: CustomerGoldenId
+    useDistinct: false
+    displayCount: false
+  - _name: LicenseNumber
+    _type: SearchParameter
+    label: License Number
+    bindVariableName: PickLicenseNumber
+    length: 50
+    dataType: String
+    displayType: VALUE_PICKER
+    lookupEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    boundSelectExpression: LicenseNumber
+    primaryTextExpression: LicenseNumber
+    secondaryTextExpression: NameEN
+    filterExpression: LicenseNumber IS NOT NULL
+    useDistinct: false
+    displayCount: false
+  - _name: TaxRegistrationNumber
+    _type: SearchParameter
+    label: TRN Number
+    bindVariableName: PickTrn
+    length: 50
+    dataType: String
+    displayType: VALUE_PICKER
+    lookupEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    boundSelectExpression: TaxRegistrationNumber
+    primaryTextExpression: TaxRegistrationNumber
+    secondaryTextExpression: NameEN
+    filterExpression: TaxRegistrationNumber IS NOT NULL
+    useDistinct: false
+    displayCount: false
+  - _name: ClusterName
+    _type: SearchParameter
+    label: Cluster
+    bindVariableName: PickCluster
+    length: 100
+    dataType: String
+    displayType: VALUE_PICKER
+    lookupEntity: DataProject.entities.Cluster.Cluster
+    boundSelectExpression: NameEn
+    primaryTextExpression: NameEn
+    useDistinct: false
+    displayCount: false
+  - _name: BusinessUnit
+    _type: SearchParameter
+    label: Business Unit
+    bindVariableName: PickBusinessUnit
+    length: 200
+    dataType: String
+    displayType: VALUE_PICKER
+    lookupEntity: DataProject.entities.BusinessUnit.BusinessUnit
+    boundSelectExpression: NameEn
+    primaryTextExpression: NameEn
+    useDistinct: false
+    displayCount: false
+semQlCondition: >-
+  (:PickCustomer IS NULL OR CustomerGoldenId = :PickCustomer)
+  AND (:PickLicenseNumber IS NULL OR LicenseNumber = :PickLicenseNumber)
+  AND (:PickTrn IS NULL OR TaxRegistrationNumber = :PickTrn)
+  AND (:PickCluster IS NULL OR UPPER(Cluster) LIKE '%' || UPPER(:PickCluster) || '%')
+  AND (:PickBusinessUnit IS NULL OR ANY CustomerOrgAssignment HAVE (BusinessUnitCode.NameEn = :PickBusinessUnit))

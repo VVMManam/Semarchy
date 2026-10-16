@@ -1,0 +1,9 @@
+_name: BusinessRelationshipDomain
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: VAL-05 Business Relationship Mandatory and Domain
+validationScope: POST_CONSO
+validationLabel: "VAL-05 - Business Relationship is missing or invalid."
+condition: |-
+  BusinessRelationshipCode IS NOT NULL AND BusinessRelationshipCode IN ('SPEND_AUTHORIZED', 'PROSPECTIVE')

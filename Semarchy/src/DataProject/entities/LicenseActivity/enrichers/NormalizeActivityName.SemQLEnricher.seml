@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: DataProject.entities.LicenseActivity.enrichers
+_name: NormalizeActivityName
+entity: DataProject.entities.LicenseActivity.LicenseActivity
+label: Normalize Activity Name
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: Name
+    expression: |-
+      UPPER(BTRIM(REGEXP_REPLACE(Name, '\s*\([0-9]+\)\s*$', '')))

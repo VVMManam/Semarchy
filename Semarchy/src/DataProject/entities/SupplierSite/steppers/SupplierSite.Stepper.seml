@@ -1,0 +1,42 @@
+_name: SupplierSite
+_package: DataProject.entities.SupplierSite.steppers
+_type: Stepper
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: Supplier Site
+rootStep:
+  _name: SupplierSite
+  _type: CollectionStep
+  label: Supplier Site
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.SupplierSite.collection_views.SupplierSiteGolden
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Supplier Site Details
+      formTab: DataProject.entities.SupplierSite.forms.SupplierSiteGolden.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

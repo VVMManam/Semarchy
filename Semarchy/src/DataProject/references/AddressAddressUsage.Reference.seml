@@ -1,0 +1,23 @@
+_name: AddressAddressUsage
+_type: Reference
+_package: DataProject.references
+label: Address Address Usage
+physicalName: ADDRESS_ADDRESS_USAGE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Address.Address
+fromRoleLabel: Address
+fromRolePluralLabel: Address
+fromRoleName: Address
+toEntity: DataProject.entities.AddressUsage.AddressUsage
+toRoleLabel: AddressUsage
+toRoleName: AddressUsage
+toRolePhysicalName: ADDRESS_USAGE
+foreignAttribute:
+  _name: AddressUsage
+  _type: ForeignAttribute
+  physicalName: ADDRESS_USAGE
+  label: Address Usage
+  searchable: true
+  entity: DataProject.entities.Address.Address

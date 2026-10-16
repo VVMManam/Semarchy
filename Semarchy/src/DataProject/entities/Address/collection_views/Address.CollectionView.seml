@@ -1,0 +1,144 @@
+_name: Address
+_type: CollectionView
+_package: DataProject.entities.Address.collection_views
+entity: DataProject.entities.Address.Address
+default: true
+displayCard: DataProject.entities.Address.display_cards.Address
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Address
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: SourceAddress
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "REGEXP_REPLACE(REGEXP_REPLACE(COALESCE(AddressLine1, '') || ', ' || COALESCE(AddressLine2, '') || ', ' || COALESCE(AddressLine3, '') || ', ' || COALESCE(City, '') || CASE WHEN PoBox IS NULL THEN '' ELSE ', PO Box ' || PoBox END, '( *, *)+', ', ', 'g'), '^[, ]+|[, ]+$', '', 'g')"
+    label: Incoming Address
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EnrichedAddress
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(UPPER(COALESCE(AddressLine1, '') || CASE WHEN AddressLine2 IS NULL OR UPPER(AddressLine1) LIKE '%' || UPPER(AddressLine2) || '%' THEN '' ELSE ', ' || AddressLine2 END || CASE WHEN AddressLine3 IS NULL OR UPPER(AddressLine1) LIKE '%' || UPPER(AddressLine3) || '%' THEN '' ELSE ', ' || AddressLine3 END), 'P\\.? *O\\.? *BOX *:? *[0-9]+', '', 'g'), ' +', ' ', 'g'), '( *, *)+', ', ', 'g'), '^[, ]+|[, ]+$', '', 'g') || CASE WHEN CASE WHEN PoBox IS NOT NULL AND REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') <> '' THEN REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') WHEN REGEXP_LIKE(UPPER(AddressLine1), 'P\\.? *O\\.? *BOX *:? *[0-9]+') THEN REGEXP_REPLACE(UPPER(AddressLine1), '^.*P\\.? *O\\.? *BOX *:? *([0-9]+).*$', '\\1') ELSE NULL END IS NULL THEN '' ELSE ', P.O. BOX ' || CASE WHEN PoBox IS NOT NULL AND REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') <> '' THEN REGEXP_REPLACE(PoBox, '[^0-9]', '', 'g') WHEN REGEXP_LIKE(UPPER(AddressLine1), 'P\\.? *O\\.? *BOX *:? *[0-9]+') THEN REGEXP_REPLACE(UPPER(AddressLine1), '^.*P\\.? *O\\.? *BOX *:? *([0-9]+).*$', '\\1') ELSE NULL END END || CASE WHEN City IS NULL OR UPPER(AddressLine1) LIKE '%' || UPPER(City) || '%' THEN '' ELSE ', ' || UPPER(City) END || CASE WHEN FDN_EmirateCode IS NULL OR UPPER(FDN_EmirateCode) = UPPER(City) THEN '' ELSE ', ' || UPPER(FDN_EmirateCode) END || CASE WHEN FDN_CountryCode IS NULL THEN '' ELSE ', ' || UPPER(FDN_CountryCode) END"
+    label: Enriched Address
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: PrimaryAddress
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: true
+    value: "CASE WHEN FID_Cgid IS NULL THEN CASE WHEN IsPrimary = '1' THEN '1' ELSE '0' END WHEN NOT (ANY Cgid.Address HAVE (AddressId <> ParentRecord.AddressId AND CASE WHEN UPPER(AddressUsageCode) LIKE '%BILL%' THEN 'B' WHEN UPPER(AddressUsageCode) LIKE '%SERV%' THEN 'S' ELSE 'O' END = CASE WHEN UPPER(ParentRecord.AddressUsageCode) LIKE '%BILL%' THEN 'B' WHEN UPPER(ParentRecord.AddressUsageCode) LIKE '%SERV%' THEN 'S' ELSE 'O' END AND (CASE WHEN PrimarySetAt IS NOT NULL THEN '1' || TO_CHAR(PrimarySetAt, 'YYYYMMDDHH24MISS') ELSE '000000000000000' END || TO_CHAR((CASE WHEN AddressLine1 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN City IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN IssuingEmirateId IS NOT NULL OR StateProvince IS NOT NULL OR FID_EmirateCode IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN Country IS NOT NULL OR FID_CountryCode IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN PoBox IS NOT NULL THEN 1 ELSE 0 END), 'FM0') || TO_CHAR(UpdateDate, 'YYYYMMDDHH24MISS') || CASE WHEN SourceCustomerId IS NOT NULL AND SourceCustomerId = Cgid.CustomerGoldenId THEN '1' ELSE '0' END || TO_CHAR(AddressId, 'FM00000000000000000000')) > (CASE WHEN ParentRecord.PrimarySetAt IS NOT NULL THEN '1' || TO_CHAR(ParentRecord.PrimarySetAt, 'YYYYMMDDHH24MISS') ELSE '000000000000000' END || TO_CHAR((CASE WHEN ParentRecord.AddressLine1 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ParentRecord.City IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ParentRecord.IssuingEmirateId IS NOT NULL OR ParentRecord.StateProvince IS NOT NULL OR ParentRecord.FID_EmirateCode IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ParentRecord.Country IS NOT NULL OR ParentRecord.FID_CountryCode IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ParentRecord.PoBox IS NOT NULL THEN 1 ELSE 0 END), 'FM0') || TO_CHAR(ParentRecord.UpdateDate, 'YYYYMMDDHH24MISS') || CASE WHEN ParentRecord.SourceCustomerId IS NOT NULL AND ParentRecord.SourceCustomerId = ParentRecord.Cgid.CustomerGoldenId THEN '1' ELSE '0' END || TO_CHAR(ParentRecord.AddressId, 'FM00000000000000000000')))) THEN '1' ELSE '0' END"
+    label: Is Primary
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AddressLine1
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressLine1
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AddressLine2
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressLine2
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AddressLine3
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressLine3
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PoBox
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PoBox
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: City
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: City
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: Emirate
+    columnAlign: LEFT
+    dataType: STRING
+    referencedEntity: DataProject.entities.Emirate.Emirate
+    useCustomLabel: true
+    value: "FDN_EmirateCode"
+    label: "Emirate"
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "0"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: PostalCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "PostalCode"
+    label: "Postal Code"
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: CountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    referencedEntity: DataProject.entities.Country.CountryReference
+    useCustomLabel: true
+    value: FDN_CountryCode
+    label: Country
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "1"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: HyperlinkColumn
+    _name: ViewMap
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Map
+    value: CASE WHEN Latitude IS NOT NULL AND Longitude IS NOT NULL THEN 'View Map|https://www.google.com/maps/search/?api=1&query=' || SEM_NUMBER_TO_CHAR(Latitude) || ',' || SEM_NUMBER_TO_CHAR(Longitude) WHEN AddressLine1 IS NULL AND City IS NULL THEN NULL ELSE 'View Map|https://www.google.com/maps/search/?api=1&query=' || REGEXP_REPLACE(BTRIM(REGEXP_REPLACE(COALESCE(AddressLine1, '') || ' ' || COALESCE(AddressLine2, '') || ' ' || COALESCE(City, '') || ' ' || COALESCE(CountryCode.NameEn, ''), '[^A-Za-z0-9, ]', ' ', 'g')), '\s+', '+', 'g') END
+    visibleByDefault: true
+    componentProperties:
+      linkSourceType: url
+      linkSourceTypeValueInterpreter: LITERAL
+      linkTarget: new-window
+      linkTargetValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Email
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "Email"
+    label: "Email"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RecordStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN RecordStatusCode = 'A' THEN 'Active' WHEN RecordStatusCode = 'I' THEN 'Inactive' ELSE RecordStatusCode END
+    label: Record Status
+    visibleByDefault: true

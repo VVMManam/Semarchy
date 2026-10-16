@@ -1,0 +1,13 @@
+_name: SupplierValidationPending
+_package: DataProject.entities.SupplierLegalAccount.ActionSets
+_type: ActionSet
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Supplier Action Set
+defaultActionSet: false
+actions:
+  - _name: StartSupplierApproval
+    label: Start Supplier Approval
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: StartWorkflowEntityAction
+    startEvent: DataProject.workflows.CustomerValidation.Start

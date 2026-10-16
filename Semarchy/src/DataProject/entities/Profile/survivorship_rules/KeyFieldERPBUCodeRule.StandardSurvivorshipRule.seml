@@ -1,0 +1,24 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.Profile.Profile
+_package: DataProject.entities.Profile.survivorship_rules
+defaultRule: false
+_name: KeyFieldERPBUCodeRule
+label: Key Field - ERPBUCode
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN SourceProfileTypeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ERPBUCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ProfileType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Cluster IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ERPProfile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ApprovalStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ProfileStatusCode IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: ERPBUCode

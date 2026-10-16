@@ -1,0 +1,19 @@
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+defaultRule: false
+_name: SupplierNonTradeSurvivorshipRule
+_type: StandardSurvivorshipRule
+_package: DataProject.entities.SupplierLegalAccount.survivorship_rules
+label: Non-Trade Survivorship Rule
+description: "SRV-16: non-trade flag and category are Y / NON_TRADE if any merged record is non-trade."
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN NonTradeFlag = 'Y' THEN 1 ELSE 0 END DESC,
+  CASE WHEN SupplierCategory IS NOT NULL THEN 1 ELSE 0 END DESC,
+  CASE WHEN REGEXP_LIKE(COALESCE(SupplierNumber, ''), '^[0-9]+$') THEN LPAD(SupplierNumber, 20, '0') ELSE 'Z' || COALESCE(SupplierNumber, '') END ASC,
+  CreationDate ASC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: NonTradeFlag
+  - attributeName: SupplierCategory

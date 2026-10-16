@@ -1,0 +1,10 @@
+_name: Language
+_package: DataProject.List_of_values
+_type: LOVType
+label: Language Code
+length: 128
+lovValues:
+  - code: "2"
+    label: English
+  - code: "1"
+    label: Arabic

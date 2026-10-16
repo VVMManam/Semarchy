@@ -1,0 +1,9 @@
+_name: ContactLastNameSameAsFirst
+_type: SemQLValidation
+_package: DataProject.entities.Contact.validations
+entity: DataProject.entities.Contact.Contact
+label: Contact Last Name Same As First
+validationScope: POST_CONSO
+validationLabel: "Contact last name is the same as the first name."
+condition: |-
+  (FID_Cgid IS NULL AND FID_CustomerOrgAssignment IS NULL) OR FirstName IS NULL OR LastName IS NULL OR UPPER(FirstName) <> UPPER(LastName)

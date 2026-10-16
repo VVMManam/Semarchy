@@ -1,0 +1,45 @@
+_name: SupplierLegalAccount
+_package: DataProject.entities.SupplierLegalAccount.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+rootLabel: SupplierLegalAccount
+rootPluralLabel: SupplierLegalAccount
+useHierarchyOnOpen: false
+label: Supplier Legal Account
+rootBusinessViewEntity:
+  _name: SupplierLegalAccount
+  _type: BusinessViewEntity
+  collection: DataProject.entities.SupplierLegalAccount.collection_views.SupplierLegalAccount
+  actionSet: DataProject.entities.SupplierLegalAccount.ActionSets.SupplierGolden
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+  form: DataProject.entities.SupplierLegalAccount.forms.SupplierGolden
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

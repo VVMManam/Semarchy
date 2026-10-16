@@ -1,0 +1,23 @@
+_name: Title_Contact
+_type: Reference
+_package: DataProject.references
+label: Title Contact
+oneToMany: false
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Contact.Contact
+fromRoleLabel:  Contact
+fromRoleName: Contact
+fromRolePluralLabel:  Contacts
+physicalName: TITLE_CONTACT
+toEntity: DataProject.entities.Title.Title
+toRoleLabel:  Title
+toRoleName: Title
+toRolePhysicalName: TITLE__CONTACT
+validationScope: PRE_CONSO
+foreignAttribute:
+  _name: Title
+  _type: ForeignAttribute
+  entity: DataProject.entities.Contact.Contact
+  label:  Title
+  physicalName: TITLE
+  searchable: true

@@ -1,0 +1,60 @@
+_package: DataProject.entities.Title
+_type: Entity
+_name: Title
+label:  Title
+pluralLabel:  Title
+physicalTableName: TITLE
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: TitleID
+    label:  Title ID
+    physicalName: TITLE_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: Code
+    label: Code
+    physicalName: CODE
+    dataType: String
+    length: 50
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: Text
+    label: Text
+    physicalName: TEXT
+    dataType: String
+    length: 100
+    mandatory: true
+    searchable: true
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: CRMCode
+    label: CRM Code
+    physicalName: CRM_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: ERPCode
+    label: ERP Code
+    physicalName: ERP_CODE
+    dataType: String
+    length: 50
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.Title.Title.TitleID
+entityType: BASIC

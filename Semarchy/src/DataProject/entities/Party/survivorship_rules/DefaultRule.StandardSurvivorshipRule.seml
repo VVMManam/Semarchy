@@ -1,0 +1,34 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.Party.Party
+_package: DataProject.entities.Party.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+label: Default Rule
+description: "SRV-18/SRV-02/SRV-05: active > complete > oldest. Attribute-level non-null survives."
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(PartyStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN PartyNameEn IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PartyNameAr IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenceAuthorityCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenceCountry IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PartyTypeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LegalFormCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RegistrationCountry IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RegistrationEmirateCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsBranch IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BranchQualifier IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsInternalEntity IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PartyStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DpsStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DpsReference IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DpsCheckedOn IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN QualityScore IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+attributes: []

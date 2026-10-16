@@ -1,0 +1,85 @@
+_name: CustomerFuzzySearch
+_type: SearchForm
+_package: DataProject.entities.CustomerLegalAccount.search_forms
+label: Customer Search (Fuzzy)
+description: Finds customers where each filled field is at least 60 percent similar to what is typed, or contains it
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+searchTip: 'Fuzzy match. Returns customers whose value contains what you type or is similar to it - 90% for Customer Golden Id, 85% for License Number and TRN, 60% for the other fields. Upper/lower case, spaces, dashes and other punctuation are ignored.'
+searchParameters:
+  - _name: CustomerGoldenId
+    _type: SearchParameter
+    label: Customer Golden Id (90% similar)
+    bindVariableName: CustomerGoldenId
+    length: 128
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: NameEN
+    _type: SearchParameter
+    label: Name EN (60% similar)
+    bindVariableName: NameEN
+    length: 200
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: LicenseNumber
+    _type: SearchParameter
+    label: License Number (85% similar)
+    bindVariableName: LicenseNumber
+    length: 50
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: TaxRegistrationNumber
+    _type: SearchParameter
+    label: TRN Number (85% similar)
+    bindVariableName: TaxRegistrationNumber
+    length: 50
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: ClusterName
+    _type: SearchParameter
+    label: Cluster (60% similar)
+    bindVariableName: ClusterName
+    length: 100
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: BusinessUnit
+    _type: SearchParameter
+    label: Business Unit (60% similar)
+    bindVariableName: BusinessUnit
+    length: 200
+    dataType: String
+    displayType: TEXT_FIELD
+semQlCondition: >-
+  (:CustomerGoldenId IS NULL
+       OR UPPER(CustomerGoldenId) LIKE '%' || UPPER(BTRIM(:CustomerGoldenId)) || '%'
+       OR REGEXP_REPLACE(UPPER(CustomerGoldenId), '[^A-Z0-9]', '', 'g') LIKE '%' || REGEXP_REPLACE(UPPER(:CustomerGoldenId), '[^A-Z0-9]', '', 'g') || '%'
+       OR SEM_EDIT_DISTANCE_SIMILARITY(REGEXP_REPLACE(UPPER(CustomerGoldenId), '[^A-Z0-9]', '', 'g'), REGEXP_REPLACE(UPPER(:CustomerGoldenId), '[^A-Z0-9]', '', 'g')) >= 90
+       OR SEM_NGRAMS_SIMILARITY(UPPER(CustomerGoldenId), UPPER(BTRIM(:CustomerGoldenId))) >= 90
+       OR SEM_EDIT_DISTANCE_SIMILARITY(UPPER(CustomerGoldenId), UPPER(BTRIM(:CustomerGoldenId))) >= 90)
+  AND (:NameEN IS NULL
+       OR UPPER(NameEN) LIKE '%' || UPPER(BTRIM(:NameEN)) || '%'
+       OR REGEXP_REPLACE(UPPER(NameEN), '[^A-Z0-9]', '', 'g') LIKE '%' || REGEXP_REPLACE(UPPER(:NameEN), '[^A-Z0-9]', '', 'g') || '%'
+       OR SEM_EDIT_DISTANCE_SIMILARITY(REGEXP_REPLACE(UPPER(NameEN), '[^A-Z0-9]', '', 'g'), REGEXP_REPLACE(UPPER(:NameEN), '[^A-Z0-9]', '', 'g')) >= 60
+       OR SEM_NGRAMS_SIMILARITY(UPPER(NameEN), UPPER(BTRIM(:NameEN))) >= 60
+       OR SEM_EDIT_DISTANCE_SIMILARITY(UPPER(NameEN), UPPER(BTRIM(:NameEN))) >= 60
+       OR SEM_NGRAMS_SIMILARITY(NameMatchKey, UPPER(BTRIM(:NameEN))) >= 60
+       OR SEM_EDIT_DISTANCE_SIMILARITY(NameMatchKey, UPPER(BTRIM(:NameEN))) >= 60)
+  AND (:LicenseNumber IS NULL
+       OR UPPER(LicenseNumber) LIKE '%' || UPPER(BTRIM(:LicenseNumber)) || '%'
+       OR REGEXP_REPLACE(UPPER(LicenseNumber), '[^A-Z0-9]', '', 'g') LIKE '%' || REGEXP_REPLACE(UPPER(:LicenseNumber), '[^A-Z0-9]', '', 'g') || '%'
+       OR SEM_EDIT_DISTANCE_SIMILARITY(REGEXP_REPLACE(UPPER(LicenseNumber), '[^A-Z0-9]', '', 'g'), REGEXP_REPLACE(UPPER(:LicenseNumber), '[^A-Z0-9]', '', 'g')) >= 85
+       OR SEM_NGRAMS_SIMILARITY(UPPER(LicenseNumber), UPPER(BTRIM(:LicenseNumber))) >= 85
+       OR SEM_EDIT_DISTANCE_SIMILARITY(UPPER(LicenseNumber), UPPER(BTRIM(:LicenseNumber))) >= 85)
+  AND (:TaxRegistrationNumber IS NULL
+       OR UPPER(TaxRegistrationNumber) LIKE '%' || UPPER(BTRIM(:TaxRegistrationNumber)) || '%'
+       OR REGEXP_REPLACE(UPPER(TaxRegistrationNumber), '[^A-Z0-9]', '', 'g') LIKE '%' || REGEXP_REPLACE(UPPER(:TaxRegistrationNumber), '[^A-Z0-9]', '', 'g') || '%'
+       OR SEM_EDIT_DISTANCE_SIMILARITY(REGEXP_REPLACE(UPPER(TaxRegistrationNumber), '[^A-Z0-9]', '', 'g'), REGEXP_REPLACE(UPPER(:TaxRegistrationNumber), '[^A-Z0-9]', '', 'g')) >= 85
+       OR SEM_NGRAMS_SIMILARITY(UPPER(TaxRegistrationNumber), UPPER(BTRIM(:TaxRegistrationNumber))) >= 85
+       OR SEM_EDIT_DISTANCE_SIMILARITY(UPPER(TaxRegistrationNumber), UPPER(BTRIM(:TaxRegistrationNumber))) >= 85)
+  AND (:ClusterName IS NULL
+       OR ANY CustomerOrgAssignment HAVE (UPPER(ClusterCode.NameEn) LIKE '%' || UPPER(BTRIM(:ClusterName)) || '%'
+            OR SEM_NGRAMS_SIMILARITY(UPPER(ClusterCode.NameEn), UPPER(BTRIM(:ClusterName))) >= 60
+            OR SEM_EDIT_DISTANCE_SIMILARITY(UPPER(ClusterCode.NameEn), UPPER(BTRIM(:ClusterName))) >= 60))
+  AND (:BusinessUnit IS NULL
+       OR ANY CustomerOrgAssignment HAVE (UPPER(BusinessUnitCode.NameEn) LIKE '%' || UPPER(BTRIM(:BusinessUnit)) || '%'
+            OR SEM_NGRAMS_SIMILARITY(UPPER(BusinessUnitCode.NameEn), UPPER(BTRIM(:BusinessUnit))) >= 60
+            OR SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BusinessUnitCode.NameEn), UPPER(BTRIM(:BusinessUnit))) >= 60))

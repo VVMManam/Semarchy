@@ -1,0 +1,42 @@
+_name: SupplierSiteAssignment
+_package: DataProject.entities.SupplierSiteAssignment.steppers
+_type: Stepper
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Supplier Site Assignment
+rootStep:
+  _name: SupplierSiteAssignment
+  _type: CollectionStep
+  label: Supplier Site Assignment
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.SupplierSiteAssignment.collection_views.SupplierSiteAssignment
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Supplier Legal Account Details
+      formTab: DataProject.entities.SupplierSiteAssignment.forms.SupplierSiteAssignment.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

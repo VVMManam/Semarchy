@@ -1,0 +1,334 @@
+_package: DataProject.entities.Party.forms
+_type: Form
+_name: PartyGolden
+entity: DataProject.entities.Party.Party
+default: false
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "180px"
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    label: "Party"
+    iconUrl: images://mdi/domain.svg
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: PartyHeaderSection
+        label: "Party"
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PartyHeaderC
+            layoutDirection: COLUMN
+            content:
+              - _name: PartyHeader
+                value: "'<div style=\"margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45\">' || '<div style=\"display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap\">' || '<div style=\"flex:0 0 52px;width:52px;height:52px;border-radius:8px;background:#0B2A4A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px\">PTY</div>' || '<div style=\"flex:1;min-width:280px\"><div style=\"font-size:18px;font-weight:500;line-height:1.2\">' || COALESCE(REPLACE(REPLACE(REPLACE(PartyNameEn, '&', '&amp;'), '<', '&lt;'), '>', '&gt;'), '—') || '</div>' || '<div style=\"font-size:13px;color:#66727F;margin-top:2px\">' || COALESCE(REPLACE(REPLACE(REPLACE(PartyNameAr, '&', '&amp;'), '<', '&lt;'), '>', '&gt;'), '') || '</div>' || '<div style=\"margin-top:10px\">' || '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#0B2A4A;color:#FFFFFF;font-family:Consolas,Menlo,monospace;\">' || 'Party ID ' || TO_CHAR(Pgid, 'FM999999999999990') || '</span>' || CASE WHEN FID_ParentPartyID IS NULL THEN '' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EDE7F6;color:#3E2A6E;\">' || 'Member of ' || REPLACE(REPLACE(REPLACE(FDN_ParentPartyID, '&', '&amp;'), '<', '&lt;'), '>', '&gt;') || '</span>' END || CASE WHEN LOOKUP count Pgid FROM ChildParty END > 0 THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#3E2A6E;color:#FFFFFF;\">' || 'Super Party' || '</span>' WHEN LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END > 0 AND LOOKUP count Sgid FROM SupplierLegalAccount END > 0 THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#0F7C8C;color:#FFFFFF;\">' || 'Customer &amp; Supplier' || '</span>' WHEN LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END > 0 THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E3F2FD;color:#0D47A1;\">' || 'Customer' || '</span>' WHEN LOOKUP count Sgid FROM SupplierLegalAccount END > 0 THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EDE7F6;color:#4527A0;\">' || 'Supplier' || '</span>' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FFF8E1;color:#8A5A00;\">' || 'Not linked' || '</span>' END || CASE WHEN LicenceKey IS NULL THEN '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;\">' || 'No licence' || '</span>' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;font-family:Consolas,Menlo,monospace;\">' || 'Licence ' || REPLACE(REPLACE(REPLACE(LicenceKey, '&', '&amp;'), '<', '&lt;'), '>', '&gt;') || '</span>' END || CASE WHEN LicenceAuthorityCode IS NULL THEN '' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;\">' || 'Authority ' || REPLACE(REPLACE(REPLACE(LicenceAuthorityCode, '&', '&amp;'), '<', '&lt;'), '>', '&gt;') || '</span>' END || CASE WHEN LicenceCountry IS NULL THEN '' ELSE '<span style=\"display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;\">' || REPLACE(REPLACE(REPLACE(LicenceCountry, '&', '&amp;'), '<', '&lt;'), '>', '&gt;') || '</span>' END || '</div>' || '<div style=\"font-size:13px;color:#3C4652;margin-top:6px\">' || TO_CHAR(LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END, 'FM999999990') || ' linked customer(s) · ' || TO_CHAR(LOOKUP count Sgid FROM SupplierLegalAccount END, 'FM999999990') || ' linked supplier(s)</div>' || '</div></div></div>'"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Header"
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: MarkdownField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentHeight: '130'
+                  contentHeightValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '0'
+                  isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: PartyIdentitySection
+        label: "Party identity (used to link customers and suppliers)"
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PartyIdentityC1
+            layoutDirection: COLUMN
+            content:
+              - _name: PartyNameEn
+                value: PartyNameEn
+                dataType: STRING
+                useCustomLabel: true
+                label: "Party Name (EN)"
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PartyNameAr
+                value: PartyNameAr
+                dataType: STRING
+                useCustomLabel: true
+                label: "Party Name (AR)"
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PartyTypeCode
+                value: PartyTypeCode
+                dataType: STRING
+                useCustomLabel: true
+                label: "Party Type"
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: PartyIdentityC2
+            layoutDirection: COLUMN
+            content:
+              - _name: LicenceKey
+                value: LicenceKey
+                dataType: STRING
+                useCustomLabel: true
+                label: "Licence Number"
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LicenceAuthorityCode
+                value: LicenceAuthorityCode
+                dataType: STRING
+                useCustomLabel: true
+                label: "Issuing Authority"
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LicenceCountry
+                value: LicenceCountry
+                dataType: STRING
+                useCustomLabel: true
+                label: "Licence Country (ISO-2)"
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: '0'
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: '3'
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: '1'
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: '0'
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: PartyLinkedCustomers
+        label: "Linked customers"
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "LOOKUP count Pgid FROM ChildParty END = 0"
+        visibleValueInterpreter: SEMQL
+        content:
+          - _type: FormCollection
+            _name: LinkedCustomers
+            label: "Customers"
+            useCustomLabel: true
+            targetEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+            transitionPath: CustomerLegalAccount
+            collection: DataProject.entities.CustomerLegalAccount.Collections.PartyLinkedCustomers
+            displayRecordCount: ALWAYS
+            enableUserDefinedSort: true
+            tableAllowed: true
+            listAllowed: false
+            gridAllowed: false
+            documentationInterpreter: LITERAL
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: PartyLinkedSuppliers
+        label: "Linked suppliers"
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "LOOKUP count Pgid FROM ChildParty END = 0"
+        visibleValueInterpreter: SEMQL
+        content:
+          - _type: FormCollection
+            _name: LinkedSuppliers
+            label: "Suppliers"
+            useCustomLabel: true
+            targetEntity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+            transitionPath: SupplierLegalAccount
+            collection: DataProject.entities.SupplierLegalAccount.collection_views.PartyLinkedSuppliers
+            displayRecordCount: ALWAYS
+            enableUserDefinedSort: true
+            tableAllowed: true
+            listAllowed: false
+            gridAllowed: false
+            documentationInterpreter: LITERAL
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: PartyMemberParties
+        label: "Member parties"
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "LOOKUP count Pgid FROM ChildParty END > 0"
+        visibleValueInterpreter: SEMQL
+        content:
+          - _type: FormCollection
+            _name: MemberParties
+            label: "Member parties"
+            useCustomLabel: true
+            targetEntity: DataProject.entities.Party.Party
+            transitionPath: ChildParty
+            collection: DataProject.entities.Party.collection_views.PartyGolden
+            displayRecordCount: ALWAYS
+            enableUserDefinedSort: true
+            tableAllowed: true
+            listAllowed: false
+            gridAllowed: false
+            documentationInterpreter: LITERAL
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL

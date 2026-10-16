@@ -1,0 +1,31 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.Address.Address
+_package: DataProject.entities.Address.survivorship_rules
+defaultRule: false
+_name: KeyFieldAddressUsageCodeRule
+label: Key Field - AddressUsageCode
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN AddressUsageCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IssuingEmirateId IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPrimary IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AddressLine1 IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AddressLine2 IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AddressLine3 IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Area IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN City IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN StateProvince IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PostalCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PoBox IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Sector IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Latitude IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Longitude IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: AddressUsageCode

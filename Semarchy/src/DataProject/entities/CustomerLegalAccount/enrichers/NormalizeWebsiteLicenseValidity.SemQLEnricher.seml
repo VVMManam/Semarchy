@@ -1,0 +1,21 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: NormalizeWebsiteLicenseValidity
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Normalize Website and License Validity
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: Website
+    expression: |-
+      CASE
+        WHEN Website IS NULL OR REGEXP_LIKE(Website, '@') THEN Website
+        ELSE REGEXP_REPLACE(
+          CASE
+            WHEN REGEXP_LIKE(LOWER(REGEXP_REPLACE(Website, '[[:space:]]+', '', 'g')), '^https?(:/*|/+)') THEN REGEXP_REPLACE(LOWER(REGEXP_REPLACE(Website, '[[:space:]]+', '', 'g')), '^(https?)(:/*|/+)', '\1://')
+            ELSE 'https://' || LOWER(REGEXP_REPLACE(Website, '[[:space:]]+', '', 'g'))
+          END
+        , '/+$', '')
+      END
+  - attributeName: LicenseValidityStatusCode
+    expression: |-
+      CASE WHEN LicenseCancelDate IS NOT NULL THEN 'CANCELLED' WHEN LicenseExpiryDate IS NULL THEN 'UNKNOWN' WHEN LicenseExpiryDate < NOW() THEN 'EXPIRED' ELSE 'VALID' END

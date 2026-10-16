@@ -1,0 +1,33 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+defaultRule: false
+_name: KeyFieldEstablishmentAddressRule
+label: Key Field - Establishment Address
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: |-
+  CASE WHEN Status IS NOT NULL AND Status = 'Inactive' THEN 0 ELSE 1 END DESC,
+  CASE
+    WHEN EstablishmentAddress IS NULL OR NOT REGEXP_LIKE(EstablishmentAddress, '[A-Za-z\u0600-\u06FF]{3}') THEN 0
+    WHEN REGEXP_LIKE(UPPER(EstablishmentAddress), '\y(NULL|UNDEFINED)\y') THEN 1
+    WHEN LENGTH(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(BTRIM(EstablishmentAddress), '^(.{12,})[\s,]+\1$', '\1', 'i'), '(^|\s)(\S+(\s+\S+)?)(\s+\2)+(?=\s|$)', '\1\2', 'gi'), '[\s,]+', ' ', 'g'), '[^ ]', '', 'g')) <= 1 THEN 1
+    WHEN NOT REGEXP_LIKE(EstablishmentAddress, '[0-9]') THEN 2
+    ELSE 3
+  END DESC,
+  COALESCE(LENGTH(REGEXP_REPLACE(REGEXP_REPLACE(BTRIM(EstablishmentAddress), '^(.{12,})[\s,]+\1$', '\1', 'i'), '(^|\s)(\S+(\s+\S+)?)(\s+\2)+(?=\s|$)', '\1\2', 'gi')), 0) DESC,
+  (
+    CASE WHEN LicenseNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxRegistrationNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Email IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BusinessPhone IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Mobile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EstablishmentAddress IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NameAr IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  AccountCreationDate ASC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: EstablishmentAddress

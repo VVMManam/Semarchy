@@ -1,0 +1,98 @@
+_package: DataProject.entities.IntegrationAudit
+_type: Entity
+_name: IntegrationAudit
+label: Integration Audit
+pluralLabel: Integration Audit
+physicalTableName: INTEGRATION_AUDIT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: IntegrationAuditID
+    label: Integration Audit ID
+    physicalName: INTEGRATION_AUDIT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: CustomerGoldenId
+    label: Customer Golden Id
+    physicalName: CUSTOMER_GOLDEN_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: Requestor
+    label: Requestor
+    physicalName: REQUESTOR
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestorAppl
+    label: Requestor Appl
+    physicalName: REQUESTOR_APPL
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestPurpose
+    label: Request Purpose
+    physicalName: REQUEST_PURPOSE
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestTimestamp
+    label: Request Timestamp
+    physicalName: REQUEST_TIMESTAMP
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: ResponseTimestamp
+    label: Response Timestamp
+    physicalName: RESPONSE_TIMESTAMP
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: Status
+    label: Status
+    physicalName: STATUS
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: Comments
+    label: Comments
+    physicalName: COMMENTS
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: RetryCount
+    label: Retry Count
+    physicalName: RETRY_COUNT
+    dataType: LongInteger
+    precision: 38
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.IntegrationAudit.IntegrationAudit.IntegrationAuditID
+entityType: BASIC

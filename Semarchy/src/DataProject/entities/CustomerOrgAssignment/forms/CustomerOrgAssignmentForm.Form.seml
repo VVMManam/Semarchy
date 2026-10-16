@@ -1,0 +1,329 @@
+_package: DataProject.entities.CustomerOrgAssignment.forms
+_type: Form
+_name: CustomerOrgAssignmentForm
+entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "140px"
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Department Details
+    iconUrl: images://AdPorts-ImageLibrary/tab-customer-details.svg
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: Section
+        label: Department Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container
+            layoutDirection: COLUMN
+            content:
+              - _name: DepartmentUCID
+                value: DepartmentAccountUCID
+                dataType: STRING
+                useCustomLabel: true
+                label: "Department UCID"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: BusinessUnit
+                value: FDN_BusinessUnitCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.BusinessUnit.BusinessUnit
+                useCustomLabel: true
+                label: Business Unit
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "0"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: ERPProfile
+                value: FDN_ErpProfileCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.ErpProfile.ErpProfile
+                useCustomLabel: true
+                label: ERPProfile
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "0"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Status
+                value: "CASE WHEN Status = 'A' THEN '<div style=\"margin:0;padding:0;line-height:1\"><span style=\"display:inline-block;background:#C8E6C9;color:#1B5E20;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Active</span></div>' WHEN Status = 'I' THEN '<div style=\"margin:0;padding:0;line-height:1\"><span style=\"display:inline-block;background:#FFCDD2;color:#B71C1C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Inactive</span></div>' WHEN Status IS NULL THEN NULL ELSE '<div style=\"margin:0;padding:0;line-height:1\"><span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' || Status || '</span></div>' END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Status"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: MarkdownField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentHeight: "30"
+                  contentHeightValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _name: SalesPerson
+                value: SalesPerson
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: AccountManager
+                value: AccountManager
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PaymentTerm
+                value: FDN_PaymentTermCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.PaymentTerm.PaymentTerm
+                useCustomLabel: true
+                label: Payment Term
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "0"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CreditLimit
+                value: CreditLimit
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CreditCurrency
+                value: CreditCurrency
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Cluster
+                value: "CASE WHEN Cluster IS NULL THEN NULL ELSE '<div style=\"margin:0;padding:0;line-height:1\">' || CASE WHEN Cluster LIKE '%Corp%' THEN '<span style=\"display:inline-block;background:#009FE3;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Corp</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Digital%' THEN '<span style=\"display:inline-block;background:#A286BF;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Digital Cluster</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Industrial%' THEN '<span style=\"display:inline-block;background:#F9423A;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Industrial Zone</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Logistics%' THEN '<span style=\"display:inline-block;background:#70D547;color:#12330A;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Logistics</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Maritime%' THEN '<span style=\"display:inline-block;background:#14C5BD;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Maritime</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#B0D6E3;color:#0D3B4C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Ports</span>' ELSE '' END || CASE WHEN Cluster NOT LIKE '%Corp%' AND Cluster NOT LIKE '%Digital%' AND Cluster NOT LIKE '%Industrial%' AND Cluster NOT LIKE '%Logistics%' AND Cluster NOT LIKE '%Maritime%' AND Cluster NOT LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' || Cluster || '</span>' ELSE '' END || '</div>' END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Cluster"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: MarkdownField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentHeight: "30"
+                  contentHeightValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL

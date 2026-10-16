@@ -1,0 +1,12 @@
+_type: SemQLEnricher
+_name: CaptureReviewContextGroup
+label: Capture Review Context (Group Steward review task)
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+enricherExecutionScope: NONE
+description: 'Merge Overview step of the Group Steward review: keeps the workflow load and the task assignment time (= last cluster decision of this cycle).'
+semQlEnricherExpressions:
+  - attributeName: ReviewWorkflowLoadId
+    expression: ''''' || :V_LOADID'
+  - attributeName: ReviewTaskAssignedOn
+    expression: COALESCE(LOOKUP MAX DecisionTimestamp FROM MergeApprovalLog WHERE UPPER(ClusterCode) <> 'GROUP' AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE') AND (CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) END, ApprovalRequestedOn)

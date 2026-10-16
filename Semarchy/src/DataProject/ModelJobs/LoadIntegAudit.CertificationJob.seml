@@ -1,0 +1,17 @@
+_name: LoadIntegAudit
+_type: CertificationJob
+_package: DataProject.ModelJobs
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: IntegAudit
+    _type: ModelJobTask
+    entity: DataProject.entities.IntegrationAudit.IntegrationAudit
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+

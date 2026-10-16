@@ -1,0 +1,16 @@
+_name: NameMatchKeyFormalisation
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Formalize Name Match Key
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NameMatchKey
+    expression: |-
+      BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(
+        UPPER(BTRIM(NameEN)),
+        '\([^)]*\)', ' ', 'g'),
+        '[^A-Z0-9 ]', ' ', 'g'),
+        '\y(L ?L ?C|FZE|FZCO|FZC|FZ|LTD|LIMITED|S ?P ?C|O ?P ?C|W ?L ?L|PJSC|SOLE PROPRIETORSHIP|BRANCH|CO|COMPANY|EST|ESTABLISHMENT)\y', ' ', 'g'),
+        '\y(ABU DHABI|DUBAI|SHARJAH|AJMAN|UAE)\y', ' ', 'g'),
+        '\s+', ' ', 'g'))

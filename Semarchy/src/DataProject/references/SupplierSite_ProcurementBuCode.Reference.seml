@@ -1,0 +1,23 @@
+_name: SupplierSite_ProcurementBuCode
+_type: Reference
+_package: DataProject.references
+label: Supplier Site to Procurement Business Unit
+physicalName: SUP_SITE_PROCUREMENT_BU
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSite.SupplierSite
+fromRoleLabel: Supplier Site
+fromRolePluralLabel: Supplier Sites
+fromRoleName: SupplierSite
+toEntity: DataProject.entities.BusinessUnit.BusinessUnit
+toRoleLabel: Procurement BU Code
+toRoleName: ProcurementBuCode
+toRolePhysicalName: PROCUREMENT_BU_CODE
+foreignAttribute:
+  _name: ProcurementBuCode
+  _type: ForeignAttribute
+  physicalName: PROCUREMENT_BU_CODE
+  label: Procurement BU Code
+  searchable: true
+  entity: DataProject.entities.SupplierSite.SupplierSite

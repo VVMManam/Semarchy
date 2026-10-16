@@ -1,0 +1,45 @@
+_name: MergeApprovalLogs
+_package: DataProject.entities.MergeApprovalLogs.steppers
+_type: Stepper
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+label: Merge Approval Log
+rootStep:
+  _name: MergeApprovalLogs
+  _type: CollectionStep
+  label: Merge Approval Logs
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.MergeApprovalLogs.collection_views.MergeApprovalLogs
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Review Decision
+      formTab: DataProject.entities.MergeApprovalLogs.forms.MergeApprovalLogs.Main
+      formStepEnrichers:
+        - enricher: DataProject.entities.MergeApprovalLogs.enrichers.FillReviewerDetails
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

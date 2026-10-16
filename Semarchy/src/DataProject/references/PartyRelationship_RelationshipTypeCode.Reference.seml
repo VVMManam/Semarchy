@@ -1,0 +1,23 @@
+_name: PartyRelationship_RelationshipTypeCode
+_type: Reference
+_package: DataProject.references
+label:  Party Relationship to  Relationship Type
+physicalName: PARTY_RELN_RELN_T_3F7
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.PartyRelationship.PartyRelationship
+fromRoleLabel:  Party Relationship
+fromRolePluralLabel:  Party Relationship
+fromRoleName: PartyRelationship
+toEntity: DataProject.entities.RelationshipType.RelationshipType
+toRoleLabel: Relationship Type Code
+toRoleName: RelationshipTypeCode
+toRolePhysicalName: RELATIONSHIP_TYPE_CODE
+foreignAttribute:
+  _name: RelationshipTypeCode
+  _type: ForeignAttribute
+  physicalName: RELATIONSHIP_TYPE_CODE
+  label: Relationship Type Code
+  searchable: true
+  entity: DataProject.entities.PartyRelationship.PartyRelationship

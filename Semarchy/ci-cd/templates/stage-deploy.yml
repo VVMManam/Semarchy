@@ -1,0 +1,121 @@
+# One deployment stage for one Semarchy SDP environment.
+#
+#   environment: Dev | Test | Prod
+#
+# From that one value the stage derives:
+#   - stage name              Deploy_<env>
+#   - Azure DevOps environment MDM-SDP-<env>           (approvals / checks live here)
+#   - variable group          MDM-SDP-<env>   (SDP_CLIENT_ID, SDP_CLIENT_SECRET)
+#   - settings file           ci-cd/config/<env>.yml (instance URL, datasource, data location)
+#
+# Approvals are NOT defined in YAML: Azure DevOps applies whatever checks are
+# configured on the environment. MDM-SDP-Dev and MDM-SDP-Test have none (automatic);
+# MDM-SDP-Prod has an Approval check (manual).
+
+parameters:
+  - name: environment
+    type: string
+    values:
+      - Dev
+      - Test
+      - Prod
+  - name: dependsOn
+    type: object
+  - name: condition
+    type: string
+    default: succeeded()
+  - name: agentPool
+    type: object
+    default:
+      vmImage: ubuntu-latest
+
+stages:
+  - stage: Deploy_${{ parameters.environment }}
+    displayName: 'Deploy to ${{ parameters.environment }}'
+    dependsOn: ${{ parameters.dependsOn }}
+    condition: ${{ parameters.condition }}
+    variables:
+      - group: MDM-SDP-${{ parameters.environment }}
+      - ${{ if eq(parameters.environment, 'Dev') }}:
+        - template: ../config/dev.yml
+      - ${{ if eq(parameters.environment, 'Test') }}:
+        - template: ../config/test.yml
+      - ${{ if eq(parameters.environment, 'Prod') }}:
+        - template: ../config/prod.yml
+    jobs:
+      - deployment: Deploy
+        displayName: 'Deploy model -> MDM-SDP-${{ parameters.environment }}'
+        environment: MDM-SDP-${{ parameters.environment }}
+        pool: ${{ parameters.agentPool }}
+        timeoutInMinutes: 90
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                # Deployment jobs download pipeline artifacts by default; we
+                # deploy from source, so skip that.
+                - download: none
+
+                # Deployment jobs do not check out code automatically. Every
+                # stage checks out the same commit (Build.SourceVersion).
+                - checkout: self
+                  clean: true
+                  fetchDepth: 1
+
+                - template: steps-install-sem-design.yml
+
+                - powershell: >
+                    & "$(Build.SourcesDirectory)/ci-cd/scripts/Test-ModelInventory.ps1"
+                    -RootFolder "$(ROOT_FOLDER)"
+                    -Strict:([System.Convert]::ToBoolean('$(MODEL_CHECK_STRICT)'))
+                    -SummaryTitle 'Model deployed to ${{ parameters.environment }}'
+                    -OutputFolder "$(Agent.TempDirectory)/model-inventory"
+                  displayName: 'Check model completeness (all elements)'
+                  workingDirectory: '$(Build.SourcesDirectory)'
+
+                - powershell: >
+                    & "$(Build.SourcesDirectory)/ci-cd/scripts/Invoke-SemDesign.ps1"
+                    -Action Build
+                    -RootFolder "$(ROOT_FOLDER)"
+                  displayName: 'Build Semarchy model'
+                  workingDirectory: '$(Build.SourcesDirectory)'
+                  errorActionPreference: continue
+
+                - powershell: >
+                    & "$(Build.SourcesDirectory)/ci-cd/scripts/Invoke-SemDesign.ps1"
+                    -Action Deploy
+                    -RootFolder "$(ROOT_FOLDER)"
+                    -InstanceUrl "$(SDP_INSTANCE_URL)"
+                    -DataSource "$(SDP_DATA_SOURCE)"
+                    -DataLocation "$(SDP_DATA_LOCATION)"
+                    -DeploymentUrl "$(SDP_DEPLOYMENT_URL)"
+                  # Deploys the WHOLE model project under ROOT_FOLDER as one model edition:
+                  # entities, references, LOVs, match rules, survivorship rules, validations,
+                  # enrichers, workflows, jobs, applications, forms, views, named queries, grants.
+                  displayName: 'Deploy model to ${{ parameters.environment }}'
+                  workingDirectory: '$(Build.SourcesDirectory)'
+                  errorActionPreference: continue
+                  env:
+                    # Secret variables are never exposed to scripts unless mapped explicitly.
+                    SDP_CLIENT_ID: $(SDP_CLIENT_ID)
+                    SDP_CLIENT_SECRET: $(SDP_CLIENT_SECRET)
+
+                # Read-only: lists the data locations on the instance after the deploy,
+                # so the log and Summary show what the instance really contains.
+                # Never fails the run.
+                - powershell: >
+                    & "$(Build.SourcesDirectory)/ci-cd/scripts/Get-SdpStatus.ps1"
+                    -InstanceUrl "$(SDP_INSTANCE_URL)"
+                    -DataLocation "$(SDP_DATA_LOCATION)"
+                    -EnvironmentName '${{ parameters.environment }}'
+                  displayName: 'Check what is on ${{ parameters.environment }} (read-only)'
+                  # Normally only reports (never fails). If the deploy step hit a
+                  # gateway timeout, it waits for that deployment and fails the run
+                  # when it does not complete.
+                  condition: succeededOrFailed()
+                  timeoutInMinutes: 50
+                  env:
+                    SDP_CLIENT_ID: $(SDP_CLIENT_ID)
+                    SDP_CLIENT_SECRET: $(SDP_CLIENT_SECRET)
+                    SDP_DEPLOY_STARTED: $(SDP_DEPLOY_STARTED)
+                    SDP_DEPLOY_PENDING: $(SDP_DEPLOY_PENDING)

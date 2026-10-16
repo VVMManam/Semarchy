@@ -1,0 +1,38 @@
+_name: Type1099
+_package: DataProject.List_of_values
+_type: LOVType
+label: Type 1099
+length: 128
+lovValues:
+  - code: "MISC1"
+    label: Rents
+  - code: "MISC2"
+    label: Royalties
+  - code: "MISC3"
+    label: Other Income
+  - code: "MISC4"
+    label: Federal Income Tax Withheld
+  - code: "MISC5"
+    label: Fishing Boat Proceeds
+  - code: "MISC6"
+    label: Medical and Health Care Payments
+  - code: "MISC7"
+    label: Payer Made Direct Sales of $5,000 or More
+  - code: "MISC8"
+    label: Substitute Payments in Lieu of Dividends or Interest
+  - code: "MISC9"
+    label: Crop Insurance Proceeds
+  - code: "MISC10"
+    label: Gross Proceeds Paid to an Attorney
+  - code: "MISC11"
+    label: Fish Purchased for Resale
+  - code: "MISC12"
+    label: Section 409A Deferrals
+  - code: "MISC14"
+    label: Excess Golden Parachute Payments
+  - code: "MISC15"
+    label: Nonqualified Deferred Compensation
+  - code: "NEC1"
+    label: Nonemployee Compensation
+  - code: "NEC4"
+    label: Federal Income Tax Withheld

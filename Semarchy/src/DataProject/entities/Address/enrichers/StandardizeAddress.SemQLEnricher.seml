@@ -1,0 +1,22 @@
+_name: StandardizeAddress
+_type: SemQLEnricher
+_package: DataProject.entities.Address.enrichers
+entity: DataProject.entities.Address.Address
+label: Standardize Address
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.Address.enrichers.EnrichAddress
+semQlEnricherExpressions:
+  # NRM-12: City uppercase, remove special characters, collapse whitespace
+  - attributeName: City
+    expression: >
+      BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(UPPER(City), '[^A-Z0-9 ]', ' ', 'g'), '\s+', ' ', 'g'))
+
+  # NRM-09: literal "STATE" -> use the city value (business comment)
+  - attributeName: StateProvince
+    expression: >
+      CASE
+        WHEN UPPER(BTRIM(StateProvince)) = 'STATE'
+          THEN BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(UPPER(City), '[^A-Z0-9 ]', ' ', 'g'), '\s+', ' ', 'g'))
+        ELSE StateProvince
+      END

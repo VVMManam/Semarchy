@@ -1,0 +1,16 @@
+_name: SupplierSiteAssignmentNormalize
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierSiteAssignment.enrichers
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Supplier Site Assignment Normalize
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: RecordStatusCode
+    expression: |-
+      CASE
+        WHEN InactiveDate IS NOT NULL AND InactiveDate <= NOW() THEN 'INACTIVE'
+        WHEN RecordStatusCode IS NULL THEN CASE WHEN InactiveDate IS NULL OR InactiveDate > NOW() THEN 'ACTIVE' ELSE NULL END
+        WHEN UPPER(BTRIM(REGEXP_REPLACE(RecordStatusCode, '[\x01-\x1F\x7F]', '', 'g'))) IN ('A', 'ACTIVE', 'Y', 'YES', 'TRUE', '1') THEN 'ACTIVE'
+        WHEN UPPER(BTRIM(REGEXP_REPLACE(RecordStatusCode, '[\x01-\x1F\x7F]', '', 'g'))) IN ('I', 'INACTIVE', 'N', 'NO', 'FALSE', '0') THEN 'INACTIVE'
+        ELSE UPPER(BTRIM(REGEXP_REPLACE(RecordStatusCode, '[\x01-\x1F\x7F]', '', 'g')))
+      END

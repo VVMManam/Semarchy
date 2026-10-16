@@ -1,0 +1,16 @@
+_name: LoadBusinessUnit
+_package: DataProject.ModelJobs
+_type: CertificationJob
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: BusinessUnit
+    _type: ModelJobTask
+    entity: DataProject.entities.BusinessUnit.BusinessUnit
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

@@ -1,0 +1,10 @@
+_name: MatchOption
+_package: DataProject.List_of_values
+_type: LOVType
+label: Match Option
+length: 128
+lovValues:
+  - code: "P"
+    label: Purchase Order
+  - code: "R"
+    label: Receipt

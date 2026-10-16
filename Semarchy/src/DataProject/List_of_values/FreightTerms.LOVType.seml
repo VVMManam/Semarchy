@@ -1,0 +1,12 @@
+_name: FreightTerms
+_package: DataProject.List_of_values
+_type: LOVType
+label: Freight Terms
+length: 128
+lovValues:
+  - code: "DUE"
+    label: Due
+  - code: "PAID"
+    label: Paid
+  - code: "TBD"
+    label: To Be Determined

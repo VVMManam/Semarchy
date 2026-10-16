@@ -1,0 +1,37 @@
+_name: DeriveChildMatchKeys
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Derive Match Keys From Bank Accounts, Addresses and Contacts
+description: "Keys for MAT-04 / MAT-05 / MAT-13 (bank accounts), MAT-11 (primary address) and MAT-12 (contact e-mail domain), read from the supplier child records. ENR-28: blank tax country from the remit-to address country. Note: on a first load the child records must already be in the hub for the keys to be filled."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: BankAccountKeys
+    expression: |-
+      CASE WHEN LOOKUP count BankAccountID FROM SupplierBankAccount WHERE UPPER(COALESCE(RecordStatusCode, 'ACTIVE')) NOT IN ('INACTIVE', 'I') END > 0 THEN
+        '|' || LOOKUP distinct_string_agg CASE WHEN IBAN IS NOT NULL AND REGEXP_LIKE(UPPER(REGEXP_REPLACE(IBAN, '[^A-Za-z0-9]', '', 'g')), '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$') THEN UPPER(REGEXP_REPLACE(IBAN, '[^A-Za-z0-9]', '', 'g')) || '|' ELSE '' END || CASE WHEN AccountNumber IS NOT NULL AND LENGTH(REGEXP_REPLACE(AccountNumber, '[^A-Za-z0-9]', '', 'g')) >= 5 THEN COALESCE(FID_CountryCode, UPPER(BTRIM(BankCountryCode)), '') || ':' || UPPER(REGEXP_REPLACE(AccountNumber, '[^A-Za-z0-9]', '', 'g')) ELSE '' END SEPARATED BY '|' FROM SupplierBankAccount WHERE UPPER(COALESCE(RecordStatusCode, 'ACTIVE')) NOT IN ('INACTIVE', 'I') END || '|'
+      ELSE NULL END
+  - attributeName: PrimaryIbanKey
+    expression: |-
+      LOOKUP first UPPER(REGEXP_REPLACE(IBAN, '[^A-Za-z0-9]', '', 'g')) FROM SupplierBankAccount WHERE IBAN IS NOT NULL AND REGEXP_LIKE(UPPER(REGEXP_REPLACE(IBAN, '[^A-Za-z0-9]', '', 'g')), '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$') AND UPPER(COALESCE(RecordStatusCode, 'ACTIVE')) NOT IN ('INACTIVE', 'I') ORDER BY CASE WHEN IsPrimary = '1' THEN 0 ELSE 1 END, StartDate DESC END
+  - attributeName: PrimaryAccountKey
+    expression: |-
+      LOOKUP first COALESCE(FID_CountryCode, UPPER(BTRIM(BankCountryCode)), '') || ':' || UPPER(REGEXP_REPLACE(AccountNumber, '[^A-Za-z0-9]', '', 'g')) FROM SupplierBankAccount WHERE AccountNumber IS NOT NULL AND LENGTH(REGEXP_REPLACE(AccountNumber, '[^A-Za-z0-9]', '', 'g')) >= 5 AND UPPER(COALESCE(RecordStatusCode, 'ACTIVE')) NOT IN ('INACTIVE', 'I') ORDER BY CASE WHEN IsPrimary = '1' THEN 0 ELSE 1 END, StartDate DESC END
+  - attributeName: PrimaryAddressLine1
+    expression: |-
+      LOOKUP first UPPER(BTRIM(AddressLine1)) FROM SupplierSite.Address WHERE AddressLine1 IS NOT NULL ORDER BY CASE WHEN RemittoPurpose = '1' THEN 0 WHEN OrderingPurpose = '1' THEN 1 ELSE 2 END, AddressLine1 END
+  - attributeName: PrimaryAddressCity
+    expression: |-
+      LOOKUP first CityNormalised FROM SupplierSite.Address WHERE AddressLine1 IS NOT NULL AND CityNormalised IS NOT NULL ORDER BY CASE WHEN RemittoPurpose = '1' THEN 0 WHEN OrderingPurpose = '1' THEN 1 ELSE 2 END, AddressLine1 END
+  - attributeName: ContactEmailDomains
+    expression: |-
+      CASE WHEN LOOKUP count ContactId FROM SupplierSite.Contact WHERE EmailDomain IS NOT NULL AND COALESCE(IsGenericEmailDomain, '0') <> '1' END > 0 THEN
+        '|' || LOOKUP distinct_string_agg LOWER(EmailDomain) SEPARATED BY '|' FROM SupplierSite.Contact WHERE EmailDomain IS NOT NULL AND COALESCE(IsGenericEmailDomain, '0') <> '1' END || '|'
+      ELSE NULL END
+  - attributeName: PrimaryEmailDomain
+    expression: |-
+      LOOKUP first LOWER(EmailDomain) FROM SupplierSite.Contact WHERE EmailDomain IS NOT NULL AND COALESCE(IsGenericEmailDomain, '0') <> '1' ORDER BY CASE WHEN PrimaryAdminContact = '1' THEN 0 ELSE 1 END, EmailDomain END
+  - attributeName: TaxCountryCode
+    expression: |-
+      CASE WHEN TaxCountryCode IS NOT NULL THEN TaxCountryCode
+      ELSE LOOKUP first FID_CountryCode FROM SupplierSite.Address WHERE FID_CountryCode IS NOT NULL ORDER BY CASE WHEN RemittoPurpose = '1' THEN 0 ELSE 1 END END END

@@ -1,0 +1,42 @@
+_name: SupplierPartyLink
+_package: DataProject.entities.SupplierLegalAccount.steppers
+_type: Stepper
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: "Link suppliers to a party"
+rootStep:
+  _name: Root
+  _type: CollectionStep
+  label: "Link suppliers to a party"
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.SupplierLegalAccount.collection_views.SupplierLegalAccount
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: "Link suppliers to a party"
+      formTab: DataProject.entities.SupplierLegalAccount.forms.SupplierPartyLink.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

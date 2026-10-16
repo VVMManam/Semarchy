@@ -1,0 +1,10 @@
+_name: EmailInvalidCheck
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Email Invalid Check
+validationScope: POST_CONSO
+validationLabel: EMAIL_INVALID - value does not match a valid e-mail address format. Kept as-is, not nulled.
+_type: SemQLValidation
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (Email IS NULL OR REGEXP_LIKE(Email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'))

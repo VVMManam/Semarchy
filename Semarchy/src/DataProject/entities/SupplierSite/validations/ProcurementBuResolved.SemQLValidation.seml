@@ -1,0 +1,10 @@
+_name: ProcurementBuResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSite.validations
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: Procurement BU Resolved
+validationScope: POST_CONSO
+validationLabel: "BUSINESS_UNIT_UNMAPPED - Fusion Procurement BU name has no matching Business Unit in MDM."
+condition: |-
+  ProcurementBuName IS NULL
+  OR FID_ProcurementBuCode IS NOT NULL

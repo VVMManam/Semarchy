@@ -1,0 +1,14 @@
+_name: SlaProcess
+_type: LOVType
+_package: DataProject.List_of_values
+label: SLA Process
+length: 30
+lovValues:
+  - code: "MERGE"
+    label: Merge
+  - code: "CREATE"
+    label: Create
+  - code: "MODIFY"
+    label: Modify
+  - code: "CHANGE_REQUEST"
+    label: Change Request

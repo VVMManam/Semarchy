@@ -1,0 +1,18 @@
+_name: Title
+_package: DataProject.entities.Title.display_cards
+_type: DisplayCard
+entity: DataProject.entities.Title.Title
+default: true
+primaryTextExpression: CASE WHEN Text IS NOT NULL THEN Text ELSE Code END
+supportingTextExpression: Code
+primaryImageValue: URL('images://mdi/book.svg')
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

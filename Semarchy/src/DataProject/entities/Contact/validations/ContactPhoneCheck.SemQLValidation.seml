@@ -1,0 +1,9 @@
+_name: ContactPhoneCheck
+_type: SemQLValidation
+_package: DataProject.entities.Contact.validations
+entity: DataProject.entities.Contact.Contact
+label: Contact Phone Check
+validationScope: POST_CONSO
+validationLabel: "Contact mobile or telephone number format is invalid."
+condition: |-
+  (FID_Cgid IS NULL AND FID_CustomerOrgAssignment IS NULL) OR ((Mobile IS NULL OR REGEXP_LIKE(Mobile, '^[+][0-9]{8,15}$')) AND (TelephoneNumber IS NULL OR REGEXP_LIKE(TelephoneNumber, '^[+][0-9]{8,15}$')) AND (BusinessPhone IS NULL OR REGEXP_LIKE(BusinessPhone, '^[+][0-9]{8,15}$')))

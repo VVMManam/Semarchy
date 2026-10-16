@@ -1,0 +1,73 @@
+_name: FindParty
+_type: NamedQuery
+_package: DataProject.named_queries
+description: "Search-before-create for the OSB CreateParty flow. Returns the golden Party with the same licence number and issuing authority (MDM code). Country is optional: the Party country is always the issuing authority's country, so the authority alone fixes it; when a country is passed it must match."
+active: true
+queryParameters:
+  - _name: LicenceNumber
+    _type: QueryParameter
+    bindingName: PARAM_LICENCE_NUMBER
+    dataType: STRING
+    mandatory: true
+  - _name: IssuingAuthority
+    _type: QueryParameter
+    bindingName: PARAM_ISSUING_AUTHORITY
+    dataType: STRING
+    mandatory: true
+  - _name: Country
+    _type: QueryParameter
+    bindingName: PARAM_COUNTRY
+    dataType: STRING
+    mandatory: false
+filter: >-
+  LicenceKey = REGEXP_REPLACE(UPPER(:PARAM_LICENCE_NUMBER), '[^A-Z0-9]', '', 'g')
+  and LicenceAuthorityCode = UPPER(LTRIM(RTRIM(:PARAM_ISSUING_AUTHORITY)))
+  and (:PARAM_COUNTRY is null or LicenceCountry = UPPER(LTRIM(RTRIM(:PARAM_COUNTRY))))
+sort: Pgid asc
+defaultLimit: 5
+queryObjects:
+  - _name: PARTY
+    _type: QueryObject
+    entity: DataProject.entities.Party.Party
+    objectProperties:
+      - _name: PartyId
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: Pgid
+        targetObject: DataProject.named_queries.FindParty.PARTY
+      - _name: PartyNameEn
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PartyNameEn
+        targetObject: DataProject.named_queries.FindParty.PARTY
+      - _name: PartyNameAr
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: PartyNameAr
+        targetObject: DataProject.named_queries.FindParty.PARTY
+      - _name: LicenceNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenceKey
+        targetObject: DataProject.named_queries.FindParty.PARTY
+      - _name: IssuingAuthority
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenceAuthorityCode
+        targetObject: DataProject.named_queries.FindParty.PARTY
+      - _name: Country
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenceCountry
+        targetObject: DataProject.named_queries.FindParty.PARTY
+      - _name: LinkedCustomers
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LOOKUP count CustomerLegalAccountID FROM CustomerLegalAccount END
+        targetObject: DataProject.named_queries.FindParty.PARTY
+      - _name: LinkedSuppliers
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LOOKUP count Sgid FROM SupplierLegalAccount END
+        targetObject: DataProject.named_queries.FindParty.PARTY
+rootQueryObject: DataProject.named_queries.FindParty.PARTY

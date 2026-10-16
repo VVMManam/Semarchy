@@ -1,0 +1,8 @@
+_name: SupplierAddressUsageDomain
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: VAL-16 Supplier Address Usage Domain
+validationScope: POST_CONSO
+validationLabel: "VAL-16 - Invalid address usage (ORDERING, REMIT_TO, RFQ)."
+condition: "FID_SupplierSite IS NULL OR (AddressUsageCode IN ('ORDERING', 'REMIT_TO', 'RFQ'))"

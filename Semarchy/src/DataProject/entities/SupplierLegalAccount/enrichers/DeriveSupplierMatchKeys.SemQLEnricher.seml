@@ -1,0 +1,48 @@
+_name: DeriveSupplierMatchKeys
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Derive Supplier Match Keys
+description: "Builds the keys used by MAT-01/MAT-09 (TrnMatchKey from the Fusion VAT registration number), MAT-14 (WebsiteDomain) and MAT-08 (NameTokenKey: first three name tokens sorted, remaining tokens appended)."
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.SupplierLegalAccount.enrichers.StandardizeNameMatchKey
+semQlEnricherExpressions:
+  - attributeName: TrnMatchKey
+    expression: |-
+      CASE
+        WHEN VATRegistrationNumber IS NULL THEN NULL
+        WHEN LENGTH(REGEXP_REPLACE(VATRegistrationNumber, '[^A-Za-z0-9]', '', 'g')) < 8 THEN NULL
+        WHEN REGEXP_LIKE(REGEXP_REPLACE(VATRegistrationNumber, '[^A-Za-z0-9]', '', 'g'), '^(.)\1+$') THEN NULL
+        WHEN REGEXP_REPLACE(VATRegistrationNumber, '[^A-Za-z0-9]', '', 'g') = LEFT('123456789012345678901234567890', LENGTH(REGEXP_REPLACE(VATRegistrationNumber, '[^A-Za-z0-9]', '', 'g'))) THEN NULL
+        ELSE UPPER(REGEXP_REPLACE(VATRegistrationNumber, '[^A-Za-z0-9]', '', 'g'))
+      END
+  - attributeName: WebsiteDomain
+    expression: |-
+      CASE
+        WHEN Website IS NULL OR STRPOS(Website, '@') > 0 THEN NULL
+        WHEN STRPOS(REGEXP_REPLACE(REGEXP_REPLACE(LOWER(BTRIM(Website)), '^[a-z]+://', ''), '^www[0-9]*\.|[/:?#].*$', '', 'g'), '.') = 0 THEN NULL
+        ELSE REGEXP_REPLACE(REGEXP_REPLACE(LOWER(BTRIM(Website)), '^[a-z]+://', ''), '^www[0-9]*\.|[/:?#].*$', '', 'g')
+      END
+  - attributeName: NameTokenKey
+    expression: |-
+      CASE
+        WHEN NameMatchKey IS NULL OR BTRIM(NameMatchKey) = '' THEN NULL
+        ELSE BTRIM(REGEXP_REPLACE(
+          LEAST(SPLIT_PART(NameMatchKey, ' ', 1), SPLIT_PART(NameMatchKey, ' ', 2), SPLIT_PART(NameMatchKey, ' ', 3))
+          || ' ' ||
+          CASE
+            WHEN (SPLIT_PART(NameMatchKey, ' ', 1) >= SPLIT_PART(NameMatchKey, ' ', 2) AND SPLIT_PART(NameMatchKey, ' ', 1) <= SPLIT_PART(NameMatchKey, ' ', 3))
+              OR (SPLIT_PART(NameMatchKey, ' ', 1) <= SPLIT_PART(NameMatchKey, ' ', 2) AND SPLIT_PART(NameMatchKey, ' ', 1) >= SPLIT_PART(NameMatchKey, ' ', 3))
+              THEN SPLIT_PART(NameMatchKey, ' ', 1)
+            WHEN (SPLIT_PART(NameMatchKey, ' ', 2) >= SPLIT_PART(NameMatchKey, ' ', 1) AND SPLIT_PART(NameMatchKey, ' ', 2) <= SPLIT_PART(NameMatchKey, ' ', 3))
+              OR (SPLIT_PART(NameMatchKey, ' ', 2) <= SPLIT_PART(NameMatchKey, ' ', 1) AND SPLIT_PART(NameMatchKey, ' ', 2) >= SPLIT_PART(NameMatchKey, ' ', 3))
+              THEN SPLIT_PART(NameMatchKey, ' ', 2)
+            ELSE SPLIT_PART(NameMatchKey, ' ', 3)
+          END
+          || ' ' ||
+          GREATEST(SPLIT_PART(NameMatchKey, ' ', 1), SPLIT_PART(NameMatchKey, ' ', 2), SPLIT_PART(NameMatchKey, ' ', 3))
+          || ' ' ||
+          REGEXP_REPLACE(BTRIM(NameMatchKey), '^\S+( \S+){0,2} ?', ''),
+          '\s+', ' ', 'g'))
+      END

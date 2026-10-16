@@ -1,0 +1,23 @@
+_name: Party_LegalFormCode
+_type: Reference
+_package: DataProject.references
+label:  Party to  Legal Form
+physicalName: PARTY_LEGAL_FORM_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Party.Party
+fromRoleLabel:  Party
+fromRolePluralLabel:  Party
+fromRoleName: Party
+toEntity: DataProject.entities.LegalForm.LegalForm
+toRoleLabel: Legal Form Code
+toRoleName: LegalFormCodeRef
+toRolePhysicalName: LEGAL_FORM_CODE
+foreignAttribute:
+  _name: LegalFormCodeRef
+  _type: ForeignAttribute
+  physicalName: LEGAL_FORM_CODE_REF
+  label: Legal Form Code
+  searchable: true
+  entity: DataProject.entities.Party.Party

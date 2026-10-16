@@ -1,0 +1,23 @@
+_name: SupplierSite_CurrencyCode
+_type: Reference
+_package: DataProject.references
+label: Supplier Site Payment Currency
+physicalName: SUP_SITE_CURRENCY_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSite.SupplierSite
+fromRoleLabel:  Supplier Site
+fromRolePluralLabel:  Supplier Site
+fromRoleName: SupplierSite
+toEntity: DataProject.entities.Currency.Currency
+toRoleLabel: Payment Currency
+toRoleName: Currency
+toRolePhysicalName: CURRENCY
+foreignAttribute:
+  _name: Currency
+  _type: ForeignAttribute
+  physicalName: CURRENCY
+  label: Payment Currency
+  searchable: true
+  entity: DataProject.entities.SupplierSite.SupplierSite

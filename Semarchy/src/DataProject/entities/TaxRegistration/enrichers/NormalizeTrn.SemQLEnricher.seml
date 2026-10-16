@@ -1,0 +1,36 @@
+_type: SemQLEnricher
+_package: DataProject.entities.TaxRegistration.enrichers
+_name: NormalizeTrn
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: Normalize TRN
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: RegistrationNoNormalised
+    expression: |-
+      CASE WHEN (FID_Cgid IS NOT NULL OR SourceID_Cgid IS NOT NULL) THEN REGEXP_REPLACE(RegistrationNo, '[^0-9]', '', 'g') ELSE RegistrationNoNormalised END
+  - attributeName: IsPlaceholder
+    expression: |-
+      CASE
+        WHEN NOT (FID_Cgid IS NOT NULL OR SourceID_Cgid IS NOT NULL) THEN CASE WHEN IsPlaceholder = '1' THEN '1' WHEN IsPlaceholder = '0' THEN '0' END
+        WHEN RegistrationNo IS NULL THEN '0'
+        WHEN UPPER(BTRIM(RegistrationNo)) IN ('NA', 'N/A', 'NIL', 'NONE', 'NULL', 'TBD', 'TEST', 'XXX') THEN '1'
+        WHEN LENGTH(REGEXP_REPLACE(RegistrationNo, '[^A-Za-z0-9]', '', 'g')) < 4 THEN '1'
+        WHEN REPLACE(BTRIM(RegistrationNo), LEFT(BTRIM(RegistrationNo), 1), '') = '' THEN '1'
+        WHEN BTRIM(RegistrationNo) = LEFT('123456789012345678901234567890', LENGTH(BTRIM(RegistrationNo))) THEN '1'
+        ELSE '0'
+      END
+  - attributeName: FormatValid
+    expression: |-
+      CASE
+        WHEN NOT (FID_Cgid IS NOT NULL OR SourceID_Cgid IS NOT NULL) THEN CASE WHEN FormatValid = '1' THEN '1' WHEN FormatValid = '0' THEN '0' END
+        WHEN RegistrationNo IS NULL THEN NULL
+        WHEN REGEXP_LIKE(REGEXP_REPLACE(RegistrationNo, '[^0-9]', '', 'g'), '^100[0-9]{12}$') AND NOT REGEXP_LIKE(RegistrationNo, '[A-Za-z]') THEN '1'
+        ELSE '0'
+      END
+  - attributeName: IsCurrent
+    expression: |-
+      CASE
+        WHEN NOT (FID_Cgid IS NOT NULL OR SourceID_Cgid IS NOT NULL) THEN CASE WHEN IsCurrent = '1' THEN '1' WHEN IsCurrent = '0' THEN '0' END
+        WHEN EndDate IS NULL OR EndDate >= CURRENT_DATE() THEN '1'
+        ELSE '0'
+      END

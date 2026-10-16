@@ -1,0 +1,8 @@
+_name: RequireRejectedLogMT
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Rejected Log - Maritime
+validationScope: NONE
+condition: ANY MergeApprovalLog HAVE (UPPER(Decision) = 'REJECTED' AND FinalMergeApproved IS NULL AND (UPPER(ClusterCode) IN ('MT', 'MARITIME') OR UPPER(ClusterName) IN ('MT', 'MARITIME')))
+validationLabel: "Add a Merge Approval Decision row for Maritime with Decision = REJECTED before using Reject Merge."

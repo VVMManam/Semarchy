@@ -1,0 +1,42 @@
+_name: SourceSystem
+_package: DataProject.entities.SourceSystem.steppers
+_type: Stepper
+entity: DataProject.entities.SourceSystem.SourceSystem
+label: Source System
+rootStep:
+  _name: SourceSystem
+  _type: CollectionStep
+  label: Source System
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.SourceSystem.collection_views.SourceSystem
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Currency Details
+      formTab: DataProject.entities.SourceSystem.forms.SourceSystem.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

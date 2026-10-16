@@ -1,0 +1,167 @@
+_package: DataProject.entities.IssuingAuthority
+_type: Entity
+_name: IssuingAuthority
+label: Issuing Authority
+pluralLabel: Issuing Authority
+physicalTableName: ISSUING_AUTHORITY
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: IssuingAuthorityCode
+    label: Issuing Authority Code
+    physicalName: ISSUING_AUTHORITY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameEn
+    label: Name En
+    physicalName: NAME_EN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 200
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameAr
+    label: Name Ar
+    physicalName: NAME_AR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AuthorityTypeCode
+    label: Authority Type Code
+    physicalName: AUTHORITY_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsFreeZone
+    label: Is Free Zone
+    physicalName: IS_FREE_ZONE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CRMCode
+    label: CRM Code
+    physicalName: CRM_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FusionCode
+    label: Fusion Code
+    physicalName: FUSION_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MapsToAuthorityCode
+    label: Maps To Authority
+    physicalName: MAPS_TO_AUTHORITY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Fusion agency to CRM authority mapping (Issuing Authority Mapping Fusion vs CRM): the Issuing Authority Code of the CRM authority this Fusion agency belongs to. Suppliers resolving this Fusion code get the mapped authority, so customer and supplier licences match on the same authority. Empty = the authority is used as it is.'
+  - _type: EntityAttribute
+    _name: LicenseFormatRegex
+    label: License Format Regex
+    physicalName: LICENSE_FORMAT_REGEX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValidFrom
+    label: Valid From
+    physicalName: VALID_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValidTo
+    label: Valid To
+    physicalName: VALID_TO
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: DataProject.entities.IssuingAuthority.IssuingAuthority.IssuingAuthorityCode
+entityType: BASIC

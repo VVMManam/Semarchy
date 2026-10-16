@@ -1,0 +1,22 @@
+_name: CustomerPartyLink
+_package: DataProject.entities.CustomerLegalAccount.ActionSets
+_type: ActionSet
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: "Link customers to Party"
+defaultActionSet: true
+actions:
+  - _name: LinkToParty
+    label: "Link selected customers to a Party"
+    iconUrl: images://mdi/link-variant.svg
+    useCustomLabel: true
+    waitDialogEnabled: true
+    _type: MassUpdateAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    stepper: DataProject.entities.CustomerLegalAccount.steppers.CustomerPartyLink
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction

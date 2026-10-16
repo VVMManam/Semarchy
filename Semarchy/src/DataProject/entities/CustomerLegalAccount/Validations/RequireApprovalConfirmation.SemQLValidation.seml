@@ -1,0 +1,8 @@
+_name: RequireApprovalConfirmation
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Approval Confirmation
+validationScope: NONE
+condition: CustomerState = 'Approved'
+validationLabel: "Set Customer State to Approved before approving this record."

@@ -1,0 +1,101 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: EvaluateMergeDecision
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Evaluate Merge Decision from Merge Approval Logs
+enricherExecutionScope: POST_CONSO
+afterEnrichers:
+  - DataProject.entities.CustomerLegalAccount.enrichers.GroupClusterBuCounts
+  - DataProject.entities.CustomerLegalAccount.enrichers.ResolveMastersCount
+  - DataProject.entities.CustomerLegalAccount.enrichers.ResolveCycleDecision
+  - DataProject.entities.CustomerLegalAccount.enrichers.ResolveOutstandingForMerge
+description: 'Decisions of the running round come from the Merge Approval Log rows (published) and from ResolveCycleDecision (rows submitted in the same batch, not yet published). Decision rows count only while an approval is running (previous status PENDING); a new approval request sets MergeDecisionDate = now, which closes the rows of earlier cycles. Decisions: Confirm / Reject / Remerge (codes CONFIRMED / REJECTED / REMERGE). A Group Steward Reject or Remerge in this cycle sets GROUP_REVIEW (Group Steward Review view, not published until demerged); any other completed cycle sets CONFIRMED. GROUP_REVIEW is kept until the composition changes. Only a merge done by a steward (a user with a Steward role, e.g. in the Duplicate Manager or the customer stepper) can request approval; batches from integration users (e.g. CRM loads) keep the published approval state (Prev* lookups). MergeApprovalStatus: a decision of this cycle (cluster stewards and/or Group Steward, written at the end of ClusterMergeApproval) = CONFIRMED. Otherwise: not merged (masters count <= 1) or single cluster = NOT_REQUIRED; same composition as already requested/approved (ApprovalMastersCount) = unchanged; merge done by a Group Steward = CONFIRMED; any other merge = PENDING with ApprovalRequestedBatchID = current batch (starts ClusterMergeApproval). Final merge decision of the latest approval cycle. Open rows = MergeApprovalLogs with DecisionTimestamp after MergeDecisionDate. A Group Steward row wins; otherwise the latest cluster decision (clusters agree, or the Group Steward would have decided). ApprovalCheck: 1 = merge approved, 0 = rejected. Every branch returns text (like BranchQualifier); Semarchy casts it to the boolean column. Value kept until the next cycle.'
+semQlEnricherExpressions:
+  - attributeName: ApprovalCheck
+    expression: |-
+      CASE
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE')))
+               AND COALESCE(LkpCycleDecision, LOOKUP FIRST UPPER(Decision)
+                   FROM MergeApprovalLog
+                   WHERE (CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE')
+                   ORDER BY CASE WHEN UPPER(ReviewerRole) = 'MDM_GROUP_STEWARD' THEN 0 ELSE 1 END, DecisionTimestamp DESC
+                   END) = 'CONFIRMED'
+          THEN '1'
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE')))
+          THEN '0'
+          WHEN ApprovalCheck = 'true' THEN '1'
+          WHEN ApprovalCheck = 'false' THEN '0'
+      END
+  - attributeName: MergeDecisionDate
+    expression: |-
+      CASE
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE'))) THEN COALESCE(TO_TIMESTAMP(LkpCycleDecisionOn, 'YYYY-MM-DD HH24:MI:SS'), LOOKUP MAX DecisionTimestamp FROM MergeApprovalLog WHERE (CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE') END)
+          WHEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) IS NULL OR COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) <= 1 OR (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) <= 1 THEN MergeDecisionDate
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) IN ('CONFIRMED', 'PENDING', 'GROUP_REVIEW') AND COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) = COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) THEN MergeDecisionDate
+          WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN MergeDecisionDate
+          WHEN SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') = 0 THEN MergeDecisionDate
+          ELSE DATE_TRUNC('second', NOW())
+      END
+  - attributeName: MergeApprovalStatus
+    expression: |-
+      CASE
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus = 'GROUP_REVIEW' OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(ClusterCode) = 'GROUP' AND UPPER(Decision) IN ('REJECTED', 'REMERGE'))) THEN 'GROUP_REVIEW'
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE'))) THEN 'CONFIRMED'
+          WHEN OutstandingCheckResult = 'YES' AND SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') > 0 AND COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) > 1 AND (COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) IS NULL OR COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) <> COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount)) THEN 'OUTSTANDING_BLOCKED'
+          WHEN COALESCE(OutstandingCheckResult, 'REFRESH') = 'REFRESH' AND SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') > 0 AND COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) > 1 AND (COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) IS NULL OR COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) <> COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount)) THEN 'OUTSTANDING_REFRESH'
+          WHEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) IS NULL OR COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) <= 1 OR (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) <= 1 THEN 'NOT_REQUIRED'
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) IN ('CONFIRMED', 'PENDING', 'GROUP_REVIEW') AND COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) = COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) THEN COALESCE(PrevApprovalStatus, MergeApprovalStatus)
+          WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN 'CONFIRMED'
+          WHEN SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') = 0 THEN COALESCE(COALESCE(PrevApprovalStatus, MergeApprovalStatus), 'NOT_REQUIRED')
+          ELSE 'PENDING'
+      END
+  - attributeName: ApprovalMastersCount
+    expression: |-
+      CASE
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE'))) THEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount)
+          WHEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) IS NULL OR COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) <= 1 OR (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) <= 1 THEN NULL
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) IN ('CONFIRMED', 'PENDING', 'GROUP_REVIEW') AND COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) = COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) THEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount)
+          WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount)
+          WHEN SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') = 0 THEN COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount)
+          ELSE COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount)
+      END
+  - attributeName: ApprovalRequestedBatchID
+    expression: |-
+      CASE
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE'))) THEN COALESCE(TO_NUMBER(PrevApprovalReqBatchID, '99999999999999999999'), ApprovalRequestedBatchID)
+          WHEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) IS NULL OR COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) <= 1 OR (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) <= 1 THEN COALESCE(TO_NUMBER(PrevApprovalReqBatchID, '99999999999999999999'), ApprovalRequestedBatchID)
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) IN ('CONFIRMED', 'PENDING', 'GROUP_REVIEW') AND COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) = COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) THEN COALESCE(TO_NUMBER(PrevApprovalReqBatchID, '99999999999999999999'), ApprovalRequestedBatchID)
+          WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN COALESCE(TO_NUMBER(PrevApprovalReqBatchID, '99999999999999999999'), ApprovalRequestedBatchID)
+          WHEN SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') = 0 THEN COALESCE(TO_NUMBER(PrevApprovalReqBatchID, '99999999999999999999'), ApprovalRequestedBatchID)
+          ELSE :V_BATCHID
+      END
+  - attributeName: ApprovalRequestedBy
+    expression: |-
+      CASE
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE'))) THEN COALESCE(PrevApprovalReqBy, ApprovalRequestedBy)
+          WHEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) IS NULL OR COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) <= 1 OR (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) <= 1 THEN COALESCE(PrevApprovalReqBy, ApprovalRequestedBy)
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) IN ('CONFIRMED', 'PENDING', 'GROUP_REVIEW') AND COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) = COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) THEN COALESCE(PrevApprovalReqBy, ApprovalRequestedBy)
+          WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN COALESCE(PrevApprovalReqBy, ApprovalRequestedBy)
+          WHEN SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') = 0 THEN COALESCE(PrevApprovalReqBy, ApprovalRequestedBy)
+          ELSE :V_USERNAME
+      END
+  - attributeName: ApprovalRequestedOn
+    expression: |-
+      CASE
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE'))) THEN COALESCE(TO_TIMESTAMP(PrevApprovalReqOn, 'YYYY-MM-DD HH24:MI:SS'), ApprovalRequestedOn)
+          WHEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) IS NULL OR COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) <= 1 OR (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) <= 1 THEN COALESCE(TO_TIMESTAMP(PrevApprovalReqOn, 'YYYY-MM-DD HH24:MI:SS'), ApprovalRequestedOn)
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) IN ('CONFIRMED', 'PENDING', 'GROUP_REVIEW') AND COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) = COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) THEN COALESCE(TO_TIMESTAMP(PrevApprovalReqOn, 'YYYY-MM-DD HH24:MI:SS'), ApprovalRequestedOn)
+          WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN COALESCE(TO_TIMESTAMP(PrevApprovalReqOn, 'YYYY-MM-DD HH24:MI:SS'), ApprovalRequestedOn)
+          WHEN SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') = 0 THEN COALESCE(TO_TIMESTAMP(PrevApprovalReqOn, 'YYYY-MM-DD HH24:MI:SS'), ApprovalRequestedOn)
+          ELSE DATE_TRUNC('second', NOW())
+      END
+  - attributeName: ApprovalRequestedByInfo
+    expression: |-
+      CASE
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) = 'PENDING' AND (LkpCycleStatus IS NOT NULL OR ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE'))) THEN COALESCE(PrevApprovalReqByInfo, ApprovalRequestedByInfo)
+          WHEN COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) IS NULL OR COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) <= 1 OR (CASE WHEN GrpActiveBuCntMT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntIZ IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntLG IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntCO IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntPT IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN GrpActiveBuCntDC IS NOT NULL THEN 1 ELSE 0 END) <= 1 THEN COALESCE(PrevApprovalReqByInfo, ApprovalRequestedByInfo)
+          WHEN COALESCE(PrevApprovalStatus, MergeApprovalStatus) IN ('CONFIRMED', 'PENDING', 'GROUP_REVIEW') AND COALESCE(TO_NUMBER(PrevApprovalMastersCount, '9999999999'), ApprovalMastersCount) = COALESCE(TO_NUMBER(LkpMastersCount, '9999999999'), MastersCount) THEN COALESCE(PrevApprovalReqByInfo, ApprovalRequestedByInfo)
+          WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN COALESCE(PrevApprovalReqByInfo, ApprovalRequestedByInfo)
+          WHEN SEM_INSTR(UPPER(COALESCE(:V_USER_ROLES, '')), 'STEWARD') = 0 THEN COALESCE(PrevApprovalReqByInfo, ApprovalRequestedByInfo)
+          ELSE BTRIM(COALESCE(:V_USER_FIRSTNAME, '') || ' ' || COALESCE(:V_USER_LASTNAME, '')) || ' (' || :V_USERNAME || CASE WHEN SUBSTR(CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Maritime_Steward') > 0 THEN ', Maritime' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_IndustrialZone_Steward') > 0 THEN ', Industrial Zone' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Logistics_Steward') > 0 THEN ', Logistics' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Corp_Steward') > 0 THEN ', Corp' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Ports_Steward') > 0 THEN ', Ports' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Digital_Steward') > 0 THEN ', Digital' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN ', Group Steward' ELSE '' END, 3) <> '' THEN ' - ' || SUBSTR(CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Maritime_Steward') > 0 THEN ', Maritime' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_IndustrialZone_Steward') > 0 THEN ', Industrial Zone' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Logistics_Steward') > 0 THEN ', Logistics' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Corp_Steward') > 0 THEN ', Corp' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Ports_Steward') > 0 THEN ', Ports' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Digital_Steward') > 0 THEN ', Digital' ELSE '' END || CASE WHEN SEM_INSTR(COALESCE(:V_USER_ROLES, ''), 'MDM_Group_Steward') > 0 THEN ', Group Steward' ELSE '' END, 3) ELSE '' END || ')'
+      END

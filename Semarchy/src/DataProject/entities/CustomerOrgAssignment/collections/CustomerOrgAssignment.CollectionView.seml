@@ -1,0 +1,125 @@
+_name: CustomerOrgAssignment
+_type: CollectionView
+_package: DataProject.entities.CustomerOrgAssignment.collections
+entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+default: true
+displayCard: DataProject.entities.CustomerOrgAssignment.display_cards.CustomerOrgAssignment
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Department
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: ReferenceColumn
+    _name: BusinessUnit
+    columnAlign: LEFT
+    dataType: STRING
+    referencedEntity: DataProject.entities.BusinessUnit.BusinessUnit
+    useCustomLabel: true
+    value: FDN_BusinessUnitCode
+    label: Business Unit
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "0"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: MarkdownColumn
+    _name: Cluster
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "CASE WHEN Cluster IS NULL THEN NULL ELSE '<div style=\"margin:0;padding:0;line-height:1\">' || CASE WHEN Cluster LIKE '%Corp%' THEN '<span style=\"display:inline-block;background:#009FE3;color:#FFFFFF;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">Corp</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Digital%' THEN '<span style=\"display:inline-block;background:#A286BF;color:#FFFFFF;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">Digital Cluster</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Industrial%' THEN '<span style=\"display:inline-block;background:#F9423A;color:#FFFFFF;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">Industrial Zone</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Logistics%' THEN '<span style=\"display:inline-block;background:#70D547;color:#12330A;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">Logistics</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Maritime%' THEN '<span style=\"display:inline-block;background:#14C5BD;color:#FFFFFF;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">Maritime</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#B0D6E3;color:#0D3B4C;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">Ports</span>' ELSE '' END || CASE WHEN Cluster NOT LIKE '%Corp%' AND Cluster NOT LIKE '%Digital%' AND Cluster NOT LIKE '%Industrial%' AND Cluster NOT LIKE '%Logistics%' AND Cluster NOT LIKE '%Maritime%' AND Cluster NOT LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">' || Cluster || '</span>' ELSE '' END || '</div>' END"
+    label: "Cluster"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ERPBUCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "ERPBUCode"
+    label: "ERP BU Code"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DepartmentUCID
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "DepartmentAccountUCID"
+    label: "Department UCID"
+    visibleByDefault: true
+  - _type: ReferenceColumn
+    _name: ERPProfile
+    columnAlign: LEFT
+    dataType: STRING
+    referencedEntity: DataProject.entities.ErpProfile.ErpProfile
+    useCustomLabel: true
+    value: FDN_ErpProfileCode
+    label: ERPProfile
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "0"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: ReferenceColumn
+    _name: PaymentTerm
+    columnAlign: LEFT
+    dataType: STRING
+    referencedEntity: DataProject.entities.PaymentTerm.PaymentTerm
+    useCustomLabel: false
+    value: FDN_PaymentTermCode
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "0"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: CreditLimit
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "SEM_NUMBER_TO_CHAR(CreditLimit)"
+    label: "Credit Limit"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CreditCurrency
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "CreditCurrency"
+    label: "Currency"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SalesPerson
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "SalesPerson"
+    label: "Sales Person"
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountManager
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "AccountManager"
+    label: "Account Manager"
+    visibleByDefault: true
+  - _type: MarkdownColumn
+    _name: Status
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "CASE WHEN Status = 'A' THEN '<div style=\"margin:0;padding:0;line-height:1\"><span style=\"display:inline-block;background:#C8E6C9;color:#1B5E20;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">Active</span></div>' WHEN Status = 'I' THEN '<div style=\"margin:0;padding:0;line-height:1\"><span style=\"display:inline-block;background:#FFCDD2;color:#B71C1C;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">Inactive</span></div>' WHEN Status IS NULL THEN NULL ELSE '<div style=\"margin:0;padding:0;line-height:1\"><span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:1px 10px;margin:0 4px 2px 0;font-size:12px;font-weight:500;line-height:16px;white-space:nowrap\">' || Status || '</span></div>' END"
+    label: "Status"
+    visibleByDefault: true

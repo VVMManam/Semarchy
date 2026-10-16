@@ -1,0 +1,98 @@
+_name: LoadSupplier360
+_package: DataProject.ModelJobs
+_type: CertificationJob
+description: Supplier certification job - supplier legal account and all its child entities
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: SupplierLegalAccount
+    _type: ModelJobTask
+    entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: Identifier
+    _type: ModelJobTask
+    entity: DataProject.entities.Identifier.Identifier
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: TaxRegistration
+    _type: ModelJobTask
+    entity: DataProject.entities.TaxRegistration.TaxRegistration
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: Address
+    _type: ModelJobTask
+    entity: DataProject.entities.Address.Address
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: SupplierBankAccount
+    _type: ModelJobTask
+    entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: Contact
+    _type: ModelJobTask
+    entity: DataProject.entities.Contact.Contact
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: ContactPurpose
+    _type: ModelJobTask
+    entity: DataProject.entities.ContactPurpose.ContactPurpose
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: SupplierSite
+    _type: ModelJobTask
+    entity: DataProject.entities.SupplierSite.SupplierSite
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: SupplierSiteAssignment
+    _type: ModelJobTask
+    entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: LicenseActivity
+    _type: ModelJobTask
+    entity: DataProject.entities.LicenseActivity.LicenseActivity
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

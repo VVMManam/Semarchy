@@ -1,0 +1,19 @@
+_name: DeriveGovernmentEntity
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Derive Government Entity
+description: "IsGovernmentEntity is derived from the canonical supplier type when the source does not send it."
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.SupplierLegalAccount.enrichers.SupplierCodesNormalize
+semQlEnricherExpressions:
+  - attributeName: IsGovernmentEntity
+    expression: |-
+      CASE
+        WHEN IsGovernmentEntity = '1' THEN '1'
+        WHEN IsGovernmentEntity = '0' THEN '0'
+        WHEN SupplierTypeCode IS NULL THEN NULL
+        WHEN SupplierTypeCode IN ('GOVERNMENT', 'FEDERAL', 'PUBLIC_SECTOR_COMPANIES', 'TAX_AUTHORITY') THEN '1'
+        ELSE '0'
+      END

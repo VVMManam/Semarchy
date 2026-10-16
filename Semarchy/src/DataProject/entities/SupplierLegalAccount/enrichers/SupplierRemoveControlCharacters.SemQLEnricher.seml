@@ -1,0 +1,29 @@
+_name: SupplierRemoveControlCharacters
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Remove Control Characters
+description: "NRM-20: strip tabs, CR/LF and non-printable characters from the remaining supplier text fields."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: NameAlternate
+    expression: |-
+      CASE WHEN NameAlternate IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(NameAlternate, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: ChiefExecutiveName
+    expression: |-
+      CASE WHEN ChiefExecutiveName IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(ChiefExecutiveName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: ChiefExecutiveTitle
+    expression: |-
+      CASE WHEN ChiefExecutiveTitle IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(ChiefExecutiveTitle, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: RemitAdviceEmail
+    expression: |-
+      CASE WHEN RemitAdviceEmail IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(RemitAdviceEmail, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: IndustryClassCode
+    expression: |-
+      CASE WHEN IndustryClassCode IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(IndustryClassCode, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: MinorityGroupCode
+    expression: |-
+      CASE WHEN MinorityGroupCode IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(MinorityGroupCode, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: SupplierCode
+    expression: |-
+      CASE WHEN SupplierCode IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(SupplierCode, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END

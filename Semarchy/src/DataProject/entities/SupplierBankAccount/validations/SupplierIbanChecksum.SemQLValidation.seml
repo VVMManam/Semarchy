@@ -1,0 +1,15 @@
+_name: SupplierIbanChecksum
+_type: SemQLValidation
+_package: DataProject.entities.SupplierBankAccount.validations
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+label: VAL-25 IBAN Valid
+validationScope: POST_CONSO
+validationLabel: "VAL-25 - Invalid IBAN (format, UAE length or mod-97 checksum)."
+condition: |-
+  NULLIF(BTRIM(IBAN), '') IS NULL
+  OR CASE
+       WHEN NOT REGEXP_LIKE(UPPER(REGEXP_REPLACE(IBAN, '\s', '', 'g')), '^[A-Z]{2}[0-9]{2}[A-Z0-9]{11,30}$') THEN 0
+       WHEN SUBSTR(UPPER(REGEXP_REPLACE(IBAN, '\s', '', 'g')), 1, 2) = 'AE' AND NOT REGEXP_LIKE(UPPER(REGEXP_REPLACE(IBAN, '\s', '', 'g')), '^AE[0-9]{21}$') THEN 0
+       WHEN MOD(TO_NUMBER(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(SUBSTR(UPPER(REGEXP_REPLACE(IBAN, '\s', '', 'g')), 5) || SUBSTR(UPPER(REGEXP_REPLACE(IBAN, '\s', '', 'g')), 1, 4), 'A', '10'), 'B', '11'), 'C', '12'), 'D', '13'), 'E', '14'), 'F', '15'), 'G', '16'), 'H', '17'), 'I', '18'), 'J', '19'), 'K', '20'), 'L', '21'), 'M', '22'), 'N', '23'), 'O', '24'), 'P', '25'), 'Q', '26'), 'R', '27'), 'S', '28'), 'T', '29'), 'U', '30'), 'V', '31'), 'W', '32'), 'X', '33'), 'Y', '34'), 'Z', '35'), REPEAT('9', 80)), 97) = 1 THEN 1
+       ELSE 0
+     END = 1

@@ -1,0 +1,137 @@
+_name: SupplierHub
+_package: DataProject.applications
+_type: Application
+applicationTitle: SupplierHub
+avatarImageUrl: images://AdPorts-ImageLibrary/roundLogo.png
+coverImageUrl: images://AdPorts-ImageLibrary/adports-logo.jpg
+favIcon: images://AdPorts-ImageLibrary/roundLogo.png
+logoUrl: images://AdPorts-ImageLibrary/adports-logo.jpg
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+visibility: VISIBLE
+requiredRoleName: SupplierDataManagement
+primaryColor: "md: blue 900"
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: ErdDiagramERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.ErdDiagram
+    - _name: SupplierERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierERDiagram
+    - _name: SupplierSiteERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierSiteERDiagram
+    - _name: SupplierSiteAssignmentERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierSiteAssignmentERDiagram
+    - _name: SupplierBankAccountERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierBankAccountERDiagram
+    - _name: SupplierAddressERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierAddressERDiagram
+    - _name: SupplierContactERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierContactERDiagram
+    - _name: GeographyReferenceERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.GeographyReferenceERDiagram
+    - _name: SupplierIdentifierERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierIdentifierERDiagram
+    - _name: SupplierLicenseActivityERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierLicenseActivityERDiagram
+    - _name: OrganizationReferenceERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.OrganizationERDiagram
+    - _name: SupplierTaxRegistrationERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SupplierTaxRegistrationERDiagram
+label: SupplierHub
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: SupplierGoldenSearch
+      _type: GlobalSearchBoView
+      label: SupplierSearch
+      businessView: DataProject.entities.SupplierLegalAccount.business_views.SupplierLegalAccount
+      searchTypeConfig: DataProject.entities.SupplierLegalAccount.business_views.SupplierLegalAccount.SupplierLegalAccount.TextConfig
+      maxResults: 20
+      viewType: GD
+    - _name: SupplierSiteSearch
+      _type: GlobalSearchBoView
+      label: Department
+      businessView: DataProject.entities.SupplierSite.business_views.SupplierSite
+      searchTypeConfig: DataProject.entities.SupplierSite.business_views.SupplierSite.SupplierSite.TextConfig
+      maxResults: 20
+      viewType: GD
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: OpenDocumentation
+      label: ER Diagram
+      icon: images://mdi/book-open-page-variant.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: OpenDocumentationAction
+      requiredRole: semarchyAdmin
+    - _name: GlobalSearch
+      label: Search
+      icon: images://mdi/magnify.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: GlobalSearchAction
+      
+    - _name: MyTasks
+      label: My Tasks
+      icon: images://mdi/checkbox-marked-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: MyTasksAction
+      badgeVisible: true
+     
+    - _name: BrowseEntities
+      label: Entities
+      icon: images://mdi/database.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseEntitiesFolderAction
+      lineageEnabled: true
+      requiredRole: semarchyAdmin
+      
+    - _name: BrowseSupplier360View
+      label: Supplier Golden Records
+      icon: images://mdi/card-account-details.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.SupplierLegalAccount.business_views.Supplier360View
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+    - _name: BrowseDuplicate
+      label: Review Duplicates
+      icon: images://mdi/account-multiple-check-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.SupplierLegalAccount.business_views.SupplierDuplicateSuggestion
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+
+      
+defaultAction: DataProject.applications.SupplierHub.Root.GlobalSearch
+navDrawer:
+  - _name: RootFolder
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: DataProject.applications.SupplierHub.Root

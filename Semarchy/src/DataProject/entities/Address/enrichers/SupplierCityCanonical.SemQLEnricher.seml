@@ -1,0 +1,13 @@
+_name: SupplierCityCanonical
+_type: SemQLEnricher
+_package: DataProject.entities.Address.enrichers
+entity: DataProject.entities.Address.Address
+label: Supplier City Canonical
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: CityNormalised
+    expression: |-
+      CASE WHEN (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL)
+        THEN NULLIF(UPPER(REGEXP_REPLACE(COALESCE(City,''),'[^[:alnum:]]','','g')),'')
+        ELSE CityNormalised
+      END

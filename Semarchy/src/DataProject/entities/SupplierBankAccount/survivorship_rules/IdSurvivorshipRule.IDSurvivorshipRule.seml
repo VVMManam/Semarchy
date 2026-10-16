@@ -1,0 +1,9 @@
+_package: DataProject.entities.SupplierBankAccount.survivorship_rules
+_type: IDSurvivorshipRule
+_name: IdSurvivorshipRule
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+label: Id Survivorship Rule
+description: ""
+documentation: ""
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: false

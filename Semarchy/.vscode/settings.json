@@ -1,0 +1,8 @@
+{
+    "seml.trace.server": "messages",
+    "editor.suggest.showStatusBar": true,
+    "semarchy.sdp.instanceUrl": "https://adpg-mdm-dev.eu.semarchy.net",
+    "semarchy.sdp.overwriteDeploymentUrl": "https://adpg-mdm-dev.eu.semarchy.net/dpc",
+    "semarchy.sdp.dataLocation": "adpg_model1",
+    "semarchy.sdp.datasource": "datasource1"
+}

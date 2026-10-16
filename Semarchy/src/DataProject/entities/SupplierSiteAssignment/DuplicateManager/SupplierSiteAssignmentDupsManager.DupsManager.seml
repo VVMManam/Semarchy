@@ -1,0 +1,14 @@
+_name: SupplierSiteAssignmentDupsManager
+_type: DupsManager
+_package: DataProject.entities.SupplierSiteAssignment.DuplicateManager
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+checkoutCustomSortEnabled: false
+checkoutDefaultDisplayType: TABLE
+checkoutDisplayGridAllowed: false
+checkoutDisplayListAllowed: false
+checkoutDisplayTableAllowed: true
+checkoutUserDefinedSortEnabled: true
+collectionView: DataProject.entities.SupplierSiteAssignment.collection_views.SupplierSiteAssignment
+displayCard: DataProject.entities.SupplierSiteAssignment.display_cards.SupplierSiteAssignment
+enableMasterValuePicking: true
+formTab: DataProject.entities.SupplierSiteAssignment.forms.SupplierSiteAssignment.Main

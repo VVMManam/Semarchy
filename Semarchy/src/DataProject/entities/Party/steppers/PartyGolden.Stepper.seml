@@ -1,0 +1,72 @@
+_name: PartyGolden
+_package: DataProject.entities.Party.steppers
+_type: Stepper
+entity: DataProject.entities.Party.Party
+label: "Party"
+rootStep:
+  _name: Root
+  _type: CollectionStep
+  label: "Party"
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.Party.collection_views.PartyGolden
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: "Party"
+      formTab: DataProject.entities.Party.forms.PartyDuplicate.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations:
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: DataProject.entities.Party.validations.PartyLicenceIdentityComplete
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: DataProject.entities.Party.validations.PartyLicenceCountryFormat
+        - validationType: CHECK
+          executedOnDataChange: true
+          executedOnFormOpen: true
+          validator: DataProject.entities.Party.validations.PartyLicencePlaceholder
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.Party.validations.PartyLicenceIdentityComplete
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.Party.validations.PartyLicenceCountryFormat
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.Party.validations.PartyLicencePlaceholder
+      stepTriggers: []
+stepperFinishValidations:
+  - onStepperFinish: BLOCK
+    validationType: CHECK
+    validator: DataProject.entities.Party.validations.PartyParentNotSelf
+  - onStepperFinish: BLOCK
+    validationType: CHECK
+    validator: DataProject.entities.Party.validations.PartyParentNoCycle
+  - onStepperFinish: BLOCK
+    validationType: CHECK
+    validator: DataProject.entities.Party.validations.PartySuperPartyNoAccounts
+triggers: []

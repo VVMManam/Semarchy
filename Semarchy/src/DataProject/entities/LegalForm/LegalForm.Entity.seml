@@ -1,0 +1,79 @@
+_package: DataProject.entities.LegalForm
+_type: Entity
+_name: LegalForm
+label: Legal Form
+pluralLabel: Legal Form
+physicalTableName: LEGAL_FORM
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: LegalFormCode
+    label: Legal Form Code
+    physicalName: LEGAL_FORM_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameEn
+    label: Name En
+    physicalName: NAME_EN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 100
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameAr
+    label: Name Ar
+    physicalName: NAME_AR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AbbreviationPatterns
+    label: Abbreviation Patterns
+    physicalName: ABBREVIATION_PATTERNS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 400
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: DataProject.entities.LegalForm.LegalForm.LegalFormCode
+entityType: BASIC

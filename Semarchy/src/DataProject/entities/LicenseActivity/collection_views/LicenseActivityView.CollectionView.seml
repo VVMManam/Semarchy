@@ -1,0 +1,51 @@
+_name: LicenseActivityView
+_type: CollectionView
+_package: DataProject.entities.LicenseActivity.collection_views
+entity: DataProject.entities.LicenseActivity.LicenseActivity
+default: false
+displayCard: DataProject.entities.LicenseActivity.display_cards.LicenseActivity
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: License Activity
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: ActivityType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FDN_ActivityType
+    label: Activity Type
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DEDCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DEDCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ActivityGroupCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FDN_GroupCode
+    label: Activity Group
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RecordStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN RecordStatusCode = 'A' THEN 'Active' WHEN RecordStatusCode = 'I' THEN 'Inactive' ELSE RecordStatusCode END
+    label: Record Status
+    visibleByDefault: true

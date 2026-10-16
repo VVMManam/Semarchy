@@ -1,0 +1,10 @@
+_name: ClientBuResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSiteAssignment.validations
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Client BU Resolved
+validationScope: POST_CONSO
+validationLabel: "BUSINESS_UNIT_UNMAPPED - Fusion Client BU name has no matching Business Unit in MDM."
+condition: |-
+  ClientBuName IS NULL
+  OR FID_ClientBuCode IS NOT NULL

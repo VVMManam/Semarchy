@@ -1,0 +1,64 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+_package: DataProject.entities.SupplierLegalAccount.survivorship_rules
+defaultRule: false
+_name: SupplierStandardSurvivorshipRule
+label: Standard Survivorship Rule (General)
+description: "SRV-02/03/04/05, SR-04, SRV-11/12/17: active > Fusion/AD Ports over Sedeira K > valid > complete > oldest. Attribute-level non-null survives."
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(AccountStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  CASE WHEN UPPER(BusinessRelationshipCode) = 'SPEND_AUTHORIZED' THEN 1 ELSE 0 END DESC,
+  CASE WHEN FusionSupplierId IS NOT NULL AND UPPER(COALESCE(SupplierNumber,'')) NOT LIKE 'K%' THEN 2
+       WHEN UPPER(COALESCE(SupplierNumber,'')) NOT LIKE 'K%' THEN 1
+       ELSE 0 END DESC,
+  CASE WHEN LicenseExpiryDate >= CURRENT_DATE() THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN SupplierNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FusionSupplierId IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IndustryClassCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Website IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN YearEstablished IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AllowWithholdingTax IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN WithholdingTaxGroupCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DefaultPaymentMethodCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ExclusivePayment IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RemitAdviceDeliveryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BcNotApplicable IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN SupplierCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN VATRegistrationNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RemitAdviceEmail IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ChiefExecutiveName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ChiefExecutiveTitle IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN MinorityGroupCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentTerm IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  CASE WHEN REGEXP_LIKE(COALESCE(SupplierNumber, ''), '^[0-9]+$') THEN LPAD(SupplierNumber, 20, '0') ELSE 'Z' || COALESCE(SupplierNumber, '') END ASC,
+  CreationDate ASC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: SupplierNumber
+  - attributeName: FusionSupplierId
+  - attributeName: IndustryClassCode
+  - attributeName: Website
+  - attributeName: YearEstablished
+  - attributeName: AllowWithholdingTax
+  - attributeName: WithholdingTaxGroupCode
+  - attributeName: DefaultPaymentMethodCode
+  - attributeName: ExclusivePayment
+  - attributeName: RemitAdviceDeliveryCode
+  - attributeName: BcNotApplicable
+  - attributeName: SupplierCode
+  - attributeName: VATRegistrationNumber
+  - attributeName: RemitAdviceEmail
+  - attributeName: ChiefExecutiveName
+  - attributeName: ChiefExecutiveTitle
+  - attributeName: MinorityGroupCode
+  - attributeName: WebsiteDomain
+  - attributeName: TaxCountryCode
+  - attributeName: TrnMatchKey
+  - attributeName: CurrencySource
+  - attributeName: PaymentTerm

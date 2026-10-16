@@ -1,0 +1,23 @@
+_name: SupplierLegalAccount_LicenseType
+_type: Reference
+_package: DataProject.references
+label:  Supplier Legal Account to  License Type
+physicalName: SUPPLIER_LICENSE_TYPE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+fromRoleLabel:  Supplier Legal Account
+fromRolePluralLabel:  Supplier Legal Account
+fromRoleName: SupplierLegalAccount
+toEntity: DataProject.entities.LicenseType.LicenseType
+toRoleLabel: License Type Code
+toRoleName: LicenseTypeCode
+toRolePhysicalName: LICENSE_TYPE_CODE
+foreignAttribute:
+  _name: LicenseTypeCode
+  _type: ForeignAttribute
+  physicalName: LICENSE_TYPE_CODE
+  label: License Type Code
+  searchable: true
+  entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount

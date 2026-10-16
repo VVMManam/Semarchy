@@ -1,0 +1,23 @@
+_name: RelationshipType_ReciprocalCode
+_type: Reference
+_package: DataProject.references
+label:  Relationship Type to  Relationship Type
+physicalName: RELN_TYPE_RECIPRO_427
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.RelationshipType.RelationshipType
+fromRoleLabel:  Relationship Type
+fromRolePluralLabel:  Relationship Type
+fromRoleName: RelationshipType
+toEntity: DataProject.entities.RelationshipType.RelationshipType
+toRoleLabel: Reciprocal Code
+toRoleName: ReciprocalCode
+toRolePhysicalName: RECIPROCAL_CODE
+foreignAttribute:
+  _name: ReciprocalCode
+  _type: ForeignAttribute
+  physicalName: RECIPROCAL_CODE
+  label: Reciprocal Code
+  searchable: true
+  entity: DataProject.entities.RelationshipType.RelationshipType

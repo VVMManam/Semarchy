@@ -1,0 +1,202 @@
+_name: CustomerHub
+_package: DataProject.applications
+_type: Application
+applicationTitle: CustomerHub
+avatarImageUrl: images://AdPorts-ImageLibrary/roundLogo.png
+coverImageUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+favIcon: images://AdPorts-ImageLibrary/roundLogo.png
+logoUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+visibility: VISIBLE
+primaryColor: "md: blue 900"
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: ErdDiagramERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.ErdDiagram
+    - _name: CustomerERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.CustomerERDiagram
+    - _name: DepartmentERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.DepartmentERDiagram
+    - _name: AddressERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.AddressERDiagram
+    - _name: ContactERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.ContactERDiagram
+    - _name: GeographyReferenceERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.GeographyReferenceERDiagram
+    - _name: IdentifierERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.IdentifierERDiagram
+    - _name: OrganizationReferenceERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.OrganizationERDiagram
+    - _name: PartyERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.PartyERDiagram
+    - _name: SbcMatchingERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SbcMatchingERDiagram
+    - _name: TaxRegistrationERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.TaxRegistrationERDiagram
+label: CustomerHub
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: CustomerGoldenSearch
+      _type: GlobalSearchBoView
+      label: CustomerSearch
+      businessView: DataProject.entities.CustomerLegalAccount.BusinessViews.CustomerGoldenView
+      searchTypeConfig: DataProject.entities.CustomerLegalAccount.BusinessViews.CustomerGoldenView.Customer.TextConfig
+      maxResults: 20
+      viewType: GD
+    - _name: CustomerOrgAssignmentSearch
+      _type: GlobalSearchBoView
+      label: Department
+      businessView: DataProject.entities.CustomerOrgAssignment.business_views.CustomerOrgAssignment
+      searchTypeConfig: DataProject.entities.CustomerOrgAssignment.business_views.CustomerOrgAssignment.Department.TextConfig
+      maxResults: 20
+      viewType: GD
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: OpenDocumentation
+      label: ER Diagram
+      icon: images://mdi/book-open-page-variant.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: OpenDocumentationAction
+      requiredRole: semarchyAdmin
+    - _name: CustomerSettings
+      label: Customer Settings
+      icon: images://mdi/cog-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseSlaPolicies
+          label: Workflow SLA Policies
+          icon: images://mdi/timer-outline.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: DataProject.entities.SlaPolicy.business_views.SlaPolicy
+          useSearchOnOpen: false
+          nbRecordsBadgeVisible: false
+    - _name: GlobalSearch
+      label: Search
+      icon: images://mdi/magnify.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: GlobalSearchAction
+      
+    - _name: MyTasks
+      label: My Tasks
+      icon: images://mdi/checkbox-marked-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: MyTasksAction
+      badgeVisible: true
+     
+    - _name: BrowseEntities
+      label: Entities
+      icon: images://mdi/database.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseEntitiesFolderAction
+      lineageEnabled: true
+      requiredRole: semarchyAdmin
+      
+    - _name: BrowseCustomerLegalAccounts
+      label: Customer Golden Records
+      icon: images://mdi/book.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.CustomerLegalAccount.BusinessViews.CustomerGoldenView
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+
+     
+    - _name: BrowseCustomerMerge
+      label: Customer Merge
+      icon: images://mdi/call-merge.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.CustomerLegalAccount.BusinessViews.CustomerMerge
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+
+    - _name: BrowseGroupStewardReview
+      label: Group Steward Review
+      icon: images://mdi/call-split.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.CustomerLegalAccount.BusinessViews.GroupStewardReview
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: true
+      requiredRole: MDM_Group_Steward
+
+    - _name: BrowseDuplicate
+      label: Review Duplicates
+      icon: images://mdi/account-multiple-check-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.CustomerLegalAccount.BusinessViews.CustomerDuplicateView
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+
+    - _name: BrowseOutstandingRefresh
+      label: Outstanding Refresh
+      icon: images://mdi/cash-refund.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.OutstandingRefreshRequest.business_views.OutstandingRefresh
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+      
+    - _name: BrowseModification
+      label: Customer Modification
+      icon: images://mdi/account-edit-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.CustomerLegalAccount.BusinessViews.CustomerModification
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+      
+    - _name: BrowseChangeRequest
+      label: Change Request
+      icon: images://mdi/account-edit-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.changerequest.business_views.ChangeRequest
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+      requiredRole: semarchyAdmin
+      
+defaultAction: DataProject.applications.CustomerHub.Root.GlobalSearch
+navDrawer:
+  - _name: RootFolder
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: DataProject.applications.CustomerHub.Root

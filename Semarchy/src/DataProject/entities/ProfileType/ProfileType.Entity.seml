@@ -1,0 +1,116 @@
+_package: DataProject.entities.ProfileType
+_type: Entity
+_name: ProfileType
+label: Profile Type
+pluralLabel: Profile Type
+physicalTableName: PROFILE_TYPE
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ProfileTypeCode
+    label: Profile Type Code
+    physicalName: PROFILE_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameEn
+    label: Name En
+    physicalName: NAME_EN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 100
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameAr
+    label: Name Ar
+    physicalName: NAME_AR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 400
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsErpRelevant
+    label: Is Erp Relevant
+    physicalName: IS_ERP_RELEVANT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CRMCode
+    label: CRM Code
+    physicalName: CRM_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FusionCode
+    label: Fusion Code
+    physicalName: FUSION_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: DataProject.entities.ProfileType.ProfileType.ProfileTypeCode
+entityType: BASIC

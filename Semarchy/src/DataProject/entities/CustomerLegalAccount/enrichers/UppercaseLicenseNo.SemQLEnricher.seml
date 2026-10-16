@@ -1,0 +1,14 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: UppercaseLicenseNo
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Uppercase License No
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: LicenseNumber
+    expression: |-
+      CASE
+          WHEN LicenseNumber IS NULL
+          THEN NULL
+          ELSE REGEXP_REPLACE(UPPER(REGEXP_REPLACE(LicenseNumber, '\s+', '', 'g')), '^(CN|IN)[_-]*([0-9]{7})$', '\1-\2')
+      END

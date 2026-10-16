@@ -1,0 +1,23 @@
+_name: IdentifierType_CountryScope
+_type: Reference
+_package: DataProject.references
+label:  Identifier Type to  Country
+physicalName: IDENT_TYPE_CTRY_SCOPE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.IdentifierType.IdentifierType
+fromRoleLabel:  Identifier Type
+fromRolePluralLabel:  Identifier Type
+fromRoleName: IdentifierType
+toEntity: DataProject.entities.Country.CountryReference
+toRoleLabel: Country Scope
+toRoleName: CountryScope
+toRolePhysicalName: COUNTRY_SCOPE
+foreignAttribute:
+  _name: CountryScope
+  _type: ForeignAttribute
+  physicalName: COUNTRY_SCOPE
+  label: Country Scope
+  searchable: true
+  entity: DataProject.entities.IdentifierType.IdentifierType

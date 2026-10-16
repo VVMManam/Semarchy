@@ -1,0 +1,15 @@
+_type: SemQLEnricher
+_package: DataProject.entities.Address.enrichers
+_name: MarkManualPrimary
+entity: DataProject.entities.Address.Address
+label: Mark Manual Primary
+description: 'Address form only (steward ticks Is Primary): ticking stamps Primary Set At with the current time so this address becomes Primary for its type and the previously ticked one turns Secondary; unticking clears it so the automatic rule (most complete address) decides again.'
+enricherExecutionScope: NONE
+semQlEnricherExpressions:
+  - attributeName: PrimarySetAt
+    expression: |-
+      CASE
+        WHEN IsPrimary = '1' AND PrimarySetAt IS NULL THEN DATE_TRUNC('second', NOW())
+        WHEN IsPrimary IS NULL OR IsPrimary = '0' THEN NULL
+        ELSE PrimarySetAt
+      END

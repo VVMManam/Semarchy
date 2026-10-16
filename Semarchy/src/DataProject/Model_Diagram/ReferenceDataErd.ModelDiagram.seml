@@ -1,0 +1,266 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: ReferenceDataErd
+label: ADPG  — Reference Data
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: Country
+    _type: EntityShape
+    entity: DataProject.entities.Country.CountryReference
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 60
+      y: 60
+  - _name: Emirate
+    _type: EntityShape
+    entity: DataProject.entities.Emirate.Emirate
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 60
+      y: 260
+  - _name: Currency
+    _type: EntityShape
+    entity: DataProject.entities.Currency.Currency
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 60
+      y: 460
+  - _name: Cluster
+    _type: EntityShape
+    entity: DataProject.entities.Cluster.Cluster
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 440
+      y: 60
+  - _name: LegalEntity
+    _type: EntityShape
+    entity: DataProject.entities.LegalEntity.LegalEntity
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 440
+      y: 260
+  - _name: BusinessUnit
+    _type: EntityShape
+    entity: DataProject.entities.BusinessUnit.BusinessUnit
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 440
+      y: 460
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 440
+      y: 700
+  - _name: IssuingAuthority
+    _type: EntityShape
+    entity: DataProject.entities.IssuingAuthority.IssuingAuthority
+    borderColor: rgb(29, 95, 89)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 820
+      y: 60
+  - _name: IdentifierType
+    _type: EntityShape
+    entity: DataProject.entities.IdentifierType.IdentifierType
+    borderColor: rgb(29, 95, 89)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 820
+      y: 260
+  - _name: LicenseType
+    _type: EntityShape
+    entity: DataProject.entities.LicenseType.LicenseType
+    borderColor: rgb(29, 95, 89)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 820
+      y: 460
+  - _name: LicenseActivityType
+    _type: EntityShape
+    entity: DataProject.entities.LicenseActivityType.LicenseActivityType
+    borderColor: rgb(29, 95, 89)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 820
+      y: 660
+  - _name: LicenseActivityGroupType
+    _type: EntityShape
+    entity: DataProject.entities.LicenseActivityGroupType.LicenseActivityGroupType
+    borderColor: rgb(29, 95, 89)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 820
+      y: 860
+  - _name: LegalForm
+    _type: EntityShape
+    entity: DataProject.entities.LegalForm.LegalForm
+    borderColor: rgb(29, 95, 89)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 820
+      y: 1060
+  - _name: TaxType
+    _type: EntityShape
+    entity: DataProject.entities.TaxType.TaxType
+    borderColor: rgb(217, 154, 43)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1200
+      y: 60
+  - _name: PaymentTerm
+    _type: EntityShape
+    entity: DataProject.entities.PaymentTerm.PaymentTerm
+    borderColor: rgb(217, 154, 43)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1200
+      y: 260
+  - _name: ErpProfile
+    _type: EntityShape
+    entity: DataProject.entities.ErpProfile.ErpProfile
+    borderColor: rgb(217, 154, 43)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1200
+      y: 460
+  - _name: ProfileType
+    _type: EntityShape
+    entity: DataProject.entities.ProfileType.ProfileType
+    borderColor: rgb(217, 154, 43)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1200
+      y: 660
+  - _name: ContactRole
+    _type: EntityShape
+    entity: DataProject.entities.ContactRole.ContactRole
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1580
+      y: 60
+  - _name: RoleType
+    _type: EntityShape
+    entity: DataProject.entities.RoleType.RoleType
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1580
+      y: 260
+  - _name: RelationshipType
+    _type: EntityShape
+    entity: DataProject.entities.RelationshipType.RelationshipType
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1580
+      y: 460
+  - _name: AddressUsage
+    _type: EntityShape
+    entity: DataProject.entities.AddressUsage.AddressUsage
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1580
+      y: 700
+  - _name: Title
+    _type: EntityShape
+    entity: DataProject.entities.Title.Title
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1580
+      y: 700
+
+referenceLinks:
+  - reference: DataProject.references.Emirate_CountryCode
+    bendPoints: []
+  - reference: DataProject.references.IssuingAuthority_CountryCode
+    bendPoints: []
+  - reference: DataProject.references.IssuingAuthority_EmirateCode
+    bendPoints: []
+  - reference: DataProject.references.IdentifierType_CountryScope
+    bendPoints: []
+  - reference: DataProject.references.LegalForm_CountryScope
+    bendPoints: []
+  - reference: DataProject.references.TaxType_CountryCode
+    bendPoints: []
+  - reference: DataProject.references.LegalEntity_CountryCode
+    bendPoints: []
+  - reference: DataProject.references.LegalEntity_ClusterCode
+    bendPoints: []
+  - reference: DataProject.references.BusinessUnit_ClusterCode
+    bendPoints: []
+  - reference: DataProject.references.BusinessUnit_LegalEntityId
+    bendPoints: []
+  - reference: DataProject.references.BusinessUnit_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.SourceSystem_ClusterCode
+    bendPoints: []
+  - reference: DataProject.references.PaymentTerm_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.RelationshipType_ReciprocalCode
+    bendPoints: []

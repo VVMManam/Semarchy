@@ -1,0 +1,47 @@
+_name: ResolveCurrency
+_type: JavaPluginEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Resolve Currency
+description: 'Resolves CurrencySource to the MDM currency. A reference already set on the record is kept.'
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'SRC|' || upper(trim(currency_code)) LOOKUP_COLUMN,
+                   currency_code OUTPUT_COLUMN1
+            from gd_currency
+            where currency_code is not null
+            union
+            select 'SRC|' || upper(trim(fusion_code)) LOOKUP_COLUMN,
+                   currency_code OUTPUT_COLUMN1
+            from gd_currency
+            where fusion_code is not null
+            union
+            select 'SRC|' || upper(trim(crm_code)) LOOKUP_COLUMN,
+                   currency_code OUTPUT_COLUMN1
+            from gd_currency
+            where crm_code is not null
+            union
+            select 'MDM|' || upper(trim(currency_code)) LOOKUP_COLUMN,
+                   currency_code OUTPUT_COLUMN1
+            from gd_currency
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_Currency IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_Currency)) WHEN CurrencySource IS NOT NULL THEN 'SRC|' || UPPER(BTRIM(CurrencySource)) ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_Currency
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

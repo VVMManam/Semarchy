@@ -1,0 +1,16 @@
+_name: LoadOutstandingRefreshRequest
+_package: DataProject.ModelJobs
+_type: CertificationJob
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: OutstandingRefreshRequest
+    _type: ModelJobTask
+    entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

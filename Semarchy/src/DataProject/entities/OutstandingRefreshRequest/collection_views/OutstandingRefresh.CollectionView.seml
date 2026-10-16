@@ -1,0 +1,59 @@
+_name: OutstandingRefresh
+_package: DataProject.entities.OutstandingRefreshRequest.collection_views
+_type: CollectionView
+entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+default: true
+displayCard: DataProject.entities.OutstandingRefreshRequest.display_cards.OutstandingRefreshRequest
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: false
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: DateColumn
+    _name: RequestedAt
+    columnAlign: LEFT
+    dataType: TIMESTAMP
+    useCustomLabel: true
+    value: RequestedAt
+    label: Requested At
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RequestedBy
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: RequestedBy
+    label: Requested By
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RequestStatus
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: RequestStatus
+    label: Status
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CustomersRequested
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CustomersRequested
+    label: Customers
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RefreshLoadId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: RefreshLoadId
+    label: Load
+    visibleByDefault: true

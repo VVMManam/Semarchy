@@ -1,0 +1,17 @@
+_name: ProfileType
+_package: DataProject.entities.ProfileType.display_cards
+_type: DisplayCard
+entity: DataProject.entities.ProfileType.ProfileType
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: NameAr
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

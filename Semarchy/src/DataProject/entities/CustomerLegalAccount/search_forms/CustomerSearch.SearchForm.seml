@@ -1,0 +1,57 @@
+_name: CustomerSearch
+_type: SearchForm
+_package: DataProject.entities.CustomerLegalAccount.search_forms
+label: Customer Search (Exact)
+description: Finds customers whose values are exactly equal to what is typed (upper/lower case and outer spaces ignored)
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+searchTip: Exact match. Fill in one or more fields with the complete value. Upper/lower case is ignored. Use Customer Search (Fuzzy) when you are not sure of the spelling or only know part of the name.
+searchParameters:
+  - _name: CustomerGoldenId
+    _type: SearchParameter
+    label: Customer Golden Id
+    bindVariableName: CustomerGoldenId
+    length: 128
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: NameEN
+    _type: SearchParameter
+    label: Name EN
+    bindVariableName: NameEN
+    length: 200
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: LicenseNumber
+    _type: SearchParameter
+    label: License Number
+    bindVariableName: LicenseNumber
+    length: 50
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: TaxRegistrationNumber
+    _type: SearchParameter
+    label: TRN Number
+    bindVariableName: TaxRegistrationNumber
+    length: 50
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: ClusterName
+    _type: SearchParameter
+    label: Cluster
+    bindVariableName: ClusterName
+    length: 100
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: BusinessUnit
+    _type: SearchParameter
+    label: Business Unit
+    bindVariableName: BusinessUnit
+    length: 200
+    dataType: String
+    displayType: TEXT_FIELD
+semQlCondition: >-
+  (:CustomerGoldenId IS NULL OR UPPER(BTRIM(CustomerGoldenId)) = UPPER(BTRIM(:CustomerGoldenId)))
+  AND (:NameEN IS NULL OR UPPER(BTRIM(NameEN)) = UPPER(BTRIM(:NameEN)))
+  AND (:LicenseNumber IS NULL OR UPPER(BTRIM(LicenseNumber)) = UPPER(BTRIM(:LicenseNumber)))
+  AND (:TaxRegistrationNumber IS NULL OR UPPER(BTRIM(TaxRegistrationNumber)) = UPPER(BTRIM(:TaxRegistrationNumber)))
+  AND (:ClusterName IS NULL OR ANY CustomerOrgAssignment HAVE (UPPER(ClusterCode.NameEn) = UPPER(BTRIM(:ClusterName)) OR UPPER(ClusterCode.ClusterCode) = UPPER(BTRIM(:ClusterName))))
+  AND (:BusinessUnit IS NULL OR ANY CustomerOrgAssignment HAVE (UPPER(BusinessUnitCode.NameEn) = UPPER(BTRIM(:BusinessUnit)) OR UPPER(BusinessUnitCode.BusinessUnitCode) = UPPER(BTRIM(:BusinessUnit))))

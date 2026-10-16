@@ -1,0 +1,23 @@
+_name: PartyRelationship_FromPgid
+_type: Reference
+_package: DataProject.references
+label:  Party Relationship to  Party
+physicalName: PARTY_RELN_FROM_PGID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.PartyRelationship.PartyRelationship
+fromRoleLabel:  Party Relationship By From Pgid
+fromRolePluralLabel:  Party Relationship By From Pgid
+fromRoleName: PartyRelationshipByFromPgid
+toEntity: DataProject.entities.Party.Party
+toRoleLabel: From Pgid
+toRoleName: FromPgid
+toRolePhysicalName: FROM_PGID
+foreignAttribute:
+  _name: FromPgid
+  _type: ForeignAttribute
+  physicalName: FROM_PGID
+  label: From Pgid
+  searchable: true
+  entity: DataProject.entities.PartyRelationship.PartyRelationship

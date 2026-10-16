@@ -1,0 +1,87 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: SupplierBankAccountERDiagram
+label: Supplier Bank Account ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: CountryReference
+    _type: EntityShape
+    entity: DataProject.entities.Country.CountryReference
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: Currency
+    _type: EntityShape
+    entity: DataProject.entities.Currency.Currency
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 290
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 520
+  - _name: SupplierLegalAccount
+    _type: EntityShape
+    entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 60
+  - _name: SupplierSite
+    _type: EntityShape
+    entity: DataProject.entities.SupplierSite.SupplierSite
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 290
+  - _name: SupplierBankAccount
+    _type: EntityShape
+    entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 880
+      y: 60
+referenceLinks:
+  - reference: DataProject.references.SupplierBankAccount_CountryCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_CurrencyCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_Sgid
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_SiteId
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_SourceSystemCode
+    bendPoints: []

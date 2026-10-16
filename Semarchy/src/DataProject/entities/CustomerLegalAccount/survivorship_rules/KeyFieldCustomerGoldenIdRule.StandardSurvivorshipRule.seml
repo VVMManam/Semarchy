@@ -1,0 +1,26 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+defaultRule: false
+_name: KeyFieldCustomerGoldenIdRule
+label: Key Field - Customer Golden ID
+description: "SV-CLA-02: the golden UCID comes from the surviving record, using the same ranking as the ID survivorship rule (active, oldest creation date, most complete, latest update)."
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: false
+consolidationOrderByExpression: |-
+  CASE WHEN Status IS NOT NULL AND Status = 'Inactive' THEN 0 ELSE 1 END DESC,
+  AccountCreationDate ASC,
+  (
+    CASE WHEN LicenseNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxRegistrationNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Email IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BusinessPhone IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Mobile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EstablishmentAddress IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NameAr IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: CustomerGoldenId

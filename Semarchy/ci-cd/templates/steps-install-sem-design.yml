@@ -1,0 +1,58 @@
+# Installs Node.js and the Semarchy Design CLI (sem-design) from the package
+# committed in the repo (.tgz, or a .zip containing the .tgz), checks it is the agreed version (SEM_DESIGN_VERSION),
+# then puts `sem-design` on PATH for the following steps.
+# Works on Microsoft-hosted and self-hosted (Linux or Windows) agents and does
+# not need admin rights (no `npm install -g`).
+
+steps:
+  - task: NodeTool@0
+    displayName: 'Use Node $(NODE_VERSION)'
+    inputs:
+      versionSpec: '$(NODE_VERSION)'
+
+  - powershell: |
+      $pkg = Join-Path "$(Build.SourcesDirectory)" "$(SEM_DESIGN_PACKAGE)"
+      if (-not (Test-Path $pkg)) {
+        Write-Host "##vso[task.logissue type=error]Semarchy Design CLI package not found at '$(SEM_DESIGN_PACKAGE)'. Commit the Design CLI package there (see ci-cd/tools/README.md)."
+        exit 1
+      }
+
+      # The package may be committed zipped (*.tgz.zip) - unzip it and use the .tgz inside.
+      if ($pkg -like '*.zip') {
+        $unzipDir = Join-Path "$(Agent.TempDirectory)" 'sem-design-package'
+        if (Test-Path $unzipDir) { Remove-Item $unzipDir -Recurse -Force }
+        Expand-Archive -Path $pkg -DestinationPath $unzipDir -Force
+        $tgz = Get-ChildItem -Path $unzipDir -Recurse -Filter '*.tgz' | Select-Object -First 1
+        if (-not $tgz) {
+          Write-Host "##vso[task.logissue type=error]No .tgz file found inside '$(SEM_DESIGN_PACKAGE)'."
+          exit 1
+        }
+        Write-Host "Unzipped $($tgz.Name) from $(SEM_DESIGN_PACKAGE)"
+        $pkg = $tgz.FullName
+      }
+
+      $dir = Join-Path "$(Agent.TempDirectory)" 'sem-design'
+      New-Item -ItemType Directory -Force -Path $dir | Out-Null
+
+      Write-Host "Installing Semarchy Design CLI from $pkg ..."
+      npm install --prefix "$dir" --no-audit --no-fund --loglevel=error "$pkg"
+      if ($LASTEXITCODE -ne 0) {
+        Write-Host "##vso[task.logissue type=error]npm install of sem-design failed (exit code $LASTEXITCODE)."
+        exit $LASTEXITCODE
+      }
+
+      $bin = Join-Path $dir 'node_modules/.bin'
+      $exe = Join-Path $bin 'sem-design'
+      if ($IsWindows -or $env:OS -eq 'Windows_NT') { $exe = "$exe.cmd" }
+      $version = (& $exe --version 2>$null | Select-Object -Last 1)
+      if ($version) { $version = $version.Trim() }
+      $expected = "$(SEM_DESIGN_VERSION)"
+      if ($version -ne $expected) {
+        Write-Host "##vso[task.logissue type=error]Semarchy Design CLI version is '$version' but this pipeline requires '$expected' (SEM_DESIGN_VERSION in ci-cd/config/common.yml)."
+        exit 1
+      }
+
+      Write-Host "##vso[task.prependpath]$bin"
+      Write-Host "Semarchy Design CLI $version installed to $bin"
+    displayName: 'Install Semarchy Design CLI'
+    errorActionPreference: continue

@@ -1,0 +1,17 @@
+_name: Emirate
+_package: DataProject.entities.Emirate.display_cards
+_type: DisplayCard
+entity: DataProject.entities.Emirate.Emirate
+default: true
+primaryTextExpression: EmirateNameEn
+supportingTextExpression: EmirateNameEn
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

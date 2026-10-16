@@ -1,0 +1,31 @@
+﻿Building...
+node.exe : Failed to create validation context for file C:\ADPG_\src\DataPro
+ject\entities\TaxType\forms\TaxTypeForm.Form.seml, cause: TypeError: 
+Cannot read properties of null (reading 'displayFormatValueInterpreter')
+At C:\Users\HP 845 G7\AppData\Roaming\npm\sem-design.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/@semarchy/sem-design/out/cli ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Failed to creat...ueInterpreter') 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    at IdFieldValidator.validateComponentProperties (C:\Users\HP 845 
+G7\AppData\Roaming\npm\node_modules\@semarchy\sem-design\out\cli.js:72767:33)
+    at IdFieldValidator.validate (C:\Users\HP 845 
+G7\AppData\Roaming\npm\node_modules\@semarchy\sem-design\out\cli.js:72760:14)
+    at FormValidator.exploreFormElements (C:\Users\HP 845 
+G7\AppData\Roaming\npm\node_modules\@semarchy\sem-design\out\cli.js:73385:87)
+    at C:\Users\HP 845 
+G7\AppData\Roaming\npm\node_modules\@semarchy\sem-design\out\cli.js:73342:71
+    at Array.forEach (<anonymous>)
+    at FormValidator.exploreFormElements (C:\Users\HP 845 
+G7\AppData\Roaming\npm\node_modules\@semarchy\sem-design\out\cli.js:73342:29)
+    at C:\Users\HP 845 
+G7\AppData\Roaming\npm\node_modules\@semarchy\sem-design\out\cli.js:73348:71
+    at Array.forEach (<anonymous>)
+    at FormValidator.exploreFormElements (C:\Users\HP 845 
+G7\AppData\Roaming\npm\node_modules\@semarchy\sem-design\out\cli.js:73348:29)
+    at C:\Users\HP 845 
+G7\AppData\Roaming\npm\node_modules\@semarchy\sem-design\out\cli.js:73227:18
+=> FAILED Building your workspace ******
+Cannot read properties of null (reading 'displayFormatValueInterpreter')

@@ -1,0 +1,46 @@
+_name: RoleType
+_package: DataProject.entities.RoleType.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.RoleType.RoleType
+rootLabel: RoleType
+rootPluralLabel: RoleType
+useHierarchyOnOpen: false
+label: Role Type
+rootBusinessViewEntity:
+  _name: RoleType
+  _type: BusinessViewEntity
+  collection: DataProject.entities.RoleType.collection_views.RoleType
+  displayCard: DataProject.entities.RoleType.display_cards.RoleType
+  actionSet: DataProject.entities.RoleType.action_sets.RoleType
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.RoleType.RoleType
+  form: DataProject.entities.RoleType.forms.RoleType
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

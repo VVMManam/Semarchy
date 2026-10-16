@@ -1,0 +1,14 @@
+_package: DataProject.entities.PaymentDetails.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DefaulPaymentDetailsRule
+entity: DataProject.entities.PaymentDetails.PaymentDetails
+label: PaymentDetails
+description: ""
+documentation: ""
+defaultRule: true
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: false
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes: []

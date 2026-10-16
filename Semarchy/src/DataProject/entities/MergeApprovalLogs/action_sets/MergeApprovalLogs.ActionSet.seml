@@ -1,0 +1,26 @@
+_name: MergeApprovalLogs
+_package: DataProject.entities.MergeApprovalLogs.action_sets
+_type: ActionSet
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+label: Merge Approval Logs
+defaultActionSet: false
+actions:
+  - _name: Create
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: DataProject.entities.MergeApprovalLogs.steppers.MergeApprovalLogs
+  - _name: Edit
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.MergeApprovalLogs.steppers.MergeApprovalLogs

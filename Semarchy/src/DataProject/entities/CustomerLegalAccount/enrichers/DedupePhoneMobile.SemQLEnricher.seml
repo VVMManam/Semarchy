@@ -1,0 +1,16 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: DedupePhoneMobile
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Dedupe Phone Mobile
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: BusinessPhone
+    expression: |-
+      CASE
+          WHEN BusinessPhone IS NOT NULL
+               AND BusinessPhone = Mobile
+               AND REGEXP_LIKE(BusinessPhone, '^\+9715')
+          THEN NULL
+          ELSE BusinessPhone
+      END

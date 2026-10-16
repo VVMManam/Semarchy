@@ -1,0 +1,23 @@
+_name: BusinessUnit_ClusterCode
+_type: Reference
+_package: DataProject.references
+label:  Business Unit to  Cluster
+physicalName: BU_CLUSTER_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.BusinessUnit.BusinessUnit
+fromRoleLabel:  Business Unit
+fromRolePluralLabel:  Business Unit
+fromRoleName: BusinessUnit
+toEntity: DataProject.entities.Cluster.Cluster
+toRoleLabel: Cluster Code
+toRoleName: ClusterCode
+toRolePhysicalName: CLUSTER_CODE
+foreignAttribute:
+  _name: ClusterCode
+  _type: ForeignAttribute
+  physicalName: CLUSTER_CODE
+  label: Cluster Code
+  searchable: true
+  entity: DataProject.entities.BusinessUnit.BusinessUnit

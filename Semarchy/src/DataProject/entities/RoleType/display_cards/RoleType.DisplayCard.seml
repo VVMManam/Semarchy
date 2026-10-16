@@ -1,0 +1,17 @@
+_name: RoleType
+_package: DataProject.entities.RoleType.display_cards
+_type: DisplayCard
+entity: DataProject.entities.RoleType.RoleType
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: DefaultScopeTypeCode
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

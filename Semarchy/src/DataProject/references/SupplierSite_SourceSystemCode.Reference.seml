@@ -1,0 +1,23 @@
+_name: SupplierSite_SourceSystemCode
+_type: Reference
+_package: DataProject.references
+label:  Supplier Site Source System Code
+physicalName: SUPPLIER_SITE__SOURCE_SYS
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSite.SupplierSite
+fromRoleLabel:  Supplier Site
+fromRolePluralLabel:  Supplier Site
+fromRoleName: SupplierSite
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Source System Code
+toRoleName: SourceSystemCode
+toRolePhysicalName: SOURCE_SYSTEM_CODE
+foreignAttribute:
+  _name: SourceSystemCode
+  _type: ForeignAttribute
+  physicalName: SOURCE_SYSTEM_CODE
+  label: Source System Code
+  searchable: true
+  entity: DataProject.entities.SupplierSite.SupplierSite

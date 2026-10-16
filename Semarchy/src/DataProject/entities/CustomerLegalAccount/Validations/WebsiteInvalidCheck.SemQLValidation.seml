@@ -1,0 +1,17 @@
+_name: WebsiteInvalidCheck
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Website Invalid Check
+validationScope: POST_CONSO
+validationLabel: "WEBSITE_INVALID - must be a web address such as www.example.com or https://example.com, without spaces and not an e-mail address."
+_type: SemQLValidation
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (
+    Website IS NULL
+    OR (
+      NOT REGEXP_LIKE(Website, '@')
+      AND REGEXP_LIKE(LOWER(BTRIM(Website)), '^(https?://)?(www\.)?[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*\.[a-z]{2,}(:[0-9]{1,5})?([/?#][^[:space:]]*)?$')
+      AND NOT REGEXP_LIKE(LOWER(BTRIM(Website)), '^(https?://)?www\.[^.]+$')
+    )
+  )

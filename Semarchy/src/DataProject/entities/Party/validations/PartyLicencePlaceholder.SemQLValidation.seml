@@ -1,0 +1,9 @@
+_name: PartyLicencePlaceholder
+_type: SemQLValidation
+_package: DataProject.entities.Party.validations
+entity: DataProject.entities.Party.Party
+label: "Licence number is a placeholder"
+validationScope: PRE_CONSO
+validationLabel: "The licence number looks like a placeholder (for example 0, NA, TBC) and cannot be used to identify the party."
+condition: |-
+  LicenceKey IS NULL OR NOT REGEXP_LIKE(LicenceKey, '^(0+|NA|NIL|NONE|NULL|TBA|TBC|X+|1+)$')

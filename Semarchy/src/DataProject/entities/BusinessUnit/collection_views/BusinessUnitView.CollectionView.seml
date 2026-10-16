@@ -1,0 +1,68 @@
+_name: BusinessUnitView
+_type: CollectionView
+_package: DataProject.entities.BusinessUnit.collection_views
+entity: DataProject.entities.BusinessUnit.BusinessUnit
+default: true
+displayCard: DataProject.entities.BusinessUnit.display_cards.BusinessUnit
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: BusinessUnitCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BusinessUnitCode
+    visibleByDefault: true
+  - _type: IdColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CRMCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CRMCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FusionCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FusionCode
+    visibleByDefault: true
+  - _type: IdColumn
+    _name: ErpBuCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ErpBuCode
+    visibleByDefault: true
+  - _type: IdColumn
+    _name: ErpBuName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ErpBuName
+    visibleByDefault: true
+  - _type: IdColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true

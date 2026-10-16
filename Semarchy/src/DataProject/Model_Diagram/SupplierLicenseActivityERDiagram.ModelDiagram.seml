@@ -1,0 +1,63 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: SupplierLicenseActivityERDiagram
+label: Supplier License Activity ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: LicenseActivityGroupType
+    _type: EntityShape
+    entity: DataProject.entities.LicenseActivityGroupType.LicenseActivityGroupType
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: LicenseActivityType
+    _type: EntityShape
+    entity: DataProject.entities.LicenseActivityType.LicenseActivityType
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 290
+  - _name: LicenseActivity
+    _type: EntityShape
+    entity: DataProject.entities.LicenseActivity.LicenseActivity
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 60
+  - _name: SupplierLegalAccount
+    _type: EntityShape
+    entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 880
+      y: 60
+referenceLinks:
+  - reference: DataProject.references.LicenseActivityRefActivityType
+    bendPoints: []
+  - reference: DataProject.references.LicenseActivity_Sgid
+    bendPoints: []
+  - reference: DataProject.references.Licenseactivity_LicenseGroup
+    bendPoints: []

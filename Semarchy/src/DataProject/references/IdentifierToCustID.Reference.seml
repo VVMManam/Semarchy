@@ -1,0 +1,23 @@
+_name: IdentifierToCustID
+_type: Reference
+_package: DataProject.references
+label:  Identifier to Customer ID
+physicalName: IDENTIFIER_TO_CUST_ID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Identifier.Identifier
+fromRoleLabel: Identifier
+fromRolePluralLabel: Identifier
+fromRoleName: Identifier
+toEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+toRoleLabel: CustomerID
+toRoleName: CustomerID
+toRolePhysicalName: CUSTOMER_ID
+foreignAttribute:
+  _name: CustomerID
+  _type: ForeignAttribute
+  physicalName: CUSTOMER_ID
+  label: CustomerID
+  searchable: true
+  entity: DataProject.entities.Identifier.Identifier

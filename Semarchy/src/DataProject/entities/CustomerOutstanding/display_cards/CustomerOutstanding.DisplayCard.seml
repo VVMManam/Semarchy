@@ -1,0 +1,18 @@
+_name: CustomerOutstanding
+_package: DataProject.entities.CustomerOutstanding.display_cards
+_type: DisplayCard
+entity: DataProject.entities.CustomerOutstanding.CustomerOutstanding
+default: true
+primaryTextExpression: OutstandingKey
+secondaryTextExpression: "COALESCE(OutstandingStatus, '')"
+supportingTextExpression: CheckMessage
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

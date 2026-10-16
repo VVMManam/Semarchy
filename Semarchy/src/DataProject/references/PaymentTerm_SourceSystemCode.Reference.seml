@@ -1,0 +1,23 @@
+_name: PaymentTerm_SourceSystemCode
+_type: Reference
+_package: DataProject.references
+label:  Payment Term to  Source System
+physicalName: PAYMENT_TERM_SOUR_DA0
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.PaymentTerm.PaymentTerm
+fromRoleLabel:  Payment Term
+fromRolePluralLabel:  Payment Term
+fromRoleName: PaymentTerm
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Source System Code
+toRoleName: SourceSystemCode
+toRolePhysicalName: SOURCE_SYSTEM_CODE
+foreignAttribute:
+  _name: SourceSystemCode
+  _type: ForeignAttribute
+  physicalName: SOURCE_SYSTEM_CODE
+  label: Source System Code
+  searchable: true
+  entity: DataProject.entities.PaymentTerm.PaymentTerm

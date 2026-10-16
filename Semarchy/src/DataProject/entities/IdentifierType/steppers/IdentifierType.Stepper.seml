@@ -1,0 +1,42 @@
+_name: IdentifierType
+_package: DataProject.entities.IdentifierType.steppers
+_type: Stepper
+entity: DataProject.entities.IdentifierType.IdentifierType
+label: Identifier Type
+rootStep:
+  _name: IdentifierType
+  _type: CollectionStep
+  label: Identifier Type
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.IdentifierType.collection_views.IdentifierType
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Cluster Details
+      formTab: DataProject.entities.IdentifierType.forms.IdentifierType.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

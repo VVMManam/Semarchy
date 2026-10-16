@@ -1,0 +1,42 @@
+_name: TaxRegistration
+_package: DataProject.entities.TaxRegistration.steppers
+_type: Stepper
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: Tax Registration
+rootStep:
+  _name: TaxRegistration
+  _type: CollectionStep
+  label: Tax Registration
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.TaxRegistration.collection_views.TaxRegistration
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTransitionValidations: []
+  stepTriggers: []
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      label: Currency Details
+      formTab: DataProject.entities.TaxRegistration.forms.TaxRegistration.Main
+      formStepEnrichers: []
+      referenceFormFieldConfigs: []
+      formStepValidations: []
+      stepTransitionValidations: []
+      stepTriggers: []
+stepperFinishValidations: []
+triggers: []

@@ -1,0 +1,13 @@
+_name: CustomerValidationPending
+_package: DataProject.entities.CustomerLegalAccount.ActionSets
+_type: ActionSet
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Customer Action Set
+defaultActionSet: false
+actions:
+  - _name: StartCustomerApproval
+    label: Start Customer Approval
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: StartWorkflowEntityAction
+    startEvent: DataProject.workflows.CustomerValidation.Start

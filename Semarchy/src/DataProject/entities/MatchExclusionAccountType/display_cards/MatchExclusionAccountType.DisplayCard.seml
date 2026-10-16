@@ -1,0 +1,17 @@
+_name: MatchExclusionAccountType
+_package: DataProject.entities.MatchExclusionAccountType.display_cards
+_type: DisplayCard
+entity: DataProject.entities.MatchExclusionAccountType.MatchExclusionAccountType
+default: true
+primaryTextExpression: AccountType
+supportingTextExpression: ExcludeFromMatching
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

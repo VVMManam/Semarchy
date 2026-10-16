@@ -1,0 +1,17 @@
+_name: OutstandingRefresh
+_package: DataProject.entities.OutstandingRefreshRequest.action_sets
+_type: ActionSet
+entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+label: Outstanding Refresh
+defaultActionSet: false
+actions:
+  - _name: RefreshOutstanding
+    label: Refresh Outstanding
+    useCustomLabel: true
+    iconUrl: images://mdi/refresh.svg
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: DataProject.entities.OutstandingRefreshRequest.steppers.OutstandingRefresh

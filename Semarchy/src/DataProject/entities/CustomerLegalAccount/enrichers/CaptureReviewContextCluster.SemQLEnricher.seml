@@ -1,0 +1,12 @@
+_type: SemQLEnricher
+_name: CaptureReviewContextCluster
+label: Capture Review Context (cluster review task)
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+enricherExecutionScope: NONE
+description: 'Merge Overview step of the cluster review tasks: keeps the workflow load and the task assignment time (= merge time) for display.'
+semQlEnricherExpressions:
+  - attributeName: ReviewWorkflowLoadId
+    expression: ''''' || :V_LOADID'
+  - attributeName: ReviewTaskAssignedOn
+    expression: ApprovalRequestedOn

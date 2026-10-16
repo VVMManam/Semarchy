@@ -1,0 +1,175 @@
+_package: DataProject.entities.LicenseActivity
+_type: Entity
+_name: LicenseActivity
+label: License Activity
+pluralLabel: License Activity
+physicalTableName: LICENSE_ACTIVITY
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: LicenseActivityId
+    label: License Activity Id
+    physicalName: LICENSE_ACTIVITY_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ActivitySchemeCode
+    label: Activity Scheme Code
+    physicalName: ACTIVITY_SCHEME_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 10
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ActivityCode
+    label: Activity Code
+    physicalName: ACTIVITY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ActivityGroupCode
+    label: Activity Group Code
+    physicalName: ACTIVITY_GROUP_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Name
+    label: Name
+    physicalName: NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DEDCode
+    label: DED Code
+    physicalName: DED_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 255
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ActivityStartDate
+    label: Activity Start Date
+    physicalName: ACTIVITY_START_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ActivityEndDate
+    label: Activity End Date
+    physicalName: ACTIVITY_END_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.LicenseActivity.LicenseActivity.LicenseActivityId
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherLicenseActivity
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 100
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 100
+  mergeThresholdMergingConfirmedWithNewMasters: 100
+  mergeThresholdMergingConfirmedWithUnconfirmed: 100
+  mergeThresholdMergingUnconfirmed: 100
+  mergeThresholdMergingUnconfirmedWithNewMasters: 100
+  mergeThresholdNewGroup: 100
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameActivityAndGroupUnderSameLicense
+      condition: |-
+        Record1.FID_Cgid IS NOT NULL
+        AND Record2.FID_Cgid IS NOT NULL
+        AND Record1.FID_Cgid = Record2.FID_Cgid
+        AND Record1.Cgid.LicenseNumber IS NOT NULL
+        AND Record2.Cgid.LicenseNumber IS NOT NULL
+        AND Record1.Cgid.LicenseNumber = Record2.Cgid.LicenseNumber
+        AND Record1.ActivityCode IS NOT NULL
+        AND Record2.ActivityCode IS NOT NULL
+        AND Record1.ActivityCode = Record2.ActivityCode
+        AND (Record1.ActivityGroupCode IS NULL OR Record2.ActivityGroupCode IS NULL OR Record1.ActivityGroupCode = Record2.ActivityGroupCode)
+      label: "Same customer + same licence number + same activity code, and same activity group when both have one (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false

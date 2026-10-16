@@ -1,0 +1,8 @@
+_name: OutstandingBlocksMerge
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Outstanding Blocks Merge
+validationScope: POST_CONSO
+validationLabel: "There is an outstanding amount on these customers. Kindly clear the outstanding to merge the two customers."
+_type: SemQLValidation
+condition: "MergeApprovalStatus IS NULL OR MergeApprovalStatus <> 'OUTSTANDING_BLOCKED'"

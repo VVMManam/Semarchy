@@ -1,0 +1,96 @@
+_name: CustomerAdministration
+_package: DataProject.applications
+_type: Application
+applicationTitle: Customer Administration
+label: Customer Administration
+avatarImageUrl: images://AdPorts-ImageLibrary/roundLogo.png
+coverImageUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+favIcon: images://AdPorts-ImageLibrary/roundLogo.png
+logoUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+visibility: VISIBLE
+requiredRoleName: MDM_Customer_Admin
+primaryColor: "md: blue 900"
+documentationConfig:
+  documentationConfigDiagrams:
+    - _name: ErdDiagramERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.ErdDiagram
+    - _name: CustomerERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.CustomerERDiagram
+    - _name: DepartmentERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.DepartmentERDiagram
+    - _name: AddressERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.AddressERDiagram
+    - _name: ContactERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.ContactERDiagram
+    - _name: GeographyReferenceERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.GeographyReferenceERDiagram
+    - _name: IdentifierERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.IdentifierERDiagram
+    - _name: OrganizationReferenceERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.OrganizationERDiagram
+    - _name: PartyERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.PartyERDiagram
+    - _name: SbcMatchingERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.SbcMatchingERDiagram
+    - _name: TaxRegistrationERDiagram
+      _type: DocumentationConfigDiagram
+      modelDiagram: DataProject.Model_Diagram.TaxRegistrationERDiagram
+sortStrategy: POSITION
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: OpenDocumentation
+      label: ER Diagram
+      icon: images://mdi/book-open-page-variant.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: OpenDocumentationAction
+      requiredRole: semarchyAdmin
+    - _name: CustomerSettings
+      label: Customer Settings
+      icon: images://mdi/cog-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: FolderAction
+      appActions:
+        - _name: BrowseSlaPolicies
+          label: Workflow SLA Policies
+          icon: images://mdi/timer-outline.svg
+          imageAlign: MIDDLE_CENTER
+          imageMode: FIT
+          _type: BrowseBusinessViewAction
+          businessView: DataProject.entities.SlaPolicy.business_views.SlaPolicy
+          useSearchOnOpen: false
+          nbRecordsBadgeVisible: false
+    - _name: BrowseEntities
+      label: Entities
+      icon: images://mdi/database.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseEntitiesFolderAction
+      lineageEnabled: true
+      requiredRole: semarchyAdmin
+defaultAction: DataProject.applications.CustomerAdministration.Root.CustomerSettings.BrowseSlaPolicies
+navDrawer:
+  - _name: RootFolder
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: DataProject.applications.CustomerAdministration.Root

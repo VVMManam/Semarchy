@@ -1,0 +1,9 @@
+_name: TrnFormatCheck
+_type: SemQLValidation
+_package: DataProject.entities.TaxRegistration.validations
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: TRN Format Check
+validationScope: POST_CONSO
+validationLabel: "TRN must be 15 digits starting with 100."
+condition: |-
+  FID_Cgid IS NULL OR FID_TaxTypeCode IS NULL OR FID_TaxTypeCode <> 'AE_VAT' OR RegistrationNo IS NULL OR REGEXP_LIKE(REGEXP_REPLACE(RegistrationNo, '[^0-9]', '', 'g'), '^100[0-9]{12}$')

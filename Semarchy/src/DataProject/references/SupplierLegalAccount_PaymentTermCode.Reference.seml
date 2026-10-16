@@ -1,0 +1,23 @@
+_name: SupplierLegalAccount_PaymentTermCode
+_type: Reference
+_package: DataProject.references
+label:  Supplier Legal Account to  Payment Term
+physicalName: SUP_PAYMENT_TERM_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+fromRoleLabel:  Supplier Legal Account
+fromRolePluralLabel:  Supplier Legal Account
+fromRoleName: SupplierLegalAccount
+toEntity: DataProject.entities.PaymentTerm.PaymentTerm
+toRoleLabel: Payment Term Code
+toRoleName: PaymentTermCode
+toRolePhysicalName: PAYMENT_TERM_CODE
+foreignAttribute:
+  _name: PaymentTermCode
+  _type: ForeignAttribute
+  physicalName: PAYMENT_TERM_CODE
+  label: Payment Term Code
+  searchable: true
+  entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount

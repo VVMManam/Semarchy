@@ -1,0 +1,12 @@
+_name: ProfileApprovalStatus
+_type: LOVType
+_package: DataProject.List_of_values
+label: Profile Approval Status
+length: 50
+lovValues:
+  - code: "1"
+    label: Approved
+  - code: "2"
+    label: In-Progress
+  - code: "3"
+    label: Rejected

@@ -1,0 +1,24 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.Identifier.Identifier
+_package: DataProject.entities.Identifier.survivorship_rules
+defaultRule: false
+_name: KeyFieldValueNormalisedRule
+label: Key Field - Value
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(StatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN Value IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ValidFrom IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ValidTo IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPlaceholder IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPrimary IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FormatValid IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN SourceRecordId IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: Value

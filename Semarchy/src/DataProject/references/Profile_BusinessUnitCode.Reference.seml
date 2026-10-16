@@ -1,0 +1,23 @@
+_name: Profile_BusinessUnitCode
+_type: Reference
+_package: DataProject.references
+label:  Profile to  Business Unit
+physicalName: PROFILE_BU_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Profile.Profile
+fromRoleLabel:  Profile
+fromRolePluralLabel:  Profile
+fromRoleName: Profile
+toEntity: DataProject.entities.BusinessUnit.BusinessUnit
+toRoleLabel: Business Unit Code
+toRoleName: BusinessUnitCode
+toRolePhysicalName: BUSINESS_UNIT_CODE
+foreignAttribute:
+  _name: BusinessUnitCode
+  _type: ForeignAttribute
+  physicalName: BUSINESS_UNIT_CODE
+  label: Business Unit Code
+  searchable: true
+  entity: DataProject.entities.Profile.Profile

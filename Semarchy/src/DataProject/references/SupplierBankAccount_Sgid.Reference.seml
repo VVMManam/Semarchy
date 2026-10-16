@@ -1,0 +1,23 @@
+_name: SupplierBankAccount_Sgid
+_type: Reference
+_package: DataProject.references
+label: SupplierBankAccount Supplier Legal Account
+physicalName: SUPPLIERBANKACCOUNT_SGID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+fromRoleLabel: Supplier Bank Account
+fromRolePluralLabel: Supplier Bank Accounts
+fromRoleName: SupplierBankAccount
+toEntity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+toRoleLabel: Supplier Legal Account
+toRoleName: Sgid
+toRolePhysicalName: SGID
+foreignAttribute:
+  _name: Sgid
+  _type: ForeignAttribute
+  physicalName: SGID
+  label: Sgid
+  searchable: true
+  entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount

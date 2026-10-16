@@ -1,0 +1,47 @@
+_package: DataProject.entities.AddressUsage.collection_views
+_name: AddressUsage
+_type: CollectionView
+entity: DataProject.entities.AddressUsage.AddressUsage
+displayCard: DataProject.entities.AddressUsage.display_cards.AddressUsage
+default: true
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: false
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: AddressUsageCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AddressUsageCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Label
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Label
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: CrmSourceValue
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CrmSourceValue
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: FusionCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FusionCode
+    visibleByDefault: true

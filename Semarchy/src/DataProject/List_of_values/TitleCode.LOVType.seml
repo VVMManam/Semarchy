@@ -1,0 +1,20 @@
+_name: TitleCode
+_package: DataProject.List_of_values
+_type: LOVType
+label: Title Code
+length: 128
+lovValues:
+  - code: "1"
+    label: Mr
+  - code: "100000001"
+    label: Mrs
+  - code: "3"
+    label: Ms
+  - code: "803750000"
+    label: Dr
+  - code: "803750001"
+    label: Eng
+  - code: "803750002"
+    label: Miss
+  - code: "803750003"
+    label: Sir

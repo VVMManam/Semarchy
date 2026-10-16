@@ -1,0 +1,45 @@
+_name: SupplierBankAccount
+_package: DataProject.entities.SupplierBankAccount.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+rootLabel: SupplierBankAccount
+rootPluralLabel: SupplierBankAccount
+useHierarchyOnOpen: false
+label: Supplier Bank Account
+rootBusinessViewEntity:
+  _name: SupplierBankAccountGolden
+  _type: BusinessViewEntity
+  collection: DataProject.entities.SupplierBankAccount.collection_views.SupplierBankAccount
+  actionSet: DataProject.entities.SupplierBankAccount.action_sets.SupplierBankAccountGolden
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+  form: DataProject.entities.SupplierBankAccount.forms.SupplierBankAccountGolden
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

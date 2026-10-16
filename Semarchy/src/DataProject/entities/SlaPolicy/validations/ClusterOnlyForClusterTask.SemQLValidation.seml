@@ -1,0 +1,8 @@
+_name: ClusterOnlyForClusterTask
+_package: DataProject.entities.SlaPolicy.validations
+_type: SemQLValidation
+entity: DataProject.entities.SlaPolicy.SlaPolicy
+label: Cluster only for the cluster steward task
+validationScope: PRE_CONSO
+condition: "FID_ClusterCode IS NULL OR TaskCode = 'CLUSTER_STEWARD_REVIEW'"
+validationLabel: 'A cluster can only be set for the Cluster Steward Review task (per cluster override).'

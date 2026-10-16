@@ -1,0 +1,17 @@
+_name: Location
+_package: DataProject.entities.Location.display_cards
+_type: DisplayCard
+entity: DataProject.entities.Location.Location
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: NameEn
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

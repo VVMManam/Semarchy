@@ -1,0 +1,63 @@
+_name: CustomerOrgAssignment
+_package: DataProject.entities.CustomerOrgAssignment.steppers
+_type: Stepper
+entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+label: Author Customer Org Assignments
+triggers: []
+rootStep:
+  _name: OrgAssignments
+  _type: CollectionStep
+  label: Customer Org Assignments
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.CustomerOrgAssignment.collections.CustomerOrgAssignment
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTriggers: []
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment.SemQLMatcherCustomerOrgAssignment
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment.Status
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      label: Org Assignment Details
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      formTab: DataProject.entities.CustomerOrgAssignment.forms.CustomerOrgAssignmentForm.Main
+      referenceFormFieldConfigs: []
+      stepTriggers: []
+      formStepEnrichers: []
+      formStepValidations:
+        - validationType: LOV
+          attribute: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment.Status
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment.Status
+        - onStepExit: WARN
+          validationType: DETECT_DUPS
+          matcher: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment.SemQLMatcherCustomerOrgAssignment
+stepperFinishValidations:
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment.Status
+  - onStepperFinish: WARN
+    validationType: DETECT_DUPS

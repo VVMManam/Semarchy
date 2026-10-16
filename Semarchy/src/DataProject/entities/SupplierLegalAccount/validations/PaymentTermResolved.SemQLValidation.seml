@@ -1,0 +1,10 @@
+_name: PaymentTermResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Payment Term Resolved
+validationScope: POST_CONSO
+validationLabel: "PAYMENT_TERM_UNMAPPED - source payment term value has no matching reference in MDM."
+condition: |-
+  PaymentTerm IS NULL
+  OR FID_PaymentTermCode IS NOT NULL

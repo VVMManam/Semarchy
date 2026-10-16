@@ -1,0 +1,64 @@
+_name: Identifier
+_type: CollectionView
+_package: DataProject.entities.Identifier.collections
+entity: DataProject.entities.Identifier.Identifier
+default: true
+displayCard: DataProject.entities.Identifier.display_cards.identifier
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Identifier Type
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: ReferenceColumn
+    _name: IdentifierType
+    columnAlign: LEFT
+    dataType: STRING
+    referencedEntity: DataProject.entities.IdentifierType.IdentifierType
+    useCustomLabel: true
+    value: "FDN_IdentifierType"
+    label: "Identifier"
+    visibleByDefault: true
+    componentProperties:
+      displayType: chip
+      displayTypeValueInterpreter: LITERAL
+      useAvatarInChip: "0"
+      useAvatarInChipValueInterpreter: LITERAL
+  - _type: TextColumn
+    _name: Value
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Value
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: StatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN StatusCode = 'ACTIVE' THEN 'Active' WHEN StatusCode = 'EXPIRED' THEN 'Expired' WHEN StatusCode = 'CANCELLED' THEN 'Cancelled' WHEN StatusCode = 'SUPERSEDED' THEN 'Superseded' WHEN StatusCode = 'UNVERIFIED' THEN 'Unverified' WHEN StatusCode = 'VERIFIED' THEN 'Verified' ELSE StatusCode END
+    label: Status
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsPrimary
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsPrimary
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: ValidFrom
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: true
+    value: ValidFrom
+    label: "Valid From"
+    visibleByDefault: true

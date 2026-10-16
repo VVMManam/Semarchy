@@ -1,0 +1,16 @@
+_name: addressLoad
+_package: DataProject.ModelJobs
+_type: CertificationJob
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: AddressLoadTask
+    _type: ModelJobTask
+    entity: DataProject.entities.Address.Address
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

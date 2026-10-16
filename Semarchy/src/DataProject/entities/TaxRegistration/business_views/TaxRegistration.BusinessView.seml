@@ -1,0 +1,45 @@
+_name: TaxRegistration
+_package: DataProject.entities.TaxRegistration.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+rootLabel: TaxRegistration
+rootPluralLabel: Tax Registration
+useHierarchyOnOpen: false
+label: Tax Registration
+rootBusinessViewEntity:
+  _name: TaxRegistration
+  _type: BusinessViewEntity
+  collection: DataProject.entities.TaxRegistration.collection_views.TaxRegistration
+  actionSet: DataProject.entities.TaxRegistration.action_sets.TaxRegistration
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.TaxRegistration.TaxRegistration
+  form: DataProject.entities.TaxRegistration.forms.TaxRegistration
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

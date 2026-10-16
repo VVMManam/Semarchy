@@ -1,0 +1,146 @@
+_package: DataProject.entities.ContactPurpose
+_type: Entity
+_name: ContactPurpose
+label: Contact Purpose
+pluralLabel: Contact Purpose
+physicalTableName: CONTACT_PURPOSE
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ContactPurposeId
+    label: Contact Purpose Id
+    physicalName: CONTACT_PURPOSE_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ScopeTypeCode
+    label: Scope Type Code
+    physicalName: SCOPE_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 25
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrimaryFocalPoint
+    label: Is Primary Focal Point
+    physicalName: IS_PRIMARY_FOCAL_POINT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrimaryFinanceFocal
+    label: Is Primary Finance Focal
+    physicalName: IS_PRIMARY_FINANCE_FOCAL
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ContactRole
+    label: Contact Role
+    physicalName: CONTACT_ROLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.ContactPurpose.ContactPurpose.ContactPurposeId
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherContactPurpose
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 95
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 95
+  mergeThresholdNewGroup: 90
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameContactAndRole
+      condition: |-
+        Record1.FID_ContactId IS NOT NULL
+        AND Record2.FID_ContactId IS NOT NULL
+        AND Record1.FID_ContactId = Record2.FID_ContactId
+        AND Record1.FID_ContactRoleCode IS NOT NULL
+        AND Record2.FID_ContactRoleCode IS NOT NULL
+        AND Record1.FID_ContactRoleCode = Record2.FID_ContactRoleCode
+      label: "Same contact + same role - catches duplicates left behind after a contact-level merge (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false

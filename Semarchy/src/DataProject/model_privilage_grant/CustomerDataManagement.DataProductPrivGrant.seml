@@ -1,0 +1,11 @@
+_name: CustomerDataManagement
+_package: DataProject.model_privilage_grant
+_type: DataProductPrivGrant
+allowApiPublishingAsUser: true
+allowDataQualityDocumentation: false
+allowEnrichmentDocumentation: false
+dataAdminRole: true
+integrationWsRole: true
+label: CustomerDataManagement
+roleName: CustomerDataManagement
+entityPrivGrants: []

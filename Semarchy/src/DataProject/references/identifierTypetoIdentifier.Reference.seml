@@ -1,0 +1,23 @@
+_name: identifierTypetoIdentifier
+_type: Reference
+_package: DataProject.references
+label:  Identifier Type to  Country
+physicalName: IDENTIFIER_TYPETO_IDEN
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Identifier.Identifier
+fromRoleLabel:  Identifier 
+fromRolePluralLabel:  Identifier
+fromRoleName: Identifier
+toEntity: DataProject.entities.IdentifierType.IdentifierType
+toRoleLabel: Identifier Type
+toRoleName: IdentifierType
+toRolePhysicalName: IDENTIFIER_TYPE
+foreignAttribute:
+  _name: IdentifierType
+  _type: ForeignAttribute
+  physicalName: IDENTIFIER_TYPE
+  label: Identifier Type
+  searchable: true
+  entity: DataProject.entities.Identifier.Identifier

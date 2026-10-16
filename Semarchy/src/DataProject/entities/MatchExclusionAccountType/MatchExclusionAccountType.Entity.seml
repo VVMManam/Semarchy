@@ -1,0 +1,42 @@
+_package: DataProject.entities.MatchExclusionAccountType
+_type: Entity
+_name: MatchExclusionAccountType
+label: Match Exclusion Account Type
+pluralLabel: Match Exclusion Account Types
+physicalTableName: MATCH_EXCL_ACCT_TYPE
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: AccountType
+    label: Account Type
+    physicalName: ACCOUNT_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ExcludeFromMatching
+    label: Exclude From Matching (Y/N)
+    physicalName: EXCLUDE_FROM_MATCHING
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 1
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: MANUAL
+primaryKey: DataProject.entities.MatchExclusionAccountType.MatchExclusionAccountType.AccountType
+entityType: BASIC

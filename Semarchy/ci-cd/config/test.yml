@@ -1,0 +1,35 @@
+# =============================================================================
+#  Semarchy SDP - Test environment configuration
+#
+#  Instance      : https://adpg-mdm-test.eu.semarchy.net/
+#  Deployment    : automatic after Dev succeeds (main branch only)
+#  Azure DevOps  : environment 'MDM-SDP-Test', variable group 'MDM-SDP-Test'
+#
+#  Secrets (SDP_CLIENT_ID / SDP_CLIENT_SECRET) are NOT stored here. They live
+#  in the variable group 'MDM-SDP-Test' (Pipelines > Library), marked secret.
+# =============================================================================
+variables:
+  - name: SDP_ENV_NAME
+    value: 'Test'
+
+  # Root URL of the Semarchy Data Platform instance, used by
+  # 'sem-design data-product deploy'. Design CLI 2.x expects https://<tenant-url>
+  # with no /dm suffix.
+  - name: SDP_INSTANCE_URL
+    value: 'https://adpg-mdm-test.eu.semarchy.net'
+
+  # Datasource that backs the data location on this instance
+  - name: SDP_DATA_SOURCE
+    value: 'datasource1'
+
+  # Data location the model is deployed into
+  - name: SDP_DATA_LOCATION
+    value: 'adpg_model1'
+
+  # Where the data product is deployed (CLI --overwrite-deployment-url).
+  # '/dpc' publishes it as a data product on the Semarchy Data Platform
+  # (Data products page) - the same setting the team uses in VS Code
+  # (semarchy.sdp.overwriteDeploymentUrl). Leave empty ('') to use the
+  # CLI default <instance>/dm/api/internal-datahub-manager/deployments.
+  - name: SDP_DEPLOYMENT_URL
+    value: 'https://adpg-mdm-test.eu.semarchy.net/dpc'

@@ -1,0 +1,8 @@
+_name: RequireRejectedLogLG
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Rejected Log - Logistics
+validationScope: NONE
+condition: ANY MergeApprovalLog HAVE (UPPER(Decision) = 'REJECTED' AND FinalMergeApproved IS NULL AND (UPPER(ClusterCode) IN ('LG', 'LGSTS', 'LOGISTICS') OR UPPER(ClusterName) IN ('LG', 'LGSTS', 'LOGISTICS')))
+validationLabel: "Add a Merge Approval Decision row for Logistics with Decision = REJECTED before using Reject Merge."

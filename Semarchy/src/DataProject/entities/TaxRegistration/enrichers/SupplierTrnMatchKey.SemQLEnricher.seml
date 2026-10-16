@@ -1,0 +1,10 @@
+_name: SupplierTrnMatchKey
+_type: SemQLEnricher
+_package: DataProject.entities.TaxRegistration.enrichers
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: Supplier TRN Match Key
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: RegistrationNoNormalised
+    expression: |-
+      CASE WHEN (FID_Sgid IS NOT NULL OR SourceID_Sgid IS NOT NULL) AND RegistrationNo IS NOT NULL THEN UPPER(REGEXP_REPLACE(RegistrationNo, '[^A-Za-z0-9]', '', 'g')) ELSE RegistrationNoNormalised END

@@ -1,0 +1,8 @@
+_name: ErpProfileResolved
+_type: SemQLValidation
+_package: DataProject.entities.CustomerOrgAssignment.validations
+entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+label: ERP Profile Resolved
+validationScope: POST_CONSO
+validationLabel: "ERP_PROFILE_UNMAPPED - source value has no match in MDM."
+condition: "ERPProfile IS NULL OR FID_ErpProfileCode IS NOT NULL"

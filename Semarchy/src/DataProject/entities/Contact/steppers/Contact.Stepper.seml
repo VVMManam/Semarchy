@@ -1,0 +1,94 @@
+_name: Contact
+_package: DataProject.entities.Contact.steppers
+_type: Stepper
+entity: DataProject.entities.Contact.Contact
+label: Author Contacts
+triggers: []
+rootStep:
+  _name: Contacts
+  _type: CollectionStep
+  label: Contacts
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.Contact.collection_views.Contact
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTriggers: []
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.Contact.Contact.GenderCode
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.Contact.Contact.PreferredLanguageCode
+    - onStepExit: SKIP
+      validationType: CHECK
+      validator: DataProject.entities.Contact.validations.PassportNumberFormatCheck
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      label: Contact Details
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      formTab: DataProject.entities.Contact.forms.Contact.Main
+      referenceFormFieldConfigs: []
+      stepTriggers: []
+      formStepEnrichers:
+        - enricher: DataProject.entities.Contact.enrichers.NameFieldsNormalize
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: DataProject.entities.Contact.enrichers.JobTitleNormalize
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: DataProject.entities.Contact.enrichers.PassportNumberNormalize
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      formStepValidations:
+        - validationType: LOV
+          attribute: DataProject.entities.Contact.Contact.GenderCode
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: DataProject.entities.Contact.Contact.PreferredLanguageCode
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: CHECK
+          validator: DataProject.entities.Contact.validations.PassportNumberFormatCheck
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: DataProject.entities.Contact.Contact.GenderCode
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: DataProject.entities.Contact.Contact.PreferredLanguageCode
+        - onStepExit: WARN
+          validationType: CHECK
+          validator: DataProject.entities.Contact.validations.PassportNumberFormatCheck
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: LOV
+    attribute: DataProject.entities.Contact.Contact.GenderCode
+  - onStepperFinish: WARN
+    validationType: LOV
+    attribute: DataProject.entities.Contact.Contact.PreferredLanguageCode
+  - onStepperFinish: WARN
+    validationType: CHECK
+    validator: DataProject.entities.Contact.validations.PassportNumberFormatCheck
+

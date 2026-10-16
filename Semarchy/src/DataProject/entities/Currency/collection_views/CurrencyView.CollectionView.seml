@@ -1,0 +1,47 @@
+_package: DataProject.entities.Currency.collection_views
+_name: CurrencyView
+_type: CollectionView
+entity: DataProject.entities.Currency.Currency
+displayCard: DataProject.entities.Currency.display_cards.Currency
+default: true
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: false
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: CurrencyCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CurrencyCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MinorUnits
+    columnAlign: LEFT
+    dataType: INTEGER
+    useCustomLabel: false
+    value: MinorUnits
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true

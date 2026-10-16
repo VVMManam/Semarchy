@@ -1,0 +1,702 @@
+_package: DataProject.entities.Contact
+_type: Entity
+_name: Contact
+label: Contact
+pluralLabel: Contact
+physicalTableName: CONTACT
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ContactId
+    label: Contact Id
+    physicalName: CONTACT_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ContactUniqueId
+    label: Contact Unique Id
+    physicalName: CONTACT_UNIQUE_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CrmContactGuid
+    label: Crm Contact Guid
+    physicalName: CRM_CONTACT_GUID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FirstName
+    label: First Name
+    physicalName: FIRST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 150
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MiddleName
+    label: Middle Name
+    physicalName: MIDDLE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 150
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LastName
+    label: Last Name
+    physicalName: LAST_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 150
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FullNameAr
+    label: Full Name Ar
+    physicalName: FULL_NAME_AR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TitleCode
+    label: Title Code
+    physicalName: TITLE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GenderCode
+    label: Gender Code
+    physicalName: GENDER_CODE
+    dataType: DataProject.List_of_values.Gender
+    lovValidationScope: PRE_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PreferredLanguageCode
+    label: Preferred Language Code
+    physicalName: PREFERRED_LANGUAGE_CODE
+    dataType: DataProject.List_of_values.Language
+    lovValidationScope: PRE_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 5
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Email
+    label: Email
+    physicalName: EMAIL
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 320
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EmailDomain
+    label: Email Domain
+    physicalName: EMAIL_DOMAIN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsGenericEmailDomain
+    label: Is Generic Email Domain
+    physicalName: IS_GENERIC_EMAIL_DOMAIN
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Mobile
+    label: Mobile 
+    physicalName: MOBILE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MobileDialCode
+    label: Mobile Dial Code 
+    physicalName: MOBILE_DIAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MobilePhoneCountryCode
+    label: Mobile Phone Country Code
+    physicalName: MOBILE_PHONE_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 5
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BusinessPhone
+    label: Business Phone
+    physicalName: BUSINESS_PHONE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BusinessPhoneDialCode
+    label: Business Phone Dial Code
+    physicalName: BUSINESS_PHONE_DIAL_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TelephoneNumber
+    label: Telephone Number
+    physicalName: TELEPHONE_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TelephoneNumberCountryCode
+    label: Telephone Number Country Code
+    physicalName: TELE_NUMBER_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryFocalPoint
+    label: Primary Focal Point
+    physicalName: PRIMARY_FOCAL_POINT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 5
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryFinancialPoint
+    label: Primary Financial Point
+    physicalName: PRIMARY_FINANCIAL_POINT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 5
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: JobTitle
+    label: Job Title
+    physicalName: JOB_TITLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 150
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EmiratesId
+    label: Emirates Id
+    physicalName: EMIRATES_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EmiratesIdExpiryDate
+    label: Emirates Id Expiry Date
+    physicalName: EMIRATES_ID_EXPIRY_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PassportNumber
+    label: Passport Number
+    physicalName: PASSPORT_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PassportIssueDate
+    label: Passport Issue Date
+    physicalName: PASSPORT_ISSUE_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PassportExpiryDate
+    label: Passport Expiry Date
+    physicalName: PASSPORT_EXPIRY_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NumberOfShares
+    label: Number Of Shares
+    physicalName: NUMBER_OF_SHARES
+    dataType: Decimal
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    precision: 9
+    scale: 4
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ContactStatusCode
+    label: Contact Status Code
+    physicalName: CONTACT_STATUS_CODE
+    dataType: DataProject.List_of_values.AccountStatus
+    lovValidationScope: NONE
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: MobileAreaCode
+    label: Mobile Area Code
+    physicalName: MOBILE_AREA_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PhoneExtension
+    label: Phone Extension
+    physicalName: PHONE_EXTENSION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AreaCode
+    label: Area Code
+    physicalName: AREA_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Fax
+    label: Fax
+    physicalName: FAX
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FaxCountryCode
+    label: Fax Country Code
+    physicalName: FAX_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FaxAreaCode
+    label: Fax Area Code
+    physicalName: FAX_AREA_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PrimaryAdminContact
+    label: Primary Admin Contact
+    physicalName: PRIMARY_ADMIN_CONTACT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: HasUserAccount
+    label: Has User Account
+    physicalName: HAS_USER_ACCOUNT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    precision: 5
+    scale: 2
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: UserAccountStatus
+    label: User Account Status
+    physicalName: USER_ACCOUNT_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: UserName
+    label: User Name
+    physicalName: USER_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: UserAccountAction
+    label: User Account Action
+    physicalName: USER_ACCOUNT_ACTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: InactiveDate
+    label: Inactive Date
+    physicalName: INACTIVE_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: QualityScore
+    label: Quality Score
+    physicalName: QUALITY_SCORE
+    dataType: Decimal
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 10
+    precision: 10
+    scale: 2
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: VendorContactId
+    label: Vendor Contact Id
+    physicalName: VENDOR_CONTACT_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Nationality
+    label: Nationality (source value)
+    physicalName: NATIONALITY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.Contact.Contact.ContactId
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherContact
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 98
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameEmailUnderSameCustomer
+      condition: |-
+        Record1.FID_Cgid IS NOT NULL
+        AND Record2.FID_Cgid IS NOT NULL
+        AND Record1.FID_Cgid = Record2.FID_Cgid
+        AND Record1.Email IS NOT NULL
+        AND Record2.Email IS NOT NULL
+        AND LOWER(BTRIM(Record1.Email)) = LOWER(BTRIM(Record2.Email))
+      label: "Same customer + same e-mail address (auto-merge)"
+      matchScore: 98
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameEmiratesIdUnderSameCustomer
+      condition: |-
+        Record1.FID_Cgid IS NOT NULL
+        AND Record2.FID_Cgid IS NOT NULL
+        AND Record1.FID_Cgid = Record2.FID_Cgid
+        AND Record1.EmiratesId IS NOT NULL
+        AND Record2.EmiratesId IS NOT NULL
+        AND UPPER(REGEXP_REPLACE(Record1.EmiratesId, '[^A-Za-z0-9]', '', 'g')) = UPPER(REGEXP_REPLACE(Record2.EmiratesId, '[^A-Za-z0-9]', '', 'g'))
+      label: "Same customer + same Emirates ID (auto-merge)"
+      matchScore: 98
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SamePassportUnderSameCustomer
+      condition: |-
+        Record1.FID_Cgid IS NOT NULL
+        AND Record2.FID_Cgid IS NOT NULL
+        AND Record1.FID_Cgid = Record2.FID_Cgid
+        AND Record1.PassportNumber IS NOT NULL
+        AND Record2.PassportNumber IS NOT NULL
+        AND UPPER(REGEXP_REPLACE(Record1.PassportNumber, '[^A-Za-z0-9]', '', 'g')) = UPPER(REGEXP_REPLACE(Record2.PassportNumber, '[^A-Za-z0-9]', '', 'g'))
+        AND (Record1.FID_NationalityCode IS NULL OR Record2.FID_NationalityCode IS NULL OR Record1.FID_NationalityCode = Record2.FID_NationalityCode)
+      label: "Same customer + same passport number + same nationality (auto-merge)"
+      matchScore: 95
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameContactUniqueIdUnderSameCustomerAndAssignment
+      condition: |-
+        Record1.FID_CustomerOrgAssignment IS NOT NULL
+        AND Record2.FID_CustomerOrgAssignment IS NOT NULL
+        AND Record1.FID_CustomerOrgAssignment = Record2.FID_CustomerOrgAssignment
+        AND Record1.ContactUniqueId IS NOT NULL
+        AND Record2.ContactUniqueId IS NOT NULL
+        AND Record1.ContactUniqueId = Record2.ContactUniqueId
+      label: "Same customer + same departmental assignment + same source contact identifier - fallback for records without an Emirates ID (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameEmailUnderSameSupplierSite
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL
+        AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.Email IS NOT NULL AND Record2.Email IS NOT NULL
+        AND LOWER(BTRIM(Record1.Email)) = LOWER(BTRIM(Record2.Email))
+        AND NOT (Record1.HasUserAccount IS NOT NULL AND Record1.HasUserAccount = '1' AND Record2.HasUserAccount IS NOT NULL AND Record2.HasUserAccount = '1')
+      label: "MAT-CON-01 Same supplier site + same e-mail (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MATCON01B_SameEmailBothUserAccounts
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL
+        AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.Email IS NOT NULL AND Record2.Email IS NOT NULL
+        AND LOWER(BTRIM(Record1.Email)) = LOWER(BTRIM(Record2.Email))
+        AND Record1.HasUserAccount = '1' AND Record2.HasUserAccount = '1'
+      label: "MAT-CON-01 Same supplier site + same e-mail, both with a supplier user account (steward)"
+      matchScore: 90
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MATCON02_NamePhone
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL
+        AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.LastName IS NOT NULL AND Record2.LastName IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(BTRIM(UPPER(COALESCE(Record1.FirstName, '') || ' ' || COALESCE(Record1.LastName, ''))), BTRIM(UPPER(COALESCE(Record2.FirstName, '') || ' ' || COALESCE(Record2.LastName, '')))) >= 90
+        AND (
+        (LENGTH(REGEXP_REPLACE(COALESCE(Record1.Mobile, ''), '[^0-9]', '', 'g')) >= 8 AND LENGTH(REGEXP_REPLACE(COALESCE(Record2.Mobile, ''), '[^0-9]', '', 'g')) >= 8
+        AND SUBSTR(REGEXP_REPLACE(Record1.Mobile, '[^0-9]', '', 'g'), LENGTH(REGEXP_REPLACE(Record1.Mobile, '[^0-9]', '', 'g')) - 7) = SUBSTR(REGEXP_REPLACE(Record2.Mobile, '[^0-9]', '', 'g'), LENGTH(REGEXP_REPLACE(Record2.Mobile, '[^0-9]', '', 'g')) - 7))
+        OR
+        (LENGTH(REGEXP_REPLACE(COALESCE(Record1.BusinessPhone, ''), '[^0-9]', '', 'g')) >= 8 AND LENGTH(REGEXP_REPLACE(COALESCE(Record2.BusinessPhone, ''), '[^0-9]', '', 'g')) >= 8
+        AND SUBSTR(REGEXP_REPLACE(Record1.BusinessPhone, '[^0-9]', '', 'g'), LENGTH(REGEXP_REPLACE(Record1.BusinessPhone, '[^0-9]', '', 'g')) - 7) = SUBSTR(REGEXP_REPLACE(Record2.BusinessPhone, '[^0-9]', '', 'g'), LENGTH(REGEXP_REPLACE(Record2.BusinessPhone, '[^0-9]', '', 'g')) - 7))
+        )
+      label: "MAT-CON-02 Same supplier site + name (>= 90) + last 8 phone digits (steward)"
+      matchScore: 85
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: MATCON03_NameCorporateDomain
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL
+        AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.LastName IS NOT NULL AND Record2.LastName IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(BTRIM(UPPER(COALESCE(Record1.FirstName, '') || ' ' || COALESCE(Record1.LastName, ''))), BTRIM(UPPER(COALESCE(Record2.FirstName, '') || ' ' || COALESCE(Record2.LastName, '')))) >= 92
+        AND Record1.EmailDomain IS NOT NULL AND Record1.EmailDomain = Record2.EmailDomain
+        AND (Record1.IsGenericEmailDomain IS NULL OR Record1.IsGenericEmailDomain = '0') AND (Record2.IsGenericEmailDomain IS NULL OR Record2.IsGenericEmailDomain = '0')
+      label: "MAT-CON-03 Same supplier site + name (>= 92) + corporate e-mail domain (steward)"
+      matchScore: 85
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameVendorContactIdUnderSameSupplierSite
+      condition: |-
+        Record1.FID_SupplierSite IS NOT NULL
+        AND Record2.FID_SupplierSite IS NOT NULL
+        AND Record1.FID_SupplierSite = Record2.FID_SupplierSite
+        AND Record1.VendorContactId IS NOT NULL
+        AND Record2.VendorContactId IS NOT NULL
+        AND Record1.VendorContactId = Record2.VendorContactId
+      label: "Same supplier site + same Fusion vendor contact id (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false

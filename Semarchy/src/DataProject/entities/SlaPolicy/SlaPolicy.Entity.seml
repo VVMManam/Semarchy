@@ -1,0 +1,226 @@
+_package: DataProject.entities.SlaPolicy
+_type: Entity
+_name: SlaPolicy
+label: SLA Policy
+pluralLabel: SLA Policies
+physicalTableName: SLA_POLICY
+iconUrl: images://mdi/timer-outline.svg
+documentation: "Service level agreements (SLA) of the data stewardship workflows, maintained by the customer administrators. One row per domain, process, sub process, task and (optionally) cluster; a row with a cluster overrides the default row without cluster. The row effective at the request date is used."
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SlaPolicyId
+    label: SLA Policy ID
+    physicalName: SLA_POLICY_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    precision: 19
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Technical identifier (sequence).'
+  - _type: EntityAttribute
+    _name: DomainCode
+    label: Domain
+    physicalName: DOMAIN_CODE
+    dataType: DataProject.List_of_values.SlaDomain
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Business domain the SLA applies to: Party, Customer or Supplier.'
+  - _type: EntityAttribute
+    _name: ProcessCode
+    label: Process
+    physicalName: PROCESS_CODE
+    dataType: DataProject.List_of_values.SlaProcess
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 30
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Process: Merge, Create, Modify or Change Request.'
+  - _type: EntityAttribute
+    _name: SubProcessCode
+    label: Sub Process
+    physicalName: SUB_PROCESS_CODE
+    dataType: DataProject.List_of_values.SlaSubProcess
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 40
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Step of the process, e.g. Merge Approval or Group Steward Review.'
+  - _type: EntityAttribute
+    _name: TaskCode
+    label: Task
+    physicalName: TASK_CODE
+    dataType: DataProject.List_of_values.SlaTask
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 40
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Workflow task measured. All Tasks = overall SLA of the sub process.'
+  - _type: EntityAttribute
+    _name: RequiredRole
+    label: Required Role
+    physicalName: REQUIRED_ROLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Role that works on the task (information, e.g. MDM_Corp_Steward).'
+  - _type: EntityAttribute
+    _name: SlaValue
+    label: SLA Value
+    physicalName: SLA_VALUE
+    dataType: Decimal
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    precision: 10
+    scale: 2
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Time allowed, in SLA Unit.'
+  - _type: EntityAttribute
+    _name: SlaUnit
+    label: SLA Unit
+    physicalName: SLA_UNIT
+    dataType: DataProject.List_of_values.SlaUnit
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Working Days / Working Hours (weekends Sat-Sun skipped, UAE time) or Calendar Hours.'
+  - _type: EntityAttribute
+    _name: ReminderHours
+    label: Reminder Hours
+    physicalName: REMINDER_HOURS
+    dataType: Integer
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    precision: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Calendar hours after task creation when the native task reminder is sent. Copied into the workflow when it is regenerated (redeploy needed after a change).'
+  - _type: EntityAttribute
+    _name: PriorityCode
+    label: Priority
+    physicalName: PRIORITY_CODE
+    dataType: DataProject.List_of_values.SlaPriority
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    lovValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Workflow priority while this task is open.'
+  - _type: EntityAttribute
+    _name: EscalationRole
+    label: Escalation Role
+    physicalName: ESCALATION_ROLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Role notified when the reminder time is exceeded (e.g. MDM_Group_Steward).'
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'First day the SLA applies (request date).'
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Last day the SLA applies. Empty = no end.'
+  - _type: EntityAttribute
+    _name: IsActive
+    label: Is Active
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Inactive rows are ignored.'
+  - _type: EntityAttribute
+    _name: Description
+    label: Description
+    physicalName: DESCRIPTION
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 500
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.SlaPolicy.SlaPolicy.SlaPolicyId
+entityType: BASIC

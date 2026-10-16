@@ -1,0 +1,18 @@
+_name: Country
+_package: DataProject.entities.Country.display_cards
+_type: DisplayCard
+entity: DataProject.entities.Country.CountryReference
+default: true
+primaryTextExpression: CASE WHEN NameEn IS NOT NULL THEN NameEn ELSE CountryCode END
+supportingTextExpression: CountryCode
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValue: "'images://AdPorts-Flags/' || LOWER(CountryCode) || '.png'"
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

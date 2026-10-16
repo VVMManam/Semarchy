@@ -1,0 +1,10 @@
+_name: LicenseExpiryDateValid
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: License Expiry Date Valid
+validationScope: POST_CONSO
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (LicenseExpiryDate IS NULL OR LicenseIssueDate IS NULL OR LicenseExpiryDate > LicenseIssueDate)
+validationLabel: "License expiry date must be later than the issue date."

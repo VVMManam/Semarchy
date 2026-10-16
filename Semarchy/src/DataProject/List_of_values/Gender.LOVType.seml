@@ -1,0 +1,10 @@
+_name: Gender
+_type: LOVType
+_package: DataProject.List_of_values
+label: Gender
+length: 50
+lovValues:
+  - code: "1"
+    label: Male
+  - code: "2"
+    label: Female

@@ -1,0 +1,23 @@
+_name: Contact_CustomerOrgAssignment
+_type: Reference
+_package: DataProject.references
+label:  Contact to  Customer Org Assignment
+physicalName: CUSTOMER_ORG_ASSIGNMENT
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Contact.Contact
+fromRoleLabel: Contact
+fromRolePluralLabel: Contacts
+fromRoleName: Contact
+toEntity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+toRoleLabel:  Customer Org Assignment
+toRoleName: CustomerOrgAssignment
+toRolePhysicalName: CUSTOMER_ORG_ASSIGNMENT
+foreignAttribute:
+  _name: CustomerOrgAssignment
+  _type: ForeignAttribute
+  physicalName: CUSTOMER_ORG_ASSIGNMENT
+  label: Customer Org Assignment ID
+  searchable: true
+  entity: DataProject.entities.Contact.Contact

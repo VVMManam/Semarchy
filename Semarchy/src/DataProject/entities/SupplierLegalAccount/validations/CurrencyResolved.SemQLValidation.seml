@@ -1,0 +1,10 @@
+_name: CurrencyResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Currency Resolved
+validationScope: POST_CONSO
+validationLabel: "CURRENCY_UNMAPPED - source currency value has no matching reference in MDM."
+condition: |-
+  CurrencySource IS NULL
+  OR FID_Currency IS NOT NULL

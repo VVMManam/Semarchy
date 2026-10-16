@@ -1,0 +1,46 @@
+_name: ProfileType
+_package: DataProject.entities.ProfileType.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.ProfileType.ProfileType
+rootLabel: ProfileType
+rootPluralLabel: ProfileType
+useHierarchyOnOpen: false
+label: Profile Type
+rootBusinessViewEntity:
+  _name: ProfileType
+  _type: BusinessViewEntity
+  collection: DataProject.entities.ProfileType.collection_views.ProfileType
+  displayCard: DataProject.entities.ProfileType.display_cards.ProfileType
+  actionSet: DataProject.entities.ProfileType.action_sets.ProfileType
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.ProfileType.ProfileType
+  form: DataProject.entities.ProfileType.forms.ProfileType
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

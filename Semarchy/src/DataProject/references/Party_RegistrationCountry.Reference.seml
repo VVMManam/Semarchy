@@ -1,0 +1,23 @@
+_name: Party_RegistrationCountry
+_type: Reference
+_package: DataProject.references
+label:  Party to  Country
+physicalName: PARTY_REG_COUNTRY
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Party.Party
+fromRoleLabel:  Party
+fromRolePluralLabel:  Party
+fromRoleName: Party
+toEntity: DataProject.entities.Country.CountryReference
+toRoleLabel: Registration Country
+toRoleName: RegistrationCountryRef
+toRolePhysicalName: REGISTRATION_COUNTRY
+foreignAttribute:
+  _name: RegistrationCountryRef
+  _type: ForeignAttribute
+  physicalName: REGISTRATION_COUNTRY_REF
+  label: Registration Country
+  searchable: true
+  entity: DataProject.entities.Party.Party

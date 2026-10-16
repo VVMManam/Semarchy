@@ -1,0 +1,120 @@
+_name: SupplierBankAccount
+_type: CollectionView
+_package: DataProject.entities.SupplierBankAccount.collection_views
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+default: true
+displayCard: DataProject.entities.SupplierBankAccount.display_cards.SupplierBankAccount
+tableDisplayCardColumnLabel: Bank Name
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableColumns:
+  - _type: TextColumn
+    _name: BankNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BankNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BranchName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BranchName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BranchNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BranchNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BicSwift
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BicSwift
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AccountName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AccountNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IBAN
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IBAN
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CurrencyCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_Currency
+    label: Currency
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AccountTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BankChargeBearerCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BankChargeBearerCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsPrimary
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsPrimary
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: StartDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: StartDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EndDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EndDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceSystemCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FID_SourceSystemCode
+    label: Source System
+    visibleByDefault: true

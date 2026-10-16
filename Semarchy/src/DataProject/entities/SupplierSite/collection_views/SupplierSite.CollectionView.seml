@@ -1,0 +1,232 @@
+_name: SupplierSite
+_type: CollectionView
+_package: DataProject.entities.SupplierSite.collection_views
+entity: DataProject.entities.SupplierSite.SupplierSite
+default: true
+displayCard: DataProject.entities.SupplierSite.display_cards.SupplierSite
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileLines: 1
+gridTileHeight: 1:1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: SiteId
+    columnAlign: LEFT
+    dataType: LONG_INTEGER
+    useCustomLabel: false
+    value: SiteId
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Supplier
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Supplier
+    value: FID_Sgid
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SiteCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SiteCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AddressName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_AddressName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ProcurementBu
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Procurement BU
+    value: FID_ProcurementBuCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PurchasingSiteFlag
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PurchasingSiteFlag
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PaySiteFlag
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PaySiteFlag
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PrimaryPaySiteFlag
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PrimaryPaySiteFlag
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: RfqOnlySiteFlag
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RfqOnlySiteFlag
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: PcardSiteFlag
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PcardSiteFlag
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Email
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Email
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Phone
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Phone
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: PhoneCountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PhoneCountryCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: PhoneAreaCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PhoneAreaCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: PhoneExtension
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PhoneExtension
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Fax
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Fax
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: FaxCountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FaxCountryCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: FaxAreaCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FaxAreaCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: PaymentTermCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_PaymentTermCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: PaymentMethodCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PaymentMethodCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: PayGroupCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PayGroupCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: InvoiceCurrencyCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InvoiceCurrencyCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: PaymentCurrencyCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PaymentCurrencyCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: FreightTermsCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FreightTermsCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: FobCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FobCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: MatchOptionCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MatchOptionCode
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: MatchApprovalLevel
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MatchApprovalLevel
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: HoldAllPaymentsFlag
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: HoldAllPaymentsFlag
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: TaxReportingSiteFlag
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: TaxReportingSiteFlag
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: SourceSystemCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    label: Source System
+    value: FID_SourceSystemCode
+    visibleByDefault: true

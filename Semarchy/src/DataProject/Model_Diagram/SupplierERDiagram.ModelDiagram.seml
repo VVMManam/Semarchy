@@ -1,0 +1,257 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: SupplierERDiagram
+label: Supplier ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: PaymentTerm
+    _type: EntityShape
+    entity: DataProject.entities.PaymentTerm.PaymentTerm
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 290
+  - _name: Currency
+    _type: EntityShape
+    entity: DataProject.entities.Currency.Currency
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 520
+  - _name: CountryReference
+    _type: EntityShape
+    entity: DataProject.entities.Country.CountryReference
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 750
+  - _name: Emirate
+    _type: EntityShape
+    entity: DataProject.entities.Emirate.Emirate
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 980
+  - _name: IssuingAuthority
+    _type: EntityShape
+    entity: DataProject.entities.IssuingAuthority.IssuingAuthority
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 60
+  - _name: LicenseType
+    _type: EntityShape
+    entity: DataProject.entities.LicenseType.LicenseType
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 290
+  - _name: BusinessUnit
+    _type: EntityShape
+    entity: DataProject.entities.BusinessUnit.BusinessUnit
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 520
+  - _name: Location
+    _type: EntityShape
+    entity: DataProject.entities.Location.Location
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 750
+  - _name: SupplierLegalAccount
+    _type: EntityShape
+    entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 880
+      y: 60
+  - _name: SupplierSite
+    _type: EntityShape
+    entity: DataProject.entities.SupplierSite.SupplierSite
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1300
+      y: 60
+  - _name: SupplierSiteAssignment
+    _type: EntityShape
+    entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1300
+      y: 290
+  - _name: SupplierBankAccount
+    _type: EntityShape
+    entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1300
+      y: 520
+  - _name: Address
+    _type: EntityShape
+    entity: DataProject.entities.Address.Address
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1720
+      y: 60
+  - _name: Contact
+    _type: EntityShape
+    entity: DataProject.entities.Contact.Contact
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1720
+      y: 290
+  - _name: Identifier
+    _type: EntityShape
+    entity: DataProject.entities.Identifier.Identifier
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1720
+      y: 520
+  - _name: LicenseActivity
+    _type: EntityShape
+    entity: DataProject.entities.LicenseActivity.LicenseActivity
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1720
+      y: 750
+  - _name: TaxRegistration
+    _type: EntityShape
+    entity: DataProject.entities.TaxRegistration.TaxRegistration
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1720
+      y: 980
+referenceLinks:
+  - reference: DataProject.references.Address_SupplierSite
+    bendPoints: []
+  - reference: DataProject.references.Contact_SupplierSite
+    bendPoints: []
+  - reference: DataProject.references.Identifier_Sgid
+    bendPoints: []
+  - reference: DataProject.references.LicenseActivity_Sgid
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_CountryCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_CurrencyCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_Sgid
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_SiteId
+    bendPoints: []
+  - reference: DataProject.references.SupplierBankAccount_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_CurrencyCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_IssuingAuthority
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_LicenseType
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_PaymentTermCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_RegEmirateCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_RegistrationCountry
+    bendPoints: []
+  - reference: DataProject.references.SupplierLegalAccount_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_BillToBuCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_BillToLocationCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_ClientBuCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_PaymentTermCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_ShipToLocationCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_SupplierSite
+    bendPoints: []
+  - reference: DataProject.references.SupplierSite_AddressName
+    bendPoints: []
+  - reference: DataProject.references.SupplierSite_CurrencyCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSite_PaymentTermCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSite_ProcurementBuCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSite_Sgid
+    bendPoints: []
+  - reference: DataProject.references.SupplierSite_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.TaxRegistration_Sgid
+    bendPoints: []

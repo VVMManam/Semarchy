@@ -1,0 +1,8 @@
+_name: ActivityTypeResolved
+_type: SemQLValidation
+_package: DataProject.entities.LicenseActivity.validations
+entity: DataProject.entities.LicenseActivity.LicenseActivity
+label: Activity Type Resolved
+validationScope: POST_CONSO
+validationLabel: "ACTIVITY_TYPE_UNMAPPED - source value has no match in MDM."
+condition: "ActivityCode IS NULL OR FID_ActivityType IS NOT NULL"

@@ -1,0 +1,23 @@
+_name: SupplierSiteAssignment_BillToBuCode
+_type: Reference
+_package: DataProject.references
+label: Supplier Site Assignment to Bill-To BU
+physicalName: SUP_SITE_ASGN_BILL_TO_BU
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+fromRoleLabel: Supplier Site Assignment (Bill-To BU)
+fromRolePluralLabel: Supplier Site Assignments (Bill-To BU)
+fromRoleName: SupplierSiteAssignmentBillTo
+toEntity: DataProject.entities.BusinessUnit.BusinessUnit
+toRoleLabel: Bill-To BU Code
+toRoleName: BillToBuCode
+toRolePhysicalName: BILL_TO_BU_CODE
+foreignAttribute:
+  _name: BillToBuCode
+  _type: ForeignAttribute
+  physicalName: BILL_TO_BU_CODE
+  label: Bill-To BU Code
+  searchable: true
+  entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment

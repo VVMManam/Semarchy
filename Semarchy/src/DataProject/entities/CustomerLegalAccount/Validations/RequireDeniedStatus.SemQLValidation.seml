@@ -1,0 +1,8 @@
+_name: RequireDeniedStatus
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Denied Status
+validationScope: NONE
+condition: CustomerState = 'Denied'
+validationLabel: "Set Customer State to Denied before using the Reject action."

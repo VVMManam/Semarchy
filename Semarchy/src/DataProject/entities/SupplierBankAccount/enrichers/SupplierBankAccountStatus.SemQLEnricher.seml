@@ -1,0 +1,13 @@
+_name: SupplierBankAccountStatus
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierBankAccount.enrichers
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+label: Supplier Bank Account Status
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: EndDate
+    expression: |-
+      CASE WHEN EndDate >= MAKE_DATE(4712, 1, 1) THEN NULL ELSE EndDate END
+  - attributeName: RecordStatusCode
+    expression: |-
+      CASE WHEN EndDate IS NOT NULL AND EndDate < MAKE_DATE(4712, 1, 1) AND EndDate <= NOW() THEN 'INACTIVE' WHEN RecordStatusCode IS NULL THEN 'ACTIVE' WHEN UPPER(BTRIM(RecordStatusCode)) IN ('A', 'ACTIVE', 'Y', '1') THEN 'ACTIVE' WHEN UPPER(BTRIM(RecordStatusCode)) IN ('I', 'INACTIVE', 'N', '0') THEN 'INACTIVE' ELSE RecordStatusCode END

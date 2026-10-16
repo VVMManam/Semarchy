@@ -1,0 +1,23 @@
+_name: LegalForm_CountryScope
+_type: Reference
+_package: DataProject.references
+label:  Legal Form to  Country
+physicalName: LEGAL_FORM_CTRY_SCOPE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.LegalForm.LegalForm
+fromRoleLabel:  Legal Form
+fromRolePluralLabel:  Legal Form
+fromRoleName: LegalForm
+toEntity: DataProject.entities.Country.CountryReference
+toRoleLabel: Country Scope
+toRoleName: CountryScope
+toRolePhysicalName: COUNTRY_SCOPE
+foreignAttribute:
+  _name: CountryScope
+  _type: ForeignAttribute
+  physicalName: COUNTRY_SCOPE
+  label: Country Scope
+  searchable: true
+  entity: DataProject.entities.LegalForm.LegalForm

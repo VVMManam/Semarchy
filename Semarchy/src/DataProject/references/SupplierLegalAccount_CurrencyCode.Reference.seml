@@ -1,0 +1,23 @@
+_name: SupplierLegalAccount_CurrencyCode
+_type: Reference
+_package: DataProject.references
+label:  Supplier Legal Account Currency Code
+physicalName: SUPPLIER_CURRENCY_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+fromRoleLabel:  Supplier Legal Account
+fromRolePluralLabel:  Supplier Legal Account
+fromRoleName: SupplierLegalAccount
+toEntity: DataProject.entities.Currency.Currency
+toRoleLabel: Currency
+toRoleName: Currency
+toRolePhysicalName: CURRENCY
+foreignAttribute:
+  _name: Currency
+  _type: ForeignAttribute
+  physicalName: CURRENCY
+  label: Currency
+  searchable: true
+  entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount

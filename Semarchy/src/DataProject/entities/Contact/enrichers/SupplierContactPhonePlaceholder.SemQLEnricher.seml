@@ -1,0 +1,10 @@
+_name: SupplierContactPhonePlaceholder
+_type: SemQLEnricher
+_package: DataProject.entities.Contact.enrichers
+entity: DataProject.entities.Contact.Contact
+label: Supplier Contact Phone Placeholder
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: Mobile
+    expression: |-
+      CASE WHEN (FID_SupplierSite IS NOT NULL OR SourceID_SupplierSite IS NOT NULL) AND Mobile IS NOT NULL AND REGEXP_LIKE(REGEXP_REPLACE(Mobile,'[^0-9]','','g'),'^(0+|1+|9+|123|1234|12345|123456|1234567|12345678|123456789)$') THEN NULL ELSE Mobile END

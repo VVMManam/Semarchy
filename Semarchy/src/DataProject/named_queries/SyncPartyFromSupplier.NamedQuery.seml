@@ -1,0 +1,103 @@
+_name: SyncPartyFromSupplier
+_type: NamedQuery
+_package: DataProject.named_queries
+description: "API 1 of the Party Creation Callback design (ADPG-MDM-INT-PTY-001 v1.1). Golden SupplierLegalAccount records of a batch window that still have no Party, returned with Party attribute names. Published to OSB by a data notification (REST target, trigger on batch completion; FromBatchID = LOW_BATCH_ID, ToBatchID = HIGH_BATCH_ID). Replay: pass Sgid (one record) or ToBatchID only (reconciliation, page with offset / limit)."
+active: true
+queryParameters:
+  - _name: Sgid
+    _type: QueryParameter
+    bindingName: PARAM_ID
+    dataType: NUMBER
+    mandatory: false
+    defaultValue: 'null'
+  - _name: FromBatchID
+    _type: QueryParameter
+    bindingName: PARAM_FROM_BATCH_ID
+    dataType: NUMBER
+    mandatory: false
+    defaultValue: 'null'
+  - _name: ToBatchID
+    _type: QueryParameter
+    bindingName: PARAM_TO_BATCH_ID
+    dataType: NUMBER
+    mandatory: false
+    defaultValue: 'null'
+filter: >-
+  (:PARAM_ID is not null or :PARAM_TO_BATCH_ID is not null)
+  and (:PARAM_ID is null or Sgid = :PARAM_ID)
+  and (:PARAM_FROM_BATCH_ID is null or BatchID > :PARAM_FROM_BATCH_ID)
+  and (:PARAM_TO_BATCH_ID is null or BatchID <= :PARAM_TO_BATCH_ID)
+  and FID_Pgid is null
+sort: Sgid asc
+defaultLimit: 1000
+queryObjects:
+  - _name: Record
+    _type: QueryObject
+    entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+    objectProperties:
+      - _name: OperationType
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "'PartyCreation'"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: Sgid
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "Sgid"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: SourceID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "SupplierAccountId"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: PartyNameEn
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "NameEn"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: PartyNameAr
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "NameAlternate"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: LicenceKey
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "LicenseNumber"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: LicenceAuthorityCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "FID_IssuingAuthorityCode"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: LicenceCountry
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "IssuingAuthorityCode.FID_CountryCode"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: PartyTypeCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "SupplierTypeCode"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: RegistrationCountry
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "FID_RegistrationCountry"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: RegistrationEmirateCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "FID_RegistrationEmirateCode"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: PartyStatusCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "AccountStatusCode"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+      - _name: PrimaryPublisherCode
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: "'FUSION'"
+        targetObject: DataProject.named_queries.SyncPartyFromSupplier.Record
+rootQueryObject: DataProject.named_queries.SyncPartyFromSupplier.Record

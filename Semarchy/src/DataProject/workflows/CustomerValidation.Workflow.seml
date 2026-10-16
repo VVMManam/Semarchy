@@ -1,0 +1,223 @@
+_name: CustomerValidation
+_type: Workflow
+_package: DataProject.workflows
+label: Customer Validation
+generalProperties:
+  attachmentMimeTypes: "*"
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+notifications:
+  workflowAdminOnDueDate: false
+dataScope:
+  - _name: Customer
+    _type: RootEntity
+    cardinality: SINGLE_RECORD
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    childEntities: []
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+steps:
+  - _name: Start
+    _type: StartFromSelectionEvent
+    defaultPriority: NORMAL
+    position: { x: -520, y: -110 }
+    label: Start
+    selectionSourceType: GOLDEN_DATA
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: DataProject.workflows.CustomerValidation.ReviewCustomer
+      bendPoints: []
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+    authoredEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+
+  - _name: ReviewCustomer
+    _type: UserTask
+    label: Review Customer
+    position: { x: -300, y: -110 }
+    assigneeCanRelease: true
+    myTasksConfiguration:
+      collection: DataProject.entities.CustomerLegalAccount.Collections.CustomerModification
+    notificationsOnTaskAssignment: { toAssignee: true, toCandidates: true }
+    notificationsOnTaskExpiration: { toAdmin: false, toCandidatesOrAssignee: false }
+    notificationsOnWorkflowDueDate: { toCandidatesOrAssignee: false }
+    taskType: DATA_AUTHORING
+    application: DataProject.applications.CustomerHub
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    stepper: DataProject.entities.CustomerLegalAccount.steppers.CustomerGolden
+    transitions:
+      - _name: ApproveTransition
+        _type: UserTaskTransition
+        label: Approve
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters: { attachmentParamRequired: false, attachmentParamSupported: true, commentParamRequired: false, commentParamSupported: true, descriptionParamSupported: false, dueDateParamRequired: false, dueDateParamSupported: false, nextTaskAssigneeRequired: false, nextTaskAssigneeSupported: false, priorityParamSupported: false }
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: DataProject.workflows.CustomerValidation.SubmitApproved
+        transitionValidations:
+          - onTransitionFinish: BLOCK
+            validationType: CHECK
+            validator: DataProject.entities.CustomerLegalAccount.Validations.RequireApprovalConfirmation
+      - _name: DuplicateTransition
+        _type: UserTaskTransition
+        label: Take Action on Duplicate
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters: { attachmentParamRequired: false, attachmentParamSupported: true, commentParamRequired: true, commentParamSupported: true, descriptionParamSupported: false, dueDateParamRequired: false, dueDateParamSupported: false, nextTaskAssigneeRequired: false, nextTaskAssigneeSupported: false, priorityParamSupported: false }
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: DataProject.workflows.CustomerValidation.SubmitDuplicate
+        transitionValidations:
+          - onTransitionFinish: BLOCK
+            validationType: CHECK
+            validator: DataProject.entities.CustomerLegalAccount.Validations.RequireDuplicateCheckConfirmation
+      - _name: RejectTransition
+        _type: UserTaskTransition
+        label: Reject
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        transitionParameters: { attachmentParamRequired: false, attachmentParamSupported: true, commentParamRequired: true, commentParamSupported: true, descriptionParamSupported: false, dueDateParamRequired: false, dueDateParamSupported: false, nextTaskAssigneeRequired: false, nextTaskAssigneeSupported: false, priorityParamSupported: false }
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: DataProject.workflows.CustomerValidation.SubmitRejected
+        transitionValidations:
+          - onTransitionFinish: BLOCK
+            validationType: CHECK
+            validator: DataProject.entities.CustomerLegalAccount.Validations.RequireDeniedStatus
+
+  - _name: SubmitApproved
+    _type: SubmitAutomation
+    label: Submit Approved
+    position: { x: -60, y: -210 }
+    integrationJob: DataProject.ModelJobs.LoadCustomerAccount
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: DataProject.workflows.CustomerValidation.NotifyApproved
+
+  - _name: SubmitDuplicate
+    _type: SubmitAutomation
+    label: Submit Duplicate Flag
+    position: { x: -60, y: -110 }
+    integrationJob: DataProject.ModelJobs.LoadCustomerAccount
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: DataProject.workflows.CustomerValidation.NotifyDuplicate
+
+  - _name: SubmitRejected
+    _type: SubmitAutomation
+    label: Submit Rejected
+    position: { x: -60, y: -10 }
+    integrationJob: DataProject.ModelJobs.LoadCustomerAccount
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: DataProject.workflows.CustomerValidation.NotifyRejected
+
+  - _name: NotifyApproved
+    _type: SendEmailAutomation
+    label: Notify Approved
+    position: { x: 200, y: -210 }
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: DataProject.workflows.CustomerValidation.Finish
+    application: DataProject.applications.CustomerHub
+    subject: "Customer Approved"
+    body: "{PARAM_B_RECIPIENT_FIRST_NAME}{PARAM_B_RECIPIENT_LAST_NAME}, the customer record has been reviewed and approved.{PARAM_B_SERVER_BASE_URL}"
+    contentType: HTML_PREFORMATTED
+    failOnError: false
+    recipientMaxCount: 1000
+    customParameters:
+      - _name: InitiatedBy
+        _type: EmailCustomParameter
+        parameterType: SEMQL
+        expression: WorkflowInstance.InitiatorName
+    to:
+      - _name: AdminRecipients
+        _type: EmailRecipientSource
+        sourceType: USERS_FROM_ROLE
+        roleValue: semarchyAdmin
+
+  - _name: NotifyDuplicate
+    _type: SendEmailAutomation
+    label: Notify Duplicate Flagged
+    position: { x: 200, y: -110 }
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: DataProject.workflows.CustomerValidation.Finish
+    application: DataProject.applications.CustomerHub
+    subject: "Customer Flagged as Duplicate"
+    body: "{PARAM_B_RECIPIENT_FIRST_NAME}{PARAM_B_RECIPIENT_LAST_NAME}, a customer record has been flagged as a potential duplicate and is now available in the Customer Pending Duplicate view for merge or split.{PARAM_B_SERVER_BASE_URL}"
+    contentType: HTML_PREFORMATTED
+    failOnError: false
+    recipientMaxCount: 1000
+    customParameters:
+      - _name: InitiatedBy
+        _type: EmailCustomParameter
+        parameterType: SEMQL
+        expression: WorkflowInstance.InitiatorName
+    to:
+      - _name: AdminRecipients
+        _type: EmailRecipientSource
+        sourceType: USERS_FROM_ROLE
+        roleValue: semarchyAdmin
+
+  - _name: NotifyRejected
+    _type: SendEmailAutomation
+    label: Notify Rejected
+    position: { x: 200, y: -10 }
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      bendPoints: []
+      label: Outgoing
+      toStep: DataProject.workflows.CustomerValidation.Finish
+    application: DataProject.applications.CustomerHub
+    subject: "Customer Rejected"
+    body: "{PARAM_B_RECIPIENT_FIRST_NAME}{PARAM_B_RECIPIENT_LAST_NAME}, the customer record has been reviewed and rejected. Please see the steward's comments.{PARAM_B_SERVER_BASE_URL}"
+    contentType: HTML_PREFORMATTED
+    failOnError: false
+    recipientMaxCount: 1000
+    customParameters:
+      - _name: InitiatedBy
+        _type: EmailCustomParameter
+        parameterType: SEMQL
+        expression: WorkflowInstance.InitiatorName
+    to:
+      - _name: AdminRecipients
+        _type: EmailRecipientSource
+        sourceType: USERS_FROM_ROLE
+        roleValue: semarchyAdmin
+
+  - _name: Finish
+    _type: EndEvent
+    position: { x: 440, y: -110 }

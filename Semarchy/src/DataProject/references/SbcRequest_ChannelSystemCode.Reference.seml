@@ -1,0 +1,23 @@
+_name: SbcRequest_ChannelSystemCode
+_type: Reference
+_package: DataProject.references
+label:  Sbc Request to  Source System
+physicalName: SBC_REQUEST_CHANN_517
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SbcRequest.SbcRequest
+fromRoleLabel:  Sbc Request
+fromRolePluralLabel:  Sbc Request
+fromRoleName: SbcRequest
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Channel System Code
+toRoleName: ChannelSystemCode
+toRolePhysicalName: CHANNEL_SYSTEM_CODE
+foreignAttribute:
+  _name: ChannelSystemCode
+  _type: ForeignAttribute
+  physicalName: CHANNEL_SYSTEM_CODE
+  label: Channel System Code
+  searchable: true
+  entity: DataProject.entities.SbcRequest.SbcRequest

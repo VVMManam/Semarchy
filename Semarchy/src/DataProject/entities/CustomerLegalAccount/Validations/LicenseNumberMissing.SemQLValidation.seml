@@ -1,0 +1,10 @@
+_name: LicenseNumberMissing
+_type: SemQLValidation
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: License Number Missing
+validationScope: POST_CONSO
+validationLabel: "License number is missing."
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (LicenseNumber IS NOT NULL)

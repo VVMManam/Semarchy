@@ -1,0 +1,109 @@
+_name: PatternRules
+_package: DataProject.entities.PatternRules
+_type: Entity
+primaryKey: DataProject.entities.PatternRules.PatternRules.PatternId
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+label: Pattern Rules
+pluralLabel: Pattern Rules
+enableDelete: true
+entityType: BASIC
+iconUrl: images://mdi/regex.svg
+historizeGolden: false
+historizeMaster: false
+physicalTableName: PATTERN_RULES
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PatternId
+    physicalName: PATTERN_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Pattern Id
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+
+  - _type: EntityAttribute
+    _name: MobileCountryCode
+    physicalName: MOBILE_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Mobile Country Code
+    mandatory: false
+    length: 5
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+
+  - _type: EntityAttribute
+    _name: MobilePhonePattern
+    physicalName: MOBILE_PHONE_PATTERN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Mobile Phone Pattern
+    mandatory: false
+    length: 300
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+
+  - _type: EntityAttribute
+    _name: TelephoneCountryCode
+    physicalName: TELEPHONE_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Telephone Country Code
+    mandatory: false
+    length: 5
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+
+  - _type: EntityAttribute
+    _name: TelephonePattern
+    physicalName: TELEPHONE_PATTERN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Telephone Pattern
+    mandatory: false
+    length: 300
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+
+  - _type: EntityAttribute
+    _name: PostalCodePattern
+    physicalName: POSTAL_CODE_PATTERN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Postal Code Pattern
+    mandatory: false
+    length: 300
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+
+  - _type: EntityAttribute
+    _name: IsActive
+    physicalName: IS_ACTIVE
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    label: Is Active
+    mandatory: true
+    length: 0
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true

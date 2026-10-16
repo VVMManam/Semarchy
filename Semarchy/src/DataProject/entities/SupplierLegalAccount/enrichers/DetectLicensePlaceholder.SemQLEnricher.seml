@@ -1,0 +1,30 @@
+_name: DetectLicensePlaceholder
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Detect License Placeholder
+description: "Same placeholder rule as the customer legal account. MAT-02 / MAT-02B / MAT-10 skip placeholder licences. Also derives LicenseFormatValid and IsPrimaryLicense (one licence per legal account since v0.2)."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: LicenseIsPlaceholder
+    expression: |-
+      CASE
+          WHEN LicenseNumber IS NULL THEN '0'
+          WHEN UPPER(BTRIM(LicenseNumber)) IN ('NA', 'N/A', 'NIL', 'NONE', 'NULL', 'TBD', 'TEST', 'XXX', '-1') THEN '1'
+          WHEN LENGTH(REGEXP_REPLACE(LicenseNumber, '[^A-Za-z0-9]', '', 'g')) < 4 THEN '1'
+          WHEN LENGTH(BTRIM(LicenseNumber)) > 0 AND REPLACE(BTRIM(LicenseNumber), LEFT(BTRIM(LicenseNumber), 1), '') = '' THEN '1'
+          WHEN BTRIM(LicenseNumber) = LEFT('123456789012345678901234567890123456789012345678901234567890', LENGTH(BTRIM(LicenseNumber))) THEN '1'
+          ELSE '0'
+      END
+  - attributeName: LicenseFormatValid
+    expression: |-
+      CASE
+          WHEN LicenseNumber IS NULL THEN NULL
+          WHEN REGEXP_LIKE(UPPER(REGEXP_REPLACE(LicenseNumber, '[^A-Za-z0-9]', '', 'g')), '^[A-Z0-9]{4,30}$')
+               AND REGEXP_LIKE(LicenseNumber, '[0-9]')
+               AND NOT REGEXP_LIKE(UPPER(REGEXP_REPLACE(LicenseNumber, '[^A-Za-z0-9]', '', 'g')), '^(.)\1+$') THEN '1'
+          ELSE '0'
+      END
+  - attributeName: IsPrimaryLicense
+    expression: |-
+      CASE WHEN IsPrimaryLicense = '1' THEN '1' WHEN IsPrimaryLicense = '0' THEN '0' WHEN LicenseNumber IS NOT NULL THEN '1' ELSE NULL END

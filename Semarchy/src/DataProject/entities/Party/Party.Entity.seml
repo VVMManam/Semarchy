@@ -1,0 +1,375 @@
+_package: DataProject.entities.Party
+_type: Entity
+_name: Party
+label: Party
+pluralLabel: Party
+physicalTableName: PARTY
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: Pgid
+    label: Pgid
+    physicalName: PGID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PartyNameEn
+    label: Party Name En
+    physicalName: PARTY_NAME_EN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 200
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PartyNameAr
+    label: Party Name Ar
+    physicalName: PARTY_NAME_AR
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameMatchKey
+    label: Name Match Key
+    physicalName: NAME_MATCH_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NamePhoneticKey
+    label: Name Phonetic Key
+    physicalName: NAME_PHONETIC_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NameArMatchKey
+    label: Name Ar Match Key
+    physicalName: NAME_AR_MATCH_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenceKey
+    label: Licence Key
+    physicalName: LICENCE_KEY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenceAuthorityCode
+    label: Licence Authority Code
+    physicalName: LICENCE_AUTHORITY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LicenceCountry
+    label: Licence Country
+    physicalName: LICENCE_COUNTRY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 2
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PartyTypeCode
+    label: Party Type Code
+    physicalName: PARTY_TYPE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: LegalFormCode
+    label: Legal Form Code
+    physicalName: LEGAL_FORM_CD
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RegistrationCountry
+    label: Registration Country
+    physicalName: REGISTRATI_COUNTRY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 2
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RegistrationEmirateCode
+    label: Registration Emirate Code
+    physicalName: REGISTRATION_EMIRATE_COD
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsBranch
+    label: Is Branch
+    physicalName: IS_BRANCH
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BranchQualifier
+    label: Branch Qualifier
+    physicalName: BRANCH_QUALIFIER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsInternalEntity
+    label: Is Internal Entity
+    physicalName: IS_INTERNAL_ENTITY
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 1
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: PartyStatusCode
+    label: Party Status Code
+    physicalName: PARTY_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DpsStatusCode
+    label: Dps Status Code
+    physicalName: DPS_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DpsReference
+    label: Dps Reference
+    physicalName: DPS_REFERENCE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: DpsCheckedOn
+    label: Dps Checked On
+    physicalName: DPS_CHECKED_ON
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: QualityScore
+    label: Quality Score
+    physicalName: QUALITY_SCORE
+    dataType: Decimal
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    precision: 5
+    scale: 2
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.Party.Party.Pgid
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherParty
+  _type: SemQLMatcher
+  # P-01 and PM-A1 (score 100) merge automatically. P-02..P-04 (below 100) become
+  # duplicate suggestions that stewards confirm in Review Duplicates / Party Merge.
+  autoConfirmGoldenThreshold: 100
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 100
+  mergeThresholdMergingConfirmedWithNewMasters: 100
+  mergeThresholdMergingConfirmedWithUnconfirmed: 100
+  mergeThresholdMergingUnconfirmed: 100
+  mergeThresholdMergingUnconfirmedWithNewMasters: 100
+  mergeThresholdNewGroup: 100
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: P01_SameLicenceAuthorityCountry
+      label: "P-01 Same licence number, issuing authority and country"
+      description: "Customers and suppliers with the same licence number, issuing authority and licence country belong to the same party. Merged automatically."
+      condition: |-
+        Record1.LicenceKey IS NOT NULL AND Record2.LicenceKey IS NOT NULL
+        AND Record1.LicenceAuthorityCode IS NOT NULL AND Record2.LicenceAuthorityCode IS NOT NULL
+        AND Record1.LicenceCountry IS NOT NULL AND Record2.LicenceCountry IS NOT NULL
+        AND Record1.LicenceKey = Record2.LicenceKey
+        AND Record1.LicenceAuthorityCode = Record2.LicenceAuthorityCode
+        AND Record1.LicenceCountry = Record2.LicenceCountry
+        AND NOT REGEXP_LIKE(Record1.LicenceKey, '^(0+|NA|NIL|NONE|NULL|TBA|TBC|X+|1+)$')
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: P02_SameLicenceCountryAuthorityDiffers
+      label: "P-02 Same licence number and country, different issuing authority, similar name"
+      description: "Same licence number and country but the issuing authority differs (often a data entry difference). Suggested to stewards when the names are similar."
+      condition: |-
+        Record1.LicenceKey IS NOT NULL AND Record2.LicenceKey IS NOT NULL
+        AND Record1.LicenceCountry IS NOT NULL AND Record2.LicenceCountry IS NOT NULL
+        AND Record1.LicenceKey = Record2.LicenceKey
+        AND Record1.LicenceCountry = Record2.LicenceCountry
+        AND (Record1.LicenceAuthorityCode IS NULL OR Record2.LicenceAuthorityCode IS NULL
+             OR Record1.LicenceAuthorityCode <> Record2.LicenceAuthorityCode)
+        AND NOT REGEXP_LIKE(Record1.LicenceKey, '^(0+|NA|NIL|NONE|NULL|TBA|TBC|X+|1+)$')
+        AND Record1.NameMatchKey IS NOT NULL AND Record2.NameMatchKey IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(Record1.NameMatchKey, Record2.NameMatchKey) >= 85
+      matchScore: 90
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: P03_SameLicenceAuthorityCountryMissing
+      label: "P-03 Same licence number and issuing authority, country missing on one side"
+      description: "Same licence number and issuing authority, but one record has no licence country. Suggested to stewards."
+      condition: |-
+        Record1.LicenceKey IS NOT NULL AND Record2.LicenceKey IS NOT NULL
+        AND Record1.LicenceAuthorityCode IS NOT NULL AND Record2.LicenceAuthorityCode IS NOT NULL
+        AND Record1.LicenceKey = Record2.LicenceKey
+        AND Record1.LicenceAuthorityCode = Record2.LicenceAuthorityCode
+        AND (Record1.LicenceCountry IS NULL OR Record2.LicenceCountry IS NULL)
+        AND NOT REGEXP_LIKE(Record1.LicenceKey, '^(0+|NA|NIL|NONE|NULL|TBA|TBC|X+|1+)$')
+      matchScore: 85
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: P04_SameNameAndCountryNoLicence
+      label: "P-04 Same name and country, licence missing on one side"
+      description: "Identical normalised name in the same country where at least one record has no licence number. Suggested to stewards."
+      condition: |-
+        Record1.NameMatchKey IS NOT NULL AND Record2.NameMatchKey IS NOT NULL
+        AND Record1.NameMatchKey = Record2.NameMatchKey
+        AND (Record1.LicenceKey IS NULL OR Record2.LicenceKey IS NULL)
+        AND (CASE WHEN Record1.LicenceCountry IS NULL THEN Record1.RegistrationCountry ELSE Record1.LicenceCountry END) IS NOT NULL
+        AND (CASE WHEN Record1.LicenceCountry IS NULL THEN Record1.RegistrationCountry ELSE Record1.LicenceCountry END)
+          = (CASE WHEN Record2.LicenceCountry IS NULL THEN Record2.RegistrationCountry ELSE Record2.LicenceCountry END)
+      matchScore: 80
+      usingMatchOn: false
+
+    # ===================== AUTO-MERGE =====================
+    # Automerge - Licence Number + Issuing Authority + Country (from CustomerLegalAccount)
+    # Record1/Record2 = CustomerLegalAccount child records; parent Party reached via role Pgid
+    - _type: SemQLMatchRule
+      _name: PM_A1_LicenceAuthorityCountry
+      label: "PM-A1 Licence number + issuing authority + country equal + name (90% match)"
+      condition: |-
+        Record1.LicenseNumber IS NOT NULL
+        AND Record2.LicenseNumber IS NOT NULL
+        AND Record1.FID_IssuingAuthorityCode IS NOT NULL
+        AND Record2.FID_IssuingAuthorityCode IS NOT NULL
+        AND Record1.FID_RegistrationCountry IS NOT NULL
+        AND Record2.FID_RegistrationCountry IS NOT NULL
+        AND Record1.Pgid.PartyNameEn IS NOT NULL
+        AND Record2.Pgid.PartyNameEn IS NOT NULL
+        AND UPPER(BTRIM(Record1.LicenseNumber)) = UPPER(BTRIM(Record2.LicenseNumber))
+        AND Record1.FID_IssuingAuthorityCode = Record2.FID_IssuingAuthorityCode
+        AND Record1.FID_RegistrationCountry = Record2.FID_RegistrationCountry
+        AND (Record1.LicenseIsPlaceholder IS NULL OR Record1.LicenseIsPlaceholder = '0')
+        AND (Record2.LicenseIsPlaceholder IS NULL OR Record2.LicenseIsPlaceholder = '0')
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(Record1.Pgid.PartyNameEn), UPPER(Record2.Pgid.PartyNameEn)) >= 90
+      matchScore: 100
+      usingMatchOn: true
+      matchOnExpression: CustomerLegalAccount

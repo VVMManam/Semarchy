@@ -1,0 +1,9 @@
+_name: SupplierSiteAddressMandatory
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSite.validations
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: VAL-17 Site Address Mandatory
+validationScope: POST_CONSO
+validationLabel: "VAL-17 - Site has no address (Fusion PARTY_SITE_NAME)."
+condition: |-
+  FID_AddressName IS NOT NULL

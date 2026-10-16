@@ -1,0 +1,153 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: PartyERDiagram
+label: Party ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: Party
+    _type: EntityShape
+    entity: DataProject.entities.Party.Party
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 700
+      y: 60
+  - _name: PartyRole
+    _type: EntityShape
+    entity: DataProject.entities.PartyRole.PartyRole
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1080
+      y: 60
+  - _name: PartyRelationship
+    _type: EntityShape
+    entity: DataProject.entities.PartyRelationship.PartyRelationship
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1080
+      y: 310
+  - _name: CustomerLegalAccount
+    _type: EntityShape
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1080
+      y: 560
+  - _name: RoleType
+    _type: EntityShape
+    entity: DataProject.entities.RoleType.RoleType
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: RelationshipType
+    _type: EntityShape
+    entity: DataProject.entities.RelationshipType.RelationshipType
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 250
+  - _name: LegalForm
+    _type: EntityShape
+    entity: DataProject.entities.LegalForm.LegalForm
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 440
+  - _name: Country
+    _type: EntityShape
+    entity: DataProject.entities.Country.CountryReference
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 630
+  - _name: Emirate
+    _type: EntityShape
+    entity: DataProject.entities.Emirate.Emirate
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 820
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 1010
+  - _name: BusinessUnit
+    _type: EntityShape
+    entity: DataProject.entities.BusinessUnit.BusinessUnit
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 1200
+referenceLinks:
+  - reference: DataProject.references.PartyRole_Pgid
+    bendPoints: []
+  - reference: DataProject.references.PartyRole_RoleTypeCode
+    bendPoints: []
+  - reference: DataProject.references.PartyRole_RoleScopeCode
+    bendPoints: []
+  - reference: DataProject.references.PartyRelationship_FromPgid
+    bendPoints: []
+  - reference: DataProject.references.PartyRelationship_ToPgid
+    bendPoints: []
+  - reference: DataProject.references.PartyRelationship_RelationshipTypeCode
+    bendPoints: []
+  - reference: DataProject.references.RelationshipType_ReciprocalCode
+    bendPoints: []
+  - reference: DataProject.references.Party_LegalFormCode
+    bendPoints: []
+  - reference: DataProject.references.Party_PrimaryPublisherCode
+    bendPoints: []
+  - reference: DataProject.references.Party_RegistrationCountry
+    bendPoints: []
+  - reference: DataProject.references.Party_RegistrationEmirateCode
+    bendPoints: []
+  - reference: DataProject.references.CustomerLegalAccount_Pgid
+    bendPoints: []
+  - reference: DataProject.references.LegalForm_CountryScope
+    bendPoints: []

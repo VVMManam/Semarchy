@@ -1,0 +1,16 @@
+_name: LoadIdentificationType
+_package: DataProject.ModelJobs
+_type: CertificationJob
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: IdentificationType
+    _type: ModelJobTask
+    entity: DataProject.entities.IdentifierType.IdentifierType
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

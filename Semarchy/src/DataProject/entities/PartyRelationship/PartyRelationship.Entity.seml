@@ -1,0 +1,119 @@
+_package: DataProject.entities.PartyRelationship
+_type: Entity
+_name: PartyRelationship
+label: Party Relationship
+pluralLabel: Party Relationship
+physicalTableName: PARTY_RELATIONSHIP
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: PartyRelationshipId
+    label: Party Relationship Id
+    physicalName: PARTY_RELATIONSHIP_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SourceCode
+    label: Source Code
+    physicalName: SOURCE_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Confidence
+    label: Confidence
+    physicalName: CONFIDENCE
+    dataType: Decimal
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    precision: 5
+    scale: 2
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StatusCode
+    label: Status Code
+    physicalName: STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 20
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveFrom
+    label: Effective From
+    physicalName: EFFECTIVE_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveTo
+    label: Effective To
+    physicalName: EFFECTIVE_TO
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ConfirmedBy
+    label: Confirmed By
+    physicalName: CONFIRMED_BY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ConfirmedOn
+    label: Confirmed On
+    physicalName: CONFIRMED_ON
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.PartyRelationship.PartyRelationship.PartyRelationshipId
+entityType: BASIC

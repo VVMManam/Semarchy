@@ -1,0 +1,24 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+defaultRule: false
+_name: KeyFieldPaymentTermRule
+label: Key Field - Payment Term
+description: "SV-CLA-05 (Fusion step not applied in Wave 1): most complete record, then most recently modified. Blank values are skipped."
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: true
+consolidationOrderByExpression: |-
+  (
+    CASE WHEN LicenseNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxRegistrationNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Email IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BusinessPhone IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Mobile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EstablishmentAddress IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NameAr IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: PaymentTerm

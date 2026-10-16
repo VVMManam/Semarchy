@@ -1,0 +1,301 @@
+_package: DataProject.entities.SupplierBankAccount
+_type: Entity
+_name: SupplierBankAccount
+label: Supplier Bank Account
+pluralLabel: Supplier Bank Account
+physicalTableName: SUPPLIER_BANK_ACCOUNT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: BankAccountID
+    label: Bank Account ID
+    physicalName: BANK_ACCOUNT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: BankName
+    label: Bank Name
+    physicalName: BANK_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 360
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BankNumber
+    label: Bank Number
+    physicalName: BANK_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BranchName
+    label: Branch Name
+    physicalName: BRANCH_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 360
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BranchNumber
+    label: Branch Number
+    physicalName: BRANCH_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BicSwift
+    label: Bic Swift
+    physicalName: BIC_SWIFT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountName
+    label: Account Name
+    physicalName: ACCOUNT_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 80
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountNumber
+    label: Account Number
+    physicalName: ACCOUNT_NUMBER
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IBAN
+    label: IBAN
+    physicalName: IBAN
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AccountTypeCode
+    label: Account Type Code
+    physicalName: ACCOUNT_TYPE_CODE
+    dataType: DataProject.List_of_values.BankAccountType
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 25
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BankChargeBearerCode
+    label: Bank Charge Bearer Code
+    physicalName: BANK_CHARGE_BEARER_CODE
+    dataType: DataProject.List_of_values.BankChargeBearer
+    lovValidationScope: POST_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StartDate
+    label: Start Date
+    physicalName: START_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    physicalName: END_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: CurrencySource
+    label: Currency (source code)
+    physicalName: CURRENCY_SOURCE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: BankCountryCode
+    label: Bank Country (source code)
+    physicalName: BANK_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.SupplierBankAccount.SupplierBankAccount.BankAccountID
+entityType: FUZZY_MATCHED
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+matcher:
+  _name: SemQLMatcher
+  _type: SemQLMatcher
+  autoConfirmSingletons: true
+  autoConfirmGoldenThreshold: 99
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 98
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: MAT05_IBANExact
+      condition: |-
+        Record1.IBAN IS NOT NULL
+        AND Record2.IBAN IS NOT NULL
+        AND UPPER(REPLACE(BTRIM(Record1.IBAN), ' ', '')) = UPPER(REPLACE(BTRIM(Record2.IBAN), ' ', ''))
+        AND Record1.FID_Sgid IS NOT NULL
+        AND Record2.FID_Sgid IS NOT NULL
+        AND Record1.FID_Sgid = Record2.FID_Sgid
+      label: "MAT-05 : Same supplier + IBAN - Exact Match"
+      matchScore: 98
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT04_AccountNumberBankCountry
+      condition: |-
+        Record1.AccountNumber IS NOT NULL
+        AND Record2.AccountNumber IS NOT NULL
+        AND Record1.BicSwift IS NOT NULL
+        AND Record2.BicSwift IS NOT NULL
+        AND UPPER(BTRIM(Record1.AccountNumber)) = UPPER(BTRIM(Record2.AccountNumber))
+        AND UPPER(SUBSTR(BTRIM(Record1.BicSwift), 5, 2)) = UPPER(SUBSTR(BTRIM(Record2.BicSwift), 5, 2))
+        AND Record1.FID_Sgid IS NOT NULL
+        AND Record2.FID_Sgid IS NOT NULL
+        AND Record1.FID_Sgid = Record2.FID_Sgid
+      label: "MAT-04 : Same supplier + Account Number + Bank Country - Exact Match"
+      matchScore: 96
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: MAT13_AccountNameSharedBank
+      condition: |-
+        Record1.AccountName IS NOT NULL
+        AND Record2.AccountName IS NOT NULL
+        AND SEM_EDIT_DISTANCE_SIMILARITY(UPPER(BTRIM(Record1.AccountName)), UPPER(BTRIM(Record2.AccountName))) >= 85
+        AND (
+          (Record1.IBAN IS NOT NULL AND Record2.IBAN IS NOT NULL
+            AND UPPER(REPLACE(BTRIM(Record1.IBAN), ' ', '')) = UPPER(REPLACE(BTRIM(Record2.IBAN), ' ', '')))
+          OR
+          (Record1.AccountNumber IS NOT NULL AND Record2.AccountNumber IS NOT NULL
+            AND UPPER(BTRIM(Record1.AccountNumber)) = UPPER(BTRIM(Record2.AccountNumber)))
+        )
+        AND Record1.FID_Sgid IS NOT NULL
+        AND Record2.FID_Sgid IS NOT NULL
+        AND Record1.FID_Sgid = Record2.FID_Sgid
+      label: "MAT-13 : Same supplier + Account Name (JW >= 85) + Shared IBAN or Account"
+      matchScore: 97
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: BNK01_SameSupplierAccountNumber
+      condition: |-
+        Record1.FID_Sgid IS NOT NULL
+        AND Record2.FID_Sgid IS NOT NULL
+        AND Record1.FID_Sgid = Record2.FID_Sgid
+        AND Record1.AccountNumber IS NOT NULL
+        AND Record2.AccountNumber IS NOT NULL
+        AND UPPER(BTRIM(Record1.AccountNumber)) = UPPER(BTRIM(Record2.AccountNumber))
+        AND (Record1.FID_Currency = Record2.FID_Currency
+             OR (Record1.FID_Currency IS NULL AND Record2.FID_Currency IS NULL))
+      label: "MAT-BNK-01 : Same supplier + Account Number + Currency (or both null) (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false

@@ -1,0 +1,23 @@
+_name: PaymentDetails_CustomerOrgAssignment
+_type: Reference
+_package: DataProject.references
+label: Payment Details Customer Org Assignment
+physicalName: PAYMENT_DETAILS_CUS_ORG
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.PaymentDetails.PaymentDetails
+fromRoleLabel: Payment Details
+fromRolePluralLabel: Payment Details
+fromRoleName: CustomerPaymentDetails
+toEntity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+toRoleLabel: Customer Org Assignment
+toRoleName: CustomerOrgAssignment
+toRolePhysicalName: CUS_ORG
+foreignAttribute:
+  _name: CustomerOrgAssignment
+  _type: ForeignAttribute
+  physicalName: CUSTOMER_ORG_ASSIGNMENT
+  label: Customer Org Assignment
+  searchable: true
+  entity: DataProject.entities.PaymentDetails.PaymentDetails

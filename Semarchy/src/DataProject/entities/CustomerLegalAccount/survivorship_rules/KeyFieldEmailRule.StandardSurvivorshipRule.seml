@@ -1,0 +1,29 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+defaultRule: false
+_name: KeyFieldEmailRule
+label: Key Field - Email
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: false
+consolidationOrderByExpression: |-
+  CASE WHEN Email IS NULL THEN 0 ELSE 1 END DESC,
+  CASE WHEN Status IS NOT NULL AND Status = 'Inactive' THEN 0 ELSE 1 END DESC,
+  CASE WHEN REGEXP_LIKE(Email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN LicenseNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxRegistrationNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Email IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BusinessPhone IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Mobile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EstablishmentAddress IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NameAr IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  AccountCreationDate ASC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: Email
+  - attributeName: EmailDomain
+  - attributeName: IsGenericEmailDomain

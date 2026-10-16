@@ -1,0 +1,15 @@
+_type: SemQLEnricher
+_package: DataProject.entities.Address.enrichers
+_name: PrimaryAddressAfterMerge
+entity: DataProject.entities.Address.Address
+label: Primary Address After Merge
+description: 'SV-ADR-02: per address type under the same customer, the address a steward ticked most recently (Primary Set At) is primary; otherwise the most complete address (line 1, city, emirate/state, country, PO box) is primary; ties go to the most recently modified, then to the surviving customer address. Supplier addresses keep their own flag.'
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: IsPrimary
+    expression: |-
+      CASE
+        WHEN FID_Cgid IS NULL THEN CASE WHEN IsPrimary = '1' THEN '1' ELSE '0' END
+        WHEN NOT (ANY Cgid.Address HAVE (AddressId <> ParentRecord.AddressId AND CASE WHEN UPPER(AddressUsageCode) LIKE '%BILL%' THEN 'B' WHEN UPPER(AddressUsageCode) LIKE '%SERV%' THEN 'S' ELSE 'O' END = CASE WHEN UPPER(ParentRecord.AddressUsageCode) LIKE '%BILL%' THEN 'B' WHEN UPPER(ParentRecord.AddressUsageCode) LIKE '%SERV%' THEN 'S' ELSE 'O' END AND (CASE WHEN PrimarySetAt IS NOT NULL THEN '1' || TO_CHAR(PrimarySetAt, 'YYYYMMDDHH24MISS') ELSE '000000000000000' END || TO_CHAR((CASE WHEN AddressLine1 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN City IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN IssuingEmirateId IS NOT NULL OR StateProvince IS NOT NULL OR FID_EmirateCode IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN Country IS NOT NULL OR FID_CountryCode IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN PoBox IS NOT NULL THEN 1 ELSE 0 END), 'FM0') || TO_CHAR(UpdateDate, 'YYYYMMDDHH24MISS') || CASE WHEN SourceCustomerId IS NOT NULL AND SourceCustomerId = Cgid.CustomerGoldenId THEN '1' ELSE '0' END || TO_CHAR(AddressId, 'FM00000000000000000000')) > (CASE WHEN ParentRecord.PrimarySetAt IS NOT NULL THEN '1' || TO_CHAR(ParentRecord.PrimarySetAt, 'YYYYMMDDHH24MISS') ELSE '000000000000000' END || TO_CHAR((CASE WHEN ParentRecord.AddressLine1 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ParentRecord.City IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ParentRecord.IssuingEmirateId IS NOT NULL OR ParentRecord.StateProvince IS NOT NULL OR ParentRecord.FID_EmirateCode IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ParentRecord.Country IS NOT NULL OR ParentRecord.FID_CountryCode IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN ParentRecord.PoBox IS NOT NULL THEN 1 ELSE 0 END), 'FM0') || TO_CHAR(ParentRecord.UpdateDate, 'YYYYMMDDHH24MISS') || CASE WHEN ParentRecord.SourceCustomerId IS NOT NULL AND ParentRecord.SourceCustomerId = ParentRecord.Cgid.CustomerGoldenId THEN '1' ELSE '0' END || TO_CHAR(ParentRecord.AddressId, 'FM00000000000000000000')))) THEN '1'
+        ELSE '0'
+      END

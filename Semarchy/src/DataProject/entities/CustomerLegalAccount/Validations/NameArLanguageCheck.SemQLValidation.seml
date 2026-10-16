@@ -1,0 +1,10 @@
+_name: NameArLanguageCheck
+_type: SemQLValidation
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Name AR Language Check
+validationScope: POST_CONSO
+validationLabel: "Arabic name is not written in Arabic."
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (NameAr IS NULL OR REGEXP_LIKE(NameAr, '[\u0600-\u06FF]'))

@@ -1,0 +1,15 @@
+_name: NameEnUpperCase
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Name En Upper Case
+enricherExecutionScope: PRE_CONSO
+afterEnrichers:
+  - DataProject.entities.SupplierLegalAccount.enrichers.StandardizeNameEn
+semQlEnricherExpressions:
+  - attributeName: NameEn
+    expression: |-
+      CASE
+        WHEN NameEn IS NULL THEN NameEn
+        ELSE UPPER(BTRIM(REGEXP_REPLACE(NameEn, '\s+', ' ', 'g')))
+      END

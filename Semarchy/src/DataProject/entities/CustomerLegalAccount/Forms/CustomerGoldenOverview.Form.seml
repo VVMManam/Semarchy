@@ -1,0 +1,2064 @@
+_package: DataProject.entities.CustomerLegalAccount.Forms
+_type: Form
+_name: CustomerGoldenOverview
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+default: false
+formTabs:
+  - _name: Overview
+    _type: FormTab
+    labelWidth: "200px"
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Overview
+    iconUrl: images://mdi/view-dashboard.svg
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: OvSummarySection
+        label: Customer Summary
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: OvContainer1
+            layoutDirection: COLUMN
+            content:
+              - _name: OvCustomerGoldenId
+                value: CustomerGoldenId
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvNameEN
+                value: NameEN
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvNameAr
+                value: NameAr
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvLicenseNumber
+                value: LicenseNumber
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvLicenseExpiryDate
+                value: LicenseExpiryDate
+                dataType: DATE
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  useTimePicker: "0"
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvTaxRegistrationNumber
+                value: TaxRegistrationNumber
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvEmail
+                value: Email
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvPrimaryAddress
+                value: "LOOKUP first CASE WHEN EnrichedAddress IS NOT NULL THEN EnrichedAddress ELSE AddressLine1 END FROM Address ORDER BY IsPrimary DESC END"
+                dataType: STRING
+                useCustomLabel: true
+                label: Primary Address
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "6"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvDqStatus
+                value: "'●'"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Data Quality"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textColor: "CASE WHEN LOOKUP count ConstraintName FROM Errors END > 0 THEN 'md: red 700' ELSE 'md: green 500' END"
+                  textColorValueInterpreter: SEMQL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: display-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "20"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvDqIssues
+                value: "LOOKUP distinct_string_agg CASE WHEN ConstraintName LIKE '%BusinessPhoneFormateCheck%' THEN 'Business phone format is invalid' WHEN ConstraintName LIKE '%EmailInvalidCheck%' THEN 'Email address is invalid' WHEN ConstraintName LIKE '%EmailMultipleCheck%' THEN 'More than one email address in the email field' WHEN ConstraintName LIKE '%LicenseExpiryDateValid%' THEN 'License expiry date is invalid or expired' WHEN ConstraintName LIKE '%MobileFormatCheck%' THEN 'Mobile number format is invalid' WHEN ConstraintName LIKE '%NameJunkCheck%' THEN 'Customer name contains junk characters' WHEN ConstraintName LIKE '%WebsiteInvalidCheck%' THEN 'Website address is invalid' WHEN ConstraintName LIKE '%PaymentTermResolved%' THEN 'Payment term is not available in MDM' WHEN ConstraintName LIKE '%LicenseTypeResolved%' THEN 'License type is not available in MDM' WHEN ConstraintName LIKE '%IssuingAuthorityCodeResolved%' THEN 'Issuing authority is not available in MDM' WHEN ConstraintName LIKE '%RegistrationEmirateResolved%' THEN 'Issuing emirate is not available in MDM' ELSE ConstraintName || ' (' || ConstraintType || ')' END SEPARATED BY '\n' FROM Errors END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Data Quality Issues"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentBackgroundColor: "md: red 50"
+                  contentBackgroundColorValueInterpreter: LITERAL
+                  textColor: "md: red 700"
+                  textColorValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "20"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: OvContainer2
+            layoutDirection: COLUMN
+            content:
+              - _name: OvPcName
+                value: "LOOKUP first CASE WHEN LastName IS NULL THEN FirstName ELSE FirstName || ' ' || LastName END FROM Contact ORDER BY PrimaryFocalPoint DESC, ContactId END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Primary Contact"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "6"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: OvTags
+                value: "'<div style=\"margin:0;padding:0;line-height:1\">' || '<div style=\"display:flex;align-items:flex-start;margin:0 0 6px 0\"><div style=\"flex:0 0 228px;text-align:left;padding:4px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px\">Status</div><div style=\"flex:1\">' || CASE WHEN Status = 'Active' THEN '<span style=\"display:inline-block;background:#C8E6C9;color:#1B5E20;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Active</span>' WHEN Status = 'Inactive' THEN '<span style=\"display:inline-block;background:#FFCDD2;color:#B71C1C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Inactive</span>' WHEN Status IS NULL THEN '-' ELSE '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' || Status || '</span>' END || '</div></div>' || '<div style=\"display:flex;align-items:flex-start;margin:0 0 6px 0\"><div style=\"flex:0 0 228px;text-align:left;padding:4px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px\">Customer State</div><div style=\"flex:1\">' || CASE WHEN CustomerState = 'C02' THEN '<span style=\"display:inline-block;background:#C8E6C9;color:#1B5E20;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Approved</span>' WHEN CustomerState = 'C01' THEN '<span style=\"display:inline-block;background:#FFF59D;color:#6D4C00;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Under Process</span>' WHEN CustomerState = 'C03' THEN '<span style=\"display:inline-block;background:#FFCDD2;color:#B71C1C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Denied</span>' WHEN CustomerState IS NULL THEN '-' ELSE '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' || CustomerState || '</span>' END || '</div></div>' || '<div style=\"display:flex;align-items:flex-start;margin:0 0 6px 0\"><div style=\"flex:0 0 228px;text-align:left;padding:4px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px\">Clusters</div><div style=\"flex:1\">' || COALESCE(LOOKUP distinct_string_agg (CASE WHEN Cluster LIKE '%Corp%' THEN '<span style=\"display:inline-block;background:#009FE3;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Digital%' THEN '<span style=\"display:inline-block;background:#A286BF;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Industrial%' THEN '<span style=\"display:inline-block;background:#F9423A;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Logistics%' THEN '<span style=\"display:inline-block;background:#70D547;color:#12330A;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Maritime%' THEN '<span style=\"display:inline-block;background:#14C5BD;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#B0D6E3;color:#0D3B4C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' ELSE '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' END) || Cluster || '</span>' SEPARATED BY ' ' FROM CustomerOrgAssignment WHERE Cluster IS NOT NULL END, '-') || '</div></div>' || '<div style=\"display:flex;align-items:flex-start;margin:0 0 6px 0\"><div style=\"flex:0 0 228px;text-align:left;padding:4px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px\">Business Units</div><div style=\"flex:1\">' || COALESCE(LOOKUP distinct_string_agg (CASE WHEN Cluster LIKE '%Corp%' THEN '<span style=\"display:inline-block;background:#009FE3;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Digital%' THEN '<span style=\"display:inline-block;background:#A286BF;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Industrial%' THEN '<span style=\"display:inline-block;background:#F9423A;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Logistics%' THEN '<span style=\"display:inline-block;background:#70D547;color:#12330A;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Maritime%' THEN '<span style=\"display:inline-block;background:#14C5BD;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#B0D6E3;color:#0D3B4C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' ELSE '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' END) || FDN_BusinessUnitCode || '</span>' SEPARATED BY ' ' FROM CustomerOrgAssignment WHERE FDN_BusinessUnitCode IS NOT NULL END, '-') || '</div></div>' || '<div style=\"display:flex;align-items:flex-start;margin:0 0 6px 0\"><div style=\"flex:0 0 228px;text-align:left;padding:4px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px\">Profile Types</div><div style=\"flex:1\">' || COALESCE(LOOKUP distinct_string_agg '<span style=\"display:inline-block;background:#e0e0e0;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:14px;line-height:20px\">' || FDN_ProfileTypeCode || '</span>' SEPARATED BY ' ' FROM Profile WHERE FDN_ProfileTypeCode IS NOT NULL END, '-') || '</div></div>' || '<div style=\"display:flex;align-items:flex-start;margin:0 0 6px 0\"><div style=\"flex:0 0 228px;text-align:left;padding:4px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px\">Contact Purposes</div><div style=\"flex:1\">' || COALESCE(LOOKUP distinct_string_agg '<span style=\"display:inline-block;background:#e0e0e0;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:14px;line-height:20px\">' || FDN_ContactRoleCode || '</span>' SEPARATED BY ' ' FROM Contact.ContactPurpose WHERE FDN_ContactRoleCode IS NOT NULL END, '-') || '</div></div>' || '</div>'"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Key Details"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: MarkdownField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentHeight: "'276'"
+                  contentHeightValueInterpreter: SEMQL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "0"
+                  isVisibleValueInterpreter: LITERAL
+  - _name: Main
+    _type: FormTab
+    labelWidth: "210px"
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Customer Legal Account
+    iconUrl: images://AdPorts-ImageLibrary/tab-customer-details.svg
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: CustomerDetailsSection
+        label: Customer Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container
+            layoutDirection: COLUMN
+            content:
+              - _name: CustomerGoldenId
+                value: "CustomerGoldenId"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: NameEN
+                value: "NameEN"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "8"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: NameAr
+                value: "NameAr"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "8"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CustomerState
+                value: "'<div style=\"margin:0;padding:0;line-height:1\">' || CASE WHEN CustomerState = 'C02' THEN '<span style=\"display:inline-block;background:#C8E6C9;color:#1B5E20;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Approved</span>' WHEN CustomerState = 'C01' THEN '<span style=\"display:inline-block;background:#FFF59D;color:#6D4C00;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Under Process</span>' WHEN CustomerState = 'C03' THEN '<span style=\"display:inline-block;background:#FFCDD2;color:#B71C1C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Denied</span>' WHEN CustomerState IS NULL THEN '-' ELSE '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' || CustomerState || '</span>' END || '</div>'"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Customer State"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: MarkdownField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentHeight: "30"
+                  contentHeightValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container1
+            layoutDirection: COLUMN
+            content:
+              - _name: AccountType
+                value: "CASE WHEN AccountType = 'Normal' THEN 'Normal' WHEN AccountType = 'ADPorts ICP' THEN 'ADPorts ICP' WHEN AccountType = 'ADPorts RP' THEN 'ADPorts RP' WHEN AccountType = 'ADQ ICP' THEN 'ADQ ICP' WHEN AccountType = 'Internal' THEN 'Internal' WHEN AccountType = 'Government' THEN 'Government' WHEN AccountType = 'ADQ RP' THEN 'ADQ RP' ELSE AccountType END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Account Type"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: AccountCreationDate
+                value: AccountCreationDate
+                dataType: DATE
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  useTimePicker: "0"
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsBranch
+                value: "CASE WHEN IsBranch = '1' THEN 'Yes' ELSE 'No' END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Is Branch"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsFreeZone
+                value: "CASE WHEN IsFreeZone = '1' THEN 'Yes' ELSE 'No' END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Is Free Zone"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsVip
+                value: "IsVip"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsGovernmentEntity
+                value: "IsGovernmentEntity"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Status
+                value: "'<div style=\"margin:0;padding:0;line-height:1\">' || CASE WHEN Status = 'Active' THEN '<span style=\"display:inline-block;background:#C8E6C9;color:#1B5E20;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Active</span>' WHEN Status = 'Inactive' THEN '<span style=\"display:inline-block;background:#FFCDD2;color:#B71C1C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Inactive</span>' WHEN Status IS NULL THEN '-' ELSE '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' || Status || '</span>' END || '</div>'"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Status"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: MarkdownField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentHeight: "30"
+                  contentHeightValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _name: EstablishmentAddress
+                value: "EstablishmentAddress"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "8"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PaymentTerm
+                value: "PaymentTerm"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Website
+                value: "Website"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Email
+                value: "Email"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsGenericEmailDomain
+                value: "CASE WHEN IsGenericEmailDomain = '1' THEN 'Yes' ELSE 'No' END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Is Generic Email Domain"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: BusinessPhone
+                value: "BusinessPhone"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Mobile
+                value: "Mobile"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Fax
+                value: "Fax"
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: ComplianceSection
+        label: Compliance Summary
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: CsContainer1
+            layoutDirection: COLUMN
+            content:
+              - _name: CsLicenseNumber
+                value: "LicenseNumber"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Trade Licence No"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CsLicenseExpiry
+                value: LicenseExpiryDate
+                dataType: DATE
+                useCustomLabel: true
+                label: "Licence Expiry"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textColor: "CASE WHEN LicenseExpiryDate IS NULL THEN 'md: grey 600' WHEN LicenseExpiryDate < NOW() THEN 'md: red 700' ELSE 'md: green 700' END"
+                  textColorValueInterpreter: SEMQL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  useTimePicker: "0"
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CsIssuingAuthority
+                value: "FDN_IssuingAuthorityCode"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Issuing Authority"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "1"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "8"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: CsContainer2
+            layoutDirection: COLUMN
+            content:
+              - _name: CsVatRegistration
+                value: "CASE WHEN TaxRegistrationNumber IS NOT NULL THEN 'Registered' ELSE 'Not provided' END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "VAT Registration"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textColor: "CASE WHEN TaxRegistrationNumber IS NOT NULL THEN 'md: green 700' ELSE 'md: orange 800' END"
+                  textColorValueInterpreter: SEMQL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CsTrn
+                value: "TaxRegistrationNumber"
+                dataType: STRING
+                useCustomLabel: true
+                label: "TRN"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CsVatExemption
+                value: "CASE WHEN Exemption = 'Y' THEN 'Yes' WHEN Exemption = 'N' THEN 'No' ELSE Exemption END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "VAT Exemption"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: CsContainer3
+            layoutDirection: COLUMN
+            content:
+              - _name: CsFusionId
+                value: "CASE WHEN LOOKUP string_agg Value SEPARATED BY ', ' FROM Identifier WHERE FID_IdentifierType = 'FUSION_AR_CUSTOMER_ID' END IS NULL THEN 'Not onboarded' ELSE LOOKUP string_agg Value SEPARATED BY ', ' FROM Identifier WHERE FID_IdentifierType = 'FUSION_AR_CUSTOMER_ID' END END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Fusion AR Customer Id"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textColor: "CASE WHEN LOOKUP string_agg Value SEPARATED BY ', ' FROM Identifier WHERE FID_IdentifierType = 'FUSION_AR_CUSTOMER_ID' END IS NULL THEN 'md: orange 800' ELSE 'md: grey 900' END"
+                  textColorValueInterpreter: SEMQL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: CsCluster
+                value: "'<div style=\"margin:0;padding:0;line-height:1\">' || LOOKUP distinct_string_agg (CASE WHEN Cluster LIKE '%Corp%' THEN '<span style=\"display:inline-block;background:#009FE3;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Digital%' THEN '<span style=\"display:inline-block;background:#A286BF;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Industrial%' THEN '<span style=\"display:inline-block;background:#F9423A;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Logistics%' THEN '<span style=\"display:inline-block;background:#70D547;color:#12330A;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Maritime%' THEN '<span style=\"display:inline-block;background:#14C5BD;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' WHEN Cluster LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#B0D6E3;color:#0D3B4C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' ELSE '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' END) || Cluster || '</span>' SEPARATED BY ' ' FROM CustomerOrgAssignment WHERE Cluster IS NOT NULL END || '</div>'"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Clusters"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: MarkdownField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentHeight: "60"
+                  contentHeightValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: PrimaryContactSection
+        label: Primary Contact
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: PcContainer1
+            layoutDirection: COLUMN
+            content:
+              - _name: PcName
+                value: "LOOKUP first CASE WHEN LastName IS NULL THEN FirstName ELSE FirstName || ' ' || LastName END FROM Contact ORDER BY PrimaryFocalPoint DESC, ContactId END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Contact"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PcJobTitle
+                value: "LOOKUP first JobTitle FROM Contact ORDER BY PrimaryFocalPoint DESC, ContactId END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Job Title"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: PcContainer2
+            layoutDirection: COLUMN
+            content:
+              - _name: PcFocal
+                value: "LOOKUP first CASE WHEN PrimaryFocalPoint = '1' THEN 'Primary Focal Point' ELSE 'Contact' END FROM Contact ORDER BY PrimaryFocalPoint DESC, ContactId END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Contact Purpose"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PcEmail
+                value: "LOOKUP first Email FROM Contact ORDER BY PrimaryFocalPoint DESC, ContactId END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Email"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: PcContainer3
+            layoutDirection: COLUMN
+            content:
+              - _name: PcMobile
+                value: "LOOKUP first Mobile FROM Contact ORDER BY PrimaryFocalPoint DESC, ContactId END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Mobile"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: PcNationality
+                value: "LOOKUP first FDN_NationalityCode FROM Contact ORDER BY PrimaryFocalPoint DESC, ContactId END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Nationality"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: LicenseDetailsSection
+        label: License Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container3
+            layoutDirection: COLUMN
+            content:
+              - _name: LicenseNumber
+                value: LicenseNumber
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LicenseType
+                value: CASE WHEN LicenseTypeCode.NameEn IS NOT NULL THEN LicenseTypeCode.NameEn ELSE LicenseType END
+                dataType: STRING
+                useCustomLabel: true
+                label: License Type
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LicenseStage
+                value: CASE WHEN LicenseStage = '1' THEN 'Temporary' WHEN LicenseStage = '2' THEN 'Construction' WHEN LicenseStage = '3' THEN 'Permanent' ELSE LicenseStage END
+                dataType: STRING
+                useCustomLabel: true
+                label: License Stage
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+
+              - _name: LicenseRecordStatusCode
+                value: CASE WHEN LicenseRecordStatusCode = 'I' THEN 'Inactive' WHEN LicenseRecordStatusCode = 'A' THEN 'Active' ELSE LicenseRecordStatusCode END
+                dataType: STRING
+                useCustomLabel: true
+                label: License Record Status
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+
+              - _name: IssuingCountry
+                value: FDN_RegistrationCountry
+                dataType: STRING
+                referencedEntity: DataProject.entities.Country.CountryReference
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "1"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IssuingAuthority
+                value: FDN_IssuingAuthorityCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IssuingEmirateId
+                value: FDN_RegistrationEmirateCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.Emirate.Emirate
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "0"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container4
+            layoutDirection: COLUMN
+            content:
+              - _name: LicenseIssuingEmirateCodeRaw
+                value: LicenseIssuingEmirateCodeRaw
+                dataType: STRING
+                useCustomLabel: true
+                label: "Issuing Emirate (Raw)"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LicenseRegistrationDate
+                value: LicenseRegistrationDate
+                dataType: DATE
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  useTimePicker: "0"
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LicenseIssueDate
+                value: LicenseIssueDate
+                dataType: DATE
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  useTimePicker: "0"
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LicenseStartDate
+                value: LicenseStartDate
+                dataType: DATE
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  useTimePicker: "0"
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: LicenseExpiryDate
+                value: LicenseExpiryDate
+                dataType: DATE
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  useTimePicker: "0"
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: IsPrimaryLicense
+                value: IsPrimaryLicense
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: LicenseActivitySection
+        label: License Activities
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormCollection
+            _name: LicenseActivities
+            label: License Activities
+            useCustomLabel: true
+            targetEntity: DataProject.entities.LicenseActivity.LicenseActivity
+            transitionPath: LicenseActivity
+            collection: DataProject.entities.LicenseActivity.collection_views.LicenseActivityView
+            displayRecordCount: ALWAYS
+            enableUserDefinedSort: true
+            tableAllowed: true
+            listAllowed: false
+            gridAllowed: false
+            documentationInterpreter: LITERAL
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: TaxDetailsSection
+        label: Tax Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container8
+            layoutDirection: COLUMN
+            content:
+              - _name: TaxRegistrationNumber
+                value: TaxRegistrationNumber
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: Exemption
+                value: Exemption
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container9
+            layoutDirection: COLUMN
+            content:
+              - _name: NoVATDeclaration
+                value: NoVATDeclaration
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  isMultilineValueInterpreter: LITERAL
+                  multilineMaxLines: "3"
+                  multilineMaxLinesValueInterpreter: LITERAL
+                  multilineMinLines: "1"
+                  multilineMinLinesValueInterpreter: LITERAL
+                  isCharCounterVisible: "0"
+                  isCharCounterVisibleValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL

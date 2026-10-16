@@ -1,0 +1,10 @@
+_name: BusinessUnitResolved
+_type: SemQLValidation
+_package: DataProject.entities.Profile.validations
+entity: DataProject.entities.Profile.Profile
+label: Business Unit Resolved
+validationScope: POST_CONSO
+validationLabel: "BUSINESS_UNIT_UNMAPPED - CRM business unit value has no matching Business Unit in MDM."
+condition: |-
+  ERPBUCode IS NULL
+  OR FID_BusinessUnitCode IS NOT NULL

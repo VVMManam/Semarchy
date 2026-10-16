@@ -1,0 +1,45 @@
+_name: TaxType
+_package: DataProject.entities.TaxType.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.TaxType.TaxType
+rootLabel: TaxType
+rootPluralLabel: TaxType
+useHierarchyOnOpen: false
+label: Tax Type
+rootBusinessViewEntity:
+  _name: TaxType
+  _type: BusinessViewEntity
+  collection: DataProject.entities.TaxType.collection_views.TaxTypeView
+  actionSet: DataProject.entities.TaxType.action_sets.TaxType
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.TaxType.TaxType
+  form: DataProject.entities.TaxType.forms.TaxTypeForm
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

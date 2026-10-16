@@ -1,0 +1,36 @@
+_package: DataProject.entities.SupplierBankAccount.survivorship_rules
+_type: StandardSurvivorshipRule
+_name: DefaultRule
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+label: DefaultRule
+description: ""
+documentation: ""
+defaultRule: true
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  CASE WHEN (IBAN IS NOT NULL AND LENGTH(BTRIM(IBAN)) >= 15 AND IBAN <> '-1') OR (AccountNumber IS NOT NULL AND AccountNumber <> '-1') THEN 1 ELSE 0 END DESC,
+  CASE WHEN CurrencySource IS NOT NULL THEN 1 ELSE 0 END DESC,
+  CASE WHEN StartDate IS NULL THEN 0 ELSE 1 END DESC,
+  StartDate DESC,
+  (
+    CASE WHEN BankName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CurrencySource IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BankNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BranchName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BranchNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BicSwift IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IBAN IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountTypeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BankChargeBearerCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPrimary IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN StartDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EndDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RecordStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BankCountryCode IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  CreationDate ASC
+consolidationSkipNulls: false
+overrideStrategy: NO_OVERRIDE

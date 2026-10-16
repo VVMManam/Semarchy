@@ -1,0 +1,9 @@
+_name: SupplierSiteStatusVsSupplier
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSite.validations
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: VAL-51 Site Status vs Supplier
+validationScope: POST_CONSO
+validationLabel: "VAL-51 - Active site on an inactive supplier."
+condition: |-
+  NOT (UPPER(COALESCE(RecordStatusCode, '')) IN ('ACTIVE', 'A') AND FID_Sgid IS NOT NULL AND UPPER(COALESCE(Sgid.AccountStatusCode, '')) IN ('INACTIVE', 'I'))

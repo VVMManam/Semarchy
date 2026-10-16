@@ -1,0 +1,10 @@
+_name: BusinessRelationship
+_package: DataProject.List_of_values
+_type: LOVType
+label: Business Relationship
+length: 128
+lovValues:
+  - code: "SPEND_AUTHORIZED"
+    label: Spend Authorized
+  - code: "PROSPECTIVE"
+    label: Prospective

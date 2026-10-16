@@ -1,0 +1,61 @@
+_name: MergeApprovalLogs
+_package: DataProject.entities.MergeApprovalLogs.collection_views
+_type: CollectionView
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+default: true
+displayCard: DataProject.entities.MergeApprovalLogs.display_cards.MergeApprovalLogs
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: ClusterCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ClusterCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Decision
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Decision
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ReviewerRole
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ReviewerRole
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ReviewerUsername
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ReviewerUsername
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: DecisionTimestamp
+    columnAlign: LEFT
+    dataType: TIMESTAMP
+    useCustomLabel: false
+    value: DecisionTimestamp
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Comments
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Comments
+    visibleByDefault: true

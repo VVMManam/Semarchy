@@ -1,0 +1,21 @@
+_name: SupplierSiteNormalize
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierSite.enrichers
+entity: DataProject.entities.SupplierSite.SupplierSite
+label: Supplier Site Normalize
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: RecordStatusCode
+    expression: |-
+      CASE
+        WHEN RecordStatusCode IS NULL THEN NULL
+        WHEN UPPER(BTRIM(REGEXP_REPLACE(RecordStatusCode, '[\x01-\x1F\x7F]', '', 'g'))) IN ('A', 'ACTIVE', 'Y', 'YES', 'TRUE', '1') THEN 'ACTIVE'
+        WHEN UPPER(BTRIM(REGEXP_REPLACE(RecordStatusCode, '[\x01-\x1F\x7F]', '', 'g'))) IN ('I', 'INACTIVE', 'N', 'NO', 'FALSE', '0') THEN 'INACTIVE'
+        ELSE UPPER(BTRIM(REGEXP_REPLACE(RecordStatusCode, '[\x01-\x1F\x7F]', '', 'g')))
+      END
+  - attributeName: Email
+    expression: |-
+      CASE WHEN Email IS NULL THEN NULL ELSE LOWER(BTRIM(REGEXP_REPLACE(Email, '[\x01-\x1F\x7F]', '', 'g'))) END
+  - attributeName: SiteCode
+    expression: |-
+      CASE WHEN SiteCode IS NULL THEN NULL ELSE BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(SiteCode, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')) END

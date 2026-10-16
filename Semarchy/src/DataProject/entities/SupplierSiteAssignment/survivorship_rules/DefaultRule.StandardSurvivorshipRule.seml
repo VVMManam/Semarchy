@@ -1,0 +1,34 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+_package: DataProject.entities.SupplierSiteAssignment.survivorship_rules
+defaultRule: true
+_name: DefaultRule
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  CASE WHEN InactiveDate IS NULL THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN AllowWithholdingTax IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN WithholdingTaxGroupCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN InactiveDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN RecordStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LiabilityDistributionAccount IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PrepaymentAccount IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN FutureDatedPaymentAccount IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN DistributionSet IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AllowWithholdingTaxFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AllowWithholdingTaxGroup IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ClientBuName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BillToBuName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BillToLocationName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ShipToLocationName IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentTermName IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  CreationDate ASC
+label: Default Rule
+publisherRankings: []
+overrideDecayTimeDuration: 1
+overrideDecayTimeUnit: DAYS
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes: []

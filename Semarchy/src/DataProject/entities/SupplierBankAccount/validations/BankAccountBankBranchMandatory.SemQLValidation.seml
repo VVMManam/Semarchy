@@ -1,0 +1,9 @@
+_name: BankAccountBankBranchMandatory
+_type: SemQLValidation
+_package: DataProject.entities.SupplierBankAccount.validations
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+label: VAL-29 Bank and Branch Name Mandatory
+validationScope: POST_CONSO
+validationLabel: "VAL-29 - Bank name and branch name are required."
+condition: |-
+  NULLIF(BTRIM(BankName), '') IS NOT NULL AND NULLIF(BTRIM(BranchName), '') IS NOT NULL

@@ -1,0 +1,14 @@
+_name: SlaPriority
+_type: LOVType
+_package: DataProject.List_of_values
+label: SLA Priority
+length: 20
+lovValues:
+  - code: "LOW"
+    label: Low
+  - code: "NORMAL"
+    label: Normal
+  - code: "HIGH"
+    label: High
+  - code: "CRITICAL"
+    label: Critical

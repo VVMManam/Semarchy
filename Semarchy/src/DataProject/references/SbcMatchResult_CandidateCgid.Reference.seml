@@ -1,0 +1,23 @@
+_name: SbcMatchResult_CandidateCgid
+_type: Reference
+_package: DataProject.references
+label: SBC Candidate Customer
+physicalName: SBC_MATCH_CANDIDATE_CGID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SbcMatchResult.SbcMatchResult
+fromRoleLabel:  Sbc Match Result
+fromRolePluralLabel:  Sbc Match Result
+fromRoleName: SbcMatchResult
+toEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+toRoleLabel: Candidate Customer
+toRoleName: CandidateCgid
+toRolePhysicalName: CANDIDATE_CGID
+foreignAttribute:
+  _name: CandidateCgid
+  _type: ForeignAttribute
+  physicalName: CANDIDATE_CGID
+  label: Candidate Cgid
+  searchable: true
+  entity: DataProject.entities.SbcMatchResult.SbcMatchResult

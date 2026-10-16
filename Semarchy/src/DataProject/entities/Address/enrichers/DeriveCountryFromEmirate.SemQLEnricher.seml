@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_package: DataProject.entities.Address.enrichers
+_name: DeriveCountryFromEmirate
+entity: DataProject.entities.Address.Address
+label: Derive Country From Emirate
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_CountryCode
+    expression: |-
+      CASE WHEN FID_CountryCode IS NULL AND FID_EmirateCode IS NOT NULL THEN 'AE' ELSE FID_CountryCode END

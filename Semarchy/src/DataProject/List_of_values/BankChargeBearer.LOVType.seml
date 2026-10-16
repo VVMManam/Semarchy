@@ -1,0 +1,14 @@
+_name: BankChargeBearer
+_package: DataProject.List_of_values
+_type: LOVType
+label: Bank Charge Bearer
+length: 128
+lovValues:
+  - code: "BEN"
+    label: Payee
+  - code: "OUR"
+    label: Payer
+  - code: "SHA"
+    label: Shared
+  - code: "SLEV"
+    label: Following Service Level

@@ -1,0 +1,10 @@
+_name: ShipToLocationResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSiteAssignment.validations
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Ship-to Location Resolved
+validationScope: POST_CONSO
+validationLabel: "LOCATION_UNMAPPED - source ship-to location value has no matching reference in MDM."
+condition: |-
+  ShipToLocationName IS NULL
+  OR FID_ShipToLocationCode IS NOT NULL

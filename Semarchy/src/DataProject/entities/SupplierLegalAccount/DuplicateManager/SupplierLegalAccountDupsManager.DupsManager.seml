@@ -1,0 +1,14 @@
+_name: SupplierLegalAccountDupsManager
+_type: DupsManager
+_package: DataProject.entities.SupplierLegalAccount.DuplicateManager
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+checkoutCustomSortEnabled: false
+checkoutDefaultDisplayType: TABLE
+checkoutDisplayGridAllowed: false
+checkoutDisplayListAllowed: false
+checkoutDisplayTableAllowed: true
+checkoutUserDefinedSortEnabled: true
+collectionView: DataProject.entities.SupplierLegalAccount.collection_views.SupplierDuplicateSuggestion
+displayCard: DataProject.entities.SupplierLegalAccount.display_cards.SupplierLegalAccount
+enableMasterValuePicking: true
+formTab: DataProject.entities.SupplierLegalAccount.forms.SupplierMergeForm.Main

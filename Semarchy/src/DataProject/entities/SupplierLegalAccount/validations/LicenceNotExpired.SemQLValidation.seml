@@ -1,0 +1,14 @@
+_name: LicenceNotExpired
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Licence Dates Valid
+validationScope: POST_CONSO
+validationLabel: "VAL-10 - Licence dates are missing or inconsistent."
+condition: |-
+  NULLIF(BTRIM(LicenseNumber), '') IS NULL
+  OR (
+    (LicenseExpiryDate IS NOT NULL OR COALESCE(FID_LicenseTypeCode, '') <> 'TRADE_LICENSE')
+    AND (LicenseStartDate IS NULL OR LicenseExpiryDate IS NULL OR LicenseStartDate <= LicenseExpiryDate)
+    AND (LicenseStartDate IS NULL OR LicenseStartDate <= NOW())
+  )

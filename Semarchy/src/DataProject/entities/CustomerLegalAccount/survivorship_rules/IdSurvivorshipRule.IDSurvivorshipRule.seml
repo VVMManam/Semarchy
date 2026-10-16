@@ -1,0 +1,21 @@
+_type: IDSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+_name: IdSurvivorshipRule
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN Status IS NOT NULL AND Status = 'Inactive' THEN 0 ELSE 1 END DESC,
+  AccountCreationDate ASC,
+  (
+    CASE WHEN LicenseNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxRegistrationNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Email IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BusinessPhone IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Mobile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EstablishmentAddress IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NameAr IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+label: Id Survivorship Rule
+publisherRankings: []

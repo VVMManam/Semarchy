@@ -1,0 +1,8 @@
+_name: RequireClusterDecisionLG
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Logistics Decision
+validationScope: NONE
+condition: ANY MergeApprovalLog HAVE (UPPER(ClusterCode) = 'LGSTS' AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE') AND (CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate))
+validationLabel: 'Add your decision first: Next > Your Decision > + , choose Confirm, Reject or Remerge (comment needed for Reject / Remerge), save, then Submit Decision.'

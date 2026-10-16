@@ -1,0 +1,201 @@
+_package: DataProject.entities.SBCAudit
+_type: Entity
+_name: SBCAudit
+label: SBCAudit
+pluralLabel: SBCAudit
+physicalTableName: SBCAUDIT
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: SBCAuditID
+    label: SBCAudit ID
+    physicalName: SBCAUDIT_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestID
+    label: Request ID
+    physicalName: REQUEST_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: Requestor
+    label: Requestor
+    physicalName: REQUESTOR
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestorAppl
+    label: Requestor Application
+    physicalName: REQUESTOR_APPL
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestPurpose
+    label: Request Purpose
+    physicalName: REQUEST_PURPOSE
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: ParamNameEN
+    label: Param Name (English)
+    physicalName: P_NAME_EN
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: ParamLicenseNumber
+    label: Param License Number
+    physicalName: P_LICENSE_NUMBER
+    dataType: Integer
+    precision: 10
+    length: 10
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: ParamIssuingAuthority
+    label: Param Issuing Authority
+    physicalName: P_ISSUING_AUTHORITY
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: ParamIssuingCountry
+    label: Param Issuing Country
+    physicalName: P_ISSUING_COUNTRY
+    dataType: String
+    length: 3
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: ParamEmailID
+    label: Param Email ID
+    physicalName: P_EMAIL_ID
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: ParamMOLNumber
+    label: Param MOL Number
+    physicalName: P_MOL_NUMBER
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: NameEN
+    label: Name (English)
+    physicalName: NAME_EN
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: LicenseNumber
+    label: License Number
+    physicalName: LICENSE_NUMBER
+    dataType: Integer
+    precision: 10
+    length: 10
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: IssuingAuthority
+    label: Issuing Authority
+    physicalName: ISSUING_AUTHORITY
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: EmailID
+    label: Email ID
+    physicalName: EMAIL_ID
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: MOLNumber
+    label: MOL Number
+    physicalName: MOL_NUMBER
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: IssuingCountry
+    label: Issuing Country
+    physicalName: ISSUING_COUNTRY
+    dataType: String
+    length: 3
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: SBCMatchScore
+    label: SBC Match Score
+    physicalName: SBC_MATCH_SCORE
+    dataType: Integer
+    precision: 3
+    length: 3
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: ExactMatch
+    label: Exact Match
+    physicalName: EXACT_MATCH
+    dataType: Boolean
+    length: 1
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: CustomerGoldenId
+    label: Customer Golden Id
+    physicalName: CUSTOMER_GOLDEN_ID
+    dataType: Integer
+    precision: 10
+    length: 10
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.SBCAudit.SBCAudit.SBCAuditID
+entityType: BASIC

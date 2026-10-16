@@ -1,0 +1,12 @@
+_name: SlaSubProcess
+_type: LOVType
+_package: DataProject.List_of_values
+label: SLA Sub Process
+length: 40
+lovValues:
+  - code: "MERGE"
+    label: Merge
+  - code: "MERGE_APPROVAL"
+    label: Merge Approval
+  - code: "GROUP_STEWARD_REVIEW"
+    label: Group Steward Review (after approval workflow)

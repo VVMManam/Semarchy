@@ -1,0 +1,21 @@
+_name: GroupStewardReview
+_type: ActionSet
+_package: DataProject.entities.CustomerLegalAccount.ActionSets
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Group Steward Review
+defaultActionSet: false
+actions:
+  - _name: Demerge
+    _type: MergeOrSplit
+    label: Review Merge
+    useCustomLabel: true
+    iconUrl: images://mdi/call-split.svg
+    requiredRole: MDM_Group_Steward
+    dupsManager: DataProject.entities.CustomerLegalAccount.DuplicateManager.CustomerLegalAccountDupsManager
+  - _name: ExplainRecord
+    _type: ExplainRecordAction
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    displayCard: DataProject.entities.CustomerLegalAccount.display_cards.CustomerLegalAccount
+    formTab: DataProject.entities.CustomerLegalAccount.Forms.CustomerGoldenView.Main

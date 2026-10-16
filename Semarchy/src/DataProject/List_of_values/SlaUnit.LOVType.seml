@@ -1,0 +1,12 @@
+_name: SlaUnit
+_type: LOVType
+_package: DataProject.List_of_values
+label: SLA Unit
+length: 20
+lovValues:
+  - code: "WORKING_DAYS"
+    label: Working Days
+  - code: "WORKING_HOURS"
+    label: Working Hours
+  - code: "CALENDAR_HOURS"
+    label: Calendar Hours

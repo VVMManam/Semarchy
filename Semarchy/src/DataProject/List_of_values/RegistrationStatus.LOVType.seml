@@ -1,0 +1,14 @@
+_name: RegistrationStatus
+_package: DataProject.List_of_values
+_type: LOVType
+label: Registration Status
+length: 128
+lovValues:
+  - code: "Qualified (Migrated)"
+    label: Qualified (Migrated)
+  - code: "Registered"
+    label: Registered
+  - code: "Registered- Temporary"
+    label: Registered- Temporary
+  - code: "Registered-One Time"
+    label: Registered-One Time

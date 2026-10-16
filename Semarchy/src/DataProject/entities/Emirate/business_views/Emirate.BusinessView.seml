@@ -1,0 +1,45 @@
+_name: Emirate
+_package: DataProject.entities.Emirate.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.Emirate.Emirate
+rootLabel: Emirate
+rootPluralLabel: Emirate
+useHierarchyOnOpen: false
+label: Emirate
+rootBusinessViewEntity:
+  _name: Emirate
+  _type: BusinessViewEntity
+  collection: DataProject.entities.Emirate.collection_views.Emirate
+  actionSet: DataProject.entities.Emirate.action_sets.Emirate
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.Emirate.Emirate
+  form: DataProject.entities.Emirate.forms.Emirate
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

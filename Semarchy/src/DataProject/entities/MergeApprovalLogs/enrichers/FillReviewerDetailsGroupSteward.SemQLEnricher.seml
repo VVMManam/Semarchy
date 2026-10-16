@@ -1,0 +1,28 @@
+_type: SemQLEnricher
+_name: FillReviewerDetailsGroupSteward
+label: Fill Reviewer Details (Group Steward Review)
+_package: DataProject.entities.MergeApprovalLogs.enrichers
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+enricherExecutionScope: NONE
+description: 'Group Steward Review decision form. Task Assigned On = when the last cluster decision of this approval round was taken (the moment the Group Steward task was created); if the task was reassigned and another steward takes over the row, it is the time that steward picks it up. Reviewer and Decision Taken On always follow the steward who edits the row.'
+semQlEnricherExpressions:
+  - attributeName: ReviewerUsername
+    expression: CASE WHEN (ClusterCode IS NULL OR UPPER(ClusterCode) = 'GROUP') THEN :V_USERNAME ELSE ReviewerUsername END
+  - attributeName: ReviewerFullName
+    expression: CASE WHEN (ClusterCode IS NULL OR UPPER(ClusterCode) = 'GROUP') AND (ReviewerFullName IS NULL OR (ReviewerUsername IS NOT NULL AND ReviewerUsername <> :V_USERNAME)) THEN BTRIM(COALESCE(:V_USER_FIRSTNAME, '') || ' ' || COALESCE(:V_USER_LASTNAME, '')) ELSE ReviewerFullName END
+  - attributeName: ReviewerRole
+    expression: COALESCE(ReviewerRole, 'MDM_Group_Steward')
+  - attributeName: ClusterCode
+    expression: COALESCE(ClusterCode, 'GROUP')
+  - attributeName: ClusterName
+    expression: COALESCE(ClusterName, 'Group Steward')
+  - attributeName: TaskStartTime
+    expression: CASE WHEN NOT (ClusterCode IS NULL OR UPPER(ClusterCode) = 'GROUP') THEN TaskStartTime WHEN TaskStartTime IS NULL THEN COALESCE(LOOKUP MAX DecisionTimestamp FROM CustomerLegalAccount.MergeApprovalLog WHERE UPPER(ClusterCode) <> 'GROUP' AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE') AND (CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) END, CustomerLegalAccount.ApprovalRequestedOn) WHEN (ReviewerUsername IS NOT NULL AND ReviewerUsername <> :V_USERNAME) THEN DATE_TRUNC('second', NOW()) ELSE TaskStartTime END
+  - attributeName: DecisionTimestamp
+    expression: CASE WHEN (ClusterCode IS NULL OR UPPER(ClusterCode) = 'GROUP') THEN DATE_TRUNC('second', NOW()) ELSE DecisionTimestamp END
+  - attributeName: CustomerGoldenId
+    expression: COALESCE(CustomerGoldenId, CustomerLegalAccount.CustomerGoldenId)
+  - attributeName: CreatedBy
+    expression: COALESCE(CreatedBy, :V_USERNAME)
+  - attributeName: CreatedDate
+    expression: COALESCE(CreatedDate, NOW())

@@ -1,0 +1,12 @@
+_name: SlaTask
+_type: LOVType
+_package: DataProject.List_of_values
+label: SLA Task
+length: 40
+lovValues:
+  - code: "CLUSTER_STEWARD_REVIEW"
+    label: Cluster Steward Review
+  - code: "GROUP_STEWARD_REVIEW"
+    label: Group Steward Review
+  - code: "ALL_TASKS"
+    label: All Tasks (overall SLA)

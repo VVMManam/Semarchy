@@ -1,0 +1,10 @@
+_name: DepartmentStatus
+_package: DataProject.List_of_values
+_type: LOVType
+label: Department Status
+length: 128
+lovValues:
+  - code: "I"
+    label: Inactive
+  - code: "A"
+    label: Active

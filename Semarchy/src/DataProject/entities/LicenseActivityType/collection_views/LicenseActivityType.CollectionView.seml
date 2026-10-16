@@ -1,0 +1,82 @@
+_name: LicenseActivityType
+_type: CollectionView
+_package: DataProject.entities.LicenseActivityType.collection_views
+entity: DataProject.entities.LicenseActivityType.LicenseActivityType
+default: true
+displayCard: DataProject.entities.LicenseActivityType.display_cards.LicenseActivityType
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ActivitySchemeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ActivitySchemeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ActivityCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ActivityCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameAr
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameAr
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DescriptionEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DescriptionEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DescriptionAr
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DescriptionAr
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DedCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DedCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GroupCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: GroupCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true

@@ -1,0 +1,111 @@
+_package: DataProject.entities.CustomerGolden
+_type: Entity
+_name: CustomerGolden
+label: Customer Golden
+pluralLabel: Customer Golden
+physicalTableName: CUSTOMER_GOLDEN
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: CustomerGoldenID
+    label: Customer Golden ID
+    physicalName: CUSTOMER_GOLDEN_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    mandatoryValidationScope: PRE_CONSO
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestID
+    label: Request ID
+    physicalName: REQUEST_IDEN
+    dataType: String
+    length: 38
+    mandatory: true
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: Requestor
+    label: Requestor
+    physicalName: REQUESTOR
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestorAppl
+    label: Requestor Application
+    physicalName: REQUESTOR_APPL
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: RequestPurpose
+    label: Request Purpose
+    physicalName: REQUEST_PURPOSE
+    dataType: String
+    length: 128
+    mandatory: false
+    mandatoryValidationScope: NONE
+    searchable: true
+  - _type: EntityAttribute
+    _name: NameEN
+    label: Name (English)
+    physicalName: NAME_EN
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: LicenseNumber
+    label: License Number
+    physicalName: LICENSE_NUM
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: IssuingAuthority
+    label: Issuing Authority
+    physicalName: ISSUING_AUTHORITY
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: IssuingCountry 
+    label: Issuing Country
+    physicalName: ISSUING_COUNTRY
+    dataType: String
+    length: 3
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: EmailId 
+    label: Email ID
+    physicalName: EMAIL_ID
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: MOLNumber 
+    label: MOL Number
+    physicalName: MOL_NUMBER
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1000000001
+primaryKey: DataProject.entities.CustomerGolden.CustomerGolden.CustomerGoldenID
+entityType: BASIC

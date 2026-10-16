@@ -1,0 +1,8 @@
+_name: CountryResolved
+_type: SemQLValidation
+_package: DataProject.entities.TaxRegistration.validations
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: Country Resolved
+validationScope: POST_CONSO
+validationLabel: "COUNTRY_UNMAPPED - source value has no match in MDM."
+condition: "FID_Cgid IS NULL OR TaxCountryCode IS NULL OR FID_CountryCode IS NOT NULL"

@@ -1,0 +1,23 @@
+_name: TaxRegistration_Cgid
+_type: Reference
+_package: DataProject.references
+label: TaxRegistration Customer Legal Account
+physicalName: TAXREGISTRATION_CGID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.TaxRegistration.TaxRegistration
+fromRoleLabel: Registration
+fromRolePluralLabel: Registration
+fromRoleName: TaxRegistration
+toEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+toRoleLabel: Customer Legal Account
+toRoleName: Cgid
+toRolePhysicalName: CGID
+foreignAttribute:
+  _name: Cgid
+  _type: ForeignAttribute
+  physicalName: CGID
+  label: Cgid
+  searchable: true
+  entity: DataProject.entities.TaxRegistration.TaxRegistration

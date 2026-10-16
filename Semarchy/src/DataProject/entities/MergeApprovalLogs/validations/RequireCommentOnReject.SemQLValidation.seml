@@ -1,0 +1,8 @@
+_name: RequireCommentOnReject
+_package: DataProject.entities.MergeApprovalLogs.validations
+_type: SemQLValidation
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+label: Require Comment On Reject / Remerge
+validationScope: NONE
+condition: UPPER(COALESCE(Decision, '')) NOT IN ('REJECTED', 'REMERGE') OR (Comments IS NOT NULL AND BTRIM(Comments) <> '')
+validationLabel: 'A comment is mandatory for Reject and Remerge: explain what is wrong with the merge.'

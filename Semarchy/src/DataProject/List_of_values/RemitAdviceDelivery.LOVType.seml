@@ -1,0 +1,12 @@
+_name: RemitAdviceDelivery
+_package: DataProject.List_of_values
+_type: LOVType
+label: Remittance Advice Delivery
+length: 128
+lovValues:
+  - code: "EMAIL"
+    label: Email
+  - code: "FAX"
+    label: Fax
+  - code: "PRINTED"
+    label: Printed

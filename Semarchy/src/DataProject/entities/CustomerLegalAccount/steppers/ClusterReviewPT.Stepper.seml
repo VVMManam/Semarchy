@@ -1,0 +1,150 @@
+_name: ClusterReviewPT
+_package: DataProject.entities.CustomerLegalAccount.steppers
+_type: Stepper
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Ports Review
+triggers: []
+rootStep:
+  _name: Customers
+  _type: CollectionStep
+  label: Customer Legal Accounts
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.CustomerLegalAccount.Collections.CustomerGoldenView
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: true
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTriggers: []
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.NameEN
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerGoldenId
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.SemlQLMatcherCustomer
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountStatus
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountType
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerState
+  childSteps:
+    - _name: ApprovalStatus
+      _type: FormStep
+      label: Ports Review - Merge Overview
+      canFinishSubLevel: false
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      formTab: DataProject.entities.CustomerLegalAccount.Forms.ClusterApprovalStatus.OverviewPT
+      referenceFormFieldConfigs: []
+      stepTriggers:
+        - _name: MarkCustomerForSubmit
+          _type: StepEnricherTrigger
+          event: ON_STEP_EXIT_POST_VALID
+          enricher: DataProject.entities.CustomerLegalAccount.enrichers.MarkMergeReviewSubmitted
+      formStepEnrichers: []
+      formStepValidations: []
+      stepTransitionValidations: []
+    - _name: MergeApprovalLogs
+      _type: CollectionStep
+      label: Your Decision (click + to add yours)
+      oneToManyReference: DataProject.references.MergeApprovalLogs_CustomerLegalAccount
+      collectionView: DataProject.entities.MergeApprovalLogs.collection_views.MergeApprovalLogs
+      canFinishSubLevel: true
+      childDeleteType: HARD_DELETE
+      childImportModeOnParentEdit: CREATE_AND_UPDATE
+      enableChildCopyOnParentCreate: false
+      enableChildCopyOnParentEdit: false
+      enableChildCreationOnParentCreate: false
+      enableChildCreationOnParentEdit: true
+      enableChildDeleteOnParentEdit: false
+      enableChildEditOnParentCreate: false
+      enableChildEditOnParentEdit: true
+      enableChildImportOnParentCreate: false
+      enableChildImportOnParentEdit: false
+      enableChildRemoveOnParentCreate: false
+      enableChildRemoveOnParentEdit: false
+      skipToChildCreationOnParentCreate: false
+      skipToChildEditingOnParentEdit: false
+      customSortEnabled: false
+      defaultDisplayType: TABLE
+      displayGridAllowed: false
+      displayListAllowed: false
+      displayTableAllowed: true
+      enabledOnParentCreate: false
+      enabledOnParentEdit: true
+      formFieldsMode: AUTO
+      linear: false
+      useCustomCollectionLabel: false
+      userDefinedSortEnabled: true
+      stepTransitionValidations: []
+      stepTriggers: []
+      childSteps:
+        - _name: MergeApprovalLogDetails
+          _type: FormStep
+          label: Your Merge Decision
+          formTab: DataProject.entities.MergeApprovalLogs.forms.ClusterApprovalDecision.Main
+          canFinishSubLevel: true
+          enabledOnParentCreate: true
+          enabledOnParentEdit: true
+          enableMasterValuePicking: false
+          formFieldsMode: AUTO
+          formStepEnrichers:
+            - enricher: DataProject.entities.MergeApprovalLogs.enrichers.FillReviewerDetailsPT
+              executedOnDataChange: true
+              executedOnFormOpen: true
+          referenceFormFieldConfigs: []
+          formStepValidations:
+            - validationType: CHECK
+              validator: DataProject.entities.MergeApprovalLogs.validations.RequireDecision
+              executedOnDataChange: true
+              executedOnFormOpen: false
+            - validationType: CHECK
+              validator: DataProject.entities.MergeApprovalLogs.validations.RequireCommentOnReject
+              executedOnDataChange: true
+              executedOnFormOpen: false
+          stepTransitionValidations:
+            - onStepExit: BLOCK
+              validationType: CHECK
+              validator: DataProject.entities.MergeApprovalLogs.validations.RequireDecision
+            - onStepExit: BLOCK
+              validationType: CHECK
+              validator: DataProject.entities.MergeApprovalLogs.validations.RequireCommentOnReject
+          stepTriggers: []
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.NameEN
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerGoldenId
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountStatus
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.AccountType
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount.CustomerState
+  - onStepperFinish: SKIP
+    validationType: DETECT_DUPS
+  - onStepperFinish: BLOCK
+    validationType: CHECK
+    validator: DataProject.entities.CustomerLegalAccount.Validations.RequireClusterDecisionPT

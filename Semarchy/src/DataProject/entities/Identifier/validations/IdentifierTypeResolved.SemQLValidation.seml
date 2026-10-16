@@ -1,0 +1,8 @@
+_name: IdentifierTypeResolved
+_type: SemQLValidation
+_package: DataProject.entities.Identifier.validations
+entity: DataProject.entities.Identifier.Identifier
+label: Identifier Type Resolved
+validationScope: POST_CONSO
+validationLabel: "IDENTIFIER_TYPE_UNMAPPED - source value has no match in MDM."
+condition: "IdentifierTypeSource IS NULL OR FID_IdentifierType IS NOT NULL"

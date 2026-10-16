@@ -1,0 +1,9 @@
+_name: ContactEmailCheck
+_type: SemQLValidation
+_package: DataProject.entities.Contact.validations
+entity: DataProject.entities.Contact.Contact
+label: Contact Email Check
+validationScope: POST_CONSO
+validationLabel: "Contact email address is invalid."
+condition: |-
+  (FID_Cgid IS NULL AND FID_CustomerOrgAssignment IS NULL) OR Email IS NULL OR REGEXP_LIKE(Email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')

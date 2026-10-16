@@ -1,0 +1,54 @@
+_name: Emirate
+_type: CollectionView
+_package: DataProject.entities.Emirate.collection_views
+entity: DataProject.entities.Emirate.Emirate
+default: true
+displayCard: DataProject.entities.Emirate.display_cards.Emirate
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: EmirateCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EmirateCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EmirateNameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EmirateNameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CRMCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CRMCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FusionCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FusionCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true

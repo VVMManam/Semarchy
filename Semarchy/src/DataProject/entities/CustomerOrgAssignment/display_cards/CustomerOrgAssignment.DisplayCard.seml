@@ -1,0 +1,17 @@
+_name: CustomerOrgAssignment
+_package: DataProject.entities.CustomerOrgAssignment.display_cards
+_type: DisplayCard
+entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+default: true
+primaryTextExpression: CASE WHEN BusinessUnitCode.NameEn IS NOT NULL THEN BusinessUnitCode.NameEn ELSE 'Department' END
+supportingTextExpression: Cluster
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

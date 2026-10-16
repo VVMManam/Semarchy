@@ -1,0 +1,57 @@
+_name: SlaPolicy
+_package: DataProject.entities.SlaPolicy.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.SlaPolicy.SlaPolicy
+rootLabel: SLA Policy
+rootPluralLabel: SLA Policies
+useHierarchyOnOpen: false
+label: Workflow SLA Policies
+rootBusinessViewEntity:
+  _name: SlaPolicy
+  _type: BusinessViewEntity
+  collection: DataProject.entities.SlaPolicy.collection_views.SlaPolicy
+  actionSet: DataProject.entities.SlaPolicy.action_sets.SlaPolicy
+  displayCard: DataProject.entities.SlaPolicy.display_cards.SlaPolicy
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.SlaPolicy.SlaPolicy
+  form: DataProject.entities.SlaPolicy.forms.SlaPolicy
+  gridAllowed: false
+  listAllowed: false
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters:
+    - _name: Active
+      _type: BusinessEntityBuiltInFilter
+      label: Active now
+      semQlCondition: "IsActive = 1 AND EffectiveFrom <= NOW() AND (EffectiveTo IS NULL OR EffectiveTo >= DATE_TRUNC('day', NOW()))"
+      visible: true
+    - _name: CustomerMerge
+      _type: BusinessEntityBuiltInFilter
+      label: Customer - Merge
+      semQlCondition: "DomainCode = 'CUSTOMER' AND ProcessCode = 'MERGE'"
+      visible: true
+    - _name: Inactive
+      _type: BusinessEntityBuiltInFilter
+      label: Inactive or expired
+      semQlCondition: "IsActive = 0 OR EffectiveTo < DATE_TRUNC('day', NOW())"
+      visible: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

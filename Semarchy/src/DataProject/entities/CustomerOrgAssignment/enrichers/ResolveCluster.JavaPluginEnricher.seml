@@ -1,0 +1,29 @@
+_name: ResolveCluster
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerOrgAssignment.enrichers
+entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+label: Resolve Cluster
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: "select upper(trim(v)) LOOKUP_COLUMN, min(c) OUTPUT_COLUMN1 from (select cluster_code c, unnest(array[cluster_code, crm_code, fusion_code, name_en]) v from gd_cluster) a where v is not null group by 1"
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "UPPER(BTRIM(COALESCE(FID_ClusterCode, Cluster)))"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_ClusterCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

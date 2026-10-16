@@ -1,0 +1,9 @@
+_name: LicenseNumberMandatory
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: VAL-03 Licence Number Mandatory
+validationScope: POST_CONSO
+validationLabel: "VAL-03 - Trade licence / certification number is required."
+condition: |-
+  NULLIF(BTRIM(LicenseNumber), '') IS NOT NULL

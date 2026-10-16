@@ -1,0 +1,21 @@
+_name: CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.display_cards
+_type: DisplayCard
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+default: true
+
+primaryTextExpression: NameEN
+secondaryTextExpression: COALESCE(SEM_TO_CHAR2(CustomerGoldenId), SEM_TO_CHAR2(CustomerLegalAccountID))
+
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageValue: Customer
+primaryImageFallbackSourceType: URL
+avatarImageValue: "CASE WHEN CustomerState = 'C02' THEN 'images://AdPorts-Avatars/state-approved.png' WHEN CustomerState = 'C01' THEN 'images://AdPorts-Avatars/state-review.png' WHEN CustomerState = 'C03' THEN 'images://AdPorts-Avatars/state-denied.png' ELSE 'images://AdPorts-Avatars/state-default.png' END"
+avatarImageValueInterpreter: SEMQL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

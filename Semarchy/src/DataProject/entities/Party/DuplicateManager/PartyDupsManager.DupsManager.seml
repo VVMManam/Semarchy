@@ -1,0 +1,23 @@
+_name: PartyDupsManager
+_type: DupsManager
+_package: DataProject.entities.Party.DuplicateManager
+label: Party Duplicates Manager
+entity: DataProject.entities.Party.Party
+checkoutCustomSortEnabled: false
+checkoutDefaultDisplayType: TABLE
+checkoutDisplayGridAllowed: false
+checkoutDisplayListAllowed: false
+checkoutDisplayTableAllowed: true
+checkoutUserDefinedSortEnabled: true
+checkoutSearchConfigs:
+  - searchType: TEXT
+    enabled: true
+  - searchType: ADVANCED
+    enabled: true
+  - searchType: SEMQL
+    enabled: true
+collectionView: DataProject.entities.Party.collection_views.PartyDuplicate
+displayCard: DataProject.entities.Party.display_cards.Party
+enableMasterValuePicking: true
+modelJob: DataProject.ModelJobs.LoadParty
+formTab: DataProject.entities.Party.forms.PartyDuplicate.Main

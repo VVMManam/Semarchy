@@ -1,0 +1,20 @@
+_type: SemQLEnricher
+_name: ClearClusterSelection
+label: Clear Cluster Selection
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+enricherExecutionScope: NONE
+description: 'DISABLED (scope NONE): cluster ticks are now computed by DeriveApprovalClusters; kept only for reference. Resets the ClusterMergeApproval review-cluster ticks when the record is submitted/certified, so the next workflow starts with nothing ticked. The workflow router reads the ticks from the workflow data before submit, so clearing here does not affect routing.'
+semQlEnricherExpressions:
+  - attributeName: SelReviewMT
+    expression: CASE WHEN 1 = 0 THEN SelReviewMT END
+  - attributeName: SelReviewIZ
+    expression: CASE WHEN 1 = 0 THEN SelReviewIZ END
+  - attributeName: SelReviewLG
+    expression: CASE WHEN 1 = 0 THEN SelReviewLG END
+  - attributeName: SelReviewCO
+    expression: CASE WHEN 1 = 0 THEN SelReviewCO END
+  - attributeName: SelReviewPT
+    expression: CASE WHEN 1 = 0 THEN SelReviewPT END
+  - attributeName: SelReviewDC
+    expression: CASE WHEN 1 = 0 THEN SelReviewDC END

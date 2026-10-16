@@ -1,0 +1,23 @@
+_name: SupplierLegalAccount_ParentPgid
+_type: Reference
+_package: DataProject.references
+label: Supplier Legal Account to Parent Party
+physicalName: SUPP_LEGAL_ACC_PARENT
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+fromRoleLabel: Child Supplier Legal Account
+fromRolePluralLabel: Child Supplier Legal Accounts
+fromRoleName: ChildSupplierLegalAccount
+toEntity: DataProject.entities.Party.Party
+toRoleLabel: Parent Pgid
+toRoleName: ParentPgid
+toRolePhysicalName: PARENT_PGID
+foreignAttribute:
+  _name: ParentPgid
+  _type: ForeignAttribute
+  physicalName: PARENT_PGID
+  label: Parent Pgid
+  searchable: true
+  entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount

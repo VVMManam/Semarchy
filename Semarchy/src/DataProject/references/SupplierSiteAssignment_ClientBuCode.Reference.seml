@@ -1,0 +1,23 @@
+_name: SupplierSiteAssignment_ClientBuCode
+_type: Reference
+_package: DataProject.references
+label: Supplier Site Assignment to Client BU
+physicalName: SUP_SITE_ASGN_CLIENT_BU
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+fromRoleLabel: Supplier Site Assignment (Client BU)
+fromRolePluralLabel: Supplier Site Assignments (Client BU)
+fromRoleName: SupplierSiteAssignmentClient
+toEntity: DataProject.entities.BusinessUnit.BusinessUnit
+toRoleLabel: Client BU Code
+toRoleName: ClientBuCode
+toRolePhysicalName: CLIENT_BU_CODE
+foreignAttribute:
+  _name: ClientBuCode
+  _type: ForeignAttribute
+  physicalName: CLIENT_BU_CODE
+  label: Client BU Code
+  searchable: true
+  entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment

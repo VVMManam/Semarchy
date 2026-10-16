@@ -1,0 +1,23 @@
+_name: SupplierSite_InvoiceCurrencyCode
+_type: Reference
+_package: DataProject.references
+label: Supplier Site Invoice Currency
+physicalName: SUP_SITE_INVOICE_CURRENCY
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSite.SupplierSite
+fromRoleLabel: Supplier Site (invoice currency)
+fromRolePluralLabel: Supplier Sites (invoice currency)
+fromRoleName: SupplierSiteByInvoiceCurrency
+toEntity: DataProject.entities.Currency.Currency
+toRoleLabel: Invoice Currency
+toRoleName: InvoiceCurrency
+toRolePhysicalName: INVOICE_CURRENCY
+foreignAttribute:
+  _name: InvoiceCurrency
+  _type: ForeignAttribute
+  physicalName: INVOICE_CURRENCY
+  label: Invoice Currency
+  searchable: true
+  entity: DataProject.entities.SupplierSite.SupplierSite

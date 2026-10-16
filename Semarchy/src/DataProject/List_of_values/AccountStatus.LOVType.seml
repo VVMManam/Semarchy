@@ -1,0 +1,10 @@
+_name: AccountStatus
+_package: DataProject.List_of_values
+_type: LOVType
+label: Account Status
+length: 128
+lovValues:
+  - code: "I"
+    label: Inactive
+  - code: "A"
+    label: Active

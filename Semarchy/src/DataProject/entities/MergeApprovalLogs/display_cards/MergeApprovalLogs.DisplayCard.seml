@@ -1,0 +1,18 @@
+_name: MergeApprovalLogs
+_package: DataProject.entities.MergeApprovalLogs.display_cards
+_type: DisplayCard
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+default: true
+primaryTextExpression: ClusterCode || ' - ' || Decision
+secondaryTextExpression: ReviewerRole
+supportingTextExpression: Comments
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

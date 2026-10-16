@@ -1,0 +1,21 @@
+_type: RestClientEnricher
+_package: DataProject.entities.OutstandingRefreshRequest.enrichers
+_name: SubmitRefreshLoad
+entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+label: Submit Refresh Load
+description: 'Posts the customer list to Semarchy''s own load API (REST client MdmSelfLoad), which starts LoadCustomerOutstanding with one Customer Outstanding row per UCID.'
+enricherExecutionScope: PRE_CONSO
+pluginId: MdmSelfLoad
+condition: "RefreshPayload IS NOT NULL AND (RequestStatus IS NULL OR RequestStatus = 'NEW')"
+afterEnrichers:
+  - DataProject.entities.OutstandingRefreshRequest.enrichers.BuildRefreshPayload
+pluginInputs:
+  - inputName: records
+    expression: RefreshPayload
+pluginOutputs:
+  - outputName: loadId
+    attributeName: RefreshLoadId
+processingBatchSize: 1
+threadPoolSize: 1
+numberOfRetry: 1
+onErrorBehavior: SKIP_RECORDS

@@ -1,0 +1,50 @@
+_name: ResolvePartyAuthority
+_type: JavaPluginEnricher
+_package: DataProject.entities.Party.enrichers
+entity: DataProject.entities.Party.Party
+label: Resolve Party issuing authority and country
+description: "Resolves the issuing authority sent on the Party to the MDM IssuingAuthority code - MDM code as sent by CreateParty (FID_IssuingAuthorityCode of the Customer / Supplier) or entered by a steward; CRM / Fusion codes are also accepted for SourceIDs starting CUS- / SUP- - and sets the licence country from that authority's country in the reference data. Unknown authority = authority and country left empty (the Party then never auto-merges)."
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'CRM|' || upper(trim(crm_code)) LOOKUP_COLUMN,
+                   issuing_authority_code OUTPUT_COLUMN1, f_country_code OUTPUT_COLUMN2
+            from gd_issuing_authority where crm_code is not null
+            union all
+            select 'FUS|' || upper(trim(fusion_code)) LOOKUP_COLUMN,
+                   issuing_authority_code OUTPUT_COLUMN1, f_country_code OUTPUT_COLUMN2
+            from gd_issuing_authority where fusion_code is not null
+            union all
+            select 'CRM|' || upper(trim(issuing_authority_code)) LOOKUP_COLUMN,
+                   issuing_authority_code OUTPUT_COLUMN1, f_country_code OUTPUT_COLUMN2
+            from gd_issuing_authority
+            union all
+            select 'FUS|' || upper(trim(issuing_authority_code)) LOOKUP_COLUMN,
+                   issuing_authority_code OUTPUT_COLUMN1, f_country_code OUTPUT_COLUMN2
+            from gd_issuing_authority
+            union all
+            select 'MDM|' || upper(trim(issuing_authority_code)) LOOKUP_COLUMN,
+                   issuing_authority_code OUTPUT_COLUMN1, f_country_code OUTPUT_COLUMN2
+            from gd_issuing_authority
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN LicenceAuthorityCode IS NULL OR BTRIM(LicenceAuthorityCode) = '' THEN NULL WHEN SourceID LIKE 'CUS-%' THEN 'CRM|' || UPPER(BTRIM(LicenceAuthorityCode)) WHEN SourceID LIKE 'SUP-%' THEN 'FUS|' || UPPER(BTRIM(LicenceAuthorityCode)) ELSE 'MDM|' || UPPER(BTRIM(LicenceAuthorityCode)) END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: LicenceAuthorityCode
+    outputName: OUT_RESULT1
+  - attributeName: LicenceCountry
+    outputName: OUT_RESULT2
+
+processingBatchSize: 100
+threadPoolSize: 1

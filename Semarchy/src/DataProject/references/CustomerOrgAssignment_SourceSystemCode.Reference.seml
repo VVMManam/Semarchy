@@ -1,0 +1,23 @@
+_name: CustomerOrgAssignment_SourceSystemCode
+_type: Reference
+_package: DataProject.references
+label:  Customer Org Assignment to  Source System
+physicalName: CUST_ORG_ASGN_SOU_502
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+fromRoleLabel:  Customer Org Assignment
+fromRolePluralLabel:  Customer Org Assignment
+fromRoleName: CustomerOrgAssignment
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Source System Code
+toRoleName: SourceSystemCode
+toRolePhysicalName: SOURCE_SYSTEM_CODE
+foreignAttribute:
+  _name: SourceSystemCode
+  _type: ForeignAttribute
+  physicalName: SOURCE_SYSTEM_CODE
+  label: Source System Code
+  searchable: true
+  entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment

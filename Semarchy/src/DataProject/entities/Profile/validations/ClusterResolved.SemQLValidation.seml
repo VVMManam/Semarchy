@@ -1,0 +1,8 @@
+_name: ClusterResolved
+_type: SemQLValidation
+_package: DataProject.entities.Profile.validations
+entity: DataProject.entities.Profile.Profile
+label: Cluster Resolved
+validationScope: POST_CONSO
+validationLabel: "CLUSTER_UNMAPPED - source value has no match in MDM."
+condition: "Cluster IS NULL OR FID_ClusterCode IS NOT NULL"

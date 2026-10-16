@@ -1,0 +1,14 @@
+_name: SupplierSiteAssignmentDqWarnings
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierSiteAssignment.enrichers
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Site Assignment Data Quality Warnings
+description: "VAL-56 bill-to / ship-to location missing (warning, the record is not rejected)."
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: DqWarnings
+    expression: |-
+      NULLIF(BTRIM(
+        CASE WHEN FID_BillToLocationCode IS NULL THEN 'VAL-56 Bill-to location missing; ' ELSE '' END ||
+        CASE WHEN FID_ShipToLocationCode IS NULL THEN 'VAL-56 Ship-to location missing; ' ELSE '' END
+      , '; '), '')

@@ -1,0 +1,172 @@
+_name: PartyGoldenView
+_package: DataProject.entities.Party.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: DataProject.entities.Party.Party
+rootLabel: "Party Golden Record"
+rootPluralLabel: "Party Golden Records"
+useHierarchyOnOpen: false
+label: "Party Golden Records"
+rootBusinessViewEntity:
+  _name: Party
+  _type: BusinessViewEntity
+  collection: DataProject.entities.Party.collection_views.PartyGolden
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.Party.Party
+  form: DataProject.entities.Party.forms.PartyGolden
+  gridAllowed: false
+  listAllowed: false
+  outlineVisible: true
+  overrideDefaultSort: true
+  sortExpression: PartyNameEn ASC
+  tableAllowed: true
+  actionSet: DataProject.entities.Party.action_sets.PartyGolden
+  businessEntityBuiltInFilters:
+    - _name: TopLevelParties
+      _type: BusinessEntityBuiltInFilter
+      label: "Top-level parties"
+      description: "Parties without a parent: the roots of each party hierarchy plus standalone parties. Use with the hierarchy view to see every tree once."
+      semQlCondition: FID_ParentPartyID IS NULL
+      visible: true
+    - _name: SuperParties
+      _type: BusinessEntityBuiltInFilter
+      label: "Super parties"
+      description: "Parties that have member parties."
+      semQlCondition: LOOKUP count Pgid FROM ChildParty END > 0
+      visible: true
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions:
+    - _name: MemberParties
+      _type: BusinessViewTransition
+      transitionPath: ChildParty
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: true
+      label: "Member party"
+      pluralLabel: "Member parties"
+      iconUrl: images://mdi/family-tree.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "1"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _type: BusinessViewEntityReference
+        ref: DataProject.entities.Party.business_views.PartyGoldenView.Party
+    - _name: Customers
+      _type: BusinessViewTransition
+      transitionPath: CustomerLegalAccount
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/account-group.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: LinkedCustomer
+        _type: BusinessViewEntity
+        collection: DataProject.entities.CustomerLegalAccount.Collections.PartyLinkedCustomers
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+        form: DataProject.entities.CustomerLegalAccount.Forms.CustomerGoldenOverview
+        actionSet: DataProject.entities.CustomerLegalAccount.ActionSets.CustomerPartyLink
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+        - _name: TextConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: TEXT
+          enabled: true
+        - _name: FormConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: BY_FORM
+          enabled: true
+        - _name: AdvancedConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: ADVANCED
+          enabled: true
+        - _name: SemqlConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: SEMQL
+          enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: Suppliers
+      _type: BusinessViewTransition
+      transitionPath: SupplierLegalAccount
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/truck-delivery.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: LinkedSupplier
+        _type: BusinessViewEntity
+        collection: DataProject.entities.SupplierLegalAccount.collection_views.PartyLinkedSuppliers
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+        form: DataProject.entities.SupplierLegalAccount.forms.SupplierGoldenOverview
+        actionSet: DataProject.entities.SupplierLegalAccount.ActionSets.SupplierPartyLink
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+        - _name: TextConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: TEXT
+          enabled: true
+        - _name: FormConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: BY_FORM
+          enabled: true
+        - _name: AdvancedConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: ADVANCED
+          enabled: true
+        - _name: SemqlConfig
+          _type: BusinessEntitySearchTypeConfig
+          searchType: SEMQL
+          enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []

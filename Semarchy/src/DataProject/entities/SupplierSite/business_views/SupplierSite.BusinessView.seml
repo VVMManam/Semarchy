@@ -1,0 +1,44 @@
+_name: SupplierSite
+_package: DataProject.entities.SupplierSite.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.SupplierSite.SupplierSite
+rootLabel: Supplier Site
+rootPluralLabel: Supplier Sites
+useHierarchyOnOpen: false
+label: Supplier Site
+rootBusinessViewEntity:
+  _name: SupplierSite
+  _type: BusinessViewEntity
+  collection: DataProject.entities.SupplierSite.collection_views.SupplierSiteGolden
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.SupplierSite.SupplierSite
+  form: DataProject.entities.SupplierSite.forms.SupplierSite
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: []

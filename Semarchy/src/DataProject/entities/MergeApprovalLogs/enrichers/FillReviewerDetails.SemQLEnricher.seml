@@ -1,0 +1,59 @@
+_type: SemQLEnricher
+_name: FillReviewerDetails
+label: Fill Reviewer Details (cluster steward)
+_package: DataProject.entities.MergeApprovalLogs.enrichers
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+enricherExecutionScope: NONE
+description: 'Used only on the Merge Approval Decision form: fills reviewer, role, cluster, time and customer for the connected user so the steward only enters the Decision. Existing values are kept (an opened row of another reviewer is not overwritten).'
+semQlEnricherExpressions:
+  - attributeName: ReviewerUsername
+    expression: |-
+      COALESCE(ReviewerUsername, :V_USERNAME)
+  - attributeName: ReviewerFullName
+    expression: |-
+      COALESCE(ReviewerFullName, BTRIM(COALESCE(:V_USER_FIRSTNAME, '') || ' ' || COALESCE(:V_USER_LASTNAME, '')))
+  - attributeName: ReviewerRole
+    expression: |-
+      COALESCE(ReviewerRole, CASE
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Maritime_Steward') > 0 THEN 'MDM_Maritime_Steward'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_IndustrialZone_Steward') > 0 THEN 'MDM_IndustrialZone_Steward'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Logistics_Steward') > 0 THEN 'MDM_Logistics_Steward'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Corp_Steward') > 0 THEN 'MDM_Corp_Steward'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Ports_Steward') > 0 THEN 'MDM_Ports_Steward'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Digital_Steward') > 0 THEN 'MDM_Digital_Steward'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Group_Steward') > 0 THEN 'MDM_Group_Steward'
+            END)
+  - attributeName: ClusterCode
+    expression: |-
+      COALESCE(ClusterCode, CASE
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Maritime_Steward') > 0 THEN 'MT'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_IndustrialZone_Steward') > 0 THEN 'IZ'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Logistics_Steward') > 0 THEN 'LGSTS'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Corp_Steward') > 0 THEN 'CORP'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Ports_Steward') > 0 THEN 'PORTS'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Digital_Steward') > 0 THEN 'DC'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Group_Steward') > 0 THEN 'GROUP'
+            END)
+  - attributeName: ClusterName
+    expression: |-
+      COALESCE(ClusterName, CASE
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Maritime_Steward') > 0 THEN 'Maritime'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_IndustrialZone_Steward') > 0 THEN 'Industrial Zone'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Logistics_Steward') > 0 THEN 'Logistics'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Corp_Steward') > 0 THEN 'Corp'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Ports_Steward') > 0 THEN 'Ports'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Digital_Steward') > 0 THEN 'Digital Cluster'
+                WHEN SEM_INSTR(:V_USER_ROLES, 'MDM_Group_Steward') > 0 THEN 'Group Steward'
+            END)
+  - attributeName: DecisionTimestamp
+    expression: |-
+      COALESCE(DecisionTimestamp, NOW())
+  - attributeName: CustomerGoldenId
+    expression: |-
+      COALESCE(CustomerGoldenId, CustomerLegalAccount.CustomerGoldenId)
+  - attributeName: CreatedBy
+    expression: |-
+      COALESCE(CreatedBy, :V_USERNAME)
+  - attributeName: CreatedDate
+    expression: |-
+      COALESCE(CreatedDate, NOW())

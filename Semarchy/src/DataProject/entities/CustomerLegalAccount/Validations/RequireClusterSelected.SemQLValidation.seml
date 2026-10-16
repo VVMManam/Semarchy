@@ -1,0 +1,8 @@
+_name: RequireClusterSelected
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Cluster Selected
+validationScope: NONE
+condition: SelReviewMT = 'true' OR SelReviewIZ = 'true' OR SelReviewLG = 'true' OR SelReviewCO = 'true' OR SelReviewPT = 'true' OR SelReviewDC = 'true'
+validationLabel: "Select at least one cluster that must review this merge."

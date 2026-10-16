@@ -1,0 +1,23 @@
+_name: Party_RegistrationEmirateCode
+_type: Reference
+_package: DataProject.references
+label:  Party to  Emirate
+physicalName: PARTY_REG_EMR_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Party.Party
+fromRoleLabel:  Party
+fromRolePluralLabel:  Party
+fromRoleName: Party
+toEntity: DataProject.entities.Emirate.Emirate
+toRoleLabel: Registration Emirate Code
+toRoleName: RegistrationEmirateCodeRef
+toRolePhysicalName: REGISTRATION_EMIRATE_CODE
+foreignAttribute:
+  _name: RegistrationEmirateCodeRef
+  _type: ForeignAttribute
+  physicalName: REGISTRATION_EMIRATE_CODE
+  label: Registration Emirate Code
+  searchable: true
+  entity: DataProject.entities.Party.Party

@@ -1,0 +1,7 @@
+_name: ADPGModel
+_package: DataProject
+_type: DataProductProfile
+label: ADPG Party Hub
+description: "Golden records for every legal entity and individual AD Ports Group does business with — customers, suppliers and trading-party roles — with shared identifiers, addresses, contacts and group reference data."
+modelConfiguration:
+  type: POSTGRESQL

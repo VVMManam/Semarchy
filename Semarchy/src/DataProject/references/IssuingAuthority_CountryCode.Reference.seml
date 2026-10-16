@@ -1,0 +1,23 @@
+_name: IssuingAuthority_CountryCode
+_type: Reference
+_package: DataProject.references
+label:  Issuing Authority to  Country
+physicalName: ISSUING_AUTH_CTRY_F0B
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.IssuingAuthority.IssuingAuthority
+fromRoleLabel:  Issuing Authority
+fromRolePluralLabel:  Issuing Authority
+fromRoleName: IssuingAuthority
+toEntity: DataProject.entities.Country.CountryReference
+toRoleLabel: Country Code
+toRoleName: CountryCode
+toRolePhysicalName: COUNTRY_CODE
+foreignAttribute:
+  _name: CountryCode
+  _type: ForeignAttribute
+  physicalName: COUNTRY_CODE
+  label: Country Code
+  searchable: true
+  entity: DataProject.entities.IssuingAuthority.IssuingAuthority

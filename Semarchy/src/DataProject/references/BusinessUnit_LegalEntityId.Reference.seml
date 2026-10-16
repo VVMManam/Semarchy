@@ -1,0 +1,23 @@
+_name: BusinessUnit_LegalEntityId
+_type: Reference
+_package: DataProject.references
+label:  Business Unit to  Legal Entity
+physicalName: BU_LEGAL_ENTITY_ID
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.BusinessUnit.BusinessUnit
+fromRoleLabel:  Business Unit
+fromRolePluralLabel:  Business Unit
+fromRoleName: BusinessUnit
+toEntity: DataProject.entities.LegalEntity.LegalEntity
+toRoleLabel: Legal Entity Id
+toRoleName: LegalEntityId
+toRolePhysicalName: LEGAL_ENTITY_ID
+foreignAttribute:
+  _name: LegalEntityId
+  _type: ForeignAttribute
+  physicalName: LEGAL_ENTITY_ID
+  label: Legal Entity Id
+  searchable: true
+  entity: DataProject.entities.BusinessUnit.BusinessUnit

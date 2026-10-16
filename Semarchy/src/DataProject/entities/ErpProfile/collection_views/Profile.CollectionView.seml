@@ -1,0 +1,47 @@
+_name: Profile
+_type: CollectionView
+_package: DataProject.entities.ErpProfile.collection_views
+entity: DataProject.entities.ErpProfile.ErpProfile
+default: true
+displayCard: DataProject.entities.ErpProfile.display_cards.ErpProfile
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: ErpProfileCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ErpProfileCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Description
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Description
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true

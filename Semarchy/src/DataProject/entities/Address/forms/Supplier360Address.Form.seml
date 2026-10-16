@@ -1,0 +1,113 @@
+_package: DataProject.entities.Address.forms
+_type: Form
+_name: Supplier360Address
+entity: DataProject.entities.Address.Address
+default: false
+formTabs:
+- _name: AddressOverview
+  _type: FormTab
+  labelWidth: "170px"
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  label: Address Overview
+  iconUrl: images://mdi/view-dashboard.svg
+  displayFormTabAs: ICON_LABEL
+  content:
+  - _type: FormSection
+    _name: AdrHeaderSection
+    label: Address at a glance
+    layoutDirection: ROW
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+    - _type: FormContainer
+      _name: AdrHeaderC
+      layoutDirection: COLUMN
+      content:
+      - _name: AdrHeader
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">'' || ''<div style="flex:0 0 52px;width:52px;height:52px;border-radius:8px;background:#0B2A4A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">ADR</div>'' || ''<div style="flex:1;min-width:280px"><div style="font-size:18px;font-weight:500;line-height:1.2">'' || COALESCE(REPLACE(REPLACE(REPLACE(PartySiteName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), REPLACE(REPLACE(REPLACE(AddressLine1, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div><div style="font-size:13px;color:#66727F;margin-top:2px">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('', '', City, COALESCE(FDN_EmirateCode, StateProvince), COALESCE(Country, FDN_CountryCode)), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || '' · '' || ''Site: '' || COALESCE(REPLACE(REPLACE(REPLACE(SupplierSite.SiteCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || '' · Supplier: '' || COALESCE(REPLACE(REPLACE(REPLACE(SupplierSite.FDN_Sgid, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div><div style="margin-top:10px">'' || ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;border:1px solid #CBD5E0;font-family:Consolas,Menlo,monospace;font-weight:400">'' || ''Address ID '' || TO_CHAR(AddressId, ''FM999999999999990'') || ''</span>'' || CASE WHEN RecordStatusCode IS NULL THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#fff;color:#66727F;border:1px dashed #CBD5E0;font-weight:400">Not set</span>'' WHEN UPPER(RecordStatusCode) IN (''A'', ''ACTIVE'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E2F3EA;color:#1F7A4D;">Active</span>'' WHEN UPPER(RecordStatusCode) IN (''I'', ''INACTIVE'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">Inactive</span>'' WHEN UPPER(RecordStatusCode) IN (''VALID'', ''APPROVED'', ''CURRENT'', ''ENABLED'', ''REGISTERED'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E2F3EA;color:#1F7A4D;">'' || RecordStatusCode || ''</span>'' WHEN UPPER(RecordStatusCode) IN (''EXPIRED'', ''DENIED'', ''REJECTED'', ''SUSPENDED'', ''BLOCKED'', ''DISABLED'', ''CLOSED'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">'' || RecordStatusCode || ''</span>'' WHEN UPPER(RecordStatusCode) LIKE ''%PEND%'' OR UPPER(RecordStatusCode) LIKE ''%REVIEW%'' OR UPPER(RecordStatusCode) LIKE ''%PROCESS%'' OR UPPER(RecordStatusCode) LIKE ''%DRAFT%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FDF3DC;color:#8A5A00;">'' || RecordStatusCode || ''</span>'' ELSE ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;">'' || RecordStatusCode || ''</span>'' END || CASE WHEN AddressUsageCode IS NULL THEN '''' ELSE ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;">'' || REPLACE(REPLACE(REPLACE(AddressUsageCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;'') || ''</span>'' END || CASE WHEN IsPrimary = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#0F7C8C;color:#FFFFFF;">Primary</span>'' ELSE '''' END || CASE WHEN OrderingPurpose = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;">Ordering</span>'' ELSE '''' END || CASE WHEN RemittoPurpose = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;">Remit-to</span>'' ELSE '''' END || CASE WHEN RFQBiddingPurpose = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;">RFQ / bidding</span>'' ELSE '''' END || ''</div></div>'' || ''</div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Header
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '115'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL
+  - _type: FormSection
+    _name: AdrProfileSection
+    label: Address profile
+    layoutDirection: ROW
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+    - _type: FormContainer
+      _name: AdrProfileC1
+      layoutDirection: COLUMN
+      content:
+      - _name: AdrLocation
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="font-size:13.5px;font-weight:500;color:#0B2A4A;border-bottom:1px solid #E1E7EE;padding-bottom:5px;margin:0 0 9px 0">Location</div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Address</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(NULLIF(CONCAT_WS(''<br>'', REPLACE(REPLACE(REPLACE(AddressLine1, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), REPLACE(REPLACE(REPLACE(AddressLine2, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), REPLACE(REPLACE(REPLACE(AddressLine3, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), REPLACE(REPLACE(REPLACE(AddressLine4, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;'')), ''''), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Area / sector</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('' / '', Area, Sector), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">City</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(City, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Emirate / state</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(COALESCE(FDN_EmirateCode, StateProvince, Province), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Country</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(COALESCE(Country, FDN_CountryCode), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Postal code / PO Box</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(PostalCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || '' / '' || COALESCE(REPLACE(REPLACE(REPLACE(PoBox, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Map</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || CASE WHEN (CASE WHEN Latitude IS NOT NULL AND Longitude IS NOT NULL THEN ''https://www.google.com/maps/search/?api=1&query='' || SEM_NUMBER_TO_CHAR(Latitude) || '','' || SEM_NUMBER_TO_CHAR(Longitude) WHEN AddressLine1 IS NOT NULL THEN ''https://www.google.com/maps/search/?api=1&query='' || REGEXP_REPLACE(AddressLine1 || CASE WHEN Area IS NULL THEN '''' ELSE '' '' || Area END || CASE WHEN City IS NULL THEN '''' ELSE '' '' || City END || CASE WHEN StateProvince IS NULL THEN '''' ELSE '' '' || StateProvince END, ''[&#?+, ]+'', ''+'') ELSE NULL END) IS NULL THEN ''—'' ELSE ''<a href="'' || (CASE WHEN Latitude IS NOT NULL AND Longitude IS NOT NULL THEN ''https://www.google.com/maps/search/?api=1&query='' || SEM_NUMBER_TO_CHAR(Latitude) || '','' || SEM_NUMBER_TO_CHAR(Longitude) WHEN AddressLine1 IS NOT NULL THEN ''https://www.google.com/maps/search/?api=1&query='' || REGEXP_REPLACE(AddressLine1 || CASE WHEN Area IS NULL THEN '''' ELSE '' '' || Area END || CASE WHEN City IS NULL THEN '''' ELSE '' '' || City END || CASE WHEN StateProvince IS NULL THEN '''' ELSE '' '' || StateProvince END, ''[&#?+, ]+'', ''+'') ELSE NULL END) || ''" target="_blank">Open in Google Maps</a>'' END || ''</div></div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Location
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '255'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL
+    - _type: FormContainer
+      _name: AdrProfileC2
+      layoutDirection: COLUMN
+      content:
+      - _name: AdrContact
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="font-size:13.5px;font-weight:500;color:#0B2A4A;border-bottom:1px solid #E1E7EE;padding-bottom:5px;margin:0 0 9px 0">Communication & status</div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Addressee</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(Addressee, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Email</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || CASE WHEN Email IS NULL THEN ''—'' ELSE ''<a href="mailto:'' || Email || ''">'' || REPLACE(REPLACE(REPLACE(Email, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;'') || ''</a>'' END || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Phone</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('' '', PhoneCountryCode, PhoneAreaCode, Phone, CASE WHEN PhoneExtension IS NULL THEN NULL ELSE ''ext '' || PhoneExtension END), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Fax</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(CONCAT_WS('' '', FaxCountryCode, FaxAreaCode, Fax), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Inactive date</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(TO_CHAR(InactiveDate, ''DD Mon YYYY''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 198px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Source system</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_SourceSystemCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Communication
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '255'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL

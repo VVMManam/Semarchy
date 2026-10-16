@@ -1,0 +1,9 @@
+_name: ContactNameCheck
+_type: SemQLValidation
+_package: DataProject.entities.Contact.validations
+entity: DataProject.entities.Contact.Contact
+label: Contact Name Check
+validationScope: POST_CONSO
+validationLabel: "Contact first and last name are required, longer than one character, without digits."
+condition: |-
+  (FID_Cgid IS NULL AND FID_CustomerOrgAssignment IS NULL) OR (FirstName IS NOT NULL AND LENGTH(BTRIM(FirstName)) > 1 AND NOT REGEXP_LIKE(FirstName, '[0-9]') AND LastName IS NOT NULL AND LENGTH(BTRIM(LastName)) > 1 AND NOT REGEXP_LIKE(LastName, '[0-9]'))

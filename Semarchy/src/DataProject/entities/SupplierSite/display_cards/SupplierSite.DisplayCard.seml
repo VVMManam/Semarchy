@@ -1,0 +1,16 @@
+_name: SupplierSite
+_package: DataProject.entities.SupplierSite.display_cards
+_type: DisplayCard
+entity: DataProject.entities.SupplierSite.SupplierSite
+default: true
+primaryTextExpression: SiteCode
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

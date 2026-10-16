@@ -1,0 +1,23 @@
+_name: ContactPurpose_ContactRoleCode
+_type: Reference
+_package: DataProject.references
+label:  Contact Purpose to  Contact Role
+physicalName: CONTACT_PURPOSE_C_492
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.ContactPurpose.ContactPurpose
+fromRoleLabel:  Contact Purpose
+fromRolePluralLabel:  Contact Purpose
+fromRoleName: ContactPurpose
+toEntity: DataProject.entities.ContactRole.ContactRole
+toRoleLabel: Contact Role Code
+toRoleName: ContactRoleCode
+toRolePhysicalName: CONTACT_ROLE_CODE
+foreignAttribute:
+  _name: ContactRoleCode
+  _type: ForeignAttribute
+  physicalName: CONTACT_ROLE_CODE
+  label: Contact Role Code
+  searchable: true
+  entity: DataProject.entities.ContactPurpose.ContactPurpose

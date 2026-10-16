@@ -1,0 +1,10 @@
+_name: CustomerStatus
+_type: LOVType
+_package: DataProject.List_of_values
+label: Customer Status
+length: 128
+lovValues:
+  - code: "Inactive"
+    label: Inactive
+  - code: "Active"
+    label: Active

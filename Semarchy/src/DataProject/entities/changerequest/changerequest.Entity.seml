@@ -1,0 +1,214 @@
+_package: DataProject.entities.changerequest
+_type: Entity
+_name: changerequest
+label: ChangeRequest
+pluralLabel: ChangeRequest
+physicalTableName: CHANGEREQUEST
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: ChangeRequestID
+    label: Change Request ID
+    physicalName: CHANGE_REQUEST_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EntityType
+    label: Entity Type
+    physicalName: ENTITY_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: GoldenId
+    label: Golden Id
+    physicalName: GOLDEN_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OperationType
+    label: Operation Type
+    physicalName: OPERATION_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: AttributeName
+    label: Attribute Name
+    physicalName: ATTRIBUTE_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OldValue
+    label: Old Value
+    physicalName: OLD_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NewValue
+    label: New Value
+    physicalName: NEW_VALUE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ChangeReason
+    label: Change Reason
+    physicalName: CHANGE_REASON
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RequestBy
+    label: Request By
+    physicalName: REQUEST_BY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RequestDate
+    label: Request Date
+    physicalName: REQUEST_DATE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RequestSourceSystem
+    label: Request Source System
+    physicalName: REQUEST_SOURCE_SYSTEM
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StatusCode
+    label: Status Code
+    physicalName: STATUS_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ApprovedBy
+    label: Approved By
+    physicalName: APPROVED_BY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ApprovedOn
+    label: Approved On
+    physicalName: APPROVED_ON
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RejectionReason
+    label: Rejection Reason
+    physicalName: REJECTION_REASON
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    mandatoryValidationScope: NONE
+    length: 128
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.changerequest.changerequest.ChangeRequestID
+entityType: BASIC

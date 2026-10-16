@@ -1,0 +1,36 @@
+_name: ResolveLicenseType
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Resolve License Type (CRM value)
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'CRM|' || upper(trim(x)) LOOKUP_COLUMN,
+                   license_type_code OUTPUT_COLUMN1
+            from gd_license_type, unnest(string_to_array(crm_code, ',')) x
+            where crm_code is not null
+            union all
+            select 'MDM|' || upper(trim(license_type_code)) LOOKUP_COLUMN,
+                   license_type_code OUTPUT_COLUMN1
+            from gd_license_type
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_LicenseTypeCode IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_LicenseTypeCode)) WHEN LicenseType IS NOT NULL THEN 'CRM|' || UPPER(BTRIM(LicenseType)) ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_LicenseTypeCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

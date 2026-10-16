@@ -1,0 +1,17 @@
+_name: PartyRelationship
+_package: DataProject.entities.PartyRelationship.display_cards
+_type: DisplayCard
+entity: DataProject.entities.PartyRelationship.PartyRelationship
+default: true
+primaryTextExpression: SourceCode
+supportingTextExpression: StatusCode
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

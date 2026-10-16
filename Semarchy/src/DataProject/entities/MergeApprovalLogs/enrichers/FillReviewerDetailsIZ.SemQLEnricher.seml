@@ -1,0 +1,28 @@
+_type: SemQLEnricher
+_name: FillReviewerDetailsIZ
+label: Fill Reviewer Details (Industrial Zone Review)
+_package: DataProject.entities.MergeApprovalLogs.enrichers
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+enricherExecutionScope: NONE
+description: 'IZ cluster review decision form: cluster, role and task come from the task (not from the user roles). Task Assigned On = when the approval was requested; if the task was reassigned and another steward takes over the row, it is the time that steward picks it up. Reviewer and Decision Taken On always follow the steward who edits the row.'
+semQlEnricherExpressions:
+  - attributeName: ReviewerUsername
+    expression: CASE WHEN (ClusterCode IS NULL OR UPPER(ClusterCode) = 'IZ') THEN :V_USERNAME ELSE ReviewerUsername END
+  - attributeName: ReviewerFullName
+    expression: CASE WHEN (ClusterCode IS NULL OR UPPER(ClusterCode) = 'IZ') AND (ReviewerFullName IS NULL OR (ReviewerUsername IS NOT NULL AND ReviewerUsername <> :V_USERNAME)) THEN BTRIM(COALESCE(:V_USER_FIRSTNAME, '') || ' ' || COALESCE(:V_USER_LASTNAME, '')) ELSE ReviewerFullName END
+  - attributeName: ReviewerRole
+    expression: COALESCE(ReviewerRole, 'MDM_IndustrialZone_Steward')
+  - attributeName: ClusterCode
+    expression: COALESCE(ClusterCode, 'IZ')
+  - attributeName: ClusterName
+    expression: COALESCE(ClusterName, 'Industrial Zone')
+  - attributeName: TaskStartTime
+    expression: CASE WHEN NOT (ClusterCode IS NULL OR UPPER(ClusterCode) = 'IZ') THEN TaskStartTime WHEN TaskStartTime IS NULL THEN CustomerLegalAccount.ApprovalRequestedOn WHEN (ReviewerUsername IS NOT NULL AND ReviewerUsername <> :V_USERNAME) THEN DATE_TRUNC('second', NOW()) ELSE TaskStartTime END
+  - attributeName: DecisionTimestamp
+    expression: CASE WHEN (ClusterCode IS NULL OR UPPER(ClusterCode) = 'IZ') THEN DATE_TRUNC('second', NOW()) ELSE DecisionTimestamp END
+  - attributeName: CustomerGoldenId
+    expression: COALESCE(CustomerGoldenId, CustomerLegalAccount.CustomerGoldenId)
+  - attributeName: CreatedBy
+    expression: COALESCE(CreatedBy, :V_USERNAME)
+  - attributeName: CreatedDate
+    expression: COALESCE(CreatedDate, NOW())

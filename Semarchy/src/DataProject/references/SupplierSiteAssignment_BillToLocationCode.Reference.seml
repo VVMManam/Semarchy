@@ -1,0 +1,23 @@
+_name: SupplierSiteAssignment_BillToLocationCode
+_type: Reference
+_package: DataProject.references
+label: Supplier Site Assignment to Bill-To Location
+physicalName: SUP_SITE_ASGN_BILL_TO
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+fromRoleLabel: Supplier Site Assignment (Bill-To Location)
+fromRolePluralLabel: Supplier Site Assignments (Bill-To Location)
+fromRoleName: SupplierSiteAssignmentBillTo
+toEntity: DataProject.entities.Location.Location
+toRoleLabel: Bill-To Location Code
+toRoleName: BillToLocationCode
+toRolePhysicalName: BILL_TO_LOCATION_CODE
+foreignAttribute:
+  _name: BillToLocationCode
+  _type: ForeignAttribute
+  physicalName: BILL_TO_LOCATION_CODE
+  label: Bill-To Location Code
+  searchable: true
+  entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment

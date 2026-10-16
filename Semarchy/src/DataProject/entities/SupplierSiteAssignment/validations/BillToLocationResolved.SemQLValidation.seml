@@ -1,0 +1,10 @@
+_name: BillToLocationResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierSiteAssignment.validations
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Bill-to Location Resolved
+validationScope: POST_CONSO
+validationLabel: "LOCATION_UNMAPPED - source bill-to location value has no matching reference in MDM."
+condition: |-
+  BillToLocationName IS NULL
+  OR FID_BillToLocationCode IS NOT NULL

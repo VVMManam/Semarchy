@@ -1,0 +1,16 @@
+_name: LoadMatchExclAcctType
+_package: DataProject.ModelJobs
+_type: CertificationJob
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: MatchExclusionAccountType
+    _type: ModelJobTask
+    entity: DataProject.entities.MatchExclusionAccountType.MatchExclusionAccountType
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

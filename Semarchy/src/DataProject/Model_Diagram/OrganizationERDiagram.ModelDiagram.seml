@@ -1,0 +1,77 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: OrganizationERDiagram
+label: Organization ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: BusinessUnit
+    _type: EntityShape
+    entity: DataProject.entities.BusinessUnit.BusinessUnit
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 700
+      y: 60
+  - _name: LegalEntity
+    _type: EntityShape
+    entity: DataProject.entities.LegalEntity.LegalEntity
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1080
+      y: 60
+  - _name: Cluster
+    _type: EntityShape
+    entity: DataProject.entities.Cluster.Cluster
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 250
+  - _name: Country
+    _type: EntityShape
+    entity: DataProject.entities.Country.CountryReference
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 440
+referenceLinks:
+  - reference: DataProject.references.BusinessUnit_ClusterCode
+    bendPoints: []
+  - reference: DataProject.references.BusinessUnit_LegalEntityId
+    bendPoints: []
+  - reference: DataProject.references.BusinessUnit_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.LegalEntity_ClusterCode
+    bendPoints: []
+  - reference: DataProject.references.LegalEntity_CountryCode
+    bendPoints: []

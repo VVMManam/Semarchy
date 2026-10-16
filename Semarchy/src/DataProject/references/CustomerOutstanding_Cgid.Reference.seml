@@ -1,0 +1,23 @@
+_name: CustomerOutstanding_Cgid
+_type: Reference
+_package: DataProject.references
+label: Customer Outstanding to Customer Legal Account
+physicalName: CUST_OUTSTANDING_CGID
+oneToMany: true
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.CustomerOutstanding.CustomerOutstanding
+fromRoleLabel: Customer Outstanding
+fromRolePluralLabel: Customer Outstanding
+fromRoleName: CustomerOutstanding
+toEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+toRoleLabel: Customer Legal Account
+toRoleName: Cgid
+toRolePhysicalName: CGID
+foreignAttribute:
+  _name: Cgid
+  _type: ForeignAttribute
+  physicalName: CGID
+  label: Customer
+  searchable: true
+  entity: DataProject.entities.CustomerOutstanding.CustomerOutstanding

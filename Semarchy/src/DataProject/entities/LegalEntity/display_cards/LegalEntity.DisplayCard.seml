@@ -1,0 +1,17 @@
+_name: LegalEntity
+_package: DataProject.entities.LegalEntity.display_cards
+_type: DisplayCard
+entity: DataProject.entities.LegalEntity.LegalEntity
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: NameAr
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

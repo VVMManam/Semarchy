@@ -1,0 +1,28 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: DeriveEmailDomain
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Derive Email Domain
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: EmailDomain
+    expression: |-
+      CASE
+          WHEN Email IS NULL
+          THEN NULL
+          ELSE LOWER(REGEXP_REPLACE(Email, '^[^@]*@', ''))
+      END
+  - attributeName: IsGenericEmailDomain
+    expression: |-
+      CASE
+          WHEN Email IS NULL
+          THEN NULL
+
+          WHEN REGEXP_LIKE(
+                 LOWER(REGEXP_REPLACE(Email, '^[^@]*@', '')),
+                 '(gmail|hotmail|yahoo|outlook|icloud|emirates\.net\.ae|eim\.ae)'
+               )
+          THEN 1
+
+          ELSE 0
+      END

@@ -1,0 +1,91 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: SupplierSiteAssignmentERDiagram
+label: Supplier Site Assignment ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: BusinessUnit
+    _type: EntityShape
+    entity: DataProject.entities.BusinessUnit.BusinessUnit
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: Location
+    _type: EntityShape
+    entity: DataProject.entities.Location.Location
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 290
+  - _name: PaymentTerm
+    _type: EntityShape
+    entity: DataProject.entities.PaymentTerm.PaymentTerm
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 520
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 750
+  - _name: SupplierSite
+    _type: EntityShape
+    entity: DataProject.entities.SupplierSite.SupplierSite
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 60
+  - _name: SupplierSiteAssignment
+    _type: EntityShape
+    entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 880
+      y: 60
+referenceLinks:
+  - reference: DataProject.references.SupplierSiteAssignment_BillToBuCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_BillToLocationCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_ClientBuCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_PaymentTermCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_ShipToLocationCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.SupplierSiteAssignment_SupplierSite
+    bendPoints: []

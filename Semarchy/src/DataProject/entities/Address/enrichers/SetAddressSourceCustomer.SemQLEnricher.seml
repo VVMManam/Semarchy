@@ -1,0 +1,15 @@
+_type: SemQLEnricher
+_package: DataProject.entities.Address.enrichers
+_name: SetAddressSourceCustomer
+entity: DataProject.entities.Address.Address
+label: Set Address Source Customer
+description: 'Keeps the UCID of the customer this address was loaded with, taken from the address source ID (BillingAddress-<UCID> / ServiceAddress-<UCID>), else SourceID_Cgid, so after a customer merge only the surviving customer addresses stay primary.'
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: SourceCustomerId
+    expression: |-
+      CASE
+        WHEN SourceID IS NOT NULL AND REGEXP_LIKE(SourceID, '^[A-Za-z]+Address-.+$') THEN REGEXP_REPLACE(SourceID, '^[A-Za-z]+Address-', '')
+        WHEN SourceID_Cgid IS NOT NULL THEN SourceID_Cgid
+        ELSE SourceCustomerId
+      END

@@ -1,0 +1,15 @@
+_type: SemQLEnricher
+_name: ConcatenateClusterCodes
+label: Concatenate Cluster Codes
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: Cluster
+    expression: 
+      LOOKUP
+      DISTINCT_STRING_AGG Cluster
+      SEPARATED BY ', '
+      FROM Profile
+      ORDER BY Cluster
+      END

@@ -1,0 +1,25 @@
+_name: SupplierCodesNormalize
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Supplier Codes Normalize
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: SupplierTypeCode
+    expression: |-
+      CASE WHEN SupplierTypeCode IS NULL THEN NULL ELSE REGEXP_REPLACE(UPPER(BTRIM(REGEXP_REPLACE(SupplierTypeCode, '[\x01-\x1F\x7F]', ' ', 'g'))), '[\s-]+', '_', 'g') END
+  - attributeName: BusinessRelationshipCode
+    expression: |-
+      CASE WHEN BusinessRelationshipCode IS NULL THEN NULL ELSE REGEXP_REPLACE(UPPER(BTRIM(REGEXP_REPLACE(BusinessRelationshipCode, '[\x01-\x1F\x7F]', ' ', 'g'))), '[\s-]+', '_', 'g') END
+  - attributeName: OrganizationTypeCode
+    expression: |-
+      CASE WHEN OrganizationTypeCode IS NULL THEN NULL ELSE REGEXP_REPLACE(UPPER(BTRIM(REGEXP_REPLACE(OrganizationTypeCode, '[\x01-\x1F\x7F]', ' ', 'g'))), '[\s-]+', '_', 'g') END
+  - attributeName: AccountStatusCode
+    expression: |-
+      CASE WHEN AccountStatusCode IS NULL THEN NULL ELSE REGEXP_REPLACE(UPPER(BTRIM(REGEXP_REPLACE(AccountStatusCode, '[\x01-\x1F\x7F]', ' ', 'g'))), '[\s-]+', '_', 'g') END
+  - attributeName: Website
+    expression: |-
+      CASE WHEN Website IS NULL THEN NULL ELSE BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(Website, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')) END
+  - attributeName: LicenseExpiryDate
+    expression: |-
+      CASE WHEN LicenseExpiryDate >= MAKE_DATE(4712, 1, 1) THEN NULL ELSE LicenseExpiryDate END

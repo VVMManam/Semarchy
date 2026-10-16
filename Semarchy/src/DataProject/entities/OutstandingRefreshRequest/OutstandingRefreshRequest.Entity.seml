@@ -1,0 +1,106 @@
+_name: OutstandingRefreshRequest
+_package: DataProject.entities.OutstandingRefreshRequest
+_type: Entity
+primaryKey: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest.RequestId
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+label: Outstanding Refresh Request
+pluralLabel: Outstanding Refresh Requests
+description: 'One row per steward click on Refresh Outstanding. Builds the list of customers in Review Duplicates and submits it to LoadCustomerOutstanding (REST client MdmSelfLoad).'
+enableDelete: false
+entityType: BASIC
+iconUrl: images://mdi/cash-refund.svg
+historizeGolden: false
+historizeMaster: false
+physicalTableName: OUTSTANDING_REFRESH_REQ
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: RequestId
+    physicalName: REQUEST_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    label: Request ID
+    mandatory: true
+    length: 0
+    multiValued: false
+    precision: 38
+    searchable: true
+    valueSeparator: ","
+    mandatoryValidationScope: PRE_CONSO
+  - _type: EntityAttribute
+    _name: RequestedBy
+    physicalName: REQUESTED_BY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Requested By
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RequestedAt
+    physicalName: REQUESTED_AT
+    dataType: Timestamp
+    goldenAttribute: true
+    i18ned: false
+    label: Requested At
+    mandatory: false
+    length: 0
+    precision: 3
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RequestStatus
+    physicalName: REQUEST_STATUS
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Request Status
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'NEW, SUBMITTED (customer list sent to LoadCustomerOutstanding) or FAILED.'
+  - _type: EntityAttribute
+    _name: CustomersRequested
+    physicalName: CUSTOMERS_REQUESTED
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Customers
+    mandatory: false
+    length: 10
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RefreshLoadId
+    physicalName: REFRESH_LOAD_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    label: Refresh Load
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RefreshPayload
+    physicalName: REFRESH_PAYLOAD
+    dataType: LongText
+    goldenAttribute: true
+    i18ned: false
+    label: Payload
+    mandatory: false
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+    description: 'Internal: customer record text built by BuildRefreshPayload; cleared after submit.'

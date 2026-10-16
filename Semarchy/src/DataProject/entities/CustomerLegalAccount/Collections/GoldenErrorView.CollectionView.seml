@@ -1,0 +1,388 @@
+_name: GoldenErrorView
+_type: CollectionView
+_package: DataProject.entities.CustomerLegalAccount.Collections
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+default: false
+displayCard: DataProject.entities.CustomerLegalAccount.display_cards.CustomerLegalAccount
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: "Customer"
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: ErrorDetails
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "LOOKUP string_agg ConstraintName SEPARATED BY ', ' FROM Errors END"
+    label: Error Details
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountStatus
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN AccountStatus = 'I' THEN 'Inactive' WHEN AccountStatus = 'A' THEN 'Active' ELSE AccountStatus END
+    label: Account Status
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEN
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEN
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameAr
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameAr
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EstablishmentAddress
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EstablishmentAddress
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Fax
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Fax
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CustomerType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CustomerType
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN AccountType = 'Normal' THEN 'Normal' WHEN AccountType = 'ADPorts ICP' THEN 'ADPorts ICP' WHEN AccountType = 'ADPorts RP' THEN 'ADPorts RP' WHEN AccountType = 'ADQ ICP' THEN 'ADQ ICP' WHEN AccountType = 'Internal' THEN 'Internal' WHEN AccountType = 'Government' THEN 'Government' WHEN AccountType = 'ADQ RP' THEN 'ADQ RP' ELSE AccountType END
+    label: Account Type
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Website
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Website
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsGovernmentEntity
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsGovernmentEntity
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EstablishmentType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EstablishmentType
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PaymentTerm
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PaymentTerm
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsVip
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsVip
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CustomerCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CustomerCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ParentCustomer
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ParentUCID
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Email
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Email
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BusinessPhone
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BusinessPhone
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Status
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN Status = 'Inactive' THEN 'Inactive' WHEN Status = 'Active' THEN 'Active' ELSE Status END
+    label: Status
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BranchQualifier
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BranchQualifier
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenseNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseStage
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN LicenseStage = '1' THEN 'Temporary' WHEN LicenseStage = '2' THEN 'Construction' WHEN LicenseStage = '3' THEN 'Permanent' ELSE LicenseStage END
+    label: License Stage
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenseStatusCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: TaxRegistrationNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: TaxRegistrationNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IssuingEmirateCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FDN_RegistrationEmirateCode
+    label: Issuing Emirate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IssuingAuthorityCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FDN_IssuingAuthorityCode
+    label: Issuing Authority
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IssuingCountry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FDN_RegistrationCountry
+    label: Issuing Country
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FDN_LicenseTypeCode
+    label: License Type
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseRecordStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN LicenseRecordStatusCode = 'I' THEN 'Inactive' WHEN LicenseRecordStatusCode = 'A' THEN 'Active' ELSE LicenseRecordStatusCode END
+    label: License Record Status
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: LicenseRegistrationDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseRegistrationDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: LicenseIssueDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseIssueDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: LicenseStartDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseStartDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: LicenseExpiryDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseExpiryDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: LicenseAmendDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseAmendDate
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: LicenseCancelDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseCancelDate
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: IsPrimaryLicense
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsPrimaryLicense
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: LicenseValidityStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenseValidityStatusCode
+    visibleByDefault: false
+  - _type: CheckboxColumn
+    _name: LicenseIsPlaceholder
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: LicenseIsPlaceholder
+    visibleByDefault: false
+  - _type: CheckboxColumn
+    _name: LicenseFormatValid
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: LicenseFormatValid
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: LicenseValidatedBy
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenseValidatedBy
+    visibleByDefault: false
+  - _type: DateColumn
+    _name: LicenseValidatedOn
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseValidatedOn
+    visibleByDefault: false
+  - _type: TextColumn
+    _name: Mobile
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Mobile
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CustomerSite
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CustomerSite
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CustomerState
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN CustomerState = 'C01' THEN 'Under Review' WHEN CustomerState = 'C02' THEN 'Approved' WHEN CustomerState = 'C03' THEN 'Denied' ELSE CustomerState END
+    label: Customer State
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ApprovalCheck
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ApprovalCheck
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: OperationType
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: OperationType
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Exemption
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Exemption
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NoVATDeclaration
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NoVATDeclaration
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CustomerTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CustomerTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AccountTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CustomerStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CustomerStatusCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AccountStatusCode
+    visibleByDefault: true

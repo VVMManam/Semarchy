@@ -1,0 +1,34 @@
+_name: FindAndMergeDuplicates
+_type: ActionSet
+_package: DataProject.entities.CustomerLegalAccount.ActionSets
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Find & Merge Duplicates
+actions:
+  - _name: FindAndMergeDuplicates
+    useCustomLabel: true
+    _type: MergeOrSplit
+    label: Find & Merge Duplicates
+    iconUrl: images://mdi/account-multiple-check.svg
+    dupsManager: DataProject.entities.CustomerLegalAccount.DuplicateManager.CustomerLegalAccountDupsManager
+  
+  - _name: ReviewDuplicates
+    label: Review Duplicates
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: StartWorkflowEntityAction
+    startEvent: DataProject.workflows.MergeApproval.Start
+
+  - _name: ReviewSuggestions
+    _type: ReviewSuggestions
+    label: Review Suggestions
+    iconUrl: images://mdi/call-split.svg
+    useCustomLabel: true
+    dupsManager: DataProject.entities.CustomerLegalAccount.DuplicateManager.CustomerLegalAccountDupsManager
+  
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: DataProject.entities.CustomerLegalAccount.display_cards.CustomerLegalAccount
+    formTab: DataProject.entities.CustomerLegalAccount.Forms.CustomerDuplicate.Main

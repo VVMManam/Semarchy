@@ -1,0 +1,12 @@
+_name: MergeApprovalStatus
+_type: LOVType
+_package: DataProject.List_of_values
+label: Merge Approval Decision
+length: 128
+lovValues:
+  - code: "CONFIRMED"
+    label: Confirm
+  - code: "REJECTED"
+    label: Reject
+  - code: "REMERGE"
+    label: Remerge

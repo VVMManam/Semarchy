@@ -1,0 +1,17 @@
+_name: ErpProfile
+_package: DataProject.entities.ErpProfile.display_cards
+_type: DisplayCard
+entity: DataProject.entities.ErpProfile.ErpProfile
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: Description
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

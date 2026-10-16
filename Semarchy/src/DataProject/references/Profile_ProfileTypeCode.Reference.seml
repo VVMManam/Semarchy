@@ -1,0 +1,23 @@
+_name: Profile_ProfileTypeCode
+_type: Reference
+_package: DataProject.references
+label:  Profile to  Profile Type
+physicalName: PROFILE_PROFILE_T_8C2
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Profile.Profile
+fromRoleLabel:  Profile
+fromRolePluralLabel:  Profile
+fromRoleName: Profile
+toEntity: DataProject.entities.ProfileType.ProfileType
+toRoleLabel: Profile Type Code
+toRoleName: ProfileTypeCode
+toRolePhysicalName: PROFILE_TYPE_CODE
+foreignAttribute:
+  _name: ProfileTypeCode
+  _type: ForeignAttribute
+  physicalName: PROFILE_TYPE_CODE
+  label: Profile Type Code
+  searchable: true
+  entity: DataProject.entities.Profile.Profile

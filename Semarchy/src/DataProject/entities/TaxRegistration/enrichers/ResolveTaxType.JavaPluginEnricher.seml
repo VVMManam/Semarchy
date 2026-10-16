@@ -1,0 +1,46 @@
+_name: ResolveTaxType
+_type: JavaPluginEnricher
+_package: DataProject.entities.TaxRegistration.enrichers
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+label: Resolve Tax Type
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select 'SRC|' || upper(trim(tax_type_code)) LOOKUP_COLUMN,
+                   tax_type_code OUTPUT_COLUMN1
+            from gd_tax_type
+            where tax_type_code is not null
+            union
+            select 'SRC|' || upper(trim(fusion_code)) LOOKUP_COLUMN,
+                   tax_type_code OUTPUT_COLUMN1
+            from gd_tax_type
+            where fusion_code is not null
+            union
+            select 'SRC|' || upper(trim(crm_code)) LOOKUP_COLUMN,
+                   tax_type_code OUTPUT_COLUMN1
+            from gd_tax_type
+            where crm_code is not null
+            union
+            select 'MDM|' || upper(trim(tax_type_code)) LOOKUP_COLUMN,
+                   tax_type_code OUTPUT_COLUMN1
+            from gd_tax_type
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN FID_TaxTypeCode IS NOT NULL THEN 'MDM|' || UPPER(BTRIM(FID_TaxTypeCode)) WHEN TAXType IS NOT NULL THEN 'SRC|' || CASE WHEN TaxCountryCode IS NULL OR REGEXP_LIKE(TAXType, '_') THEN UPPER(BTRIM(TAXType)) ELSE UPPER(BTRIM(TaxCountryCode)) || '_' || UPPER(BTRIM(TAXType)) END ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_TaxTypeCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

@@ -1,0 +1,302 @@
+_name: SupplierDuplicateSuggestion
+_type: CollectionView
+_package: DataProject.entities.SupplierLegalAccount.collection_views
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+default: false
+displayCard: DataProject.entities.SupplierLegalAccount.display_cards.DuplicateSupplierLegalAccount
+tableDisplayCardColumnLabel: Supplier
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: MarkdownColumn
+    _name: MatchScore
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: "CASE WHEN SuggestedMergeConfidenceScore IS NOT NULL THEN '<span style=\"display:inline-block;background:#E0E0E0;color:#424242;border-radius:16px;padding:1px 10px;font-size:12px;font-weight:500;line-height:16px\">' || SuggestedMergeConfidenceScore || '%</span>' END"
+    label: Match Score
+    visibleByDefault: true
+  - _type: IdColumn
+    _name: SupplierAccountId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: SupplierAccountId
+    label: SupplierGoldenId
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameAlternate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameAlternate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SupplierTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SupplierTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BusinessRelationshipCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BusinessRelationshipCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: OrganizationTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: OrganizationTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AccountStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AccountStatusCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SupplierState
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: SupplierState
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsOneTimeSupplier
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsOneTimeSupplier
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsGovernmentEntity
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsGovernmentEntity
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsHolding
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IsHolding
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IndustryClassCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IndustryClassCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MinorityGroupCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MinorityGroupCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Website
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Website
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: YearEstablished
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: YearEstablished
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ChiefExecutiveName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ChiefExecutiveName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ChiefExecutiveTitle
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ChiefExecutiveTitle
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: VATRegistrationNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: VATRegistrationNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: StartDateActive
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: StartDateActive
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EndDateActive
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EndDateActive
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: SourceSystemCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_SourceSystemCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AllowWithholdingTax
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AllowWithholdingTax
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: WithholdingTaxGroupCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: WithholdingTaxGroupCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: DefaultPaymentMethodCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: DefaultPaymentMethodCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ExclusivePayment
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: ExclusivePayment
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RemitAdviceEmail
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RemitAdviceEmail
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: RemitAdviceDeliveryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: RemitAdviceDeliveryCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PaymentTermCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_PaymentTermCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CurrenyCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_Currency
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenseNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenseStatusCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IssuingEmirateCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_RegistrationEmirateCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IssuingAuthorityCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_IssuingAuthorityCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IssuingCountry
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_RegistrationCountry
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FID_LicenseTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseStartDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseStartDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseExpiryDate
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: LicenseExpiryDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: IsPrimaryLicense
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsPrimaryLicense
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseValidityStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenseValidityStatusCode
+    visibleByDefault: true

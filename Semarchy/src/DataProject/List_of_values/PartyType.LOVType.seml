@@ -1,0 +1,12 @@
+_name: PartyType
+_type: LOVType
+_package: DataProject.List_of_values
+label: Party Type
+length: 50
+lovValues:
+  - code: ORGANIZATION
+    label: Organization
+  - code: INDIVIDUAL
+    label: Individual
+  - code: GROUP
+    label: Logical group

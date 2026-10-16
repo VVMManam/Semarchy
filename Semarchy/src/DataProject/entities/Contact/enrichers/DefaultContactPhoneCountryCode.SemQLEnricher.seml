@@ -1,0 +1,50 @@
+_type: SemQLEnricher
+_package: DataProject.entities.Contact.enrichers
+_name: DefaultContactPhoneCountryCode
+entity: DataProject.entities.Contact.Contact
+label: Default Contact Phone Country Code
+description: 'Customer contacts only. After consolidation, a mobile, telephone or business phone that is still digits only (no +) gets the dial code of the parent customer registration country (Country Reference DialCode). Numbers that already start with that code just get the +. When the customer has no registration country, a UAE number starting with 0 gets +971. Placeholders such as +971 alone are not changed.'
+enricherExecutionScope: POST_CONSO
+semQlEnricherExpressions:
+  - attributeName: Mobile
+    expression: |-
+      CASE
+        WHEN Mobile IS NULL OR NOT REGEXP_LIKE(Mobile, '^[0-9]{7,15}$') THEN Mobile
+        WHEN FID_Cgid IS NULL AND FID_CustomerOrgAssignment IS NULL THEN Mobile
+        WHEN COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode) IS NOT NULL THEN
+          CASE
+            WHEN Mobile LIKE REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g') || '%' AND LENGTH(Mobile) - LENGTH(REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g')) >= 7 THEN '+' || Mobile
+            ELSE '+' || REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g') || REGEXP_REPLACE(Mobile, '^0+', '')
+          END
+        WHEN COALESCE(Cgid.FID_RegistrationCountry, CustomerOrgAssignment.CustomerLegalAccount.FID_RegistrationCountry) IS NULL
+          THEN REGEXP_REPLACE(Mobile, '^0([1-9][0-9]{7,8})$', '+971\1')
+        ELSE Mobile
+      END
+  - attributeName: TelephoneNumber
+    expression: |-
+      CASE
+        WHEN TelephoneNumber IS NULL OR NOT REGEXP_LIKE(TelephoneNumber, '^[0-9]{7,15}$') THEN TelephoneNumber
+        WHEN FID_Cgid IS NULL AND FID_CustomerOrgAssignment IS NULL THEN TelephoneNumber
+        WHEN COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode) IS NOT NULL THEN
+          CASE
+            WHEN TelephoneNumber LIKE REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g') || '%' AND LENGTH(TelephoneNumber) - LENGTH(REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g')) >= 7 THEN '+' || TelephoneNumber
+            ELSE '+' || REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g') || REGEXP_REPLACE(TelephoneNumber, '^0+', '')
+          END
+        WHEN COALESCE(Cgid.FID_RegistrationCountry, CustomerOrgAssignment.CustomerLegalAccount.FID_RegistrationCountry) IS NULL
+          THEN REGEXP_REPLACE(TelephoneNumber, '^0([1-9][0-9]{7,8})$', '+971\1')
+        ELSE TelephoneNumber
+      END
+  - attributeName: BusinessPhone
+    expression: |-
+      CASE
+        WHEN BusinessPhone IS NULL OR NOT REGEXP_LIKE(BusinessPhone, '^[0-9]{7,15}$') THEN BusinessPhone
+        WHEN FID_Cgid IS NULL AND FID_CustomerOrgAssignment IS NULL THEN BusinessPhone
+        WHEN COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode) IS NOT NULL THEN
+          CASE
+            WHEN BusinessPhone LIKE REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g') || '%' AND LENGTH(BusinessPhone) - LENGTH(REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g')) >= 7 THEN '+' || BusinessPhone
+            ELSE '+' || REGEXP_REPLACE(COALESCE(Cgid.RegistrationCountry.DialCode, CustomerOrgAssignment.CustomerLegalAccount.RegistrationCountry.DialCode), '[^0-9]', '', 'g') || REGEXP_REPLACE(BusinessPhone, '^0+', '')
+          END
+        WHEN COALESCE(Cgid.FID_RegistrationCountry, CustomerOrgAssignment.CustomerLegalAccount.FID_RegistrationCountry) IS NULL
+          THEN REGEXP_REPLACE(BusinessPhone, '^0([1-9][0-9]{7,8})$', '+971\1')
+        ELSE BusinessPhone
+      END

@@ -1,0 +1,18 @@
+_name: MergeWorkflowStatus
+_type: LOVType
+_package: DataProject.List_of_values
+label: Merge Workflow Status
+length: 20
+lovValues:
+  - code: "NOT_REQUIRED"
+    label: Not Required (single cluster)
+  - code: "PENDING"
+    label: Pending Cluster Approval
+  - code: "CONFIRMED"
+    label: Confirmed
+  - code: "GROUP_REVIEW"
+    label: Pending Group Steward Demerge
+  - code: "OUTSTANDING_BLOCKED"
+    label: Blocked - Outstanding Balance
+  - code: "OUTSTANDING_REFRESH"
+    label: Blocked - Refresh Outstanding

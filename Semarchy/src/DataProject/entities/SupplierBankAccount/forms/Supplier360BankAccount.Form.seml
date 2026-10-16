@@ -1,0 +1,113 @@
+_package: DataProject.entities.SupplierBankAccount.forms
+_type: Form
+_name: Supplier360BankAccount
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+default: false
+formTabs:
+- _name: BankAccountOverview
+  _type: FormTab
+  labelWidth: "130px"
+  documentationInterpreter: LITERAL
+  visibleValue: '1'
+  visibleValueInterpreter: LITERAL
+  label: Bank Account Overview
+  iconUrl: images://mdi/view-dashboard.svg
+  displayFormTabAs: ICON_LABEL
+  content:
+  - _type: FormSection
+    _name: BnkHeaderSection
+    label: Bank Account at a glance
+    layoutDirection: ROW
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+    - _type: FormContainer
+      _name: BnkHeaderC
+      layoutDirection: COLUMN
+      content:
+      - _name: BnkHeader
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">'' || ''<div style="flex:0 0 52px;width:52px;height:52px;border-radius:8px;background:#0B2A4A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">BANK</div>'' || ''<div style="flex:1;min-width:280px"><div style="font-size:18px;font-weight:500;line-height:1.2">'' || COALESCE(REPLACE(REPLACE(REPLACE(BankName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div><div style="font-size:13px;color:#66727F;margin-top:2px">'' || COALESCE(REPLACE(REPLACE(REPLACE(AccountName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || '' · '' || ''Supplier: '' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_Sgid, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div><div style="margin-top:10px">'' || ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;border:1px solid #CBD5E0;font-family:Consolas,Menlo,monospace;font-weight:400">'' || ''Bank Account ID '' || TO_CHAR(BankAccountID, ''FM999999999999990'') || ''</span>'' || CASE WHEN RecordStatusCode IS NULL THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#fff;color:#66727F;border:1px dashed #CBD5E0;font-weight:400">Not set</span>'' WHEN UPPER(RecordStatusCode) IN (''A'', ''ACTIVE'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E2F3EA;color:#1F7A4D;">Active</span>'' WHEN UPPER(RecordStatusCode) IN (''I'', ''INACTIVE'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">Inactive</span>'' WHEN UPPER(RecordStatusCode) IN (''VALID'', ''APPROVED'', ''CURRENT'', ''ENABLED'', ''REGISTERED'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E2F3EA;color:#1F7A4D;">'' || RecordStatusCode || ''</span>'' WHEN UPPER(RecordStatusCode) IN (''EXPIRED'', ''DENIED'', ''REJECTED'', ''SUSPENDED'', ''BLOCKED'', ''DISABLED'', ''CLOSED'') THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FBE7E3;color:#B8321E;">'' || RecordStatusCode || ''</span>'' WHEN UPPER(RecordStatusCode) LIKE ''%PEND%'' OR UPPER(RecordStatusCode) LIKE ''%REVIEW%'' OR UPPER(RecordStatusCode) LIKE ''%PROCESS%'' OR UPPER(RecordStatusCode) LIKE ''%DRAFT%'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#FDF3DC;color:#8A5A00;">'' || RecordStatusCode || ''</span>'' ELSE ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#EEF1F4;color:#3C4652;">'' || RecordStatusCode || ''</span>'' END || CASE WHEN FDN_Currency IS NULL THEN '''' ELSE ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#E7EEF7;color:#0B2A4A;">'' || REPLACE(REPLACE(REPLACE(FDN_Currency, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;'') || ''</span>'' END || CASE WHEN IsPrimary = ''1'' THEN ''<span style="display:inline-block;border-radius:12px;padding:2px 10px;margin:0 6px 4px 0;font-size:12px;font-weight:500;line-height:18px;white-space:nowrap;background:#0F7C8C;color:#FFFFFF;">Primary</span>'' ELSE '''' END || ''</div></div>'' || ''</div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Header
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '115'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL
+  - _type: FormSection
+    _name: BnkProfileSection
+    label: Bank Account profile
+    layoutDirection: ROW
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+    - _type: FormContainer
+      _name: BnkProfileC1
+      layoutDirection: COLUMN
+      content:
+      - _name: BnkAccount
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="font-size:13.5px;font-weight:500;color:#0B2A4A;border-bottom:1px solid #E1E7EE;padding-bottom:5px;margin:0 0 9px 0">Account</div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Account name</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(AccountName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Account number</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(AccountNumber, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">IBAN</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(IBAN, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Currency</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(COALESCE(FDN_Currency, CurrencySource), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Account type</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(AccountTypeCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Charge bearer</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(BankChargeBearerCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Site</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_SiteId, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Account
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '255'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL
+    - _type: FormContainer
+      _name: BnkProfileC2
+      layoutDirection: COLUMN
+      content:
+      - _name: BnkBank
+        value: '''<div style="margin:0;padding:0;font-family:Roboto,Segoe UI,Arial,sans-serif;color:#1B2530;line-height:1.45">'' || ''<div style="font-size:13.5px;font-weight:500;color:#0B2A4A;border-bottom:1px solid #E1E7EE;padding-bottom:5px;margin:0 0 9px 0">Bank & validity</div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Bank</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(BankName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · no '' || COALESCE(REPLACE(REPLACE(REPLACE(BankNumber, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Branch</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(BranchName, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''<span style="color:#66727F;font-size:11.5px">'' || '' · no '' || COALESCE(REPLACE(REPLACE(REPLACE(BranchNumber, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</span>'' || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">BIC / SWIFT</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(BicSwift, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Bank country</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(COALESCE(FDN_CountryCode, BankCountryCode), ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Start / end date</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(TO_CHAR(StartDate, ''DD Mon YYYY''), ''—'') || '' / '' || COALESCE(TO_CHAR(EndDate, ''DD Mon YYYY''), ''—'') || ''</div></div>'' || ''<div style="display:flex;align-items:flex-start;margin:0 0 6px 0"><div style="flex:0 0 158px;text-align:left;padding:1px 16px 0 0;color:rgba(0,0,0,0.6);font-size:14px">Source system</div><div style="flex:1;font-size:13px;min-width:0;word-break:break-word">'' || COALESCE(REPLACE(REPLACE(REPLACE(FDN_SourceSystemCode, ''&'', ''&amp;''), ''<'', ''&lt;''), ''>'', ''&gt;''), ''—'') || ''</div></div>'' || ''</div>'''
+        dataType: STRING
+        useCustomLabel: true
+        label: Bank
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        _type: MarkdownField
+        authoringMode: force-browsing
+        authoringModeValueInterpreter: LITERAL
+        componentProperties:
+          contentHeight: '255'
+          contentHeightValueInterpreter: LITERAL
+        labelProperties:
+          position: left
+          positionValueInterpreter: LITERAL
+          alignment: left
+          alignmentValueInterpreter: LITERAL
+          typography: body-1
+          typographyValueInterpreter: LITERAL
+          isVisible: '0'
+          isVisibleValueInterpreter: LITERAL

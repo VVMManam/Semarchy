@@ -1,0 +1,97 @@
+_package: DataProject.entities.IssuingAuthority.collection_views
+_name: IssuingAuthorityView
+_type: CollectionView
+entity: DataProject.entities.IssuingAuthority.IssuingAuthority
+displayCard: DataProject.entities.IssuingAuthority.display_cards.IssuingAuthority
+default: true
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: false
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableDisplayCardColumnLabel:  Issuing Authority
+tableColumns:
+  - _type: IdColumn
+    _name: IssuingAuthorityCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: IssuingAuthorityCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameAr
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameAr
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CRMCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: CRMCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FusionCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FusionCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: AuthorityTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: AuthorityTypeCode
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: IsFreeZone
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsFreeZone
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LicenseFormatRegex
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LicenseFormatRegex
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: ValidFrom
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: ValidFrom
+    visibleByDefault: true
+  - _type: DateColumn
+    _name: ValidTo
+    columnAlign: LEFT
+    dataType: DATE
+    useCustomLabel: false
+    value: ValidTo
+    visibleByDefault: true

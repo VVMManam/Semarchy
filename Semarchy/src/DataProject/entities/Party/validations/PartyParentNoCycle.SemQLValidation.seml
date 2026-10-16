@@ -1,0 +1,11 @@
+_name: PartyParentNoCycle
+_type: SemQLValidation
+_package: DataProject.entities.Party.validations
+entity: DataProject.entities.Party.Party
+label: "Party hierarchy loop"
+validationScope: NONE
+validationLabel: "This parent would create a loop in the party hierarchy (the parent is already below this party)."
+condition: |-
+  FID_ParentPartyID IS NULL
+  OR ((ParentPartyID.FID_ParentPartyID IS NULL OR ParentPartyID.FID_ParentPartyID <> Pgid)
+      AND (ParentPartyID.ParentPartyID.FID_ParentPartyID IS NULL OR ParentPartyID.ParentPartyID.FID_ParentPartyID <> Pgid))

@@ -1,0 +1,16 @@
+_name: LoadLicenseActivityType
+_package: DataProject.ModelJobs
+_type: CertificationJob
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: LicenseActivityType
+    _type: ModelJobTask
+    entity: DataProject.entities.LicenseActivityType.LicenseActivityType
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

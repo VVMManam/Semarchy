@@ -1,0 +1,29 @@
+_name: ResolveActivityGroup
+_type: JavaPluginEnricher
+_package: DataProject.entities.LicenseActivity.enrichers
+entity: DataProject.entities.LicenseActivity.LicenseActivity
+label: Resolve Activity Group
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: "select upper(trim(v)) LOOKUP_COLUMN, min(c) OUTPUT_COLUMN1 from (select activity_scheme_code c, unnest(array[activity_scheme_code, group_code, crm_code]) v from gd_lic_actv_group_type union all select g.activity_scheme_code, 'ACT|' || unnest(array[t.activity_code, t.crm_code, t.ded_code]) from gd_license_activity_type t join gd_lic_actv_group_type g on g.group_code = t.group_code) a where v is not null group by 1"
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "UPPER(BTRIM(COALESCE(FID_GroupCode, ActivityGroupCode, 'ACT|' || ActivityCode)))"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: FID_GroupCode
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

@@ -1,0 +1,32 @@
+_name: WorkflowActionSet
+_package: DataProject.entities.changerequest.action_sets
+_type: ActionSet
+entity: DataProject.entities.changerequest.changerequest
+label: Customer Action Set
+defaultActionSet: true
+actions:
+  - _name: CreateChangeRequest
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: DataProject.entities.changerequest.steppers.ChangeRequest
+  - _name: EditChangeRequest
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.changerequest.steppers.ChangeRequest
+  - _name: StartCustomerCRApproval
+    label: Start CR Approval
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: StartWorkflowEntityAction
+    startEvent: DataProject.workflows.ChangeRequest.Start

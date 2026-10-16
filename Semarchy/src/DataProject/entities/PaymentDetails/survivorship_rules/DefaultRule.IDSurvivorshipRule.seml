@@ -1,0 +1,19 @@
+_package: DataProject.entities.PaymentDetails.survivorship_rules
+_type: IDSurvivorshipRule
+_name: DefaultRule
+entity: DataProject.entities.PaymentDetails.PaymentDetails
+label: Id Survivorship Rule
+description: ""
+documentation: ""
+consolidationStrategy: CUSTOM_RANKING
+consolidationSkipNulls: false
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN Bank IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Branch IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Country IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Currency IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IBAN IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC

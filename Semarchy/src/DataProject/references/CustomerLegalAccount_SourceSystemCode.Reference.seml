@@ -1,0 +1,23 @@
+_name: CustomerLegalAccount_SourceSystemCode
+_type: Reference
+_package: DataProject.references
+label:  Customer Legal Account to  Source System
+physicalName: CUST_LEGAL_ACCOUN_089
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+fromRoleLabel:  Customer Legal Account
+fromRolePluralLabel:  Customer Legal Account
+fromRoleName: CustomerLegalAccount
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Source System Code
+toRoleName: SourceSystemCode
+toRolePhysicalName: SOURCE_SYSTEM_CODE
+foreignAttribute:
+  _name: SourceSystemCode
+  _type: ForeignAttribute
+  physicalName: SOURCE_SYSTEM_CODE
+  label: Source System Code
+  searchable: true
+  entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount

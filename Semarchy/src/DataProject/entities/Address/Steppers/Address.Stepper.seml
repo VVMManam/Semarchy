@@ -1,0 +1,76 @@
+_name: Address
+_package: DataProject.entities.Address.Steppers
+_type: Stepper
+entity: DataProject.entities.Address.Address
+label: Author Addresses
+triggers: []
+rootStep:
+  _name: Addresses
+  _type: CollectionStep
+  label: Addresses
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.Address.collection_views.Address
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTriggers: []
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: DataProject.entities.Address.Address.AddressUsageCode
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: DataProject.entities.Address.Address.AddressLine1
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      label: Address Details
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      formTab: DataProject.entities.Address.forms.Address.Main
+      referenceFormFieldConfigs: []
+      stepTriggers: []
+      formStepEnrichers:
+        - enricher: DataProject.entities.Address.enrichers.AddressLinesNormalize
+          executedOnButtonClick: true
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - enricher: DataProject.entities.Address.enrichers.MarkManualPrimary
+          executedOnButtonClick: false
+          executedOnDataChange: true
+          executedOnFormOpen: false
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: DataProject.entities.Address.Address.AddressUsageCode
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: DataProject.entities.Address.Address.AddressLine1
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: DataProject.entities.Address.Address.AddressUsageCode
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: DataProject.entities.Address.Address.AddressLine1
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: DataProject.entities.Address.Address.AddressUsageCode
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: DataProject.entities.Address.Address.AddressLine1

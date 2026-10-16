@@ -1,0 +1,203 @@
+_package: DataProject.entities.Party.forms
+_type: Form
+_name: Party
+entity: DataProject.entities.Party.Party
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "190px"
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Party Details
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: Identity
+        label: Party Identity
+        layoutDirection: COLUMN
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _name: Pgid
+            value: Pgid
+            dataType: LONG_INTEGER
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: IdField
+            authoringMode: force-browsing
+            authoringModeValueInterpreter: LITERAL
+          - _name: PartyNameEn
+            value: PartyNameEn
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: PartyNameAr
+            value: PartyNameAr
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: PartyTypeCode
+            value: PartyTypeCode
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: LegalFormCode
+            value: LegalFormCode
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: Registration
+        label: Licence and Registration
+        layoutDirection: COLUMN
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _name: LicenceKey
+            value: LicenceKey
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: LicenceAuthorityCode
+            value: LicenceAuthorityCode
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: LicenceCountry
+            value: LicenceCountry
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: RegistrationCountry
+            value: RegistrationCountry
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: RegistrationEmirateCode
+            value: RegistrationEmirateCode
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: IsBranch
+            value: IsBranch
+            dataType: BOOLEAN
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: CheckboxField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              useSwitch: "0"
+              useSwitchValueInterpreter: LITERAL
+          - _name: BranchQualifier
+            value: BranchQualifier
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+      - _type: FormSection
+        _name: StatusAndCompliance
+        label: Status and Compliance
+        layoutDirection: COLUMN
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _name: IsInternalEntity
+            value: IsInternalEntity
+            dataType: BOOLEAN
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: CheckboxField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              useSwitch: "0"
+              useSwitchValueInterpreter: LITERAL
+          - _name: PartyStatusCode
+            value: PartyStatusCode
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: DpsStatusCode
+            value: DpsStatusCode
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: DpsReference
+            value: DpsReference
+            dataType: STRING
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: DpsCheckedOn
+            value: DpsCheckedOn
+            dataType: DATE
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: DateField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+          - _name: QualityScore
+            value: QualityScore
+            dataType: DECIMAL
+            useCustomLabel: false
+            visibleValue: "1"
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL

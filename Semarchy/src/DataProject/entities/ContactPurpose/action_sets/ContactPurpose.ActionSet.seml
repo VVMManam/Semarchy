@@ -1,0 +1,56 @@
+_name: ContactPurpose
+_package: DataProject.entities.ContactPurpose.action_sets
+_type: ActionSet
+entity: DataProject.entities.ContactPurpose.ContactPurpose
+label: Contact Purpose
+defaultActionSet: false
+actions:
+  - _name: Create
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: DataProject.entities.ContactPurpose.steppers.ContactPurpose
+  - _name: Edit
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.ContactPurpose.steppers.ContactPurpose
+  - _name: Copy
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.ContactPurpose.steppers.ContactPurpose
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: Import
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: DataProject.entities.ContactPurpose.steppers.ContactPurpose

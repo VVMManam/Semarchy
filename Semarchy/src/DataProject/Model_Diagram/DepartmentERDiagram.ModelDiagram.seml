@@ -1,0 +1,135 @@
+_type: ModelDiagram
+_package: DataProject.Model_Diagram
+_name: DepartmentERDiagram
+label: Department ER Diagram
+attributeNameFormat: NAME
+entityNameFormat: NAME
+referenceRoleNameFormat: NAME
+referenceNameFormat: NAME
+showAttributeDataType: false
+showForeignAttribute: true
+showInheritedAttributes: false
+showInheritLinkName: false
+showReferenceCardinality: true
+showReferenceRoles: true
+showReferenceName: false
+entityShapes:
+  - _name: BusinessUnit
+    _type: EntityShape
+    entity: DataProject.entities.BusinessUnit.BusinessUnit
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 60
+  - _name: Cluster
+    _type: EntityShape
+    entity: DataProject.entities.Cluster.Cluster
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 290
+  - _name: Currency
+    _type: EntityShape
+    entity: DataProject.entities.Currency.Currency
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 520
+  - _name: ErpProfile
+    _type: EntityShape
+    entity: DataProject.entities.ErpProfile.ErpProfile
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 750
+  - _name: PaymentTerm
+    _type: EntityShape
+    entity: DataProject.entities.PaymentTerm.PaymentTerm
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 980
+  - _name: SourceSystem
+    _type: EntityShape
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    borderColor: rgb(136, 136, 136)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 40
+      y: 1210
+  - _name: CustomerLegalAccount
+    _type: EntityShape
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    borderColor: rgb(91, 141, 184)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 460
+      y: 60
+  - _name: CustomerOrgAssignment
+    _type: EntityShape
+    entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+    borderColor: rgb(31, 56, 100)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 880
+      y: 60
+  - _name: Contact
+    _type: EntityShape
+    entity: DataProject.entities.Contact.Contact
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1300
+      y: 60
+  - _name: Profile
+    _type: EntityShape
+    entity: DataProject.entities.Profile.Profile
+    borderColor: rgb(1, 103, 168)
+    fontTitleColor: ""
+    width: -1
+    height: -1
+    position:
+      x: 1300
+      y: 290
+referenceLinks:
+  - reference: DataProject.references.Contact_CustomerOrgAssignment
+    bendPoints: []
+  - reference: DataProject.references.CustomerOrgAssignment_BusinessUnitCode
+    bendPoints: []
+  - reference: DataProject.references.CustomerOrgAssignment_Cgid
+    bendPoints: []
+  - reference: DataProject.references.CustomerOrgAssignment_ClusterCode
+    bendPoints: []
+  - reference: DataProject.references.CustomerOrgAssignment_CreditCurrencyCode
+    bendPoints: []
+  - reference: DataProject.references.CustomerOrgAssignment_ErpProfileCode
+    bendPoints: []
+  - reference: DataProject.references.CustomerOrgAssignment_PaymentTermCode
+    bendPoints: []
+  - reference: DataProject.references.CustomerOrgAssignment_SourceSystemCode
+    bendPoints: []
+  - reference: DataProject.references.Profile_AssignmentId
+    bendPoints: []

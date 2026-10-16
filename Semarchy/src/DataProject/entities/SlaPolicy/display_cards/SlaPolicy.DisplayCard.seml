@@ -1,0 +1,17 @@
+_name: SlaPolicy
+_package: DataProject.entities.SlaPolicy.display_cards
+_type: DisplayCard
+entity: DataProject.entities.SlaPolicy.SlaPolicy
+default: true
+primaryTextExpression: "ProcessCode || ' / ' || SubProcessCode || ' / ' || TaskCode || COALESCE(' / ' || FID_ClusterCode, '')"
+supportingTextExpression: "TO_CHAR(SlaValue, 'FM999990.99') || ' ' || SlaUnit || ' - ' || DomainCode"
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

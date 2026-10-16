@@ -1,0 +1,8 @@
+_name: AddressUsageResolved
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: Address Usage Resolved
+validationScope: POST_CONSO
+validationLabel: "ADDRESS_USAGE_UNMAPPED - source value has no match in MDM."
+condition: "FID_Cgid IS NULL OR AddressUsageCode IS NULL OR FID_AddressUsage IS NOT NULL"

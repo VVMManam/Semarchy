@@ -1,0 +1,10 @@
+_type: SemQLEnricher
+_name: MarkMergeReviewSubmitted
+label: Mark Merge Review Submitted
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+enricherExecutionScope: NONE
+description: 'Review steppers (ClusterReview*): runs once when the steward leaves the Merge Overview step (Next). Stamps the customer so that it is part of the data submitted by ClusterMergeApproval; without it only the Merge Approval Log rows are submitted and EvaluateMergeDecision never re-evaluates the merge status (CONFIRMED / GROUP_REVIEW).'
+semQlEnricherExpressions:
+  - attributeName: ReviewTaskAssignedOn
+    expression: DATE_TRUNC('second', NOW())

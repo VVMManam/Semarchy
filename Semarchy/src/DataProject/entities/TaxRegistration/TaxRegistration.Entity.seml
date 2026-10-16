@@ -1,0 +1,310 @@
+_package: DataProject.entities.TaxRegistration
+_type: Entity
+_name: TaxRegistration
+label:  Tax Registration
+pluralLabel:  Tax Registration
+physicalTableName: TAX_REGISTRATION
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: TaxRegistrationId
+    label: Tax Registration Id
+    physicalName: TAX_REGISTRATION_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RegistrationNo
+    label: Registration No
+    physicalName: REGISTRATION_NO
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RegistrationNoNormalised
+    label: Registration No Normalised
+    physicalName: REG_NO_NORMALISED
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: VatStatusCode
+    label: Vat Status Code
+    physicalName: VAT_STATUS_CODE
+    dataType: DataProject.List_of_values.VatStatus
+    lovValidationScope: PRE_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: DataProject.List_of_values.VatRecordStatus
+    lovValidationScope: PRE_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EffectiveDate
+    label: Effective Date
+    physicalName: EFFECTIVE_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EndDate
+    label: End Date
+    physicalName: END_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsCurrent
+    label: Is Current
+    physicalName: IS_CURRENT
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TAXType
+    label: Tax Type
+    physicalName: TAX_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: VatExemptionConfirmed
+    label: Vat Exemption Confirmed
+    physicalName: VAT_EXEMPTION_CONFIRMED
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NoVatDeclaration
+    label: No Vat Declaration
+    physicalName: NO_VAT_DECLARATION
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TaxOrganizationType
+    label: Tax Organization Type
+    physicalName: TAX_ORGANIZATION_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPlaceholder
+    label: Is Placeholder
+    physicalName: IS_PLACEHOLDER
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FormatValid
+    label: Format Valid
+    physicalName: FORMAT_VALID
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: VerifiedOn
+    label: Verified On
+    physicalName: VERIFIED_ON
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: VerifiedBy
+    label: Verified By
+    physicalName: VERIFIED_BY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TaxReportingName
+    label: Tax Reporting Name
+    physicalName: TAX_REPORTING_NAME
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FederalReportableFlag
+    label: Federal Reportable Flag
+    physicalName: FEDERAL_REPORTABLE_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StateReportableFlag
+    label: State Reportable Flag
+    physicalName: STATE_REPORTABLE_FLAG
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: TaxCountryCode
+    label: Tax Country (source code)
+    physicalName: TAX_COUNTRY_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.TaxRegistration.TaxRegistration.TaxRegistrationId
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherTaxRegistration
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 98
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameTaxIdUnderSameCustomer
+      condition: |-
+        Record1.FID_Cgid IS NOT NULL
+        AND Record2.FID_Cgid IS NOT NULL
+        AND Record1.FID_Cgid = Record2.FID_Cgid
+        AND Record1.FID_TaxTypeCode IS NOT NULL
+        AND Record2.FID_TaxTypeCode IS NOT NULL
+        AND Record1.FID_TaxTypeCode = Record2.FID_TaxTypeCode
+        AND Record1.RegistrationNo IS NOT NULL
+        AND Record2.RegistrationNo IS NOT NULL
+        AND Record1.RegistrationNo =Record2.RegistrationNo
+      label: "Same tax registration number (TRN) under the same customer - catches duplicates left behind after a customer-level merge (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false
+    - _type: SemQLMatchRule
+      _name: SameTaxIdUnderSameSupplier
+      condition: |-
+        Record1.FID_Sgid IS NOT NULL
+        AND Record2.FID_Sgid IS NOT NULL
+        AND Record1.FID_Sgid = Record2.FID_Sgid
+        AND Record1.FID_TaxTypeCode IS NOT NULL
+        AND Record2.FID_TaxTypeCode IS NOT NULL
+        AND Record1.FID_TaxTypeCode = Record2.FID_TaxTypeCode
+        AND Record1.RegistrationNoNormalised IS NOT NULL
+        AND Record2.RegistrationNoNormalised IS NOT NULL
+        AND Record1.RegistrationNoNormalised = Record2.RegistrationNoNormalised
+      label: "Same tax registration number (normalised) under the same supplier - catches duplicates left behind after a supplier-level merge (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false

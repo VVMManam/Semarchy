@@ -1,0 +1,17 @@
+_name: TaxRegistration
+_package: DataProject.entities.TaxRegistration.display_cards
+_type: DisplayCard
+entity: DataProject.entities.TaxRegistration.TaxRegistration
+default: true
+primaryTextExpression: CASE WHEN TaxTypeCode.NameEn IS NOT NULL THEN TaxTypeCode.NameEn WHEN TAXType IS NOT NULL THEN TAXType ELSE RegistrationNo END
+supportingTextExpression: RegistrationNo
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

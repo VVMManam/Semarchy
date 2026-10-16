@@ -1,0 +1,10 @@
+_name: BankAccountType
+_package: DataProject.List_of_values
+_type: LOVType
+label: Bank Account Type
+length: 128
+lovValues:
+  - code: "CHECKING"
+    label: Checking
+  - code: "SAVINGS"
+    label: Savings

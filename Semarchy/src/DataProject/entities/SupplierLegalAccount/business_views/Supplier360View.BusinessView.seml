@@ -1,0 +1,222 @@
+_name: Supplier360View
+_package: DataProject.entities.SupplierLegalAccount.business_views
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: true
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+rootLabel: Supplier Golden Record
+rootPluralLabel: Supplier Golden Records
+useHierarchyOnOpen: false
+label: Supplier Golden Records
+rootBusinessViewEntity:
+  _name: Supplier
+  _type: BusinessViewEntity
+  collection: DataProject.entities.SupplierLegalAccount.collection_views.SupplierLegalAccount
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+  form: DataProject.entities.SupplierLegalAccount.forms.Supplier360
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: DataProject.entities.SupplierLegalAccount.ActionSets.SupplierGolden
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+  - _name: TextConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: TEXT
+    enabled: true
+  - _name: FormConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: BY_FORM
+    enabled: true
+  - _name: AdvancedConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: ADVANCED
+    enabled: true
+  - _name: SemqlConfig
+    _type: BusinessEntitySearchTypeConfig
+    searchType: SEMQL
+    enabled: true
+  embeddedCollectionNavigations:
+  - formCollection: DataProject.entities.SupplierLegalAccount.forms.Supplier360.IdentifiersTab.SupIdentifiers.SupIdentifierList
+    browsingTarget: MODAL_FORM
+    form: DataProject.entities.Identifier.forms.Supplier360Identifier
+  - formCollection: DataProject.entities.SupplierLegalAccount.forms.Supplier360.TaxRegistrationsTab.SupTaxRegs.SupTaxRegList
+    browsingTarget: MODAL_FORM
+    form: DataProject.entities.TaxRegistration.forms.Supplier360TaxRegistration
+  - formCollection: DataProject.entities.SupplierLegalAccount.forms.Supplier360.BankAccountsTab.SupBank.SupBankList
+    browsingTarget: MODAL_FORM
+    form: DataProject.entities.SupplierBankAccount.forms.Supplier360BankAccount
+  referenceAttributeNavigationConfigs: []
+  transitions:
+  - _name: Sites
+    _type: BusinessViewTransition
+    transitionPath: SupplierSite
+    transitionType: FULLY_QUALIFIED
+    useCustomLabel: true
+    iconUrl: images://mdi/office-building-marker.svg
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    enableHierarchy: '1'
+    enableHierarchyInterpreter: LITERAL
+    expandHierarchyByDefault: false
+    transitionVisible: '1'
+    transitionVisibleInterpreter: LITERAL
+    businessViewEntity:
+      _name: SitesEntity
+      _type: BusinessViewEntity
+      collection: DataProject.entities.SupplierSite.collection_views.SupplierSiteGolden
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      entity: DataProject.entities.SupplierSite.SupplierSite
+      form: DataProject.entities.SupplierSite.forms.Supplier360Site
+      gridAllowed: false
+      listAllowed: false
+      outlineVisible: false
+      overrideDefaultSort: false
+      tableAllowed: true
+      businessEntityBuiltInFilters: []
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+        enabled: true
+      - _name: FormConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: BY_FORM
+        enabled: true
+      - _name: AdvancedConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: ADVANCED
+        enabled: true
+      - _name: SemqlConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: SEMQL
+        enabled: true
+      embeddedCollectionNavigations:
+      - formCollection: DataProject.entities.SupplierSite.forms.Supplier360Site.SiteAssignmentsTab.SiteAsgSection.SiteAsgList
+        browsingTarget: MODAL_FORM
+        form: DataProject.entities.SupplierSiteAssignment.forms.Supplier360Assignment
+      referenceAttributeNavigationConfigs: []
+      transitions: []
+    label: Supplier Site
+    pluralLabel: Supplier Sites
+  - _name: Contacts
+    _type: BusinessViewTransition
+    transitionPath: SupplierSite.Contact
+    transitionType: FULLY_QUALIFIED
+    useCustomLabel: true
+    iconUrl: images://mdi/account-box-multiple.svg
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    enableHierarchy: '0'
+    enableHierarchyInterpreter: LITERAL
+    expandHierarchyByDefault: false
+    transitionVisible: '1'
+    transitionVisibleInterpreter: LITERAL
+    businessViewEntity:
+      _name: ContactsEntity
+      _type: BusinessViewEntity
+      collection: DataProject.entities.Contact.collection_views.SupplierContact
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      entity: DataProject.entities.Contact.Contact
+      form: DataProject.entities.Contact.forms.Supplier360Contact
+      gridAllowed: false
+      listAllowed: false
+      outlineVisible: false
+      overrideDefaultSort: false
+      tableAllowed: true
+      businessEntityBuiltInFilters: []
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+        enabled: true
+      - _name: AdvancedConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: ADVANCED
+        enabled: true
+      embeddedCollectionNavigations: []
+      referenceAttributeNavigationConfigs: []
+      transitions: []
+    label: Contact
+    pluralLabel: Contacts
+  - _name: Addresses
+    _type: BusinessViewTransition
+    transitionPath: SupplierSite.Address
+    transitionType: FULLY_QUALIFIED
+    useCustomLabel: true
+    iconUrl: images://mdi/map-marker-multiple.svg
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    enableHierarchy: '0'
+    enableHierarchyInterpreter: LITERAL
+    expandHierarchyByDefault: false
+    transitionVisible: '1'
+    transitionVisibleInterpreter: LITERAL
+    businessViewEntity:
+      _name: AddressesEntity
+      _type: BusinessViewEntity
+      collection: DataProject.entities.Address.collection_views.SupplierAddress
+      displayRecordCount: ALWAYS
+      enableUserDefinedSort: true
+      entity: DataProject.entities.Address.Address
+      form: DataProject.entities.Address.forms.Supplier360Address
+      gridAllowed: false
+      listAllowed: false
+      outlineVisible: false
+      overrideDefaultSort: false
+      tableAllowed: true
+      businessEntityBuiltInFilters: []
+      businessEntitySearchConfigs:
+      - _name: TextConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: TEXT
+        enabled: true
+      - _name: AdvancedConfig
+        _type: BusinessEntitySearchTypeConfig
+        searchType: ADVANCED
+        enabled: true
+      embeddedCollectionNavigations: []
+      referenceAttributeNavigationConfigs: []
+      transitions: []
+    label: Address
+    pluralLabel: Addresses
+  - _name: MasterRecords
+    _type: BusinessViewTransition
+    transitionPath: MasterRecords
+    transitionType: FULLY_QUALIFIED
+    useCustomLabel: false
+    iconUrl: images://mdi/source-branch-check.svg
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    enableHierarchy: '0'
+    enableHierarchyInterpreter: LITERAL
+    expandHierarchyByDefault: false
+    transitionVisible: '1'
+    transitionVisibleInterpreter: LITERAL
+    businessViewEntity:
+      _type: BusinessViewEntityReference
+      ref: DataProject.entities.SupplierLegalAccount.business_views.Supplier360View.Supplier
+  - _name: GoldenErrors
+    _type: BusinessViewTransition
+    transitionPath: Errors
+    transitionType: FULLY_QUALIFIED
+    useCustomLabel: true
+    label: Golden Errors
+    pluralLabel: Golden Errors
+    iconUrl: images://mdi/alert-circle.svg
+    displayFormTabAs: ICON_LABEL
+    displayTransitionNodeAs: ICON_LABEL
+    enableHierarchy: '0'
+    enableHierarchyInterpreter: LITERAL
+    expandHierarchyByDefault: false
+    transitionVisible: '1'
+    transitionVisibleInterpreter: LITERAL
+    businessViewEntity:
+      _type: BusinessViewEntityReference
+      ref: DataProject.entities.SupplierLegalAccount.business_views.Supplier360View.Supplier

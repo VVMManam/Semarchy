@@ -1,0 +1,8 @@
+_name: ReminderHoursPositive
+_package: DataProject.entities.SlaPolicy.validations
+_type: SemQLValidation
+entity: DataProject.entities.SlaPolicy.SlaPolicy
+label: Reminder hours must be greater than 0
+validationScope: PRE_CONSO
+condition: "ReminderHours IS NULL OR ReminderHours > 0"
+validationLabel: 'Reminder hours must be greater than 0.'

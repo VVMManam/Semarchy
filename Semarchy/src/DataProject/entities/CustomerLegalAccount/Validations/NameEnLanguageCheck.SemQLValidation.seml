@@ -1,0 +1,10 @@
+_name: NameEnLanguageCheck
+_type: SemQLValidation
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Name EN Language Check
+validationScope: POST_CONSO
+validationLabel: "English name contains Arabic characters."
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (NameEN IS NULL OR NOT REGEXP_LIKE(NameEN, '[\u0600-\u06FF]'))

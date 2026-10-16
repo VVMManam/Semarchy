@@ -1,0 +1,10 @@
+_name: SuspensionStatus
+_package: DataProject.List_of_values
+_type: LOVType
+label: Suspension Status
+length: 128
+lovValues:
+  - code: "Blacklisted"
+    label: Blacklisted
+  - code: "Suspended"
+    label: Suspended

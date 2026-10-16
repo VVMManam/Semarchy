@@ -1,0 +1,8 @@
+_name: RequireMergeApprovalLog
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Merge Approval Log
+validationScope: NONE
+condition: ANY MergeApprovalLog HAVE ((CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate) AND UPPER(Decision) IN ('CONFIRMED', 'REJECTED', 'REMERGE'))
+validationLabel: Add your decision (Confirm, Reject or Remerge) in Your Decision before submitting.

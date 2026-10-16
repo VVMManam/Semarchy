@@ -1,0 +1,10 @@
+_name: PhoneType
+_package: DataProject.List_of_values
+_type: LOVType
+label: Phone Type
+length: 20
+lovValues:
+  - code: PHONE
+    label: Phone
+  - code: TELEPHONE
+    label: Telephone

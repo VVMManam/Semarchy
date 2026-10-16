@@ -1,0 +1,26 @@
+_name: CustomerLegalAccountDupsManager
+_type: DupsManager
+_package: DataProject.entities.CustomerLegalAccount.DuplicateManager
+label: Customer Legal Account Dups Manager
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+checkoutCustomSortEnabled: false
+checkoutDefaultDisplayType: TABLE
+checkoutDisplayGridAllowed: false
+checkoutDisplayListAllowed: false
+checkoutDisplayTableAllowed: true
+checkoutUserDefinedSortEnabled: true
+checkoutSearchConfigs:
+  - searchType: TEXT
+    enabled: true
+  - searchType: CUSTOM_FORM
+    customForm: DataProject.entities.CustomerLegalAccount.search_forms.CustomerLegalAccountSearch
+    enabled: true
+  - searchType: ADVANCED
+    enabled: true
+  - searchType: SEMQL
+    enabled: true
+collectionView: DataProject.entities.CustomerLegalAccount.Collections.CustomerDuplicateView
+displayCard: DataProject.entities.CustomerLegalAccount.display_cards.CustomerLegalAccount
+enableMasterValuePicking: true
+modelJob: DataProject.ModelJobs.LoadCustomer360
+formTab: DataProject.entities.CustomerLegalAccount.Forms.CustomerDuplicate.Main

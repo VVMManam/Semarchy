@@ -1,0 +1,10 @@
+_name: DeriveLicenseValidity
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Derive Licence Validity
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: LicenseValidityStatusCode
+    expression: |-
+      CASE WHEN LicenseExpiryDate IS NULL THEN NULL WHEN LicenseExpiryDate < NOW() THEN 'EXPIRED' ELSE 'VALID' END

@@ -1,0 +1,8 @@
+_name: SupplierContactNameMandatory
+_type: SemQLValidation
+_package: DataProject.entities.Contact.validations
+entity: DataProject.entities.Contact.Contact
+label: VAL-23 Supplier Contact Name Mandatory
+validationScope: POST_CONSO
+validationLabel: "VAL-23 - Contact first and last name required."
+condition: "FID_SupplierSite IS NULL OR (FirstName IS NOT NULL AND LastName IS NOT NULL)"

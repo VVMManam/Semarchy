@@ -1,0 +1,22 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+_name: DefaultPhoneCountryCode
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Default Phone Country Code
+description: 'When a business phone or mobile arrives without a usable country code, takes the dial code of the customer registration country (Country Reference DialCode). Runs before NormalizeMobileTelephone, which then adds the code to the number. Numbers already starting with + or 00 keep their own code.'
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: BusinessPhoneCountryCode
+    expression: |-
+      CASE
+        WHEN BusinessPhone IS NOT NULL AND (BusinessPhoneCountryCode IS NULL OR NOT REGEXP_LIKE(BusinessPhoneCountryCode, '^\s*\+?[0-9]{1,4}\s*$'))
+        THEN COALESCE(RegistrationCountry.DialCode, BusinessPhoneCountryCode)
+        ELSE BusinessPhoneCountryCode
+      END
+  - attributeName: MobilePhoneCountryCode
+    expression: |-
+      CASE
+        WHEN Mobile IS NOT NULL AND (MobilePhoneCountryCode IS NULL OR NOT REGEXP_LIKE(MobilePhoneCountryCode, '^\s*\+?[0-9]{1,4}\s*$'))
+        THEN COALESCE(RegistrationCountry.DialCode, MobilePhoneCountryCode)
+        ELSE MobilePhoneCountryCode
+      END

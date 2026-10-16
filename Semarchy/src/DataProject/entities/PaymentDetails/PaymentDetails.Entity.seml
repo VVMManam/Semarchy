@@ -1,0 +1,123 @@
+_package: DataProject.entities.PaymentDetails
+_type: Entity
+_name: PaymentDetails
+label: Payment Details
+pluralLabel: Payment Details
+physicalTableName: PAYMENT_DETAILS
+iconUrl: images://mdi/book.svg
+description: ""
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+attributes:
+  - _type: EntityAttribute
+    _name: PaymentDetailsID
+    label: Payment Details ID
+    physicalName: PAYMENT_DETAILS_ID
+    dataType: LongInteger
+    precision: 38
+    mandatory: true
+    searchable: true
+  - _type: EntityAttribute
+    _name: Bank
+    label: Bank
+    physicalName: BANK
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: Branch
+    label: Branch
+    physicalName: BRANCH
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: Country
+    label: Country
+    physicalName: COUNTRY
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: Currency
+    label: Currency
+    physicalName: CURRENCY
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: IBAN
+    label: IBAN
+    physicalName: IBAN
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: AccountName
+    label: Account Name
+    physicalName: ACCOUNT_NAME
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: AccountNumber
+    label: Account Number
+    physicalName: ACCOUNT_NUMBER
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+  - _type: EntityAttribute
+    _name: RecordStatusCode
+    label: Record Status Code
+    physicalName: RECORD_STATUS_CODE
+    dataType: String
+    length: 255
+    mandatory: false
+    searchable: true
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.PaymentDetails.PaymentDetails.PaymentDetailsID
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherPaymentDetails
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 100
+  mergeThresholdMergingConfirmedWithNewMasters: 100
+  mergeThresholdMergingConfirmedWithUnconfirmed: 100
+  mergeThresholdMergingUnconfirmed: 100
+  mergeThresholdMergingUnconfirmedWithNewMasters: 100
+  mergeThresholdNewGroup: 100
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SemQLMatcherPaymentDetails
+      condition: |-
+        Record1.FID_CustomerOrgAssignment IS NOT NULL
+        AND Record2.FID_CustomerOrgAssignment IS NOT NULL
+        AND Record1.FID_CustomerOrgAssignment = Record2.FID_CustomerOrgAssignment
+        AND Record1.Bank IS NOT NULL
+        AND Record2.Bank IS NOT NULL
+        AND Record1.Bank = Record2.Bank
+        AND Record1.AccountNumber IS NOT NULL
+        AND Record2.AccountNumber IS NOT NULL
+        AND Record1.AccountNumber = Record2.AccountNumber
+      label: "Same Bank details under the same customer - catches duplicates left behind after a customer-level merge (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false

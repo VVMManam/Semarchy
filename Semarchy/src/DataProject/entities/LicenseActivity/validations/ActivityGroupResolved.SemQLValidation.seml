@@ -1,0 +1,8 @@
+_name: ActivityGroupResolved
+_type: SemQLValidation
+_package: DataProject.entities.LicenseActivity.validations
+entity: DataProject.entities.LicenseActivity.LicenseActivity
+label: Activity Group Resolved
+validationScope: POST_CONSO
+validationLabel: "ACTIVITY_GROUP_UNMAPPED - source value has no match in MDM."
+condition: "ActivityGroupCode IS NULL OR FID_GroupCode IS NOT NULL"

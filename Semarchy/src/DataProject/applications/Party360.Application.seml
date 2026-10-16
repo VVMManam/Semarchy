@@ -1,0 +1,64 @@
+_name: Party360
+_package: DataProject.applications
+_type: Application
+applicationTitle: Party360
+avatarImageUrl: images://AdPorts-ImageLibrary/roundLogo.png
+coverImageUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+favIcon: images://AdPorts-ImageLibrary/roundLogo.png
+logoUrl: images://AdPorts-ImageLibrary/adports-logo-original-navy-card.png
+historyBrowsingEnabled: false
+historyBrowsingRequiredRole: ""
+visibility: VISIBLE
+primaryColor: "md: blue 900"
+documentationConfig:
+  documentationConfigDiagrams: []
+label: Party360
+sortStrategy: POSITION
+globalSearchConfig:
+  displaySearchForDropdown: true
+  sortBusinessViewsAlphabetically: true
+  globalSearchBusinessViews:
+    - _name: PartySearch
+      _type: GlobalSearchBoView
+      label: Party
+      businessView: DataProject.entities.Party.business_views.Party
+      searchTypeConfig: DataProject.entities.Party.business_views.Party.Party.TextConfig
+      maxResults: 20
+      viewType: GD
+rootFolder:
+  _name: Root
+  icon: images://mdi/folder.svg
+  label: Root Folder
+  imageAlign: MIDDLE_CENTER
+  imageMode: FIT
+  _type: FolderAction
+  appActions:
+    - _name: GlobalSearch
+      label: Search
+      icon: images://mdi/magnify.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: GlobalSearchAction
+    - _name: MyTasks
+      label: My Tasks
+      icon: images://mdi/checkbox-marked-outline.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: MyTasksAction
+      badgeVisible: true
+    - _name: BrowseParties
+      label: Parties
+      icon: images://mdi/account-group.svg
+      imageAlign: MIDDLE_CENTER
+      imageMode: FIT
+      _type: BrowseBusinessViewAction
+      businessView: DataProject.entities.Party.business_views.Party
+      useSearchOnOpen: false
+      nbRecordsBadgeVisible: false
+defaultAction: DataProject.applications.Party360.Root.BrowseParties
+navDrawer:
+  - _name: RootFolder
+    _type: FolderNavGroup
+    dividerVisible: false
+    labelVisible: false
+    linkedFolder: DataProject.applications.Party360.Root

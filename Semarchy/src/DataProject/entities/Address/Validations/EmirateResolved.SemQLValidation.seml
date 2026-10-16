@@ -1,0 +1,8 @@
+_name: EmirateResolved
+_type: SemQLValidation
+_package: DataProject.entities.Address.Validations
+entity: DataProject.entities.Address.Address
+label: Emirate Resolved
+validationScope: POST_CONSO
+validationLabel: "EMIRATE_UNMAPPED - source value has no match in MDM."
+condition: "IssuingEmirateId IS NULL OR FID_EmirateCode IS NOT NULL"

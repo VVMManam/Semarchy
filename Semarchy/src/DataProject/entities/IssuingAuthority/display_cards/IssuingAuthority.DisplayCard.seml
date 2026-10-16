@@ -1,0 +1,17 @@
+_name: IssuingAuthority
+_package: DataProject.entities.IssuingAuthority.display_cards
+_type: DisplayCard
+entity: DataProject.entities.IssuingAuthority.IssuingAuthority
+default: true
+primaryTextExpression: NameEn
+supportingTextExpression: NameAr
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

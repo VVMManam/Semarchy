@@ -1,0 +1,58 @@
+_package: DataProject.entities.Party.forms
+_type: Form
+_name: PartyParentLink
+entity: DataProject.entities.Party.Party
+default: false
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "180px"
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    label: "Link to super party"
+    iconUrl: images://mdi/link-variant.svg
+    displayFormTabAs: ICON_LABEL
+    content:
+      - _type: FormSection
+        _name: LinkSection
+        label: "Link the selected parties to a super party (leave empty to unlink)"
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: LinkC1
+            layoutDirection: COLUMN
+            content:
+              - _name: ParentParty
+                value: FDN_ParentPartyID
+                dataType: STRING
+                referencedEntity: DataProject.entities.Party.Party
+                useCustomLabel: true
+                label: "Super party"
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: '0'
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: subhead
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL

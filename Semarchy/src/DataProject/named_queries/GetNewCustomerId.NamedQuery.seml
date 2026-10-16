@@ -1,0 +1,98 @@
+_name: GetNewCustomerId
+_type: NamedQuery
+_package: DataProject.named_queries
+active: true
+queryParameters:
+  - _name: RequestID
+    _type: QueryParameter
+    bindingName: PARAM_REQUEST_ID
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+  - _name: Name
+    _type: QueryParameter
+    bindingName: PARAM_NAME
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+  - _name: IssuingAuthority
+    _type: QueryParameter
+    bindingName: PARAM_ISSUING_AUTHORITY
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+  - _name: LicenseNumber
+    _type: QueryParameter
+    bindingName: PARAM_LICENSE_NUMBER
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+  - _name: IssuingCountry
+    _type: QueryParameter
+    bindingName: PARAM_ISSUING_COUNTRY
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+  - _name: EmailId
+    _type: QueryParameter
+    bindingName: PARAM_EMAIL_ID
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+  - _name: MOLNumber
+    _type: QueryParameter
+    bindingName: PARAM_MOL_NUMBER
+    dataType: STRING
+    mandatory: false
+    defaultValue: "null"
+filter: >-
+  (:PARAM_LICENSE_NUMBER is not null
+   and :PARAM_ISSUING_AUTHORITY is not null
+   and
+   (UPPER(LicenseNumber) = UPPER(:PARAM_LICENSE_NUMBER)
+    and UPPER(IssuingAuthority) = UPPER(:PARAM_ISSUING_AUTHORITY)
+    and (:PARAM_ISSUING_COUNTRY is null
+         or UPPER(IssuingCountry) = UPPER(:PARAM_ISSUING_COUNTRY))))
+  or
+  (:PARAM_LICENSE_NUMBER is not null
+   and :PARAM_ISSUING_COUNTRY is not null
+   and :PARAM_NAME is not null
+   and
+   (UPPER(:PARAM_ISSUING_COUNTRY) <> 'UAE'
+    and UPPER(LicenseNumber) = UPPER(:PARAM_LICENSE_NUMBER)
+    and UPPER(NameEN) = UPPER(:PARAM_NAME)))
+  or
+  (:PARAM_REQUEST_ID = RequestID and :PARAM_REQUEST_ID is not null)
+sort: CustomerGoldenID asc
+defaultLimit: 100
+queryObjects:
+  - _name: CustomerGolden
+    _type: QueryObject
+    entity: DataProject.entities.CustomerGolden.CustomerGolden
+    objectProperties:
+      - _name: CustomerGoldenID
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: CustomerGoldenID
+        targetObject: DataProject.named_queries.GetNewCustomerId.CustomerGolden
+      - _name: CustomerNameEN
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: NameEN
+        targetObject: DataProject.named_queries.GetNewCustomerId.CustomerGolden
+      - _name: IssuingAuthority
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IssuingAuthority
+        targetObject: DataProject.named_queries.GetNewCustomerId.CustomerGolden
+      - _name: IssuingCountry
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: IssuingCountry
+        targetObject: DataProject.named_queries.GetNewCustomerId.CustomerGolden
+      - _name: LicenseNumber
+        _type: ObjectProperty
+        type: VALUE
+        semQlExpression: LicenseNumber
+        targetObject: DataProject.named_queries.GetNewCustomerId.CustomerGolden
+rootQueryObject: DataProject.named_queries.GetNewCustomerId.CustomerGolden

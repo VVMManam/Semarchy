@@ -1,0 +1,23 @@
+_name: SupplierSiteAssignment_SupplierSite
+_type: Reference
+_package: DataProject.references
+label: Supplier Site Assignment to Supplier Site
+physicalName: SUP_SITE_ASGN_SUPPLI
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+fromRoleLabel: Supplier Site Assignment
+fromRolePluralLabel: Supplier Site Assignments
+fromRoleName: SupplierSiteAssignment
+toEntity: DataProject.entities.SupplierSite.SupplierSite
+toRoleLabel: Supplier Site
+toRoleName: SupplierSite
+toRolePhysicalName: SUPPLIER_SITE
+foreignAttribute:
+  _name: SupplierSite
+  _type: ForeignAttribute
+  physicalName: SUPPLIER_SITE
+  label: Supplier Site
+  searchable: true
+  entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment

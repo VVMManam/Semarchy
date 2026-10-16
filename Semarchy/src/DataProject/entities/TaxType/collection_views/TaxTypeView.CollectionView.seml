@@ -1,0 +1,47 @@
+_package: DataProject.entities.TaxType.collection_views
+_name: TaxTypeView
+_type: CollectionView
+entity: DataProject.entities.TaxType.TaxType
+displayCard: DataProject.entities.TaxType.display_cards.TaxType
+default: true
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: false
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: IdColumn
+    _name: TaxTypeCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: TaxTypeCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NameEn
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NameEn
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FormatRegex
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FormatRegex
+    visibleByDefault: true
+  - _type: CheckboxColumn
+    _name: IsActive
+    columnAlign: LEFT
+    dataType: BOOLEAN
+    useCustomLabel: false
+    value: IsActive
+    visibleByDefault: true

@@ -1,0 +1,49 @@
+_name: CustomerLegalAccountSearch
+_type: SearchForm
+_package: DataProject.entities.CustomerLegalAccount.search_forms
+label: Customer Legal Account Search
+description: Search form used in the Merge & Split "add golden record" dialog
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+searchTip: Fill in one or more fields. Text fields match partial values and ignore case.
+searchParameters:
+  - _name: CustomerGoldenId
+    _type: SearchParameter
+    label: Customer Golden Id
+    bindVariableName: CustomerGoldenId
+    length: 128
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: NameEN
+    _type: SearchParameter
+    label: Name EN
+    bindVariableName: NameEN
+    length: 200
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: Email
+    _type: SearchParameter
+    label: Email
+    bindVariableName: Email
+    length: 200
+    dataType: String
+    displayType: TEXT_FIELD
+  - _name: LicenseNumber
+    _type: SearchParameter
+    label: License Number
+    bindVariableName: LicenseNumber
+    dataType: String
+    length: 50
+    displayType: TEXT_FIELD
+  - _name: TaxRegistrationNumber
+    _type: SearchParameter
+    label: Tax Registration Number
+    bindVariableName: TaxRegistrationNumber
+    dataType: String
+    length: 50
+    displayType: TEXT_FIELD
+semQlCondition: >-
+  (:CustomerGoldenId IS NULL OR Upper(CustomerGoldenId) LIKE '%' || Upper(:CustomerGoldenId) || '%')
+  AND (:NameEN IS NULL OR Upper(NameEN) LIKE '%' || Upper(:NameEN) || '%')
+  AND (:Email IS NULL OR Upper(Email) LIKE '%' || Upper(:Email) || '%')
+  AND (:LicenseNumber IS NULL OR Upper(LicenseNumber) LIKE '%' || Upper(:LicenseNumber) || '%')
+  AND (:TaxRegistrationNumber IS NULL OR Upper(TaxRegistrationNumber) LIKE '%' || Upper(:TaxRegistrationNumber) || '%')

@@ -1,0 +1,10 @@
+_name: SupplierIdentifierNormalize
+_type: SemQLEnricher
+_package: DataProject.entities.Identifier.enrichers
+entity: DataProject.entities.Identifier.Identifier
+label: Supplier Identifier Normalize
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: ValueNormalised
+    expression: |-
+      CASE WHEN (FID_Sgid IS NOT NULL OR SourceID_Sgid IS NOT NULL) AND Value IS NOT NULL THEN UPPER(REGEXP_REPLACE(Value, '[^A-Za-z0-9]', '', 'g')) ELSE ValueNormalised END

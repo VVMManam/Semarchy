@@ -1,0 +1,23 @@
+_name: SbcMatchResult_SbcRequestId
+_type: Reference
+_package: DataProject.references
+label:  Sbc Match Result to  Sbc Request
+physicalName: SBC_MATCH_RESULT_2DE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.SbcMatchResult.SbcMatchResult
+fromRoleLabel:  Sbc Match Result
+fromRolePluralLabel:  Sbc Match Result
+fromRoleName: SbcMatchResult
+toEntity: DataProject.entities.SbcRequest.SbcRequest
+toRoleLabel: Sbc Request Id
+toRoleName: SbcRequestId
+toRolePhysicalName: SBC_REQUEST_ID
+foreignAttribute:
+  _name: SbcRequestId
+  _type: ForeignAttribute
+  physicalName: SBC_REQUEST_ID
+  label: Sbc Request Id
+  searchable: true
+  entity: DataProject.entities.SbcMatchResult.SbcMatchResult

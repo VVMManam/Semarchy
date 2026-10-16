@@ -1,0 +1,24 @@
+_type: SemQLEnricher
+_package: DataProject.entities.CustomerOutstanding.enrichers
+_name: SetOutstandingResult
+entity: DataProject.entities.CustomerOutstanding.CustomerOutstanding
+label: Set Outstanding Result
+description: 'YES when the outstanding result posted by OSB (ApiStatus / ApiOpenCount) is SUCCESS with open transactions, NO when SUCCESS with none, ERROR otherwise; stamps Checked At.'
+enricherExecutionScope: PRE_CONSO
+condition: "OutstandingKey IS NOT NULL AND OutstandingKey NOT LIKE 'REQ-%'"
+semQlEnricherExpressions:
+  - attributeName: RecordType
+    expression: "'RESULT'"
+  - attributeName: OpenTransactions
+    expression: "CASE WHEN REGEXP_LIKE(BTRIM(COALESCE(ApiOpenCount, '')), '^[0-9]+$') THEN TO_NUMBER(BTRIM(ApiOpenCount), '9999999999') END"
+  - attributeName: OutstandingStatus
+    expression: |-
+      CASE
+        WHEN UPPER(BTRIM(COALESCE(ApiStatus, ''))) = 'SUCCESS' AND REGEXP_LIKE(BTRIM(COALESCE(ApiOpenCount, '')), '^[0-9]+$') AND TO_NUMBER(BTRIM(ApiOpenCount), '9999999999') > 0 THEN 'YES'
+        WHEN UPPER(BTRIM(COALESCE(ApiStatus, ''))) = 'SUCCESS' THEN 'NO'
+        ELSE 'ERROR'
+      END
+  - attributeName: CheckedAt
+    expression: "DATE_TRUNC('second', NOW())"
+  - attributeName: CheckMessage
+    expression: "CASE WHEN ApiStatus IS NULL THEN COALESCE(CheckMessage, 'No response from the outstanding service') ELSE CheckMessage END"

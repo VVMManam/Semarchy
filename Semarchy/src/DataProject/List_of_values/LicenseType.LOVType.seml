@@ -1,0 +1,28 @@
+_name: LicenseType
+_package: DataProject.List_of_values
+_type: LOVType
+label: License Type
+length: 128
+lovValues:
+  - code: "TRADE_LICENSE"
+    label: Trade License Number
+  - code: "COMPANY_REGISTRATION"
+    label: Company Registration Number
+  - code: "NATIONAL_TAX_NUMBER"
+    label: CNIC Number
+  - code: "HUB_ZONE"
+    label: Hub Zone
+  - code: "ORA_LGBTQ_OWNED"
+    label: LGBTQ+ Owned
+  - code: "MINORITY_OWNED"
+    label: Minority Owned
+  - code: "ORA_DISABILITY_OWNED_PERSON"
+    label: Person with Disability Owned
+  - code: "DISABLED_VETERAN_OWNED"
+    label: Service-disabled Veteran Owned
+  - code: "SMALL_BUSINESS"
+    label: Small Business
+  - code: "VETERAN_OWNED"
+    label: Veteran Owned
+  - code: "WOMAN_OWNED"
+    label: Woman Owned

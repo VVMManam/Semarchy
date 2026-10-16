@@ -1,0 +1,23 @@
+_name: Party_PrimaryPublisherCode
+_type: Reference
+_package: DataProject.references
+label:  Party to  Source System
+physicalName: PARTY_PRIMARY_PUB_28C
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.Party.Party
+fromRoleLabel:  Party
+fromRolePluralLabel:  Party
+fromRoleName: Party
+toEntity: DataProject.entities.SourceSystem.SourceSystem
+toRoleLabel: Primary Publisher Code
+toRoleName: PrimaryPublisherCode
+toRolePhysicalName: PRIMARY_PUBLISHER_CODE
+foreignAttribute:
+  _name: PrimaryPublisherCode
+  _type: ForeignAttribute
+  physicalName: PRIMARY_PUBLISHER_CODE
+  label: Primary Publisher Code
+  searchable: true
+  entity: DataProject.entities.Party.Party

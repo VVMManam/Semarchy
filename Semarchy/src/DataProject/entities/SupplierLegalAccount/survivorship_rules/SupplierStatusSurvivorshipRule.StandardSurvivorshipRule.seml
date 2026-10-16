@@ -1,0 +1,40 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+_package: DataProject.entities.SupplierLegalAccount.survivorship_rules
+defaultRule: false
+_name: SupplierStatusSurvivorshipRule
+label: Classification and Status Survivorship Rule
+description: "SRV-16: SPEND_AUTHORIZED beats PROSPECTIVE; ACTIVE contributor beats inactive; then Fusion/AD Ports > complete > oldest."
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(BusinessRelationshipCode) = 'SPEND_AUTHORIZED' THEN 1 ELSE 0 END DESC,
+  CASE WHEN UPPER(AccountStatusCode) IN ('A','ACTIVE','1','Y') THEN 1 ELSE 0 END DESC,
+  CASE WHEN FusionSupplierId IS NOT NULL AND UPPER(COALESCE(SupplierNumber,'')) NOT LIKE 'K%' THEN 2 WHEN UPPER(COALESCE(SupplierNumber,'')) NOT LIKE 'K%' THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN AccountStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN SupplierState IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN GoldenIdStatus IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BusinessRelationshipCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN SupplierCategory IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NonTradeFlag IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsOneTimeSupplier IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsGovernmentEntity IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsHolding IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN StartDateActive IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EndDateActive IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  CASE WHEN REGEXP_LIKE(COALESCE(SupplierNumber, ''), '^[0-9]+$') THEN LPAD(SupplierNumber, 20, '0') ELSE 'Z' || COALESCE(SupplierNumber, '') END ASC,
+  CreationDate ASC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: AccountStatusCode
+  - attributeName: SupplierState
+  - attributeName: GoldenIdStatus
+  - attributeName: BusinessRelationshipCode
+  - attributeName: IsOneTimeSupplier
+  - attributeName: IsGovernmentEntity
+  - attributeName: IsHolding
+  - attributeName: StartDateActive
+  - attributeName: EndDateActive

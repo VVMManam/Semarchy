@@ -1,0 +1,12 @@
+_name: LicenseStage
+_type: LOVType
+_package: DataProject.List_of_values
+label: License Stage
+length: 50
+lovValues:
+  - code: "1"
+    label: Temporary
+  - code: "2"
+    label: Construction
+  - code: "3"
+    label: Permanent

@@ -1,0 +1,98 @@
+_type: StandardSurvivorshipRule
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+_package: DataProject.entities.CustomerLegalAccount.survivorship_rules
+defaultRule: false
+_name: StandardSurvivorshipRule
+label: Standard Survivorship Rule
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN Status IS NOT NULL AND Status = 'Inactive' THEN 0 ELSE 1 END DESC,
+  (
+    CASE WHEN CustomerGoldenId IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountCreationDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CommercialGroupCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN GoldenIdStatus IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountStatus IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NameEN IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NameAr IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EstablishmentAddress IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Fax IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CustomerType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Website IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsGovernmentEntity IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EstablishmentType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN PaymentTerm IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsVip IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CustomerCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ParentUCID IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Email IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BusinessPhone IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Status IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountId IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Mobile IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CustomerSite IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN OperationType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN MobilePhoneCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN BusinessPhoneCountryCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Exemption IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN NoVATDeclaration IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CustomerTypeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountTypeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN CustomerStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN AccountStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EmailDomain IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseStage IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseRecordStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN Issuing IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IssuingEmirateId IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseType IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseRegistrationDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseIssueDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseStartDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseExpiryDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseAmendDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseCancelDate IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPrimaryLicense IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseIssuingEmirateCodeRaw IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN TaxRegistrationNumber IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseValidityStatusCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseIsPlaceholder IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseFormatValid IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseValidatedBy IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN LicenseValidatedOn IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsGenericEmailDomain IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+publisherRankings: []
+overrideStrategy: UNTIL_NEXT_USER_CHANGE
+attributes:
+  - attributeName: CommercialGroupCode
+  - attributeName: GoldenIdStatus
+  - attributeName: AccountStatus
+  - attributeName: Fax
+  - attributeName: CustomerType
+  - attributeName: AccountType
+  - attributeName: Website
+  - attributeName: IsGovernmentEntity
+  - attributeName: EstablishmentType
+  - attributeName: IsVip
+  - attributeName: CustomerCode
+  - attributeName: ParentUCID
+  - attributeName: Status
+  - attributeName: AccountId
+  - attributeName: CustomerSite
+  - attributeName: ApprovalCheck
+  - attributeName: OperationType
+  - attributeName: MobilePhoneCountryCode
+  - attributeName: BusinessPhoneCountryCode
+  - attributeName: Exemption
+  - attributeName: NoVATDeclaration
+  - attributeName: CustomerTypeCode
+  - attributeName: AccountTypeCode
+  - attributeName: CustomerStatusCode
+  - attributeName: CustomerChangeStatusCode
+  - attributeName: AccountStatusCode

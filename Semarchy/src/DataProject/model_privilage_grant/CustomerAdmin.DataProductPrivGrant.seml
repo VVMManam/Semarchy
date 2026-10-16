@@ -1,0 +1,29 @@
+_type: DataProductPrivGrant
+_package: DataProject.model_privilage_grant
+_name: CustomerAdmin
+roleName: MDM_Customer_Admin
+label: Customer Administrator
+dataAdminRole: false
+integrationWsRole: false
+allowApiPublishingAsUser: false
+entityPrivGrants:
+  - _name: SlaPolicy
+    _type: EntityPrivGrant
+    entity: DataProject.entities.SlaPolicy.SlaPolicy
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: true
+    exportAllowed: true
+    removeAllowed: true
+  - _name: Cluster
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Cluster.Cluster
+    attributePrivGrants: []
+    defaultAccessType: READ
+    checkoutAllowed: false
+    createAllowed: false
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false

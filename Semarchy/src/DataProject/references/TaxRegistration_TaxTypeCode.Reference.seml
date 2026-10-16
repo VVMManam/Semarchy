@@ -1,0 +1,23 @@
+_name: TaxRegistration_TaxTypeCode
+_type: Reference
+_package: DataProject.references
+label:  Tax Registration to  Tax Type
+physicalName: TAX_REG_TAX_TYPE_CODE
+oneToMany: false
+validationScope: PRE_CONSO
+deletePropagation: RESTRICT
+fromEntity: DataProject.entities.TaxRegistration.TaxRegistration
+fromRoleLabel:  Tax Registration
+fromRolePluralLabel:  Tax Registration
+fromRoleName: TaxRegistration
+toEntity: DataProject.entities.TaxType.TaxType
+toRoleLabel: Tax Type Code
+toRoleName: TaxTypeCode
+toRolePhysicalName: TAX_TYPE_CODE
+foreignAttribute:
+  _name: TaxTypeCode
+  _type: ForeignAttribute
+  physicalName: TAX_TYPE_CODE
+  label: Tax Type Code
+  searchable: true
+  entity: DataProject.entities.TaxRegistration.TaxRegistration

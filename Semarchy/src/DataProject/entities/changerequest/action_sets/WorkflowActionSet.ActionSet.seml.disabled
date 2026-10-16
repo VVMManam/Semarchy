@@ -1,0 +1,13 @@
+_name: WorkflowActionSet
+_package: DataProject.entities.changerequest.action_sets
+_type: ActionSet
+entity: DataProject.entities.changerequest.changerequest
+label: Customer Action Set
+defaultActionSet: false
+actions:
+  - _name: StartCustomerCRApproval
+    label: Start CR Approval
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: StartWorkflowEntityAction
+    startEvent: DataProject.workflows.ChangeRequestApproval.Start

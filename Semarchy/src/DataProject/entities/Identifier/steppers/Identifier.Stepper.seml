@@ -1,0 +1,89 @@
+_name: Identifier
+_package: DataProject.entities.Identifier.steppers
+_type: Stepper
+entity: DataProject.entities.Identifier.Identifier
+label: Author Identifiers
+triggers: []
+rootStep:
+  _name: Identifiers
+  _type: CollectionStep
+  label: Identifiers
+  canFinishSubLevel: true
+  childDeleteType: HARD_DELETE
+  collectionView: DataProject.entities.Identifier.collections.Identifier
+  customSortEnabled: false
+  defaultDisplayType: TABLE
+  displayGridAllowed: false
+  displayListAllowed: false
+  displayTableAllowed: true
+  enabledOnParentCreate: true
+  enabledOnParentEdit: true
+  formFieldsMode: AUTO
+  linear: false
+  useCustomCollectionLabel: false
+  userDefinedSortEnabled: true
+  stepTriggers: []
+  stepTransitionValidations:
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: DataProject.entities.Identifier.Identifier.Value
+    - onStepExit: SKIP
+      validationType: MANDATORY
+      attribute: DataProject.entities.Identifier.Identifier.StatusCode
+    - onStepExit: SKIP
+      validationType: DETECT_DUPS
+      matcher: DataProject.entities.Identifier.Identifier.SemQLMatcherIdentifier
+    - onStepExit: SKIP
+      validationType: LOV
+      attribute: DataProject.entities.Identifier.Identifier.StatusCode
+  childSteps:
+    - _name: Main
+      _type: FormStep
+      label: Identifier Details
+      canFinishSubLevel: true
+      enabledOnParentCreate: true
+      enabledOnParentEdit: true
+      enableMasterValuePicking: false
+      formFieldsMode: AUTO
+      formTab: DataProject.entities.Identifier.forms.Identifier.Main
+      referenceFormFieldConfigs: []
+      stepTriggers: []
+      formStepEnrichers: []
+      formStepValidations:
+        - validationType: MANDATORY
+          attribute: DataProject.entities.Identifier.Identifier.Value
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: MANDATORY
+          attribute: DataProject.entities.Identifier.Identifier.StatusCode
+          executedOnDataChange: true
+          executedOnFormOpen: true
+        - validationType: LOV
+          attribute: DataProject.entities.Identifier.Identifier.StatusCode
+          executedOnDataChange: true
+          executedOnFormOpen: true
+      stepTransitionValidations:
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: DataProject.entities.Identifier.Identifier.Value
+        - onStepExit: WARN
+          validationType: MANDATORY
+          attribute: DataProject.entities.Identifier.Identifier.StatusCode
+        - onStepExit: WARN
+          validationType: LOV
+          attribute: DataProject.entities.Identifier.Identifier.StatusCode
+        - onStepExit: WARN
+          validationType: DETECT_DUPS
+          matcher: DataProject.entities.Identifier.Identifier.SemQLMatcherIdentifier
+stepperFinishValidations:
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: DataProject.entities.Identifier.Identifier.Value
+  - onStepperFinish: WARN
+    validationType: MANDATORY
+    attribute: DataProject.entities.Identifier.Identifier.StatusCode
+  - onStepperFinish: SKIP
+    validationType: LOV
+    attribute: DataProject.entities.Identifier.Identifier.StatusCode
+  - onStepperFinish: WARN
+    validationType: DETECT_DUPS

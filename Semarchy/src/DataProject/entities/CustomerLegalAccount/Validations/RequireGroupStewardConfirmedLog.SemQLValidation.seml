@@ -1,0 +1,8 @@
+_name: RequireGroupStewardConfirmedLog
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Group Steward Confirmed Log
+validationScope: NONE
+condition: ANY MergeApprovalLog HAVE (UPPER(ReviewerRole) = 'MDM_GROUP_STEWARD' AND UPPER(Decision) = 'CONFIRMED' AND (CustomerLegalAccount.MergeDecisionDate IS NULL OR DecisionTimestamp > CustomerLegalAccount.MergeDecisionDate))
+validationLabel: "Add a Merge Approval Decision row with Reviewer Role = MDM_Group_Steward and Decision = CONFIRMED before using Approve Merge."

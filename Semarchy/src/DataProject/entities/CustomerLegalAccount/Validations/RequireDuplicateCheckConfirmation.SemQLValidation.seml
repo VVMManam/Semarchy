@@ -1,0 +1,8 @@
+_name: RequireDuplicateCheckConfirmation
+_package: DataProject.entities.CustomerLegalAccount.Validations
+_type: SemQLValidation
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Require Duplicate Check Confirmation
+condition: DuplicateCheck ='true'
+validationScope: NONE
+validationLabel: "Tick the Duplicate Check box before taking action on a duplicate."

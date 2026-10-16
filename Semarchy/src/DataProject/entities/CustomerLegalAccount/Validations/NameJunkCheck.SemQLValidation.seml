@@ -1,0 +1,10 @@
+_name: NameJunkCheck
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Name Junk Check
+validationScope: POST_CONSO
+validationLabel: NAME_INVALID - name is empty, too short, punctuation-only, all-digit, or a known placeholder value.
+_type: SemQLValidation
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (NameEN IS NULL OR ( REGEXP_LIKE(NameEN, '^.{3,}$') AND NOT REGEXP_LIKE(NameEN, '^[^A-Za-z0-9]*$') AND NOT REGEXP_LIKE(NameEN, '^[0-9]+$') AND NOT REGEXP_LIKE(UPPER(NameEN), '^(TEST|MIS CUSTOMER|DUMMY|NA)$') ))

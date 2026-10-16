@@ -1,0 +1,35 @@
+_name: LoadParty
+_package: DataProject.ModelJobs
+_type: CertificationJob
+description: "Party certification job (Party duplicate manager, Party steward actions, CreateParty API). Includes the customer and supplier legal accounts so that, after Parties are merged, the accounts linked to the losing Party are moved to the surviving Party in the same job."
+jobType: INTEGRATION
+queueName: Default
+jobParams: []
+modelTasks:
+  - _name: Party
+    _type: ModelJobTask
+    entity: DataProject.entities.Party.Party
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: CustomerLegalAccount
+    _type: ModelJobTask
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true
+  - _name: SupplierLegalAccount
+    _type: ModelJobTask
+    entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+    consolidatedDataEnrichmentEnabled: true
+    consolidationEnabled: true
+    matchEnabled: true
+    postConsoValidationEnabled: true
+    sourceDataEnrichmentEnabled: true
+    sourceValidationEnabled: true

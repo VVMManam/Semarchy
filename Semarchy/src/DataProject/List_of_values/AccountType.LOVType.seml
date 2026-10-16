@@ -1,0 +1,20 @@
+_name: AccountType
+_package: DataProject.List_of_values
+_type: LOVType
+label: Account Type
+length: 128
+lovValues:
+  - code: Normal
+    label: Normal
+  - code: ADPorts ICP
+    label: ADPorts ICP
+  - code: ADPorts RP
+    label: ADPorts RP
+  - code: ADQ ICP
+    label: ADQ ICP
+  - code: Internal
+    label: Internal
+  - code: Government
+    label: Government
+  - code: ADQ RP
+    label: ADQ RP

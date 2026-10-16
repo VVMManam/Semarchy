@@ -1,0 +1,309 @@
+_type: DataProductPrivGrant
+_package: DataProject.model_privilage_grant
+_name: IndustialZone
+roleName: MDM_IndustrialZone_Steward
+label: Industrial Zone Steward
+dataAdminRole: false
+integrationWsRole: true
+allowApiPublishingAsUser: true
+entityPrivGrants:
+  - _name: CustomerLegalAccount
+    _type: EntityPrivGrant
+    entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Profile
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Profile.Profile
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Address
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Address.Address
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Contacts
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Contact.Contact
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Identifier
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Identifier.Identifier
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: TaxRegistration
+    _type: EntityPrivGrant
+    entity: DataProject.entities.TaxRegistration.TaxRegistration
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Department
+    _type: EntityPrivGrant
+    entity: DataProject.entities.CustomerOrgAssignment.CustomerOrgAssignment
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: ContactPurpose
+    _type: EntityPrivGrant
+    entity: DataProject.entities.ContactPurpose.ContactPurpose
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Cluster
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Cluster.Cluster
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Country
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Country.CountryReference
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Currency
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Currency.Currency
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: IssuingAuthority
+    _type: EntityPrivGrant
+    entity: DataProject.entities.IssuingAuthority.IssuingAuthority
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: BusinessUnit
+    _type: EntityPrivGrant
+    entity: DataProject.entities.BusinessUnit.BusinessUnit
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Emirate
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Emirate.Emirate
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: ErpProfile
+    _type: EntityPrivGrant
+    entity: DataProject.entities.ErpProfile.ErpProfile
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: ContactRole
+    _type: EntityPrivGrant
+    entity: DataProject.entities.ContactRole.ContactRole
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: IdentifierType
+    _type: EntityPrivGrant
+    entity: DataProject.entities.IdentifierType.IdentifierType
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: LicenseActivityGroupType
+    _type: EntityPrivGrant
+    entity: DataProject.entities.LicenseActivityGroupType.LicenseActivityGroupType
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: LicenseActivityType
+    _type: EntityPrivGrant
+    entity: DataProject.entities.LicenseActivityType.LicenseActivityType
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: LicenseType
+    _type: EntityPrivGrant
+    entity: DataProject.entities.LicenseType.LicenseType
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: ProfileType
+    _type: EntityPrivGrant
+    entity: DataProject.entities.ProfileType.ProfileType
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: CrossReference
+    _type: EntityPrivGrant
+    entity: DataProject.entities.CrossReference.CrossReference
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: SourceSystem
+    _type: EntityPrivGrant
+    entity: DataProject.entities.SourceSystem.SourceSystem
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: TaxType
+    _type: EntityPrivGrant
+    entity: DataProject.entities.TaxType.TaxType
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: PaymentTerm
+    _type: EntityPrivGrant
+    entity: DataProject.entities.PaymentTerm.PaymentTerm
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: AddressUsage
+    _type: EntityPrivGrant
+    entity: DataProject.entities.AddressUsage.AddressUsage
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: Title
+    _type: EntityPrivGrant
+    entity: DataProject.entities.Title.Title
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: MergeApprovalLogs
+    _type: EntityPrivGrant
+    entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: true
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: CustomerOutstanding
+    _type: EntityPrivGrant
+    entity: DataProject.entities.CustomerOutstanding.CustomerOutstanding
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: false
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false
+  - _name: OutstandingRefreshRequest
+    _type: EntityPrivGrant
+    entity: DataProject.entities.OutstandingRefreshRequest.OutstandingRefreshRequest
+    attributePrivGrants: []
+    defaultAccessType: READ_WRITE
+    checkoutAllowed: false
+    createAllowed: true
+    deleteAllowed: false
+    exportAllowed: true
+    removeAllowed: false

@@ -1,0 +1,10 @@
+_name: DeriveRegistrationCountry
+_type: SemQLEnricher
+_package: DataProject.entities.Party.enrichers
+entity: DataProject.entities.Party.Party
+label: Derive registration country from issuing authority
+description: "When the party arrives without a registration country, sets it to the licence country, which ResolvePartyAuthority takes from the issuing authority. A country that was sent is kept."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FID_RegistrationCountryRef
+    expression: CASE WHEN FID_RegistrationCountryRef IS NOT NULL THEN FID_RegistrationCountryRef ELSE LicenceCountry END

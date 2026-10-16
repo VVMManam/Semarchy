@@ -1,0 +1,140 @@
+_name: ValidateCustomer
+_package: DataProject.entities.CustomerLegalAccount.BusinessViews
+_type: BusinessView
+displayRootNodeAs: ICON_LABEL
+enableHierarchyView: false
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+rootLabel: Validate Customer
+rootPluralLabel: Validate Customer
+useHierarchyOnOpen: false
+label: Validate Customer
+rootBusinessViewEntity:
+  _name: Customer
+  _type: BusinessViewEntity
+  collection: DataProject.entities.CustomerLegalAccount.Collections.ValidateCustomer
+  displayRecordCount: ALWAYS
+  enableUserDefinedSort: true
+  entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+  form: DataProject.entities.CustomerLegalAccount.Forms.ValidateCustomer
+  gridAllowed: true
+  listAllowed: true
+  outlineVisible: false
+  overrideDefaultSort: false
+  tableAllowed: true
+  actionSet: DataProject.entities.CustomerLegalAccount.ActionSets.CustomerValidationPending
+  businessEntityBuiltInFilters: []
+  businessEntitySearchConfigs:
+    - _name: TextConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: TEXT
+      enabled: true
+    - _name: FormConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: BY_FORM
+      enabled: true
+    - _name: AdvancedConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: ADVANCED
+      enabled: true
+    - _name: SemqlConfig
+      _type: BusinessEntitySearchTypeConfig
+      searchType: SEMQL
+      enabled: true
+  embeddedCollectionNavigations: []
+  referenceAttributeNavigationConfigs: []
+  transitions: 
+    - _name: Addresses
+      _type: BusinessViewTransition
+      transitionPath: Address
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/map-marker.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Address
+        _type: BusinessViewEntity
+        collection: DataProject.entities.Address.collection_views.Address
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.Address.Address
+        form: DataProject.entities.Address.forms.Address
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+    - _name: Contacts
+      _type: BusinessViewTransition
+      transitionPath: Contact
+      transitionType: FULLY_QUALIFIED
+      useCustomLabel: false
+      iconUrl: images://mdi/account-box.svg
+      displayFormTabAs: ICON_LABEL
+      displayTransitionNodeAs: ICON_LABEL
+      enableHierarchy: "0"
+      enableHierarchyInterpreter: LITERAL
+      expandHierarchyByDefault: false
+      transitionVisible: "1"
+      transitionVisibleInterpreter: LITERAL
+      businessViewEntity:
+        _name: Contact
+        _type: BusinessViewEntity
+        collection: DataProject.entities.Contact.collection_views.Contact
+        displayRecordCount: ALWAYS
+        enableUserDefinedSort: true
+        entity: DataProject.entities.Contact.Contact
+        form: DataProject.entities.Contact.forms.Contact
+        gridAllowed: false
+        listAllowed: false
+        outlineVisible: false
+        overrideDefaultSort: false
+        tableAllowed: true
+        businessEntityBuiltInFilters: []
+        businessEntitySearchConfigs:
+          - _name: TextConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: TEXT
+            enabled: true
+          - _name: FormConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: BY_FORM
+            enabled: true
+          - _name: AdvancedConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: ADVANCED
+            enabled: true
+          - _name: SemqlConfig
+            _type: BusinessEntitySearchTypeConfig
+            searchType: SEMQL
+            enabled: true
+        embeddedCollectionNavigations: []
+        referenceAttributeNavigationConfigs: []
+        transitions: []
+rootFilter: CustomerState = 'Under Review' and DuplicateCheck = '0'

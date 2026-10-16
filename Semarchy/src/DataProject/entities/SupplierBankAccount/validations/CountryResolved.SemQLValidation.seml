@@ -1,0 +1,10 @@
+_name: CountryResolved
+_type: SemQLValidation
+_package: DataProject.entities.SupplierBankAccount.validations
+entity: DataProject.entities.SupplierBankAccount.SupplierBankAccount
+label: Country Resolved
+validationScope: POST_CONSO
+validationLabel: "COUNTRY_UNMAPPED - source country value has no matching reference in MDM."
+condition: |-
+  BankCountryCode IS NULL
+  OR FID_CountryCode IS NOT NULL

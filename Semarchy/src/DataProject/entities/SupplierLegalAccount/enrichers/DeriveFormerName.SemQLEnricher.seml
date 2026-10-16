@@ -1,0 +1,29 @@
+_name: DeriveFormerName
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierLegalAccount.enrichers
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Derive Former Name
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: FormerName
+    expression: |-
+      CASE WHEN NameAlternate IS NOT NULL AND REGEXP_LIKE(NameAlternate,'^\s*[Nn][Aa][Mm][Ee]\s+[Cc][Hh][Aa][Nn][Gg][Ee]\s*-')
+        THEN NULLIF(BTRIM(REGEXP_REPLACE(NameAlternate,'^\s*[Nn][Aa][Mm][Ee]\s+[Cc][Hh][Aa][Nn][Gg][Ee]\s*-\s*','','g')),'')
+        ELSE NULL
+      END
+  - attributeName: FormerNameMatchKey
+    expression: |-
+      CASE WHEN NameAlternate IS NOT NULL AND REGEXP_LIKE(NameAlternate,'^\s*[Nn][Aa][Mm][Ee]\s+[Cc][Hh][Aa][Nn][Gg][Ee]\s*-')
+        THEN NULLIF(BTRIM(
+          REGEXP_REPLACE(
+            REGEXP_REPLACE(
+              REGEXP_REPLACE(
+                REGEXP_REPLACE(
+                  UPPER(TRANSLATE(BTRIM(REGEXP_REPLACE(NameAlternate,'^\s*[Nn][Aa][Mm][Ee]\s+[Cc][Hh][Aa][Nn][Gg][Ee]\s*-\s*','','g')),'ÁÀÂÄÃÅáàâäãåÉÈÊËéèêëÍÌÎÏíìîïÓÒÔÖÕóòôöõÚÙÛÜúùûüÇçÑñ','AAAAAAaaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUUuuuuCcNn')),
+                  '[^A-Z0-9 ]',' ','g'),
+                '\s+',' ','g'),
+              '\yL L C\y','LLC','g'),
+            '\s(FZ LLC|LLC|LTD|LIMITED|FZE|FZCO)\s*$','','g')
+        ),'')
+        ELSE NULL
+      END

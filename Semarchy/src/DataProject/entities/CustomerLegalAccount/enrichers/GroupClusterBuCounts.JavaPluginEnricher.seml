@@ -1,0 +1,84 @@
+_name: GroupClusterBuCounts
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Group Cluster BU Counts (department accounts, suggested merge group)
+description: 'For each cluster, the number of distinct ACTIVE business units over the department accounts (CustomerOrgAssignment) of ALL customers that share this customer''s SuggestedMergeID (or the customer alone when it has no suggestion). A department account counts only when it is active (Status = A), its cluster (ClusterCode reference) is active, and its business unit is active and not linked to a different cluster (a business unit with no cluster in its reference data is accepted; the department links it to the cluster). NULL = no such department account for that cluster (cluster not involved). Read by DeriveApprovalClusters and EvaluateMergeDecision.'
+enricherExecutionScope: POST_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: with grp as (
+                select g.customer_legal_account_id cgid,
+                       coalesce(cast(g.b_suggmergeid as varchar), 'SELF-' || cast(g.customer_legal_account_id as varchar)) grp_key
+                from gd_custom_legal_account g
+            ),
+            dept as (
+                select gr.grp_key,
+                       case
+                           when upper(coalesce(c.cluster_code, '')) in ('MT', 'MARITIME') or upper(coalesce(c.name_en, '')) in ('MT', 'MARITIME') then 'MT'
+                           when upper(coalesce(c.cluster_code, '')) in ('IZ', 'INDUSTRIAL ZONE') or upper(coalesce(c.name_en, '')) in ('IZ', 'INDUSTRIAL ZONE') then 'IZ'
+                           when upper(coalesce(c.cluster_code, '')) in ('LGSTS', 'LOGISTICS') or upper(coalesce(c.name_en, '')) in ('LGSTS', 'LOGISTICS') then 'LG'
+                           when upper(coalesce(c.cluster_code, '')) in ('CORP') or upper(coalesce(c.name_en, '')) in ('CORP') then 'CO'
+                           when upper(coalesce(c.cluster_code, '')) in ('PORTS') or upper(coalesce(c.name_en, '')) in ('PORTS') then 'PT'
+                           when upper(coalesce(c.cluster_code, '')) in ('DC', 'DIGITAL CLUSTER') or upper(coalesce(c.name_en, '')) in ('DC', 'DIGITAL CLUSTER') then 'DC'
+                       end clu,
+                       d.f_business_unit_code bu
+                from gd_cust_org_assignment d
+                join grp gr on gr.cgid = d.f_customer_legal
+                     and upper(coalesce(d.status, '')) = 'A'
+                join gd_cluster c on c.cluster_code = d.f_cluster_code
+                     and lower(cast(c.is_active as varchar)) in ('true', 't', '1')
+                join gd_business_unit b on b.business_unit_code = d.f_business_unit_code
+                     and (b.f_cluster_code is null or b.f_cluster_code = d.f_cluster_code)
+                     and lower(cast(b.is_active as varchar)) in ('true', 't', '1')
+            ),
+            agg as (
+                select grp_key,
+                       case when bool_or(clu = 'MT') then count(distinct case when clu = 'MT' then bu end) end mt,
+                       case when bool_or(clu = 'IZ') then count(distinct case when clu = 'IZ' then bu end) end iz,
+                       case when bool_or(clu = 'LG') then count(distinct case when clu = 'LG' then bu end) end lg,
+                       case when bool_or(clu = 'CO') then count(distinct case when clu = 'CO' then bu end) end co,
+                       case when bool_or(clu = 'PT') then count(distinct case when clu = 'PT' then bu end) end pt,
+                       case when bool_or(clu = 'DC') then count(distinct case when clu = 'DC' then bu end) end dc
+                from dept
+                group by grp_key
+            )
+            select cast(g.cgid as varchar) LOOKUP_COLUMN,
+                   cast(a.mt as varchar) OUTPUT_COLUMN1,
+                   cast(a.iz as varchar) OUTPUT_COLUMN2,
+                   cast(a.lg as varchar) OUTPUT_COLUMN3,
+                   cast(a.co as varchar) OUTPUT_COLUMN4,
+                   cast(a.pt as varchar) OUTPUT_COLUMN5,
+                   cast(a.dc as varchar) OUTPUT_COLUMN6
+            from grp g
+            left join agg a on a.grp_key = g.grp_key
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "'' || CustomerLegalAccountID"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: GrpActiveBuCntMT
+    outputName: OUT_RESULT1
+  - attributeName: GrpActiveBuCntIZ
+    outputName: OUT_RESULT2
+  - attributeName: GrpActiveBuCntLG
+    outputName: OUT_RESULT3
+  - attributeName: GrpActiveBuCntCO
+    outputName: OUT_RESULT4
+  - attributeName: GrpActiveBuCntPT
+    outputName: OUT_RESULT5
+  - attributeName: GrpActiveBuCntDC
+    outputName: OUT_RESULT6
+
+processingBatchSize: 100
+threadPoolSize: 1

@@ -1,0 +1,8 @@
+_type: IDSurvivorshipRule
+entity: DataProject.entities.SupplierSite.SupplierSite
+_package: DataProject.entities.SupplierSite.survivorship_rules
+_name: IdSurvivorshipRule
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+label: Id Survivorship Rule
+publisherRankings: []

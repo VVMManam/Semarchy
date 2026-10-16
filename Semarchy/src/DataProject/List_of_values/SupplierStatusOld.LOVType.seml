@@ -1,0 +1,32 @@
+_name: SupplierStatusOld
+_package: DataProject.List_of_values
+_type: LOVType
+label: Supplier Status - Old
+length: 128
+lovValues:
+  - code: "Blacklisted Supplier"
+    label: Blacklisted Supplier
+  - code: "Defunct Supplier"
+    label: Defunct Supplier
+  - code: "Registered - Old"
+    label: Registered - Old
+  - code: "Registered - One Time"
+    label: Registered - One Time
+  - code: "Registered - Temporary"
+    label: Registered - Temporary
+  - code: "Registered Old - Divetech"
+    label: Registered Old - Divetech
+  - code: "Registered Old - KGTL"
+    label: Registered Old - KGTL
+  - code: "Registered Old - Sdeira Group"
+    label: Registered Old - Sdeira Group
+  - code: "Registered Old-Saf Inv"
+    label: Registered Old-Saf Inv
+  - code: "Registered Old-ZC"
+    label: Registered Old-ZC
+  - code: "Registered-One Time (CRM)"
+    label: Registered-One Time (CRM)
+  - code: "Rejected"
+    label: Rejected
+  - code: "Suspended Supplier"
+    label: Suspended Supplier

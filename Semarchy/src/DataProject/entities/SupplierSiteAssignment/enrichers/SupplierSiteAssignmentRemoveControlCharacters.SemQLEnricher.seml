@@ -1,0 +1,35 @@
+_name: SupplierSiteAssignmentRemoveControlCharacters
+_type: SemQLEnricher
+_package: DataProject.entities.SupplierSiteAssignment.enrichers
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+label: Remove Control Characters
+description: "NRM-20: strip tabs, CR/LF and non-printable characters from assignment text fields."
+enricherExecutionScope: PRE_CONSO
+semQlEnricherExpressions:
+  - attributeName: LiabilityDistributionAccount
+    expression: |-
+      CASE WHEN LiabilityDistributionAccount IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(LiabilityDistributionAccount, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: PrepaymentAccount
+    expression: |-
+      CASE WHEN PrepaymentAccount IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(PrepaymentAccount, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: FutureDatedPaymentAccount
+    expression: |-
+      CASE WHEN FutureDatedPaymentAccount IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(FutureDatedPaymentAccount, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: DistributionSet
+    expression: |-
+      CASE WHEN DistributionSet IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(DistributionSet, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: ClientBuName
+    expression: |-
+      CASE WHEN ClientBuName IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(ClientBuName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: BillToBuName
+    expression: |-
+      CASE WHEN BillToBuName IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(BillToBuName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: BillToLocationName
+    expression: |-
+      CASE WHEN BillToLocationName IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(BillToLocationName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: ShipToLocationName
+    expression: |-
+      CASE WHEN ShipToLocationName IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(ShipToLocationName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END
+  - attributeName: PaymentTermName
+    expression: |-
+      CASE WHEN PaymentTermName IS NULL THEN NULL ELSE NULLIF(BTRIM(REGEXP_REPLACE(REGEXP_REPLACE(PaymentTermName, '[\x01-\x1F\x7F]', ' ', 'g'), '\s+', ' ', 'g')), '') END

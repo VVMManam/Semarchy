@@ -1,0 +1,16 @@
+_name: SupplierSiteAssignment
+_package: DataProject.entities.SupplierSiteAssignment.display_cards
+_type: DisplayCard
+entity: DataProject.entities.SupplierSiteAssignment.SupplierSiteAssignment
+default: true
+primaryTextExpression: FID_ClientBuCode
+primaryImageValueInterpreter: LITERAL
+primaryImageSourceType: URL
+primaryImageAlign: MIDDLE_CENTER
+primaryImageMode: FIT
+primaryImageFallbackValueInterpreter: LITERAL
+primaryImageFallbackSourceType: URL
+avatarImageValueInterpreter: LITERAL
+avatarImageSourceType: URL
+avatarImageAlign: MIDDLE_CENTER
+avatarImageMode: FIT

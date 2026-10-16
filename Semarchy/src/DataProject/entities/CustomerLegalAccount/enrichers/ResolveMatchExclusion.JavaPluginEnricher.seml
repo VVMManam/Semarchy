@@ -1,0 +1,32 @@
+_name: ResolveMatchExclusion
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Resolve Match Exclusion (parameter list)
+enricherExecutionScope: PRE_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: select upper(trim(account_type)) LOOKUP_COLUMN,
+                   'Y' OUTPUT_COLUMN1
+            from gd_match_excl_acct_type
+            where upper(trim(exclude_from_matching)) = 'Y'
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "CASE WHEN AccountType IS NOT NULL THEN UPPER(BTRIM(AccountType)) ELSE NULL END"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: ExcludeFromMatching
+    outputName: OUT_RESULT1
+
+processingBatchSize: 100
+threadPoolSize: 1

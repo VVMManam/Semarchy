@@ -1,0 +1,218 @@
+_name: ChangeRequest
+_package: DataProject.workflows
+_type: Workflow
+label: Change Request Approval Workflow
+dataScope:
+  - _name: changerequest
+    _type: RootEntity
+    cardinality: SINGLE_RECORD
+    entity: DataProject.entities.changerequest.changerequest
+    childEntities: []
+generalProperties:
+  attachmentMimeTypes: "*"
+  attachmentMaxFileCount: 5
+  attachmentMaxFileSize: 10000
+notifications:
+  workflowAdminOnDueDate: false
+retentionPolicy:
+  retentionTimeUnit: DAYS
+  retentionType: FOREVER
+steps:
+  - _name: Start
+    _type: StartFromSelectionEvent
+    label: Start Review
+    defaultPriority: NORMAL
+    position: { x: -700, y: -110 }
+    selectionSourceType: GOLDEN_DATA
+    authoredEntity: DataProject.entities.changerequest.changerequest
+    startupParameters:
+      attachmentParamRequired: false
+      attachmentParamSupported: true
+      commentParamRequired: false
+      commentParamSupported: true
+      descriptionParamSupported: true
+      dueDateParamRequired: false
+      dueDateParamSupported: false
+      nextTaskAssigneeRequired: false
+      nextTaskAssigneeSupported: false
+      priorityParamSupported: true
+      showWaitDialog: true
+    transition:
+      _name: outgoing
+      _type: StartEventTransition
+      toStep: DataProject.workflows.ChangeRequest.RouteByEntityType
+      bendPoints: []
+
+  - _name: RouteByEntityType
+    _type: Router
+    label: Route By Entity Type
+    position: { x: -480, y: -110 }
+    routes:
+      - _name: CustomerRoute
+        _type: Route
+        index: 0
+        label: Customer Legal Account
+        condition: "CurrentDataSet.changerequest.EntityType = 'CustomerLegalAccount'"
+        toStep: DataProject.workflows.ChangeRequest.ReviewCustomerChange
+      - _name: LicenseRoute
+        _type: Route
+        index: 1
+        label: License
+        condition: "CurrentDataSet.changerequest.EntityType = 'License'"
+        toStep: DataProject.workflows.ChangeRequest.ReviewLicenseChange
+
+  - _name: ReviewCustomerChange
+    _type: UserTask
+    label: Review Customer Change
+    position: { x: -260, y: -200 }
+    assigneeCanRelease: true
+    taskType: DATA_AUTHORING
+    application: DataProject.applications.CustomerHub
+    entity: DataProject.entities.changerequest.changerequest
+    stepper: DataProject.entities.changerequest.steppers.ChangeRequest
+    myTasksConfiguration:
+      collection: DataProject.entities.changerequest.collection_views.ChangeRequest
+    notificationsOnTaskAssignment: { toAssignee: true, toCandidates: true }
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 4320
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate: { toCandidatesOrAssignee: false }
+    transitions:
+      - _name: ApproveTransition
+        _type: UserTaskTransition
+        label: Approve
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: DataProject.workflows.ChangeRequest.SubmitApproved
+        transitionParameters: { attachmentParamRequired: false, attachmentParamSupported: true, commentParamRequired: false, commentParamSupported: true, descriptionParamSupported: false, dueDateParamRequired: false, dueDateParamSupported: false, nextTaskAssigneeRequired: false, nextTaskAssigneeSupported: false, priorityParamSupported: false }
+        transitionValidations: []
+      - _name: RejectTransition
+        _type: UserTaskTransition
+        label: Reject
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: DataProject.workflows.ChangeRequest.NotifyRejection
+        transitionParameters: { attachmentParamRequired: false, attachmentParamSupported: true, commentParamRequired: true, commentParamSupported: true, descriptionParamSupported: false, dueDateParamRequired: false, dueDateParamSupported: false, nextTaskAssigneeRequired: false, nextTaskAssigneeSupported: false, priorityParamSupported: false }
+        transitionValidations: []
+
+  - _name: ReviewLicenseChange
+    _type: UserTask
+    label: Review License Change
+    position: { x: -260, y: -20 }
+    assigneeCanRelease: true
+    taskType: DATA_AUTHORING
+    application: DataProject.applications.CustomerHub
+    entity: DataProject.entities.changerequest.changerequest
+    stepper: DataProject.entities.changerequest.steppers.ChangeRequest
+    myTasksConfiguration:
+      collection: DataProject.entities.changerequest.collection_views.ChangeRequest
+    notificationsOnTaskAssignment: { toAssignee: true, toCandidates: true }
+    notificationsOnTaskExpiration:
+      taskMaxDuration: 4320
+      toAdmin: false
+      toCandidatesOrAssignee: false
+    notificationsOnWorkflowDueDate: { toCandidatesOrAssignee: false }
+    transitions:
+      - _name: ApproveTransition
+        _type: UserTaskTransition
+        label: Approve
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: DataProject.workflows.ChangeRequest.SubmitApproved
+        transitionParameters: { attachmentParamRequired: false, attachmentParamSupported: true, commentParamRequired: false, commentParamSupported: true, descriptionParamSupported: false, dueDateParamRequired: false, dueDateParamSupported: false, nextTaskAssigneeRequired: false, nextTaskAssigneeSupported: false, priorityParamSupported: false }
+        transitionValidations: []
+      - _name: RejectTransition
+        _type: UserTaskTransition
+        label: Reject
+        behaviorOnTransition: KEEP_DATA
+        showWaitDialog: true
+        userTaskCompletionRequired: true
+        bendPoints: []
+        toStep: DataProject.workflows.ChangeRequest.NotifyRejection
+        transitionParameters: { attachmentParamRequired: false, attachmentParamSupported: true, commentParamRequired: true, commentParamSupported: true, descriptionParamSupported: false, dueDateParamRequired: false, dueDateParamSupported: false, nextTaskAssigneeRequired: false, nextTaskAssigneeSupported: false, priorityParamSupported: false }
+        transitionValidations: []
+
+  - _name: SubmitApproved
+    _type: SubmitAutomation
+    label: Submit Approved Change
+    position: { x: 180, y: -110 }
+    submitUserExpression: WorkflowInstance.InitiatorName
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      label: Outgoing
+      toStep: DataProject.workflows.ChangeRequest.NotifyApproval
+      bendPoints: []
+
+  - _name: NotifyApproval
+    _type: SendEmailAutomation
+    label: Notify Approval
+    position: { x: 180, y: -200 }
+    application: DataProject.applications.CustomerHub
+    contentType: HTML_PREFORMATTED
+    failOnError: true
+    recipientMaxCount: 10
+    to:
+      - _name: Requester
+        _type: EmailRecipientSource
+        sourceType: SEMQL_EMAILS
+        semqlValue: CurrentDataSet.changerequest.RequestBy
+    customParameters:
+      - _name: ChangeRequestId
+        _type: EmailCustomParameter
+        parameterType: SEMQL
+        expression: CurrentDataSet.changerequest.ChangeRequestID
+      - _name: ApprovedByParam
+        _type: EmailCustomParameter
+        parameterType: SEMQL
+        expression: CurrentDataSet.changerequest.ApprovedBy
+    subject: "Change Request Approved"
+    body: "Your change request has been approved. (Insert the ChangeRequestId / ApprovedByParam parameters here via Studio's parameter picker so the values actually render.)"
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      label: Outgoing
+      toStep: DataProject.workflows.ChangeRequest.Finish
+      bendPoints: []
+
+  - _name: NotifyRejection
+    _type: SendEmailAutomation
+    label: Notify Rejection
+    position: { x: -260, y: -420 }
+    application: DataProject.applications.CustomerHub
+    contentType: HTML_PREFORMATTED
+    failOnError: true
+    recipientMaxCount: 10
+    to:
+      - _name: Requester
+        _type: EmailRecipientSource
+        sourceType: SEMQL_EMAILS
+        semqlValue: CurrentDataSet.changerequest.RequestBy
+    customParameters:
+      - _name: ChangeRequestId
+        _type: EmailCustomParameter
+        parameterType: SEMQL
+        expression: CurrentDataSet.changerequest.ChangeRequestID
+      - _name: RejectReason
+        _type: EmailCustomParameter
+        parameterType: SEMQL
+        expression: CurrentDataSet.changerequest.RejectionReason
+    subject: "Change Request Rejected"
+    body: "Your change request has been rejected. Open the workflow task for the reason. (Insert the ChangeRequestId / RejectReason parameters here via Studio's parameter picker so the values actually render.)"
+    transition:
+      _name: outgoing
+      _type: AutomationTransition
+      label: Outgoing
+      toStep: DataProject.workflows.ChangeRequest.Finish
+      bendPoints: []
+
+  - _name: Finish
+    _type: EndEvent
+    position: { x: 400, y: -110 }

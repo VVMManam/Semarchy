@@ -1,0 +1,207 @@
+_name: SupplierContact
+_type: CollectionView
+_package: DataProject.entities.Contact.collection_views
+entity: DataProject.entities.Contact.Contact
+default: false
+displayCard: DataProject.entities.Contact.display_cards.Contact
+tableAllowed: true
+tableRowLines: 1
+tableShowDisplayCard: true
+tableDisplayCardColumnLabel: Contact Name
+listAllowed: false
+listItemLines: 2
+listShowDisplayCardAvatar: false
+listShowDivider: false
+gridAllowed: false
+gridColumns: 4
+gridTileHeight: 1:1
+gridTileLines: 1
+gridTextPosition: BOTTOM
+tableColumns:
+  - _type: TextColumn
+    _name: FirstName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FirstName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MiddleName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MiddleName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: LastName
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: LastName
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: FullNameAr
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: FullNameAr
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: TitleCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN TitleCode = '1' THEN 'Mr' WHEN TitleCode = '100000001' THEN 'Mrs' WHEN TitleCode = '3' THEN 'Ms' WHEN TitleCode = '803750000' THEN 'Dr' WHEN TitleCode = '803750001' THEN 'Eng' WHEN TitleCode = '803750002' THEN 'Miss' WHEN TitleCode = '803750003' THEN 'Sir' ELSE TitleCode END
+    label: Title
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: GenderCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN GenderCode = '1' THEN 'Male' WHEN GenderCode = '2' THEN 'Female' ELSE GenderCode END
+    label: Gender
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PreferredLanguageCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN PreferredLanguageCode = '2' THEN 'English' WHEN PreferredLanguageCode = '1' THEN 'Arabic' ELSE PreferredLanguageCode END
+    label: Preferred Language
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: CountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: FDN_NationalityCode
+    label: Country
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: JobTitle
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: JobTitle
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Email
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Email
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: Mobile
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: Mobile
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MobileDialCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MobileDialCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: MobilePhoneCountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: MobilePhoneCountryCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BusinessPhone
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BusinessPhone
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: BusinessPhoneDialCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: BusinessPhoneDialCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: TelephoneNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: TelephoneNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: TelephoneNumberCountryCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: TelephoneNumberCountryCode
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EmiratesId
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EmiratesId
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: EmiratesIdExpiryDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: EmiratesIdExpiryDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PassportNumber
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PassportNumber
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PassportIssueDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PassportIssueDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: PassportExpiryDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: PassportExpiryDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: NumberOfShares
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: NumberOfShares
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: ContactStatusCode
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: true
+    value: CASE WHEN ContactStatusCode = 'I' THEN 'Inactive' WHEN ContactStatusCode = 'A' THEN 'Active' ELSE ContactStatusCode END
+    label: Contact Status
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: InactiveDate
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: InactiveDate
+    visibleByDefault: true
+  - _type: TextColumn
+    _name: QualityScore
+    columnAlign: LEFT
+    dataType: STRING
+    useCustomLabel: false
+    value: QualityScore
+    visibleByDefault: true

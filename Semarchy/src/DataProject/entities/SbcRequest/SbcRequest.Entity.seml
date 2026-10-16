@@ -1,0 +1,140 @@
+_package: DataProject.entities.SbcRequest
+_type: Entity
+_name: SbcRequest
+label: Sbc Request
+pluralLabel: Sbc Request
+physicalTableName: SBC_REQUEST
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: false
+historizeMaster: false
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: SbcRequestId
+    label: Sbc Request Id
+    physicalName: SBC_REQUEST_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: EntityType
+    label: Entity Type
+    physicalName: ENTITY_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 30
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OperationType
+    label: Operation Type
+    physicalName: OPERATION_TYPE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SearchCriteria
+    label: Search Criteria
+    physicalName: SEARCH_CRITERIA
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 400
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: NormalisedCriteria
+    label: Normalised Criteria
+    physicalName: NORMALISED_CRITERIA
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 400
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: UserRole
+    label: User Role
+    physicalName: USER_ROLE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 50
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RequestedBy
+    label: Requested By
+    physicalName: REQUESTED_BY
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: RequestDate
+    label: Request Date
+    physicalName: REQUEST_DATE
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: OutcomeCode
+    label: Outcome Code
+    physicalName: OUTCOME_CODE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 30
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ResultingGoldenId
+    label: Resulting Golden Id
+    physicalName: RESULTING_GOLDEN_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 20
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.SbcRequest.SbcRequest.SbcRequestId
+entityType: BASIC

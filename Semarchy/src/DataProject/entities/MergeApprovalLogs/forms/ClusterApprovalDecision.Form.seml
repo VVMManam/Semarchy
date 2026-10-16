@@ -1,0 +1,249 @@
+_package: DataProject.entities.MergeApprovalLogs.forms
+_type: Form
+_name: ClusterApprovalDecision
+entity: DataProject.entities.MergeApprovalLogs.MergeApprovalLogs
+default: false
+formTabs:
+  - _name: Main
+    _type: FormTab
+    label: Your Decision
+    labelWidth: "280px"
+    displayFormTabAs: LABEL
+    documentationInterpreter: LITERAL
+    visibleValue: '1'
+    visibleValueInterpreter: LITERAL
+    content:
+      - _type: FormSection
+        _name: DecisionSection
+        label: Your decision
+        layoutDirection: COLUMN
+        documentationInterpreter: LITERAL
+        visibleValue: '1'
+        visibleValueInterpreter: LITERAL
+        content:
+          - _name: DecisionHelp
+            _type: MarkdownField
+            label: DecisionHelp
+            useCustomLabel: true
+            dataType: STRING
+            value: 'CASE WHEN UPPER(COALESCE(ClusterCode, '''')) = ''GROUP'' THEN ''**Confirm**: the merge is confirmed and published. **Reject** / **Remerge**: the customer goes to the *Group Steward Review* view for you to demerge. A comment is mandatory for Reject and Remerge.'' ELSE ''**Confirm**: the merge is correct for '' || COALESCE(ClusterName, ''your cluster'') || ''. **Reject**: these customers must not be merged. **Remerge**: they should be merged differently. Reject and Remerge need a comment and send the merge to the Group Steward.'' END'
+            authoringMode: force-browsing
+            authoringModeValueInterpreter: LITERAL
+            documentationInterpreter: LITERAL
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL
+            labelProperties:
+              isVisible: '0'
+              isVisibleValueInterpreter: LITERAL
+          - _name: Decision
+            value: Decision
+            dataType: STRING
+            useCustomLabel: true
+            label: Decision
+            documentationInterpreter: LITERAL
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+            labelProperties:
+              position: left
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: body-1
+              typographyValueInterpreter: LITERAL
+              isVisible: '1'
+              isVisibleValueInterpreter: LITERAL
+          - _name: Comments
+            value: Comments
+            dataType: STRING
+            useCustomLabel: true
+            label: Comments (mandatory for Reject / Remerge)
+            documentationInterpreter: LITERAL
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              isMultiline: '1'
+              isMultilineValueInterpreter: LITERAL
+              multilineMinLines: '3'
+              multilineMinLinesValueInterpreter: LITERAL
+              multilineMaxLines: '6'
+              multilineMaxLinesValueInterpreter: LITERAL
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+            labelProperties:
+              position: left
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: body-1
+              typographyValueInterpreter: LITERAL
+              isVisible: '1'
+              isVisibleValueInterpreter: LITERAL
+          - _name: RejectionReason
+            value: RejectionReason
+            dataType: STRING
+            useCustomLabel: true
+            label: Reason
+            documentationInterpreter: LITERAL
+            visibleValue: UPPER(COALESCE(Decision, '')) IN ('REJECTED', 'REMERGE')
+            visibleValueInterpreter: SEMQL
+            _type: TextField
+            authoringMode: auto
+            authoringModeValueInterpreter: LITERAL
+            componentProperties:
+              textTypography: body-1
+              textTypographyValueInterpreter: LITERAL
+            labelProperties:
+              position: left
+              positionValueInterpreter: LITERAL
+              alignment: left
+              alignmentValueInterpreter: LITERAL
+              typography: body-1
+              typographyValueInterpreter: LITERAL
+              isVisible: '1'
+              isVisibleValueInterpreter: LITERAL
+      - _type: FormContainer
+        _name: ReviewerRow
+        layoutDirection: ROW
+        content:
+          - _type: FormSection
+            _name: ReviewerSection
+            label: Reviewer (filled automatically)
+            layoutDirection: COLUMN
+            documentationInterpreter: LITERAL
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL
+            relativeWidth: 50
+            content:
+              - _name: ClusterName
+                value: ClusterName
+                dataType: STRING
+                useCustomLabel: true
+                label: Task / cluster
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: ReviewerFullName
+                value: ReviewerFullName
+                dataType: STRING
+                useCustomLabel: true
+                label: Reviewer
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: ReviewerRole
+                value: ReviewerRole
+                dataType: STRING
+                useCustomLabel: true
+                label: Reviewer role
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormSection
+            _name: TimingSection
+            label: Timing
+            layoutDirection: COLUMN
+            documentationInterpreter: LITERAL
+            visibleValue: '1'
+            visibleValueInterpreter: LITERAL
+            relativeWidth: 50
+            content:
+              - _name: TaskStartTime
+                value: TaskStartTime
+                dataType: TIMESTAMP
+                useCustomLabel: true
+                label: Task Assigned On
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  useTimePicker: '1'
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL
+              - _name: DecisionTimestamp
+                value: DecisionTimestamp
+                dataType: TIMESTAMP
+                useCustomLabel: true
+                label: Decision Taken On
+                documentationInterpreter: LITERAL
+                visibleValue: '1'
+                visibleValueInterpreter: LITERAL
+                _type: DateField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  useTimePicker: '1'
+                  useTimePickerValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: '1'
+                  isVisibleValueInterpreter: LITERAL

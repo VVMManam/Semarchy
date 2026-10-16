@@ -1,0 +1,75 @@
+_name: ResolveCycleDecision
+_type: JavaPluginEnricher
+_package: DataProject.entities.CustomerLegalAccount.enrichers
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: Resolve Cycle Decision (decisions submitted in this batch)
+description: 'Golden data is published only at the end of a job, so when ClusterMergeApproval submits the decisions together with the customer, EvaluateMergeDecision cannot see the new Merge Approval Log rows in the golden table. This lookup reads them from the source table of the same load (V_LOADID) plus the published rows, keeps the rows of the running round (after MergeDecisionDate) and returns the outcome: GROUP_REVIEW when the Group Steward chose Reject / Remerge, otherwise CONFIRMED; the latest decision time; and the final decision (Group Steward first, else the latest).'
+enricherExecutionScope: POST_CONSO
+numberOfRetry: 3
+onErrorBehavior: SKIP_RECORDS
+pluginId: com.semarchy.engine.plugins.convergence.lookup
+pluginParams:
+  - paramName: PARAM_CUSTOM_SQL
+    value: with cyc as (
+                select customer_legal_account_id cgid, merge_decision_date mdd
+                from gd_custom_legal_account
+            ),
+            sa as (
+                select coalesce(s.f_customer_legal_account_id,
+                           (select m.customer_legal_account_id
+                            from mi_custom_legal_account m
+                            where m.b_pubid = s.fp_customer_legal_account_id
+                              and m.b_sourceid = s.fs_customer_legal_account_id
+                            order by m.b_batchid desc
+                            limit 1)) cgid,
+                       s.b_loadid lid,
+                       upper(s.cluster_code) cc,
+                       upper(trim(s.decision)) dec,
+                       s.decision_timestamp ts
+                from sa_merge_approval_logs s
+            ),
+            cur as (
+                select distinct cgid, lid from sa where cgid is not null
+            ),
+            lg as (
+                select cgid, lid, cc, dec, ts from sa where cgid is not null
+                union all
+                select c.cgid, c.lid, upper(g.cluster_code), upper(trim(g.decision)), g.decision_timestamp
+                from cur c
+                join gd_merge_approval_logs g on g.f_customer_legal_account_id = c.cgid
+            ),
+            d as (
+                select lg.*
+                from lg
+                join cyc on cyc.cgid = lg.cgid
+                where lg.dec in ('CONFIRMED', 'REJECTED', 'REMERGE')
+                  and lg.ts is not null
+                  and (cyc.mdd is null or lg.ts > cyc.mdd)
+            )
+            select cast(cgid as varchar) || '|' || cast(lid as varchar) LOOKUP_COLUMN,
+                   case when bool_or(cc = 'GROUP' and dec in ('REJECTED', 'REMERGE')) then 'GROUP_REVIEW' else 'CONFIRMED' end OUTPUT_COLUMN1,
+                   to_char(max(ts), 'YYYY-MM-DD HH24:MI:SS') OUTPUT_COLUMN2,
+                   (array_agg(dec order by case when cc = 'GROUP' then 0 else 1 end, ts desc))[1] OUTPUT_COLUMN3
+            from d
+            group by cgid, lid
+
+  - paramName: PARAM_FALLBACK_BEHAVIOR
+    value: USE_FALLBACK
+
+  - paramName: PARAM_CACHE
+    value: LOAD_ON_START
+
+pluginInputs:
+  - expression: "'' || CustomerLegalAccountID || '|' || :V_LOADID"
+    inputName: IN_LOOKUP_VALUE
+
+pluginOutputs:
+  - attributeName: LkpCycleStatus
+    outputName: OUT_RESULT1
+  - attributeName: LkpCycleDecisionOn
+    outputName: OUT_RESULT2
+  - attributeName: LkpCycleDecision
+    outputName: OUT_RESULT3
+
+processingBatchSize: 100
+threadPoolSize: 1

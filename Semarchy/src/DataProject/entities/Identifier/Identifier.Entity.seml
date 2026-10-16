@@ -1,0 +1,200 @@
+_package: DataProject.entities.Identifier
+_type: Entity
+_name: Identifier
+label: Identifier
+pluralLabel: Identifier
+physicalTableName: IDENTIFIER
+iconUrl: images://mdi/book.svg
+documentation: ""
+historizeGolden: true
+historizeMaster: true
+enableDelete: true
+dataEntryAllowed: true
+attributes:
+  - _type: EntityAttribute
+    _name: IdentifierId
+    label: Identifier Id
+    physicalName: IDENTIFIER_ID
+    dataType: LongInteger
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 0
+    precision: 38
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: Value
+    label: Value
+    physicalName: VALUE_TXT
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 100
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValueNormalised
+    label: Value Normalised
+    physicalName: VALUE_NORMALISED
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 100
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValidFrom
+    label: Valid From
+    physicalName: VALID_FROM
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: ValidTo
+    label: Valid To
+    physicalName: VALID_TO
+    dataType: Date
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: StatusCode
+    label: Status Code
+    physicalName: STATUS_CODE
+    dataType: DataProject.List_of_values.IdentifierStatus
+    lovValidationScope: PRE_CONSO
+    goldenAttribute: true
+    i18ned: false
+    mandatory: true
+    length: 30
+    mandatoryValidationScope: PRE_CONSO
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPlaceholder
+    label: Is Placeholder
+    physicalName: IS_PLACEHOLDER
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IsPrimary
+    label: Is Primary
+    physicalName: IS_PRIMARY
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: FormatValid
+    label: Format Valid
+    physicalName: FORMAT_VALID
+    dataType: Boolean
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 0
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: SourceRecordId
+    label: Source Record Id
+    physicalName: SOURCE_RECORD_ID
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 60
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+  - _type: EntityAttribute
+    _name: IdentifierTypeSource
+    label: Identifier Type (source value)
+    physicalName: IDENTIFIER_TYPE_SOURCE
+    dataType: String
+    goldenAttribute: true
+    i18ned: false
+    mandatory: false
+    length: 200
+    multiValued: false
+    searchable: true
+    valueSeparator: ","
+sourceIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+goldenIdGeneration:
+  mode: SEQUENCE
+  startWith: 1
+primaryKey: DataProject.entities.Identifier.Identifier.IdentifierId
+entityType: FUZZY_MATCHED
+matcher:
+  _name: SemQLMatcherIdentifier
+  _type: SemQLMatcher
+  autoConfirmGoldenThreshold: 98
+  autoConfirmSingletons: true
+  mergeThresholdMergingConfirmed: 95
+  mergeThresholdMergingConfirmedWithNewMasters: 95
+  mergeThresholdMergingConfirmedWithUnconfirmed: 98
+  mergeThresholdMergingUnconfirmed: 95
+  mergeThresholdMergingUnconfirmedWithNewMasters: 98
+  mergeThresholdNewGroup: 95
+  mergeThresholdRemergingPreviouslySplit: 100
+  useMultiIterationGrouping: false
+  useTransitiveMatchScore: false
+  matchRules:
+    - _type: SemQLMatchRule
+      _name: SameValueUnderSameCustomer
+      condition: |-
+        Record1.FID_CustomerID IS NOT NULL
+        AND Record2.FID_CustomerID IS NOT NULL
+        AND Record1.FID_CustomerID = Record2.FID_CustomerID
+        AND Record1.FID_IdentifierType = Record2.FID_IdentifierType
+        AND Record1.Value IS NOT NULL
+        AND Record2.Value IS NOT NULL
+        AND Record1.Value = Record2.Value
+      label: "Same identifier value under the same customer (auto-merge - catches duplicates left behind after a customer-level merge)"
+      matchScore: 100
+      usingMatchOn: false
+
+    - _type: SemQLMatchRule
+      _name: IDN01_SameSupplierTypeValue
+      condition: |-
+        Record1.FID_Sgid IS NOT NULL
+        AND Record2.FID_Sgid IS NOT NULL
+        AND Record1.FID_Sgid = Record2.FID_Sgid
+        AND Record1.FID_IdentifierType IS NOT NULL
+        AND Record1.FID_IdentifierType = Record2.FID_IdentifierType
+        AND Record1.ValueNormalised IS NOT NULL
+        AND Record2.ValueNormalised IS NOT NULL
+        AND Record1.ValueNormalised = Record2.ValueNormalised
+      label: "MAT-IDN-01 : Same supplier + identifier type + normalised value (auto-merge)"
+      matchScore: 100
+      usingMatchOn: false

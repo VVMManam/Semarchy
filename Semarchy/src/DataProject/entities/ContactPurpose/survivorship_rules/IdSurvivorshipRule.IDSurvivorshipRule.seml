@@ -1,0 +1,19 @@
+_type: IDSurvivorshipRule
+entity: DataProject.entities.ContactPurpose.ContactPurpose
+_package: DataProject.entities.ContactPurpose.survivorship_rules
+_name: IdSurvivorshipRule
+consolidationSkipNulls: false
+consolidationStrategy: CUSTOM_RANKING
+consolidationOrderByExpression: |-
+  CASE WHEN UPPER(RecordStatusCode) IN ('A', 'ACTIVE', '1', 'Y') THEN 1 ELSE 0 END DESC,
+  (
+    CASE WHEN ScopeTypeCode IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPrimaryFocalPoint IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN IsPrimaryFinanceFocal IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EffectiveFrom IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN EffectiveTo IS NOT NULL THEN 1 ELSE 0 END +
+    CASE WHEN ContactRole IS NOT NULL THEN 1 ELSE 0 END
+  ) DESC,
+  UpdateDate DESC
+label: Id Survivorship Rule
+publisherRankings: []

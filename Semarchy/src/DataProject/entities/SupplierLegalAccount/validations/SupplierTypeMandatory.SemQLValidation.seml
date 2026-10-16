@@ -1,0 +1,9 @@
+_name: SupplierTypeMandatory
+_type: SemQLValidation
+_package: DataProject.entities.SupplierLegalAccount.validations
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: VAL-04 Supplier Type Mandatory and Domain
+validationScope: POST_CONSO
+validationLabel: "VAL-04 - Supplier Type is missing or invalid."
+condition: |-
+  SupplierTypeCode IS NOT NULL AND SupplierTypeCode IN ('LIMITED', 'BRANCH_OFFICE', 'PARTNERSHIP', 'RELATED_PARTY', 'FOREIGN_COMPANY', 'GLOBAL_AGENCY_PARTNER', 'SOLE', 'OTHERS', 'SUPPLIER', 'TAX_AUTHORITY', 'SUB_CONTRACTOR', 'PUBLIC_SECTOR_COMPANIES', 'GOVERNMENT', 'INSURANCE', 'FEDERAL', 'CONTRACTOR', 'TRANSPORTADOR', 'ATTORNEY', 'UTILITY', 'TRUST', 'SERVICES', 'MANUFACTURING', 'CRM_AGENT')

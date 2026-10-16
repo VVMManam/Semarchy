@@ -1,0 +1,63 @@
+_name: SupplierGolden
+_package: DataProject.entities.SupplierLegalAccount.ActionSets
+_type: ActionSet
+entity: DataProject.entities.SupplierLegalAccount.SupplierLegalAccount
+label: Supplier Legal Account Action Set
+defaultActionSet: false
+actions:
+  - _name: CreateSupplierLegalAccount
+    label: Create
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CreateAction
+    createdRecordType: GOLDEN
+    createMultiple: false
+    allowOtherPublishers: true
+    stepper: DataProject.entities.SupplierLegalAccount.steppers.SupplierLegalAccount
+  - _name: EditSupplierLegalAccount
+    label: Edit
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: EditAction
+    availableForGoldenData: true
+    availableForMasterData: false
+    availableForErrorData: false
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.SupplierLegalAccount.steppers.SupplierLegalAccount
+  - _name: CopySupplierLegalAccount
+    label: Copy
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: CopyAction
+    multipleSelectionAllowed: true
+    stepper: DataProject.entities.SupplierLegalAccount.steppers.SupplierLegalAccount
+  - _name: Delete
+    label: Delete
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: DeleteAction
+    deleteType: HARD_DELETE
+    availableForGoldenData: true
+    availableForMasterData: false
+    multipleSelectionAllowed: true
+  - _name: Export
+    label: Export
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExportAction
+  - _name: ImportSupplierLegalAccount
+    label: Import
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ImportAction
+    importedRecordType: GOLDEN
+    importMode: CREATE_AND_UPDATE
+    allowOtherPublishers: true
+    stepper: DataProject.entities.SupplierLegalAccount.steppers.SupplierLegalAccount
+  - _name: ExplainRecord
+    label: Explain Record
+    useCustomLabel: true
+    waitDialogEnabled: false
+    _type: ExplainRecordAction
+    displayCard: DataProject.entities.SupplierLegalAccount.display_cards.SupplierLegalAccount
+    formTab: DataProject.entities.SupplierLegalAccount.forms.SupplierGolden.Main

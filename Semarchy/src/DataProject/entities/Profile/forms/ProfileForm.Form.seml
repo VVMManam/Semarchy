@@ -1,0 +1,171 @@
+_package: DataProject.entities.Profile.forms
+_type: Form
+_name: ProfileForm
+entity: DataProject.entities.Profile.Profile
+default: true
+formTabs:
+  - _name: Main
+    _type: FormTab
+    labelWidth: "170px"
+    documentationInterpreter: LITERAL
+    visibleValue: "1"
+    visibleValueInterpreter: LITERAL
+    label: Profile Details
+    displayFormTabAs: LABEL
+    content:
+      - _type: FormSection
+        _name: MainSection
+        label: Profile Details
+        layoutDirection: ROW
+        documentationInterpreter: LITERAL
+        visibleValue: "1"
+        visibleValueInterpreter: LITERAL
+        content:
+          - _type: FormContainer
+            _name: Container1
+            layoutDirection: COLUMN
+            content:
+              - _name: ProfileTypeCode
+                value: FDN_ProfileTypeCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.ProfileType.ProfileType
+                useCustomLabel: true
+                label: Profile Type
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "0"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: BusinessUnit
+                value: FDN_BusinessUnitCode
+                dataType: STRING
+                referencedEntity: DataProject.entities.BusinessUnit.BusinessUnit
+                useCustomLabel: true
+                label: Business Unit
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: ReferenceField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  displayType: chip
+                  displayTypeValueInterpreter: LITERAL
+                  useAvatarInChip: "0"
+                  useAvatarInChipValueInterpreter: LITERAL
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+          - _type: FormContainer
+            _name: Container2
+            layoutDirection: COLUMN
+            content:
+              - _name: ApprovalStatusCode
+                value: ApprovalStatusCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  multilineMaxLines: "3"
+                  multilineMinLines: "1"
+                  isCharCounterVisible: "0"
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+              - _name: RecordStatusCode
+                value: RecordStatusCode
+                dataType: STRING
+                useCustomLabel: false
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: TextField
+                authoringMode: auto
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  textAlign: left
+                  textAlignValueInterpreter: LITERAL
+                  textTypography: body-1
+                  textTypographyValueInterpreter: LITERAL
+                  isMultiline: "0"
+                  multilineMaxLines: "3"
+                  multilineMinLines: "1"
+                  isCharCounterVisible: "0"
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL
+
+              - _name: ClusterCode
+                value: "CASE WHEN Cluster IS NULL THEN NULL ELSE '<div style=\"margin:0;padding:0;line-height:1\">' || CASE WHEN Cluster LIKE '%Corp%' THEN '<span style=\"display:inline-block;background:#009FE3;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Corp</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Digital%' THEN '<span style=\"display:inline-block;background:#A286BF;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Digital Cluster</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Industrial%' THEN '<span style=\"display:inline-block;background:#F9423A;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Industrial Zone</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Logistics%' THEN '<span style=\"display:inline-block;background:#70D547;color:#12330A;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Logistics</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Maritime%' THEN '<span style=\"display:inline-block;background:#14C5BD;color:#FFFFFF;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Maritime</span>' ELSE '' END || CASE WHEN Cluster LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#B0D6E3;color:#0D3B4C;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">Ports</span>' ELSE '' END || CASE WHEN Cluster NOT LIKE '%Corp%' AND Cluster NOT LIKE '%Digital%' AND Cluster NOT LIKE '%Industrial%' AND Cluster NOT LIKE '%Logistics%' AND Cluster NOT LIKE '%Maritime%' AND Cluster NOT LIKE '%Ports%' THEN '<span style=\"display:inline-block;background:#E0E0E0;color:#212121;border-radius:16px;padding:3px 12px;margin:0 6px 4px 0;font-size:13px;font-weight:500;line-height:20px;white-space:nowrap\">' || Cluster || '</span>' ELSE '' END || '</div>' END"
+                dataType: STRING
+                useCustomLabel: true
+                label: "Cluster"
+                documentationInterpreter: LITERAL
+                visibleValue: "1"
+                visibleValueInterpreter: LITERAL
+                _type: MarkdownField
+                authoringMode: force-browsing
+                authoringModeValueInterpreter: LITERAL
+                componentProperties:
+                  contentHeight: "30"
+                  contentHeightValueInterpreter: LITERAL
+                labelProperties:
+                  position: left
+                  positionValueInterpreter: LITERAL
+                  alignment: left
+                  alignmentValueInterpreter: LITERAL
+                  typography: body-1
+                  typographyValueInterpreter: LITERAL
+                  isVisible: "1"
+                  isVisibleValueInterpreter: LITERAL

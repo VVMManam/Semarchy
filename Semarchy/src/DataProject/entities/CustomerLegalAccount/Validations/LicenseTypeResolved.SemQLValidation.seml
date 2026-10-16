@@ -1,0 +1,10 @@
+_name: LicenseTypeResolved
+_type: SemQLValidation
+_package: DataProject.entities.CustomerLegalAccount.Validations
+entity: DataProject.entities.CustomerLegalAccount.CustomerLegalAccount
+label: License Type Resolved
+validationScope: POST_CONSO
+validationLabel: "LICENSE_TYPE_UNMAPPED - CRM license type value has no matching License Type in MDM."
+condition: |-
+  (IsFreeZone IS NOT NULL AND IsFreeZone = '1')
+  OR (LicenseType IS NULL OR FID_LicenseTypeCode IS NOT NULL)
